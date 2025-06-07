@@ -52,11 +52,11 @@
             padding: 0 15px;
         }
 
-        /* Neuer kompakter Header */
+        /* Vergrößerter Header für größeres Logo */
         header {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: var(--text-light);
-            padding: 20px 0 10px;
+            padding: 25px 0 15px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             position: relative;
         }
@@ -72,7 +72,7 @@
 
         .logo-container {
             flex: 0 0 auto;
-            height: 140px; /* Vergrößerte Höhe für bessere Lesbarkeit */
+            height: 200px; /* Vergrößerte Höhe für bessere Lesbarkeit */
             display: flex;
             align-items: center;
         }
@@ -81,13 +81,13 @@
             height: 100%;
             width: auto;
             object-fit: contain;
-            max-height: 140px; /* Maximale Höhe für bessere Darstellung */
+            max-height: 200px; /* Maximale Höhe vergrößert */
         }
 
         .slogan-container {
             flex: 1;
             text-align: center;
-            height: 140px;
+            height: 200px; /* Höhe vergrößert */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -108,7 +108,7 @@
             gap: 25px;
             font-size: 0.95rem;
             color: rgba(255, 255, 255, 0.95);
-            padding: 10px 0;
+            padding: 15px 0 5px;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
         }
 
@@ -659,11 +659,11 @@
             }
             
             .logo-container {
-                height: 120px;
+                height: 160px; /* Höhe für Tablet angepasst */
             }
             
             .slogan-container {
-                height: 100px;
+                height: 140px; /* Höhe für Tablet angepasst */
             }
             
             .welcome-box {
@@ -698,6 +698,11 @@
             .order-notice .phone {
                 font-size: 1.4rem;
             }
+
+            .logo-container, 
+            .slogan-container {
+                height: 140px; /* Höhe für Mobile angepasst */
+            }
         }
 
         @media (max-width: 600px) {
@@ -726,6 +731,11 @@
                 padding: 15px 18px;
                 font-size: 1rem;
             }
+
+            .logo-container, 
+            .slogan-container {
+                height: 120px; /* Höhe für kleine Mobile angepasst */
+            }
         }
         
         /* Hinweis zu Reis */
@@ -745,7 +755,7 @@
         <i>↑</i>
     </div>
 
-    <!-- Neuer kompakter Header -->
+    <!-- Header mit vergrößertem Logo -->
     <header>
         <div class="container">
             <div class="header-top">
@@ -767,7 +777,7 @@
         </div>
     </header>
 
-    <!-- Navigation -->
+    <!-- Navigation mit neuem Konzept-Link -->
     <nav>
         <div class="container nav-container">
             <ul>
@@ -775,6 +785,7 @@
                 <li><a href="#currys">Currys</a></li>
                 <li><a href="#wokgerichte">Wokgerichte</a></li>
                 <li><a href="#getraenke">Getränke</a></li>
+                <li><a href="konzept.html">Konzept</a></li> <!-- Neuer Link -->
                 <li><a href="#kontakt">Kontakt</a></li>
             </ul>
         </div>
@@ -1357,12 +1368,21 @@
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
                 
-                window.scrollTo({
-                    top: targetElement.offsetTop - 100,
-                    behavior: 'smooth'
-                });
+                // Nur für Anchors im gleichen Dokument
+                if(targetId.startsWith('#')) {
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                } else {
+                    // Externe Links normal öffnen
+                    window.location.href = targetId;
+                }
             });
         });
     </script>
