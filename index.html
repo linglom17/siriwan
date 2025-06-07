@@ -68,10 +68,11 @@
         }
 
         .logo-container {
-            flex: 0 0 auto;
+            flex: 1;
             height: 250px;
             display: flex;
             align-items: center;
+            justify-content: flex-start;
         }
 
         .logo {
@@ -81,13 +82,32 @@
             max-height: 250px;
         }
 
-        .slogan-container {
+        .motto-container {
             flex: 1;
-            text-align: center;
             height: 250px;
             display: flex;
             align-items: center;
             justify-content: center;
+            text-align: center;
+            padding: 0 15px;
+        }
+
+        .motto-text {
+            color: var(--accent);
+            font-size: 1.5rem;
+            font-weight: 500;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif;
+            line-height: 1.4;
+            max-width: 400px;
+        }
+
+        .slogan-container {
+            flex: 1;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
         }
 
         .slogan-image {
@@ -143,11 +163,17 @@
             color: white;
             border: none;
             font-size: 24px;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             z-index: 1001;
             border-radius: 4px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-toggle.open {
+            background: var(--primary);
         }
 
         nav {
@@ -661,12 +687,16 @@
                 text-align: center;
             }
             
-            .logo-container {
+            .logo-container,
+            .motto-container,
+            .slogan-container {
                 height: 200px;
+                justify-content: center;
             }
             
-            .slogan-container {
-                height: 180px;
+            .motto-text {
+                font-size: 1.4rem;
+                max-width: 100%;
             }
         }
 
@@ -674,6 +704,11 @@
             nav ul {
                 flex-direction: column;
                 align-items: center;
+                display: none;
+            }
+            
+            nav ul.show {
+                display: flex;
             }
             
             section h2 {
@@ -693,9 +728,15 @@
                 font-size: 1.4rem;
             }
 
-            .logo-container, 
+            .logo-container,
+            .motto-container,
             .slogan-container {
                 height: 160px;
+            }
+            
+            .motto-text {
+                font-size: 1.3rem;
+                line-height: 1.3;
             }
 
             .mobile-menu-toggle {
@@ -709,6 +750,8 @@
                 width: 100%;
                 transform: translateY(0);
                 transition: transform 0.3s ease;
+                padding: 15px 0;
+                height: auto;
             }
 
             nav.nav-hidden {
@@ -717,6 +760,18 @@
 
             body {
                 padding-top: 60px;
+            }
+            
+            nav a {
+                padding: 15px 20px;
+                font-size: 1.1rem;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .mobile-menu-toggle {
+                top: 20px;
+                right: 20px;
             }
         }
 
@@ -746,9 +801,14 @@
                 font-size: 1rem;
             }
 
-            .logo-container, 
+            .logo-container,
+            .motto-container,
             .slogan-container {
                 height: 140px;
+            }
+            
+            .motto-text {
+                font-size: 1.2rem;
             }
 
             .back-to-top {
@@ -757,12 +817,22 @@
                 width: 45px;
                 height: 45px;
             }
+            
+            .item-description {
+                font-size: 1rem;
+            }
         }
 
         @media (max-width: 480px) {
-            .logo-container, 
+            .logo-container,
+            .motto-container,
             .slogan-container {
                 height: 120px;
+            }
+            
+            .motto-text {
+                font-size: 1.1rem;
+                line-height: 1.25;
             }
             
             .item-image,
@@ -786,6 +856,16 @@
                 padding: 15px;
                 margin: 25px auto;
             }
+            
+            .mobile-menu-toggle {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+            
+            nav a {
+                padding: 14px 16px;
+            }
         }
     </style>
 </head>
@@ -798,7 +878,11 @@
         <div class="container">
             <div class="header-top">
                 <div class="logo-container">
-                    <img src="images/logo-transparent-gpt.png" alt="Siriwan Thai Street Food Logo" class="logo">
+                    <img src="images/logo.png" alt="Siriwan Thai Street Food Logo" class="logo">
+                </div>
+                
+                <div class="motto-container">
+                    <div class="motto-text">Wir kochen mit frischen Zutaten nach traditionellen Rezepten rein hausgemachte Spezialitäten aus verschiedenen Landesteilen Thailands.</div>
                 </div>
                 
                 <div class="slogan-container">
@@ -806,10 +890,7 @@
                 </div>
             </div>
             
-            <div class="intro-text">
-                Willkommen bei Siriwan Thai Street Food in Neufurth. Wir kochen mit frischen Zutaten nach traditionellen Rezepten und bringen so die Vielfalt thailändischer Aromen direkt zu Ihnen.
-            </div>
-            
+                    
             <div class="header-contact">
                 <span>📍 Rauscherstraße 4, 3363 Neufurth</span>
                 <span>🕒 DI–SA: 11:00–18:30 Uhr | Feiertags geschlossen</span>
@@ -821,7 +902,7 @@
 
     <nav id="mainNav">
         <div class="container nav-container">
-            <ul>
+            <ul id="navMenu">
                 <li><a href="#vorspeisen">Vorspeisen</a></li>
                 <li><a href="#currys">Curry</a></li>
                 <li><a href="#wokgerichte">Wok</a></li>
@@ -1095,11 +1176,11 @@
                 <div class="menu-item">
                     <div class="item-number">M7</div>
                     <div class="item-image">
-                        <img src="images/M5_pad-priao-wan-gung.png" alt="Süßsauer Wok">
+                        <img src="images/M5_pad-priao-wan-gung.png" alt="Wok süßsauer">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
-                            <h3 class="item-name">Süßsauer Wok</h3>
+                            <h3 class="item-name">Wok süßsauer</h3>
                             <p class="item-thai-name">pad priao wan</p>
                         </div>
                         <p class="item-description">Gurken, Tomaten, Zwiebeln und Paprika in fruchtiger Tomatensauce.</p>
@@ -1261,7 +1342,7 @@
                                 <td class="item-price">3,90 €</td>
                             </tr>
                             <tr>
-                                <td>Mineralwasser still / prickelnd 0,33 l</td>
+                                <td>Mineralwasser<br>still / prickelnd 0,33 l</td>
                                 <td class="item-price">2,50 €</td>
                             </tr>
                             <tr>
@@ -1352,59 +1433,127 @@
     </footer>
 
     <script>
-        const backToTopButton = document.getElementById('backToTop');
-        const navbar = document.getElementById('mainNav');
-        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        let lastScrollTop = 0;
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTopButton = document.getElementById('backToTop');
+            const navbar = document.getElementById('mainNav');
+            const navMenu = document.getElementById('navMenu');
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            let lastScrollTop = 0;
+            let isMenuOpen = false;
 
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            if (scrollTop > 300) {
-                backToTopButton.classList.add('visible');
-            } else {
-                backToTopButton.classList.remove('visible');
-            }
-            
+            // Mobile Menü initial ausblenden
             if (window.innerWidth <= 768) {
-                if (scrollTop > lastScrollTop && scrollTop > 100) {
-                    navbar.classList.add('nav-hidden');
-                } else if (scrollTop < lastScrollTop) {
-                    navbar.classList.remove('nav-hidden');
-                }
-                lastScrollTop = scrollTop;
+                navMenu.style.display = 'none';
             }
-        });
-        
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-        
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                
-                if(targetId.startsWith('#')) {
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if(targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 100,
-                            behavior: 'smooth'
-                        });
-                    }
+
+            // Funktion zum Umschalten des Menüs
+            function toggleMenu() {
+                isMenuOpen = !isMenuOpen;
+                if (isMenuOpen) {
+                    navMenu.style.display = 'flex';
+                    mobileMenuToggle.textContent = '✕';
+                    mobileMenuToggle.classList.add('open');
                 } else {
-                    window.location.href = targetId;
+                    navMenu.style.display = 'none';
+                    mobileMenuToggle.textContent = '☰';
+                    mobileMenuToggle.classList.remove('open');
+                }
+            }
+
+            // Menü schließen bei Klick auf Link
+            function closeMenu() {
+                if (window.innerWidth <= 768) {
+                    isMenuOpen = false;
+                    navMenu.style.display = 'none';
+                    mobileMenuToggle.textContent = '☰';
+                    mobileMenuToggle.classList.remove('open');
+                }
+            }
+
+            // Bindewörter optimieren
+            document.querySelectorAll('.menu-item').forEach(item => {
+                const description = item.querySelector('.item-description');
+                const priceOptions = item.querySelector('.price-options');
+                
+                if (description && priceOptions) {
+                    let text = description.textContent.trim();
+                    
+                    // Entferne Satzzeichen am Ende
+                    text = text.replace(/[.,;!?]+$/, '');
+                    
+                    // Wähle Bindewort basierend auf vorhandenen Wörtern
+                    let connector = 'mit';
+                    if (text.includes(' mit') || text.includes(' und')) {
+                        connector = 'und';
+                    }
+                    
+                    // Füge Bindewort nur hinzu, wenn noch nicht vorhanden
+                    if (!text.endsWith(connector)) {
+                        description.textContent = text + ', ' + connector;
+                    }
                 }
             });
-        });
-        
-        mobileMenuToggle.addEventListener('click', () => {
-            navbar.classList.remove('nav-hidden');
+
+            // Scroll-Event für Back-to-top und Navbar
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                // Back-to-top Button
+                if (scrollTop > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+                
+                // Navbar auf Mobilgeräten ausblenden
+                if (window.innerWidth <= 768 && !isMenuOpen) {
+                    if (scrollTop > lastScrollTop && scrollTop > 100) {
+                        navbar.classList.add('nav-hidden');
+                    } else if (scrollTop < lastScrollTop) {
+                        navbar.classList.remove('nav-hidden');
+                    }
+                    lastScrollTop = scrollTop;
+                }
+            });
+            
+            // Back-to-top Funktion
+            backToTopButton.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Navigation Scroll
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    
+                    if(targetId.startsWith('#')) {
+                        e.preventDefault();
+                        const targetElement = document.querySelector(targetId);
+                        
+                        if(targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                    
+                    closeMenu();
+                });
+            });
+            
+            // Mobile Menü Toggle
+            mobileMenuToggle.addEventListener('click', toggleMenu);
+            
+            // Menü schließen bei Klick außerhalb
+            document.addEventListener('click', (e) => {
+                if (isMenuOpen && !navMenu.contains(e.target) && e.target !== mobileMenuToggle) {
+                    closeMenu();
+                }
+            });
         });
     </script>
 </body>
