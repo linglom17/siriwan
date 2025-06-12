@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahaan Tam Sang – Thailändische Kochkultur</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #d4b200;
+            font-weight: 300;
+        }
+        
+        .subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+        
+        .tagline {
+            text-align: center;
+            background-color: #d4b200;
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 0.9rem;
+            margin: 0 auto 40px;
+            display: block;
+            width: fit-content;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin: 40px 0 20px;
+            color: #333;
+            font-weight: 400;
+        }
+        
+        h3 {
+            font-size: 1.4rem;
+            margin: 30px 0 15px;
+            color: #333;
+            font-weight: 400;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        
+        .intro-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        
+        .quote {
+            font-style: italic;
+            font-size: 1.2rem;
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #d4b200;
+            color: #555;
+        }
+        
+        .image-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .image-caption {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        .timeline {
+            margin: 40px 0;
+        }
+        
+        .timeline-item {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border-left: 4px solid #d4b200;
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: #d4b200;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .dish-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .dish-item {
+            text-align: center;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .dish-item img {
+            width: 100%;
+            max-width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .dish-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .dish-description {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #d4b200;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .stat-source {
+            font-size: 0.8rem;
+            color: #999;
+        }
+        
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .type-item {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        
+        .type-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .type-description {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        .highlight {
+            background-color: #d4b200;
+            color: #fff;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .dish-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid,
+            .types-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ahaan Tam Sang</h1>
+        <p class="subtitle">Thailands „Cook-to-Order"-Prinzip zwischen Garküche und Fast-Casual</p>
+        <span class="tagline">Frische zubereitet, direkt vor Ihren Augen</span>
+
+        <p class="intro-text">Ahaan Tam Sang (อาหารตามสั่ง) heißt wörtlich „Essen nach Bestellung". Gemeint sind all jene Garküchen und Mini-Lokale, in denen jede Portion erst dann in den Wok kommt, wenn der Gast sein Wunschgericht nennt – keine Warmhaltetöpfe, sondern individuelle Blitzküche.</p>
+        
+        <div class="quote">
+            „Ein Wok, eine Portion, drei Minuten – das Tam-Sang-Prinzip passt perfekt in den urbanen Alltag."
+        </div>
+
+        <h2>Tiefere Ursprünge – vom Teochew-Wok zur Pendlermahlzeit</h2>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-year">19. Jahrhundert</div>
+                <div class="timeline-title">Sino-Thai Keimzelle</div>
+                <p>In den Geschäftsstraßen von Bangkok (damals noch Krung Thep) betrieben wandernde Teochew-Händler fahrbare Holzkarren, auf denen sie Reis, Eintöpfe und Stir-Fry-Gerichte zubereiteten. Die chinesische Pfannentechnik (chǎo) traf hier erstmals auf lokale Kräuter wie Bai Krapao (Heiliges Basilikum).</p>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-year">1920-30</div>
+                <div class="timeline-title">Kohle, Kerosin, Gas – technische Sprungbretter</div>
+                <p>Mit den günstigeren importierten Gusseisenwoks der 1920/30er-Jahre konnten auch arme Haushalte heißer und schneller garen als über offenen Holzkohlerosten. Ab 1955 verteilte Bangkoks Stadtverwaltung Kerosinbrenner an Straßenhändler, um hygienische Mahlzeiten für Fabrikarbeiter sicherzustellen.</p>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-year">1960-70</div>
+                <div class="timeline-title">Urbanisierung & „One-Plate Culture"</div>
+                <p>Millionen Landbewohner strömten in die Hauptstadt, lebten in Ein-Zimmer-Quartieren ohne echte Küche und brauchten preiswerte Sattmacher. Das Tam-Sang-Prinzip – ein Wok, eine Portion, drei Minuten – passte perfekt. In denselben Jahren machten Regierungskampagnen gegen Nachtmärkte Platz für tagsüber legale Shop-Houses: die heute allgegenwärtigen Glasfront-Löcher von drei mal acht Metern, in denen ein Koch und sein dampfender Wok das gesamte Unternehmen bilden.</p>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-year">1990 ff</div>
+                <div class="timeline-title">Institutionalisierung</div>
+                <p>Ab den 1990er-Jahren vergab das Gesundheitsministerium Food-Handler-Cards; Uni-Kantinen, Bürotower und gläserne Food-Courts integrierten Tam Sang als Grundversorgung. Der Schritt von der improvisierten Garküche zum international erkennbaren „Fast-Casual"-Vorläufer war vollzogen.</p>
+            </div>
+        </div>
+
+        <h2>Handwerk – ein Wok, drei Minuten, volles Aroma</h2>
+        
+        <div class="image-container">
+            <img src="images/tamsang.png" alt="Tam Sang Wok-Zubereitung">
+            <div class="image-caption">Der Arbeitsplatz ist meist ein einziger, patinierter Wok auf einer Faucher-Gasflamme</div>
+        </div>
+        
+        <p>Der Arbeitsplatz ist meist ein einziger, patinierter Wok auf einer Faucher-Gasflamme. Hoch erhitztes Öl trifft zuerst auf Knoblauch, Chili und Pasten, dann – je nach Bestellung – Fleischstreifen, Garnelen oder Tofu plus Gemüse.</p>
+        
+        <p>Hier entsteht „wok hei" (廣東話 breath of the wok): eine mikrofeine Dampf- und Ölwolke, die in Sekundenbruchteilen karamellisierte Röstaromen ans Gargut bindet. Sie verleiht Gerichten eine kaum ersetzbare, leicht rauchige Tiefe und gilt unter Köchen als Gütesiegel perfekt beherrschter Hitze.</p>
+
+        <h2>Dreiklang der Klassiker</h2>
+        
+        <div class="dish-grid">
+            <div class="dish-item">
+                <img src="images/tamsang3.png" alt="Pad Krah Phrao">
+                <div class="dish-name">Pad Krah Phrao</div>
+                <div class="dish-description">Gehacktes Fleisch oder Tofu, scharf gebraten mit Chili und Heiligem Basilikum.</div>
+            </div>
+            
+            <div class="dish-item">
+                <img src="images/tamsang1.png" alt="Khao Pad">
+                <div class="dish-name">Khao Pad</div>
+                <div class="dish-description">Gebratener Reis, bei dem vorgegarter Reis mit Ei, Frühlingszwiebel und der gewählten Hauptzutat aromatisiert werden.</div>
+            </div>
+            
+            <div class="dish-item">
+                <img src="images/tamsang2.png" alt="Pad Thai">
+                <div class="dish-name">Pad Thai</div>
+                <div class="dish-description">Reisnudeln mit Tamarindenpaste, Fischsauce, Palmzucker, Tofu oder Garnelen sowie knackigen Sprossen; längst weltbekannt und doch Standard an Tam-Sang-Ständen.</div>
+            </div>
+        </div>
+
+        <h2>Wie viele Tam-Sang-Küchen gibt es eigentlich?</h2>
+        <p>Genaue Statistiken fehlen, doch einige Gradmesser bieten Orientierung. Branchenbeobachter gehen davon aus, dass etwa ein Fünftel aller registrierten Essensstände speziell auf Tam Sang spezialisiert ist – also rund 120 000 Küchen im ganzen Land, davon 15 000–20 000 im Großraum Bangkok. Die massive Dunkelziffer nicht registrierter Pushcarts dürfte diese Zahl noch erhöhen.</p>
+        
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">680.190</div>
+                <div class="stat-label">gastronomische Outlets landesweit</div>
+                <div class="stat-source">(Line Man Wongnai, Ende 2024)</div>
+            </div>
+            
+            <div class="stat-item">
+                <div class="stat-number">54.476</div>
+                <div class="stat-label">registrierte Restaurants in Bangkok</div>
+                <div class="stat-source">(Handelsministerium)</div>
+            </div>
+            
+            <div class="stat-item">
+                <div class="stat-number">266 Mrd. ฿</div>
+                <div class="stat-label">Umsatz Street-Food-Kategorie</div>
+                <div class="stat-source">(+6,8% Wachstum, Kasikorn-Research)</div>
+            </div>
+        </div>
+
+        <h2>Typenvielfalt – vom Karren bis zum Food-Court</h2>
+        <p>Unter dem Label Tam Sang existiert ein ganzes Ökosystem:</p>
+        
+        <div class="types-grid">
+            <div class="type-item">
+                <div class="type-title">Straßen-Pushcarts</div>
+                <div class="type-description">Rollt frühmorgens durch Wohnviertel oder wartet nach Mitternacht vor Bars; führt oft nur vier, fünf Gerichte, dafür ultragünstig.</div>
+            </div>
+            
+            <div class="type-item">
+                <div class="type-title">Shop-House-Imbisse</div>
+                <div class="type-description">Das Rückgrat der Mittagsversorgung: eine offene Front, Plastiktische, Ventilator und eine Wandtafel voller Rezept-Shortcodes.</div>
+            </div>
+            
+            <div class="type-item">
+                <div class="type-title">Food-Court-Stände</div>
+                <div class="type-description">Stehen in Einkaufszentren und Märkten; hier wird das Angebot leicht standardisiert, um hohe Drehzahlen zu schaffen.</div>
+            </div>
+            
+            <div class="type-item">
+                <div class="type-title">Campus- und Werkskantinen</div>
+                <div class="type-description">Arbeiten quasi im Akkord und verpflegen Studenten oder Schichtarbeiter zu subventionierten Preisen.</div>
+            </div>
+            
+            <div class="type-item">
+                <div class="type-title">Night-Market-Reihen</div>
+                <div class="type-description">Bieten nach Sonnenuntergang hunderte Einzelstände mit Show-Cooking – ein Kombi-Erlebnis aus Essen, Bummeln und Live-Musik.</div>
+            </div>
+        </div>
+
+        <h2>Neue Strömungen – pflanzenbetont & lokal verwurzelt</h2>
+        <p>Marktforscher sehen zwei prägnante Trends: Erstens wächst das Angebot pflanzenbasierter Proteine (Seitan, Tempeh, Erbsenprotein). Zweitens rückt saisonales, regionales Gemüse stärker in den Fokus, um Transportwege zu minimieren. Das Tam-Sang-Baukastensystem kann solche Zutaten quasi nahtlos übernehmen: Der Wok bleibt – nur die Einlage ändert sich.</p>
+
+        <h2>Ahaan Tam Sang als Blaupause für Fast-Casual</h2>
+        <p>Tempo, handwerkliche Frische, offene Küche und individuelle Zusammenstellung – alles Kennzeichen, die moderne Fast-Casual-Gastronomie heute bewusst inszeniert. In Thailand sind sie seit Jahrzehnten Alltag. Nur wenige Konzepte verbinden Tradition und Zeitgeist so nahtlos: Ob <span class="highlight">Pad Krah Phrao</span>, <span class="highlight">Khao Pad</span> oder <span class="highlight">Pad Thai</span> – jeder Wokschlag erzählt die Geschichte eines Konzepts, das sich ständig weiterentwickelt und doch authentisch bleibt.</p>
+    </div>
+</body>
+</html>
