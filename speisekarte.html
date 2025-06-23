@@ -4,765 +4,599 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Siriwan Thai Street Food - Speisekarte</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        /* Print specific styles */
-        @media print {
-            @page {
-                size: A4 portrait;
-                margin: 8mm;
-            }
-            html, body {
-                margin: 0;
-                padding: 0;
-            }
-            body {
-                -webkit-print-color-adjust: exact !important;
-                color-adjust: exact !important;
-                print-color-adjust: exact !important;
-                font-family: 'Roboto', sans-serif;
-                line-height: 1.1;
-                font-size: 11pt; /* BASIS SCHRIFT VERGRÖßERT */
-                color: #333;
-            }
-            .page {
-                box-shadow: none !important;
-                border: none !important;
-                margin: 0 !important;
-                padding: 4mm;
-                width: auto;
-                min-height: 280mm;
-                overflow: hidden;
-                position: relative;
-                page-break-after: always;
-            }
-            .page:last-of-type {
-                page-break-after: avoid;
-            }
-            .category, .contact-section, .allergen-legend {
-                page-break-inside: avoid;
-            }
-            .menu-item {
-                page-break-inside: avoid;
-            }
-
-            /* VERGRÖßERTE SCHRIFTEN FÜR DRUCK */
-            .restaurant-name {
-                font-size: 22pt !important;
-            }
-            .restaurant-contact {
-                font-size: 11pt !important;
-            }
-            .category-title {
-                font-size: 16.5pt !important;
-            }
-            .item-name {
-                font-size: 13.5pt !important; /* Größer für Gerichtenamen */
-            }
-            .item-thai-name {
-                font-size: 10pt !important;
-            }
-            .item-description {
-                font-size: 10.5pt !important; /* Größer für Beschreibungen */
-            }
-            .item-prices {
-                font-size: 11pt !important;
-            }
-            .allergens {
-                font-size: 9pt !important;
-            }
-            .drink-name, .drink-price {
-                font-size: 11pt !important;
-            }
-            .contact-title {
-                font-size: 13pt !important;
-            }
-            .contact-info {
-                font-size: 11pt !important;
-            }
-            .social-media-line {
-                font-size: 11.5pt !important;
-            }
-            .allergen-legend-title {
-                font-size: 12pt !important;
-            }
-            .allergen-list {
-                font-size: 10pt !important;
-            }
-        }
-
-        /* Variables */
-        :root {
-            --primary: #005A54;
-            --secondary: #B8860B;
-            --accent: #a7d7c5;
-            --light: #fdfdfc;
-            --dark: #333;
-            --text-light: #FFFFFF;
-            --shadow: rgba(0, 0, 0, 0.1);
-            --red: #D2042D;
-            --border-color: #b0b0b0;
-            --light-text: #666;
-        }
-
-        /* General styles - ALLGEMEINE SCHRIFTVERGRÖßERUNG */
+        /* CSS Reset und Grundstile */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Roboto', sans-serif;
-            color: var(--dark);
-            line-height: 1.25;
-            font-size: 11pt; /* BASIS SCHRIFT VERGRÖßERT */
-            background-color: #f0f0f0;
+        :root {
+            --primary-color: #005A54; /* Now for dish names */
+            --secondary-color: #B8860B; /* Now for headings/restaurant name */
+            --text-dark: #2c2c2c;
+            --text-light: #666;
+            --bg-light: #fdfdfc;
+            --border-color: #e0e0e0;
         }
 
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-dark);
+            background-color: #f0f0f0;
+            line-height: 1.5;
+            font-size: 10pt;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        /* Seiten-Layout */
         .page {
             width: 210mm;
             min-height: 297mm;
-            padding: 8mm;
-            background: white;
-            position: relative;
-            margin: 15px auto;
-            box-shadow: 0 0 10px rgba(0,0,0,0.2);
-            border: 1px solid #ccc;
-        }
-
-        /* Header styles */
-        .header {
-            text-align: center;
-            margin-bottom: 2mm;
-            padding-bottom: 0.5mm;
-            border-bottom: 2px solid var(--primary);
-        }
-
-        .restaurant-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 25pt; /* Größer für Restaurantnamen */
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 0.5mm;
-        }
-
-        .restaurant-contact {
-            font-size: 11.5pt; /* Größer für Kontaktdaten */
-            color: var(--dark);
-        }
-        .restaurant-contact span {
-            margin: 0 0.5mm;
-        }
-
-        /* Category styles */
-        .category {
-            margin-bottom: 1.5mm;
-        }
-        
-        .category-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 18pt; /* Größer für Kategorietitel */
-            font-weight: 600;
-            color: var(--primary);
-            padding: 1mm 2mm;
-            text-align: center;
-            margin-bottom: 0.5mm;
-            border-bottom: 2px solid var(--accent);
-        }
-
-        .category-notice {
-            font-size: 10pt; /* Größer für Hinweise */
-            font-style: italic;
-            color: var(--light-text);
-            text-align: center;
-            margin-bottom: 0.5mm;
-        }
-
-        /* Menu item styles */
-        .menu-items {
+            padding: 10mm;
+            background: var(--bg-light);
+            margin: 20px auto;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
             display: flex;
             flex-direction: column;
-            gap: 0.2mm; /* Minimaler Abstand */
         }
 
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 5mm;
+        }
+        .header .restaurant-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 28pt;
+            font-weight: 700;
+            color: var(--secondary-color); /* Changed to secondary color */
+            margin: 0;
+        }
+        .header .restaurant-slogan {
+            font-size: 14pt;
+            color: var(--text-light);
+            margin-top: -5px;
+            margin-bottom: 3mm;
+        }
+        .header .contact-info {
+            font-size: 9.5pt;
+            color: var(--text-dark);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1mm 0;
+        }
+        .header .contact-info span {
+            margin: 0 10px;
+        }
+
+        /* Hauptinhalt */
+        .main-content {
+            flex-grow: 1;
+        }
+
+        /* Kategorien-Titel */
+        .category-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 18pt;
+            color: var(--secondary-color); /* Changed to secondary color */
+            text-align: center;
+            margin: 6mm 0 3mm 0;
+            position: relative;
+        }
+        .category-title::before,
+        .category-title::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 25%;
+            height: 1px;
+            background-color: var(--primary-color); /* Changed to primary color */
+        }
+        .category-title::before { left: 0; }
+        .category-title::after { right: 0; }
+        
+        .category-notice {
+            text-align: center;
+            font-style: italic;
+            font-size: 9pt;
+            color: var(--text-light);
+            margin-top: -2mm;
+            margin-bottom: 3mm;
+        }
+        
+        /* Menü-Grid für zweispaltiges Layout */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 8mm;
+        }
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        /* Menü-Eintrag */
         .menu-item {
+            margin-bottom: 3mm;
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            padding: 0.3mm 0; /* Reduzierter Abstand */
-            border-bottom: 1px solid #f8f8f8;
+            flex-wrap: wrap;
+            align-items: baseline;
+            page-break-inside: avoid;
         }
-        .menu-item:last-child {
-            border-bottom: none;
-        }
-
-        .item-content {
-            flex: 1;
-            padding-right: 0.8mm; /* Reduzierter Abstand */
-        }
-
         .item-header {
             display: flex;
             align-items: baseline;
-            margin-bottom: 0.1mm; /* Minimaler Abstand */
+            width: 100%;
         }
-
-        .item-number {
-            font-weight: 500;
-            color: var(--dark);
-            font-size: 11pt; /* Größer für Nummern */
-            margin-right: 0.8mm;
-        }
-
         .item-name {
             font-weight: 500;
-            font-size: 13pt; /* DEUTLICH GRÖßER für Gerichtenamen */
-            color: var(--secondary);
+            font-size: 11pt;
+            color: var(--primary-color); /* Changed to primary color */
+            margin-right: 4px;
         }
-
         .item-thai-name {
-            font-size: 10pt; /* Größer für Thai-Namen */
-            color: var(--light-text);
-            margin-left: 0.8mm;
-            font-weight: 400;
+            font-size: 9pt;
+            color: var(--text-light);
         }
-
-        .chili-icon {
-            color: var(--red);
-            margin-left: 0.5mm;
-            font-weight: bold;
-            font-size: 11pt; /* Größer für Chili-Icon */
-        }
-
-        .item-description {
-            font-size: 10.5pt; /* DEUTLICH GRÖßER für Beschreibungen */
-            font-weight: 300;
-            color: var(--dark);
-            margin: 0.1mm 0 0.2mm 0; /* Minimaler Abstand */
-            padding-left: 12px; /* Reduzierter Abstand */
-            line-height: 1.2;
-        }
-
-        .item-prices {
-            font-weight: 500;
-            color: var(--dark);
-            font-size: 11pt; /* Größer für Preise */
-            text-align: right;
-            margin-left: 0.8mm; /* Reduzierter Abstand */
-            min-width: 28mm; /* Schmalere Spalte */
-            line-height: 1.3;
-        }
-
-        .allergens {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.2mm; /* Minimaler Abstand */
-            margin-top: 0.1mm; /* Minimaler Abstand */
-            padding-left: 12px; /* Reduzierter Abstand */
-            font-size: 9pt; /* Größer für Allergene */
-            font-style: italic;
-            color: var(--light-text);
-        }
-
-        .allergens span:not(:first-child)::before {
-            content: ", ";
-        }
-        .allergens span:first-child::before {
-            content: "| ";
-        }
-
-        /* Drinks grid */
-        .drinks-grid {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 0.4mm 1.2mm; /* Reduzierter Abstand */
-            align-items: center;
-            padding: 0 1.2mm; /* Reduzierter Abstand */
-        }
-
-        .drink-name, .drink-price {
-            font-size: 11.5pt; /* Größer für Getränke */
-            color: var(--dark);
-        }
-
-        /* Extra notice */
-        .extra-notice {
-            font-size: 10pt;
-            font-weight: 500;
-            color: var(--primary);
-            text-align: center;
-            margin: 1mm 0;
-            font-style: italic;
-        }
-
-        /* Contact section */
-        .contact-section {
-            background: var(--light);
-            padding: 2.2mm; /* Reduzierter Abstand */
-            border-radius: 2mm;
-            border: 1px solid var(--primary);
-            margin-top: 3mm;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr auto;
-            gap: 1.2mm; /* Reduzierter Abstand */
-            margin-bottom: 0.4mm; /* Reduzierter Abstand */
-            align-items: start;
-        }
-
-        .contact-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 14pt; /* Größer für Kontakttitel */
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 0.4mm; /* Reduzierter Abstand */
-        }
-
-        .contact-info {
-            font-size: 11.5pt; /* Größer für Kontaktinfo */
-            line-height: 1.3;
-            color: var(--dark);
-        }
-
-        .social-media-line {
-            display: flex;
-            align-items: center;
-            gap: 0.8mm;
-            margin-top: 0.4mm; /* Reduzierter Abstand */
-            font-size: 12pt; /* Größer für Social Media */
-            font-weight: 500;
-            color: var(--primary);
-        }
-
-        .social-media-line .facebook-icon,
-        .social-media-line .instagram-icon {
-            width: 14px;
-            height: 14px;
-            fill: var(--primary);
-            background-repeat: no-repeat;
-            background-size: contain;
-            display: inline-block;
+        .item-dots {
+            flex-grow: 1;
+            border-bottom: 1px dotted var(--primary-color); /* Changed to primary color */
+            margin: 0 6px;
+            transform: translateY(-3px);
         }
         
-        .social-media-line .facebook-icon {
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.198 21.5h4v-8.01h3.604l.396-3.98h-4V7.5a1.818 1.818 0 0 1 1.818-1.817h2.182V3h-3.6c-3.417 0-5.818 1.86-5.818 5.818v2.683H6.22v3.98h2.978v8.01Z"/></svg>');
+        .item-description {
+            width: 100%;
+            font-size: 9.5pt;
+            font-weight: 300;
+            color: var(--text-dark);
+            line-height: 1.3; /* Adjusted for compactness */
         }
-        .social-media-line .instagram-icon {
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2c2.717 0 3.056.01 4.122.06c1.065.05 1.79.217 2.428.465c.66.254 1.216.598 1.772 1.153a4.92 4.92 0 0 1 1.153 1.772c.248.637.415 1.363.465 2.428c.047 1.066.06 1.405.06 4.122s-.013 3.056-.06 4.122c-.05 1.065-.218 1.79-.465 2.428a4.929 4.929 0 0 1-1.153 1.772c-.556.556-1.112.899-1.772 1.153c-.637.248-1.363.415-2.428.465c-1.066.047-1.405.06-4.122.06s-3.056-.013-4.122-.06c-1.065-.05-1.79-.218-2.428-.465a4.92 4.92 0 0 1-1.772-1.153C2.934 19.432 2.58 18.876 2.327 18.22c-.248-.637-.415-1.363-.465-2.428C1.813 15.056 1.8 14.717 1.8 12s.013-3.056.06-4.122c.05-1.066.217-1.79.465-2.428a4.929 4.929 0 0 1 1.153-1.772A4.92 4.92 0 0 1 5.25 2.525c.637-.248 1.363-.415 2.428-.465C8.744 2.013 9.083 2 12 2zm0 1.8c-2.65 0-2.973.01-4.02.058c-1.01.048-1.62.213-2.072.39c-.52.204-.903.48-1.28.858c-.378.378-.654.76-.858 1.28c-.177.453-.342 1.062-.39 2.072C2.86 8.727 2.85 9.05 2.85 12c0 2.95.01 3.273.058 4.32c.048 1.01.213 1.62.39 2.072c.204.52.48.903.858 1.28c.378.378.76.654 1.28.858c-.453.177-1.062.342-2.072-.39C14.973 3.81 14.65 3.8 12 3.8zm0 3.35a4.85 4.85 0 1 0 0 9.7a4.85 4.85 0 0 0 0-9.7zm0 1.8a3.05 3.05 0 1 1 0 6.1a3.05 3.05 0 0 1 0-6.1zM16.95 6a1.2 1.2 0 1 0 0 2.4a1.2 1.2 0 0 0 0-2.4z"/></svg>');
+        
+        /* Preis- und Allergenzeile */
+        .price-allergen-row {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: 1.5mm;
+            font-size: 10.5pt;
+        }
+        .item-price-single {
+            font-weight: 500;
+            color: var(--text-dark);
+            font-size: 11pt;
+        }
+        .item-price-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0 5mm; /* Reduced gap for price options */
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        .item-allergens-inline {
+            font-size: 8.5pt;
+            font-style: italic;
+            color: var(--text-light);
+            white-space: nowrap;
+            /* Removed margin-left as space-between handles positioning */
+            flex-shrink: 0;
+        }
+        
+        /* Getränke-Layout */
+        .drinks-list {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 2mm 8mm;
+            max-width: 70%;
+            margin: 0 auto;
+        }
+        .drink-name {
+            font-size: 10pt;
+        }
+        .drink-price {
+            font-size: 10pt;
+            font-weight: 500;
         }
 
-        .qr-section {
-            text-align: center;
+        /* New styles for promotional images container */
+        .promo-images-container {
+            display: flex;
+            justify-content: center; /* This centers the items horizontally */
+            gap: 8mm; /* Space between the two images */
+            margin-top: 5mm; /* Add some space above the images */
+            margin-bottom: 5mm; /* Add some space below the images */
+            flex-wrap: nowrap; /* Prevent wrapping to a new line */
+            width: 100%; /* Take full width within its container */
+        }
+
+        .promo-images-container img {
+            max-width: calc(50% - 4mm); /* Each image takes half the width minus half the gap */
+            height: auto; /* Maintain aspect ratio */
+            display: block; /* Remove extra space below image */
+        }
+        
+        /* Footer */
+        .footer {
+            margin-top: 8mm;
+            padding-top: 3mm;
+            border-top: 2px solid var(--primary-color);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4mm;
+            margin-bottom: 4mm;
+        }
+        .footer-col h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 12pt;
+            color: var(--secondary-color); /* Changed to secondary color */
+            margin-bottom: 0.5mm;
+        }
+        .footer-col p, .footer-col .social-media {
+            font-size: 9.5pt;
+        }
+        .social-media {
+            font-weight: 500;
+        }
+        /* Specific QR code styling */
+        .qr-code-container {
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin-top: 2px;
+        }
+        .qr-code-container img {
+            display: block;
+            margin-bottom: 2px;
+        }
+        .qr-code-container .qr-code-label {
+            font-size: 9.5pt;
+            color: var(--text-dark);
+            text-align: center;
+        }
+        .allergen-info {
+            text-align: center;
+            font-size: 9pt;
+            color: var(--text-light);
+            margin-top: 3mm;
+            padding-top: 1.5mm;
+            border-top: 1px solid var(--border-color);
+        }
+        .allergen-info .price-note {
+            display: block;
+            margin-bottom: 1mm;
+            font-style: normal;
+            color: var(--text-dark);
         }
         
-        .qr-code img {
-            display: block;
-            width: 65px;
-            height: 65px;
-            margin-bottom: 1mm;
-        }
-
-        .qr-code-label {
-            font-size: 9pt; /* Größer für QR-Beschriftung */
-            text-align: center;
-            margin-top: 0;
-            color: var(--light-text);
-            font-weight: 500;
-        }
-
-        /* Allergen legend */
-        .allergen-legend {
-            padding: 1.5mm;
-            border-radius: 1.5mm;
-            border-top: 1px dashed var(--border-color);
-            margin-top: 2.5mm;
-        }
-
-        .allergen-legend-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 13pt; /* Größer für Legendentitel */
-            font-weight: 600;
-            color: var(--primary);
-            text-align: center;
-            margin-bottom: 0.5mm;
-        }
-
-        .allergen-list {
-            font-size: 10pt; /* Größer für Allergenliste */
-            text-align: justify;
-            line-height: 1.2;
-            color: var(--light-text);
-        }
-        .allergen-list b {
-            color: var(--dark);
-            font-weight: 500;
-        }
-
-        /* Footer info */
-        .footer-info {
-            font-size: 10pt; /* Größer für Footer */
-            text-align: center;
-            color: var(--dark);
-            margin-top: 1mm;
-            font-style: italic;
+        /* Druck-Anpassungen */
+        @media print {
+            body { background-color: #fff; }
+            .page {
+                margin: 0;
+                padding: 10mm;
+                box-shadow: none;
+                min-height: 277mm;
+            }
         }
     </style>
 </head>
 <body>
     <div class="page">
-        <div class="header">
-            <div class="restaurant-name">Siriwan Thai Street Food Takeaway</div>
-            <div class="restaurant-contact">
-                <span>Rauscherstraße 4, 3363 Neufurth</span> | 
-                <span>Tel: 0664 123 456</span> | 
-                <span>DI–SA: 11:00–18:30 Uhr</span> | 
-                <span>Feiertags geschlossen</span>
-            </div>
-        </div>
-
-        <div class="category">
-            <div class="category-title">Vorspeisen</div>
-            <div class="menu-items">
-                <div class="menu-item">
-                    <div class="item-content">
-                        <div class="item-header">
-                            <span class="item-number">V1</span>
-                            <span class="item-name">Frühlingsrollen</span>
-                            <span class="item-thai-name">po pia</span>
-                        </div>
-                        <div class="item-description">3 Stk. knusprige Teigröllchen mit Glasnudeln, Karotten, wahlweise Schwein oder Gemüse, süß-saure Sauce.</div>
-                        <div class="allergens">
-                            <span class="allergen">A</span><span class="allergen">C</span><span class="allergen">F</span>
-                        </div>
-                    </div>
-                    <div class="item-prices">5,50 €</div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="item-content">
-                        <div class="item-header">
-                            <span class="item-number">V2</span>
-                            <span class="item-name">Garnelenrollen</span>
-                            <span class="item-thai-name">po pia gung</span>
-                        </div>
-                        <div class="item-description">6 Stk. frittierte Garnelen im Teigmantel, Chili-Dip.</div>
-                        <div class="allergens">
-                            <span class="allergen">A</span><span class="allergen">B</span><span class="allergen">C</span>
-                        </div>
-                    </div>
-                    <div class="item-prices">5,90 €</div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="item-content">
-                        <div class="item-header">
-                            <span class="item-number">V3</span>
-                            <span class="item-name">Tempura Huhn</span>
-                            <span class="item-thai-name">gai tempura</span>
-                        </div>
-                        <div class="item-description">5 Stk. Hühnerfilet im Tempura-Teigmantel, süß-saure Sauce.</div>
-                        <div class="allergens">
-                            <span class="allergen">A</span><span class="allergen">C</span><span class="allergen">F</span>
-                        </div>
-                    </div>
-                    <div class="item-prices">5,90 €</div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="item-content">
-                        <div class="item-header">
-                            <span class="item-number">V4</span>
-                            <span class="item-name">Hühner Saté Spieße</span>
-                            <span class="item-thai-name">gai saté</span>
-                        </div>
-                        <div class="item-description">3 Stk. zarte Hühnerspieße, Erdnuss-Kokos-Currysauce.</div>
-                        <div class="allergens">
-                            <span class="allergen">E</span><span class="allergen">F</span>
-                        </div>
-                    </div>
-                    <div class="item-prices">7,90 €</div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="item-content">
-                        <div class="item-header">
-                            <span class="item-number">V5</span>
-                            <span class="item-name">Papayasalat</span>
-                            <span class="item-thai-name">som tam thai</span>
-                        </div>
-                        <div class="item-description">Grüner Papayasalat mit Fischsauce, Karotten, Fisolen, Tomaten, Limette, Erdnüssen, Tamarindenpaste; optional Chili.</div>
-                        <div class="allergens">
-                            <span class="allergen">D</span><span class="allergen">E</span>
-                        </div>
-                    </div>
-                    <div class="item-prices">8,90 €</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="category">
-            <div class="category-title">Suppen & Curry</div>
-            <div class="category-notice">Alle Gerichte dieser Kategorie werden mit Jasminreis serviert.</div>
-            <div class="menu-items">
-                <div class="menu-item">
-                    <div class="item-content">
-                        <div class="item-header">
-                            <span class="item-number">M1</span>
-                            <span class="item-name">Tom Yam</span>
-                        </div>
-                        <div class="item-description">Scharf-saure Suppe mit Tomaten, Champignons, Zitronengras, Galgant, Kaffirlimettenblättern, Fischsauce, Limettensaft.</div>
-                        <div class="allergens">
-                            <span class="allergen">B</span><span class="allergen">D</span>
-                        </div>
-                    </div>
-                    <div class="item-prices">Garnelen: 12,50 €<br>Huhn: 9,50 €</div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="item-content">
-                        <div class="item-header">
-                            <span class="item-number">M2</span>
-                            <span class="item-name">Kokossuppe</span>
-                            <span class="item-thai-name">tom kha</span>
-                        </div>
-                        <div class="item-description">Kokosmilchsuppe mit Tomaten, Champignons, Zitronengras, Galgant, Kaffirlimettenblättern, Fischsauce, Limettensaft.</div>
-                        <div class="allergens">
-                            <span class="allergen">D</span>
-                        </div>
-                    </div>
-                    <div class="item-prices">Garnelen: 12,50 €<br>Huhn: 9,50 €</div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="item-content">
-                        <div class="item-header">
-                            <span class="item-number">M3</span>
-                            <span class="item-name">Grünes Curry</span>
-                            <span class="item-thai-name">gaeng khiao wan</span>
-                            <span class="chili-icon">🌶</span>
-                        </div>
-                        <div class="item-description">Würziges Kokoscurry mit Bambus, Zucchini, Fisolen, Spitzpaprika, Thai-Basilikum.</div>
-                        <div class="allergens">
-                            <span class="allergen">A</span><span class="allergen">B</span><span class="allergen">D</span><span class="allergen">F</span>
-                        </div>
-                    </div>
-                    <div class="item-prices">Tofu: 10,50 €<br>Huhn: 11,50 €<br>Rind: 12,50 €<br>Garnelen: 12,90 €</div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="item-content">
-                        <div class="item-header">
-                            <span class="item-number">M4</span>
-                            <span class="item-name">Gelbes Curry</span>
-                            <span class="item-thai-name">gaeng lüang</span>
-                        </div>
-                        <div class="item-description">Mildes Kokoscurry mit Kartoffeln, Karotten.</div>
-                        <div class="allergens">
-                            <span class="allergen">A</span><span class="allergen">B</span><span class="allergen">D</span><span class="allergen">F</span>
-                        </div>
-                    </div>
-                    <div class="item-prices">Tofu: 10,50 €<br>Huhn: 11,50 €<br>Rind: 12,50 €<br>Garnelen: 12,90 €</div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="item-content">
-                        <div class="item-header">
-                            <span class="item-number">M5</span>
-                            <span class="item-name">Rotes Curry</span>
-                            <span class="item-thai-name">gaeng daeng</span>
-                            <span class="chili-icon">🌶</span>
-                        </div>
-                        <div class="item-description">Kokoscurry mit Bambus, Zucchini, Fisolen, Spitzpaprika, Thai-Basilikum.</div>
-                        <div class="allergens">
-                            <span class="allergen">A</span><span class="allergen">B</span><span class="allergen">D</span><span class="allergen">F</span>
-                        </div>
-                    </div>
-                    <div class="item-prices">Tofu: 10,50 €<br>Huhn: 11,50 €<br>Rind: 12,50 €<br>Garnelen: 12,90 €</div>
-                </div>
-            </div>
-        </div>
         
-        <!-- NEU: Extra-Hinweis an prominenter Stelle -->
-        <div class="extra-notice">
-            Extra Reis | Extra Fleisch 2,50 €
-        </div>
-    </div>
-
-    <div class="page">
-        <div class="category">
-            <div class="category-title">Wok</div>
-            <div class="category-notice">Alle Wok-Gerichte werden mit Jasminreis serviert.</div>
-            <div class="menu-items">
-                <div class="menu-item">
-                    <div class="item-content">
-                        <div class="item-header">
-                            <span class="item-number">M6</span>
-                            <span class="item-name">Roter Curry Wok</span>
-                            <span class="item-thai-name">pad phrik gaeng daeng</span>
-                            <span class="chili-icon">🌶</span>
-                        </div>
-                        <div class="item-description">Gebratenes Gemüse in roter Currypaste, Kokosmilch, Thai-Kräutern.</div>
-                        <div class="allergens">
-                            <span class="allergen">A</span><span class="allergen">B</span><span class="allergen">D</span><span class="allergen">F</span>
-                        </div>
-                    </div>
-                    <div class="item-prices">Tofu: 10,50 €<br>Huhn: 11,50 €<br>Rind: 12,50 €<br>Garnelen: 12,50 €</div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="item-content">
-                        <div class="item-header">
-                            <span class="item-number">M7</span>
-                            <span class="item-name">Wok süßsauer</span>
-                            <span class="item-thai-name">pad priao wan</span>
-                        </div>
-                        <div class="item-description">Gurken, Tomaten, Zwiebeln, Paprika in fruchtiger Tomatensauce.</div>
-                        <div class="allergens">
-                            <span class="allergen">A</span><span class="allergen">F</span><span class="allergen">R</span>
-                        </div>
-                    </div>
-                    <div class="item-prices">Tofu: 10,50 €<br>Huhn: 11,50 €<br>Garnelen: 12,50 €</div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="item-content">
-                        <div class="item-header">
-                            <span class="item-number">M8</span>
-                            <span class="item-name">Cashew Wok</span>
-                            <span class="item-thai-name">pad med mamuang</span>
-                        </div>
-                        <div class="item-description">Cashewnüsse, Jungzwiebeln, Paprika in süß-milder Woksauce.</div>
-                        <div class="allergens">
-                            <span class="allergen">A</span><span class="allergen">F</span><span class="allergen">H</span><span class="allergen">R</span>
-                        </div>
-                    </div>
-                    <div class="item-prices">Tofu: 10,50 €<br>Huhn: 11,50 €<br>Garnelen: 12,50 €</div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="item-content">
-                        <div class="item-header">
-                            <span class="item-number">M9</span>
-                            <span class="item-name">Gebratenes Basilikum</span>
-                            <span class="item-thai-name">Pad Kra Prao</span>
-                            <span class="chili-icon">🌶</span>
-                        </div>
-                        <div class="item-description">Pikant gebratenes Thai-Basilikum mit Zwiebeln, Fisolen.</div>
-                        <div class="allergens">
-                            <span class="allergen">A</span><span class="allergen">D</span><span class="allergen">F</span><span class="allergen">R</span>
-                        </div>
-                    </div>
-                    <div class="item-prices">Tofu: 10,50 €<br>Huhn: 11,50 €<br>Rind: 12,50 €<br>Garnelen: 12,50 €</div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="item-content">
-                        <div class="item-header">
-                            <span class="item-number">M10</span>
-                            <span class="item-name">Schwarzer Pfefferwok</span>
-                            <span class="item-thai-name">pad phrik thai dam</span>
-                        </div>
-                        <div class="item-description">Würzig-pfeffrig mit Jungzwiebeln, Zwiebeln, Paprika, Karotten.</div>
-                        <div class="allergens">
-                            <span class="allergen">A</span><span class="allergen">D</span><span class="allergen">F</span><span class="allergen">R</span>
-                        </div>
-                    </div>
-                    <div class="item-prices">Tofu: 10,50 €<br>Huhn: 11,50 €<br>Rind: 12,50 €<br>Garnelen: 12,50 €</div>
-                </div>
+        <header class="header">
+            <h1 class="restaurant-name">Siriwan</h1>
+            <p class="restaurant-slogan">Thai Street Food Takeaway</p>
+            <div class="contact-info">
+                <span>Rauscherstraße 4, 3363 Neufurth</span> |
+                <span>Tel: 0664 123 456</span> |
+                <span>DI–SA: 11:00–18:30 Uhr</span>
             </div>
-        </div>
+        </header>
 
-        <div class="category">
-            <div class="category-title">Nudeln & Reis</div>
-            <div class="menu-items">
+        <main class="main-content">
+            <div class="menu-grid">
+                
+                <div class="full-width">
+                    <h2 class="category-title">Vorspeisen</h2>
+                </div>
+
                 <div class="menu-item">
-                    <div class="item-content">
-                        <div class="item-header">
-                            <span class="item-number">M11</span>
-                            <span class="item-name">Pad Thai</span>
-                        </div>
-                        <div class="item-description">Reisbandnudeln mit Karotten, Sojasprossen, Jungzwiebeln, Erdnüssen, Ei in Pad-Thai-Sauce (ohne extra Reis).</div>
-                        <div class="allergens">
-                            <span class="allergen">A</span><span class="allergen">B</span><span class="allergen">C</span><span class="allergen">D</span><span class="allergen">E</span><span class="allergen">F</span><span class="allergen">R</span>
-                        </div>
+                    <div class="item-header">
+                        <span class="item-name">V1 Frühlingsrollen</span>
+                        <span class="item-thai-name">(po pia)</span>
+                        <span class="item-dots"></span>
                     </div>
-                    <div class="item-prices">Tofu: 10,50 €<br>Huhn: 11,50 €<br>Garnelen: 12,50 €</div>
+                    <p class="item-description">3 Stk. mit Glasnudeln, Karotten, wahlweise Schwein oder Gemüse, süß-saure Sauce.</p>
+                    <div class="price-allergen-row">
+                        <span class="item-price-single">5,50 €</span>
+                        <span class="item-allergens-inline">Allergene: A, C, F</span>
+                    </div>
                 </div>
                 
                 <div class="menu-item">
-                    <div class="item-content">
-                        <div class="item-header">
-                            <span class="item-number">M12</span>
-                            <span class="item-name">Gebratener Reis</span>
-                            <span class="item-thai-name">khao pad</span>
-                        </div>
-                        <div class="item-description">Gebratener Jasminreis mit Ei, Karotten, Erbsen, Zwiebeln.</div>
-                        <div class="allergens">
-                            <span class="allergen">A</span><span class="allergen">C</span><span class="allergen">D</span><span class="allergen">F</span>
-                        </div>
+                    <div class="item-header">
+                        <span class="item-name">V2 Garnelenrollen</span>
+                        <span class="item-thai-name">(po pia gung)</span>
+                        <span class="item-dots"></span>
                     </div>
-                    <div class="item-prices">Tofu: 10,50 €<br>Huhn: 11,50 €<br>Garnelen: 12,50 €</div>
+                    <p class="item-description">6 Stk. frittierte Garnelen im Teigmantel, Chili-Dip.</p>
+                    <div class="price-allergen-row">
+                        <span class="item-price-single">5,90 €</span>
+                        <span class="item-allergens-inline">Allergene: A, B, C</span>
+                    </div>
                 </div>
-            </div>
-        </div>
-        
-        <div class="category">
-            <div class="category-title">Getränke</div>
-            <div class="drinks-grid">
-                <span class="drink-name">Singha Bier 0,33 l</span><span class="drink-price">3,90 €</span>
-                <span class="drink-name">Mineralwasser still / prickelnd 0,33 l</span><span class="drink-price">2,50 €</span>
-                <span class="drink-name">Coca-Cola 0,33 l</span><span class="drink-price">2,90 €</span>
-                <span class="drink-name">Aloe Vera Drink 0,33 l</span><span class="drink-price">3,80 €</span>
-                <span class="drink-name">Kokosnusssaft 0,33 l</span><span class="drink-price">3,80 €</span>
-            </div>
-        </div>
 
-        <div class="contact-section">
-            <div class="contact-grid">
-                <div>
-                    <div class="contact-title">Öffnungszeiten</div>
-                    <div class="contact-info">
-                        DI–SA: 11:00–18:30 Uhr<br>
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-name">V3 Tempura Huhn</span>
+                        <span class="item-thai-name">(gai tempura)</span>
+                        <span class="item-dots"></span>
+                    </div>
+                    <p class="item-description">5 Stk. Hühnerfilet im Tempura-Teigmantel, süß-saure Sauce.</p>
+                    <div class="price-allergen-row">
+                        <span class="item-price-single">5,90 €</span>
+                        <span class="item-allergens-inline">Allergene: A, C, F</span>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-name">V4 Hühner Saté Spieße</span>
+                        <span class="item-thai-name">(gai saté)</span>
+                        <span class="item-dots"></span>
+                    </div>
+                    <p class="item-description">3 Stk. zarte Hühnerspieße, Erdnuss-Kokos-Currysauce.</p>
+                    <div class="price-allergen-row">
+                        <span class="item-price-single">7,90 €</span>
+                        <span class="item-allergens-inline">Allergene: E, F</span>
+                    </div>
+                </div>
+
+                <div class="menu-item full-width">
+                    <div class="item-header">
+                        <span class="item-name">V5 Papayasalat</span>
+                        <span class="item-thai-name">(som tam thai)</span>
+                        <span class="item-dots"></span>
+                    </div>
+                    <p class="item-description">Grüner Papayasalat mit Fischsauce, Karotten, Fisolen, Tomaten, Limette, Erdnüssen; optional Chili.</p>
+                    <div class="price-allergen-row">
+                        <span class="item-price-single">8,90 €</span>
+                        <span class="item-allergens-inline">Allergene: D, E</span>
+                    </div>
+                </div>
+                
+                <div class="full-width">
+                    <h2 class="category-title">Suppen & Curry</h2>
+                    <p class="category-notice">Alle Gerichte dieser Kategorie werden mit Jasminreis serviert. | Extra Reis | Extra Fleisch: 2,50 €</p>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-name">M1 Tom Yam</span><span class="item-dots"></span>
+                    </div>
+                    <p class="item-description">Scharf-saure Suppe mit Tomaten, Champignons, Zitronengras, Galgant, Kaffirlimettenblättern.</p>
+                    <div class="price-allergen-row">
+                        <div class="item-price-options">
+                            <span class="option-price">Huhn: 9,50 €</span><span class="option-price">Garnelen: 12,50 €</span>
+                        </div>
+                        <span class="item-allergens-inline">Allergene: B, D</span>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-name">M2 Kokossuppe</span>
+                        <span class="item-thai-name">(tom kha)</span><span class="item-dots"></span>
+                    </div>
+                    <p class="item-description">Kokosmilchsuppe mit Tomaten, Champignons, Zitronengras, Galgant, Kaffirlimettenblättern.</p>
+                    <div class="price-allergen-row">
+                        <div class="item-price-options">
+                            <span class="option-price">Huhn: 9,50 €</span><span class="option-price">Garnelen: 12,50 €</span>
+                        </div>
+                        <span class="item-allergens-inline">Allergene: D</span>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-name">M3 Grünes Curry 🌶️</span>
+                        <span class="item-thai-name">(gaeng khiao wan)</span><span class="item-dots"></span>
+                    </div>
+                    <p class="item-description">Würziges Kokoscurry mit Bambus, Zucchini, Fisolen, Spitzpaprika, Thai-Basilikum.</p>
+                    <div class="price-allergen-row">
+                        <div class="item-price-options">
+                            <span class="option-price">Tofu: 10,50 €</span><span class="option-price">Huhn: 11,50 €</span><span class="option-price">Rind: 12,50 €</span><span class="option-price">Garnelen: 12,90 €</span>
+                        </div>
+                        <span class="item-allergens-inline">Allergene: A, B, D, F</span>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-name">M4 Gelbes Curry</span>
+                        <span class="item-thai-name">(gaeng lüang)</span><span class="item-dots"></span>
+                    </div>
+                    <p class="item-description">Mildes Kokoscurry mit Kartoffeln, Karotten.</p>
+                    <div class="price-allergen-row">
+                        <div class="item-price-options">
+                            <span class="option-price">Tofu: 10,50 €</span><span class="option-price">Huhn: 11,50 €</span><span class="option-price">Rind: 12,50 €</span><span class="option-price">Garnelen: 12,90 €</span>
+                        </div>
+                        <span class="item-allergens-inline">Allergene: A, B, D, F</span>
+                    </div>
+                </div>
+                
+                <div class="menu-item full-width"> <div class="item-header">
+                        <span class="item-name">M5 Rotes Curry 🌶️</span>
+                        <span class="item-thai-name">(gaeng daeng)</span><span class="item-dots"></span>
+                    </div>
+                     <p class="item-description">Kokoscurry mit Bambus, Zucchini, Fisolen, Spitzpaprika, Thai-Basilikum.</p>
+                     <div class="price-allergen-row">
+                        <div class="item-price-options">
+                            <span class="option-price">Tofu: 10,50 €</span><span class="option-price">Huhn: 11,50 €</span><span class="option-price">Rind: 12,50 €</span><span class="option-price">Garnelen: 12,90 €</span>
+                        </div>
+                        <span class="item-allergens-inline">Allergene: A, B, D, F</span>
+                    </div>
+                </div>
+
+                <div class="full-width promo-images-container">
+                    <img src="images/band1.png" alt="Siriwan Promo Image 1">
+                    <img src="images/band2.png" alt="Siriwan Promo Image 2">
+                </div>
+                <div style="page-break-after: always;"></div>
+
+                <div class="full-width">
+                    <h2 class="category-title">Wok</h2>
+                    <p class="category-notice">Alle Gerichte dieser Kategorie werden mit Jasminreis serviert. | Extra Reis | Extra Fleisch: 2,50 €</p>
+                </div>
+
+                <div class="menu-item">
+                     <div class="item-header">
+                        <span class="item-name">M6 Roter Curry Wok 🌶️</span>
+                        <span class="item-dots"></span>
+                    </div>
+                    <p class="item-description">Gebratenes Gemüse in roter Currypaste, Kokosmilch, Thai-Kräutern.</p>
+                     <div class="price-allergen-row">
+                        <div class="item-price-options">
+                            <span class="option-price">Tofu: 10,50 €</span><span class="option-price">Huhn: 11,50 €</span><span class="option-price">Rind: 12,50 €</span><span class="option-price">Garnelen: 12,90 €</span>
+                        </div>
+                        <span class="item-allergens-inline">Allergene: A, B, D, F</span>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-name">M7 Süß-Sauer Wok</span>
+                        <span class="item-thai-name">(pad priaw wan)</span><span class="item-dots"></span>
+                    </div>
+                    <p class="item-description">Ananas, Gurken, Tomaten, Zwiebeln, Jungzwiebeln, Paprika in süß-sauer Sauce.</p>
+                    <div class="price-allergen-row">
+                        <div class="item-price-options">
+                            <span class="option-price">Tofu: 10,50 €</span><span class="option-price">Huhn: 11,50 €</span><span class="option-price">Garnelen: 12,50 €</span>
+                        </div>
+                        <span class="item-allergens-inline">Allergene: A, F</span>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-name">M8 Cashew Wok</span>
+                        <span class="item-thai-name">(pad med mamuang)</span><span class="item-dots"></span>
+                    </div>
+                    <p class="item-description">Cashewnüsse, Jungzwiebeln, Paprika in süß-milder Woksauce.</p>
+                    <div class="price-allergen-row">
+                        <div class="item-price-options">
+                            <span class="option-price">Tofu: 10,50 €</span><span class="option-price">Huhn: 11,50 €</span><span class="option-price">Garnelen: 12,50 €</span>
+                        </div>
+                        <span class="item-allergens-inline">Allergene: A, F, H, R</span>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-name">M9 Gebratenes Basilikum 🌶️</span>
+                        <span class="item-thai-name">(pad kra prao)</span><span class="item-dots"></span>
+                    </div>
+                    <p class="item-description">Pikant gebratenes Thai-Basilikum mit Zwiebeln, Fisolen.</p>
+                    <div class="price-allergen-row">
+                        <div class="item-price-options">
+                            <span class="option-price">Tofu: 10,50 €</span><span class="option-price">Huhn: 11,50 €</span><span class="option-price">Rind: 12,50 €</span><span class="option-price">Garnelen: 12,90 €</span>
+                        </div>
+                        <span class="item-allergens-inline">Allergene: A, D, F, R</span>
+                    </div>
+                </div>
+
+                <div class="menu-item full-width">
+                    <div class="item-header">
+                        <span class="item-name">M10 Pfefferwok 🌶️</span>
+                        <span class="item-thai-name">(pad phrik thai dam)</span><span class="item-dots"></span>
+                    </div>
+                    <p class="item-description">Würzig-pfeffrig mit Jungzwiebeln, Zwiebeln, Paprika, Karotten.</p>
+                    <div class="price-allergen-row">
+                        <div class="item-price-options">
+                            <span class="option-price">Tofu: 10,50 €</span><span class="option-price">Huhn: 11,50 €</span><span class="option-price">Rind: 12,50 €</span><span class="option-price">Garnelen: 12,90 €</span>
+                        </div>
+                        <span class="item-allergens-inline">Allergene: A, D, R</span>
+                    </div>
+                </div>
+                
+                <div class="full-width">
+                    <h2 class="category-title">Nudeln & Reis</h2>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-name">M11 Pad Thai</span><span class="item-dots"></span>
+                    </div>
+                    <p class="item-description">Reisbandnudeln mit Karotten, Sojasprossen, Jungzwiebeln, Erdnüssen, Ei in Pad-Thai-Sauce.</p>
+                    <div class="price-allergen-row">
+                        <div class="item-price-options">
+                            <span class="option-price">Tofu: 10,50 €</span><span class="option-price">Huhn: 11,50 €</span><span class="option-price">Garnelen: 12,50 €</span>
+                        </div>
+                        <span class="item-allergens-inline">Allergene: A, B, C, D, E, F, R</span>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-header">
+                        <span class="item-name">M12 Gebratener Reis</span>
+                        <span class="item-thai-name">(khao pad)</span><span class="item-dots"></span>
+                    </div>
+                    <p class="item-description">Gebratener Jasminreis mit Ei, Karotten, Erbsen, Zwiebeln.</p>
+                    <div class="price-allergen-row">
+                        <div class="item-price-options">
+                            <span class="option-price">Tofu: 10,50 €</span><span class="option-price">Huhn: 11,50 €</span><span class="option-price">Garnelen: 12,50 €</span>
+                        </div>
+                        <span class="item-allergens-inline">Allergene: A, C, D, F</span>
+                    </div>
+                </div>
+                
+                <div class="full-width">
+                    <h2 class="category-title">Getränke</h2>
+                    <div class="drinks-list">
+                        <span class="drink-name">Singha Bier 0,33 l</span><span class="drink-price">3,90 €</span>
+                        <span class="drink-name">Mineralwasser still / prickelnd 0,33 l</span><span class="drink-price">2,50 €</span>
+                        <span class="drink-name">Coca-Cola 0,33 l</span><span class="drink-price">2,90 €</span>
+                        <span class="drink-name">Aloe Vera Drink 0,33 l</span><span class="drink-price">3,80 €</span>
+                        <span class="drink-name">Kokosnusssaft 0,33 l</span><span class="drink-price">3,80 €</span>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Öffnungszeiten</h3>
+                    <p>
+                        Dienstag – Samstag<br>
+                        11:00 – 18:30 Uhr<br>
                         Feiertags geschlossen
-                    </div>
+                    </p>
                 </div>
-                <div>
-                    <div class="contact-title">Zahlung & Social Media</div>
-                    <div class="contact-info">
-                        Bar, Bankomat, EC, Kontaktlos, Apple/Google Pay
-                        <div class="social-media-line">
-                            <span class="facebook-icon"></span>
-                            <span class="instagram-icon"></span>
-                            @siriwan.takeaway
-                        </div>
-                    </div>
+                <div class="footer-col">
+                    <h3>Zahlung & Social Media</h3>
+                    <p>Bar, Bankomat, EC, Kontaktlos, Apple/Google Pay</p>
+                    <p class="social-media">@siriwan.takeaway</p>
                 </div>
-                <div class="qr-section">
-                    <div class="contact-title">Website</div>
-                    <div class="qr-code">
+                <div class="footer-col">
+                    <div class="qr-code-container">
                         <img src="https://api.qrserver.com/v1/create-qr-code/?size=65x65&data=https://www.siriwan.at" alt="QR Code zur Website">
-                        <div class="qr-code-label">www.siriwan.at</div>
+                        <span class="qr-code-label">www.siriwan.at</span>
                     </div>
                 </div>
             </div>
-
-            <div class="footer-info">
-                Alle Speisen & Getränke inkl. gesetzl. USt. | Kein Lieferservice
-            </div>
-        </div>
-
-        <div class="allergen-legend">
-            <div class="allergen-legend-title">Allergeninformation</div>
-            <p class="allergen-list">
+            <div class="allergen-info">
+                <span class="price-note">Alle Preise inkl. gesetzl. USt.</span>
                 <b>A</b> Glutenhalt. Getreide | <b>B</b> Krebstiere | <b>C</b> Eier | <b>D</b> Fisch | <b>E</b> Erdnüsse | <b>F</b> Soja | <b>H</b> Schalenfrüchte (Nüsse) | <b>R</b> Weichtiere
-            </p>
-        </div>
+            </div>
+        </footer>
     </div>
 </body>
 </html>
