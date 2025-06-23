@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Siriwan Thai Street Food - Speisekarte</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* CSS Reset und Grundstile */
         * {
@@ -50,16 +52,17 @@
             margin-bottom: 5mm;
         }
         .header .restaurant-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 28pt;
-            font-weight: 700;
-            color: var(--secondary-color); /* Changed to secondary color */
+            font-family: 'Great Vibes', cursive; /* Attraktivere Schriftart */
+            font-size: 40pt; /* Größer für mehr Wirkung */
+            font-weight: normal; /* "Great Vibes" ist meistens nicht fett */
+            color: var(--secondary-color);
             margin: 0;
+            line-height: 1; /* Anpassung für engere Zeilenhöhe */
         }
         .header .restaurant-slogan {
             font-size: 14pt;
             color: var(--text-light);
-            margin-top: -5px;
+            margin-top: -5px; /* Etwas nach oben rücken, um "Siriwan" näher zu bringen */
             margin-bottom: 3mm;
         }
         .header .contact-info {
@@ -82,7 +85,7 @@
         .category-title {
             font-family: 'Playfair Display', serif;
             font-size: 18pt;
-            color: var(--secondary-color); /* Changed to secondary color */
+            color: var(--secondary-color);
             text-align: center;
             margin: 6mm 0 3mm 0;
             position: relative;
@@ -94,7 +97,7 @@
             top: 50%;
             width: 25%;
             height: 1px;
-            background-color: var(--primary-color); /* Changed to primary color */
+            background-color: var(--primary-color);
         }
         .category-title::before { left: 0; }
         .category-title::after { right: 0; }
@@ -132,9 +135,9 @@
             width: 100%;
         }
         .item-name {
-            font-weight: 500;
+            font-weight: normal; /* Nicht mehr fett */
             font-size: 11pt;
-            color: var(--primary-color); /* Changed to primary color */
+            color: var(--primary-color);
             margin-right: 4px;
         }
         .item-thai-name {
@@ -143,7 +146,7 @@
         }
         .item-dots {
             flex-grow: 1;
-            border-bottom: 1px dotted var(--primary-color); /* Changed to primary color */
+            border-bottom: 1px dotted var(--primary-color);
             margin: 0 6px;
             transform: translateY(-3px);
         }
@@ -153,7 +156,7 @@
             font-size: 9.5pt;
             font-weight: 300;
             color: var(--text-dark);
-            line-height: 1.3; /* Adjusted for compactness */
+            line-height: 1.3;
         }
         
         /* Preis- und Allergenzeile */
@@ -166,15 +169,15 @@
             font-size: 10.5pt;
         }
         .item-price-single {
-            font-weight: 500;
+            font-weight: normal; /* Nicht mehr fett */
             color: var(--text-dark);
             font-size: 11pt;
         }
         .item-price-options {
             display: flex;
             flex-wrap: wrap;
-            gap: 0 5mm; /* Reduced gap for price options */
-            font-weight: 500;
+            gap: 0 5mm;
+            font-weight: normal; /* Nicht mehr fett */
             color: var(--text-dark);
         }
         .item-allergens-inline {
@@ -182,7 +185,6 @@
             font-style: italic;
             color: var(--text-light);
             white-space: nowrap;
-            /* Removed margin-left as space-between handles positioning */
             flex-shrink: 0;
         }
         
@@ -199,24 +201,24 @@
         }
         .drink-price {
             font-size: 10pt;
-            font-weight: 500;
+            font-weight: normal; /* Nicht mehr fett */
         }
 
         /* New styles for promotional images container */
         .promo-images-container {
             display: flex;
-            justify-content: center; /* This centers the items horizontally */
-            gap: 8mm; /* Space between the two images */
-            margin-top: 5mm; /* Add some space above the images */
-            margin-bottom: 5mm; /* Add some space below the images */
-            flex-wrap: nowrap; /* Prevent wrapping to a new line */
-            width: 100%; /* Take full width within its container */
+            justify-content: center;
+            gap: 8mm;
+            margin-top: 5mm;
+            margin-bottom: 5mm;
+            flex-wrap: nowrap;
+            width: 100%;
         }
 
         .promo-images-container img {
-            max-width: calc(50% - 4mm); /* Each image takes half the width minus half the gap */
-            height: auto; /* Maintain aspect ratio */
-            display: block; /* Remove extra space below image */
+            max-width: calc(50% - 4mm);
+            height: auto;
+            display: block;
         }
         
         /* Footer */
@@ -234,14 +236,27 @@
         .footer-col h3 {
             font-family: 'Playfair Display', serif;
             font-size: 12pt;
-            color: var(--secondary-color); /* Changed to secondary color */
+            color: var(--secondary-color);
             margin-bottom: 0.5mm;
         }
-        .footer-col p, .footer-col .social-media {
+        .footer-col p, .footer-col .social-media-icons, .footer-col .social-media-text {
             font-size: 9.5pt;
         }
-        .social-media {
+        .social-media-icons {
+            font-size: 14pt;
+            margin-bottom: 2mm;
+            display: flex;
+            gap: 5mm;
+            justify-content: flex-start;
+            align-items: center; /* Align items vertically */
+        }
+        .social-media-icons i {
+            color: var(--text-dark);
+        }
+        .social-media-text {
             font-weight: 500;
+            margin-top: 2mm;
+            margin-left: 5mm; /* Add some space between icons and text */
         }
         /* Specific QR code styling */
         .qr-code-container {
@@ -295,6 +310,7 @@
             <div class="contact-info">
                 <span>Rauscherstraße 4, 3363 Neufurth</span> |
                 <span>Tel: 0664 123 456</span> |
+                <span>office@siriwan.at</span> |
                 <span>DI–SA: 11:00–18:30 Uhr</span>
             </div>
         </header>
@@ -309,7 +325,7 @@
                 <div class="menu-item">
                     <div class="item-header">
                         <span class="item-name">V1 Frühlingsrollen</span>
-                        <span class="item-thai-name">(po pia)</span>
+                        <span class="item-thai-name">po pia</span>
                         <span class="item-dots"></span>
                     </div>
                     <p class="item-description">3 Stk. mit Glasnudeln, Karotten, wahlweise Schwein oder Gemüse, süß-saure Sauce.</p>
@@ -322,7 +338,7 @@
                 <div class="menu-item">
                     <div class="item-header">
                         <span class="item-name">V2 Garnelenrollen</span>
-                        <span class="item-thai-name">(po pia gung)</span>
+                        <span class="item-thai-name">po pia gung</span>
                         <span class="item-dots"></span>
                     </div>
                     <p class="item-description">6 Stk. frittierte Garnelen im Teigmantel, Chili-Dip.</p>
@@ -335,7 +351,7 @@
                 <div class="menu-item">
                     <div class="item-header">
                         <span class="item-name">V3 Tempura Huhn</span>
-                        <span class="item-thai-name">(gai tempura)</span>
+                        <span class="item-thai-name">gai tempura</span>
                         <span class="item-dots"></span>
                     </div>
                     <p class="item-description">5 Stk. Hühnerfilet im Tempura-Teigmantel, süß-saure Sauce.</p>
@@ -348,7 +364,7 @@
                 <div class="menu-item">
                     <div class="item-header">
                         <span class="item-name">V4 Hühner Saté Spieße</span>
-                        <span class="item-thai-name">(gai saté)</span>
+                        <span class="item-thai-name">gai saté</span>
                         <span class="item-dots"></span>
                     </div>
                     <p class="item-description">3 Stk. zarte Hühnerspieße, Erdnuss-Kokos-Currysauce.</p>
@@ -361,7 +377,7 @@
                 <div class="menu-item full-width">
                     <div class="item-header">
                         <span class="item-name">V5 Papayasalat</span>
-                        <span class="item-thai-name">(som tam thai)</span>
+                        <span class="item-thai-name">som tam thai</span>
                         <span class="item-dots"></span>
                     </div>
                     <p class="item-description">Grüner Papayasalat mit Fischsauce, Karotten, Fisolen, Tomaten, Limette, Erdnüssen; optional Chili.</p>
@@ -373,7 +389,7 @@
                 
                 <div class="full-width">
                     <h2 class="category-title">Suppen & Curry</h2>
-                    <p class="category-notice">Alle Gerichte dieser Kategorie werden mit Jasminreis serviert. | Extra Reis | Extra Fleisch: 2,50 €</p>
+                    <p class="category-notice">Alle Hauptgerichte (Suppen, Curry und Wok) werden inkl. einer Portion Jasminreis serviert. Extra Reis | Extra Fleisch 2,50 €</p>
                 </div>
 
                 <div class="menu-item">
@@ -392,7 +408,7 @@
                 <div class="menu-item">
                     <div class="item-header">
                         <span class="item-name">M2 Kokossuppe</span>
-                        <span class="item-thai-name">(tom kha)</span><span class="item-dots"></span>
+                        <span class="item-thai-name">tom kha</span><span class="item-dots"></span>
                     </div>
                     <p class="item-description">Kokosmilchsuppe mit Tomaten, Champignons, Zitronengras, Galgant, Kaffirlimettenblättern.</p>
                     <div class="price-allergen-row">
@@ -406,7 +422,7 @@
                 <div class="menu-item">
                     <div class="item-header">
                         <span class="item-name">M3 Grünes Curry 🌶️</span>
-                        <span class="item-thai-name">(gaeng khiao wan)</span><span class="item-dots"></span>
+                        <span class="item-thai-name">gaeng khiao wan</span><span class="item-dots"></span>
                     </div>
                     <p class="item-description">Würziges Kokoscurry mit Bambus, Zucchini, Fisolen, Spitzpaprika, Thai-Basilikum.</p>
                     <div class="price-allergen-row">
@@ -420,7 +436,7 @@
                 <div class="menu-item">
                     <div class="item-header">
                         <span class="item-name">M4 Gelbes Curry</span>
-                        <span class="item-thai-name">(gaeng lüang)</span><span class="item-dots"></span>
+                        <span class="item-thai-name">gaeng lüang</span><span class="item-dots"></span>
                     </div>
                     <p class="item-description">Mildes Kokoscurry mit Kartoffeln, Karotten.</p>
                     <div class="price-allergen-row">
@@ -433,7 +449,7 @@
                 
                 <div class="menu-item full-width"> <div class="item-header">
                         <span class="item-name">M5 Rotes Curry 🌶️</span>
-                        <span class="item-thai-name">(gaeng daeng)</span><span class="item-dots"></span>
+                        <span class="item-thai-name">gaeng daeng</span><span class="item-dots"></span>
                     </div>
                      <p class="item-description">Kokoscurry mit Bambus, Zucchini, Fisolen, Spitzpaprika, Thai-Basilikum.</p>
                      <div class="price-allergen-row">
@@ -452,8 +468,7 @@
 
                 <div class="full-width">
                     <h2 class="category-title">Wok</h2>
-                    <p class="category-notice">Alle Gerichte dieser Kategorie werden mit Jasminreis serviert. | Extra Reis | Extra Fleisch: 2,50 €</p>
-                </div>
+                    </div>
 
                 <div class="menu-item">
                      <div class="item-header">
@@ -472,7 +487,7 @@
                 <div class="menu-item">
                     <div class="item-header">
                         <span class="item-name">M7 Süß-Sauer Wok</span>
-                        <span class="item-thai-name">(pad priaw wan)</span><span class="item-dots"></span>
+                        <span class="item-thai-name">pad priaw wan</span><span class="item-dots"></span>
                     </div>
                     <p class="item-description">Ananas, Gurken, Tomaten, Zwiebeln, Jungzwiebeln, Paprika in süß-sauer Sauce.</p>
                     <div class="price-allergen-row">
@@ -486,7 +501,7 @@
                 <div class="menu-item">
                     <div class="item-header">
                         <span class="item-name">M8 Cashew Wok</span>
-                        <span class="item-thai-name">(pad med mamuang)</span><span class="item-dots"></span>
+                        <span class="item-thai-name">pad med mamuang</span><span class="item-dots"></span>
                     </div>
                     <p class="item-description">Cashewnüsse, Jungzwiebeln, Paprika in süß-milder Woksauce.</p>
                     <div class="price-allergen-row">
@@ -500,7 +515,8 @@
                 <div class="menu-item">
                     <div class="item-header">
                         <span class="item-name">M9 Gebratenes Basilikum 🌶️</span>
-                        <span class="item-thai-name">(pad kra prao)</span><span class="item-dots"></span>
+                        <span class="item-thai-name">pad kra prao</span>
+                        <span class="item-dots"></span>
                     </div>
                     <p class="item-description">Pikant gebratenes Thai-Basilikum mit Zwiebeln, Fisolen.</p>
                     <div class="price-allergen-row">
@@ -514,7 +530,8 @@
                 <div class="menu-item full-width">
                     <div class="item-header">
                         <span class="item-name">M10 Pfefferwok 🌶️</span>
-                        <span class="item-thai-name">(pad phrik thai dam)</span><span class="item-dots"></span>
+                        <span class="item-thai-name">pad phrik thai dam</span>
+                        <span class="item-dots"></span>
                     </div>
                     <p class="item-description">Würzig-pfeffrig mit Jungzwiebeln, Zwiebeln, Paprika, Karotten.</p>
                     <div class="price-allergen-row">
@@ -545,7 +562,7 @@
                 <div class="menu-item">
                     <div class="item-header">
                         <span class="item-name">M12 Gebratener Reis</span>
-                        <span class="item-thai-name">(khao pad)</span><span class="item-dots"></span>
+                        <span class="item-thai-name">khao pad</span><span class="item-dots"></span>
                     </div>
                     <p class="item-description">Gebratener Jasminreis mit Ei, Karotten, Erbsen, Zwiebeln.</p>
                     <div class="price-allergen-row">
@@ -583,7 +600,11 @@
                 <div class="footer-col">
                     <h3>Zahlung & Social Media</h3>
                     <p>Bar, Bankomat, EC, Kontaktlos, Apple/Google Pay</p>
-                    <p class="social-media">@siriwan.takeaway</p>
+                    <div class="social-media-icons">
+                        <i class="fab fa-facebook"></i>
+                        <i class="fab fa-instagram"></i>
+                        <span class="social-media-text">@siriwan.thaistreetfood</span>
+                    </div>
                 </div>
                 <div class="footer-col">
                     <div class="qr-code-container">
