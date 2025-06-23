@@ -123,7 +123,7 @@
 
         /* Menü-Eintrag */
         .menu-item {
-            margin-bottom: 3mm;
+            margin-bottom: 5mm; /* Increased margin for better separation */
             display: flex;
             flex-wrap: wrap;
             align-items: baseline;
@@ -134,8 +134,14 @@
             align-items: baseline;
             width: 100%;
         }
+        .item-number { /* New style for the item number */
+            font-weight: normal; 
+            font-size: 11pt;
+            color: var(--primary-color);
+            margin-right: 4px;
+        }
         .item-name {
-            font-weight: normal; /* Nicht mehr fett */
+            font-weight: normal; /* Make the name normal again */
             font-size: 11pt;
             color: var(--primary-color);
             margin-right: 4px;
@@ -324,7 +330,7 @@
 
                 <div class="menu-item">
                     <div class="item-header">
-                        <span class="item-name">V1 Frühlingsrollen</span>
+                        <span class="item-number">V1</span> <span class="item-name">Frühlingsrollen</span>
                         <span class="item-thai-name">po pia</span>
                         <span class="item-dots"></span>
                     </div>
@@ -337,7 +343,7 @@
                 
                 <div class="menu-item">
                     <div class="item-header">
-                        <span class="item-name">V2 Garnelenrollen</span>
+                        <span class="item-number">V2</span> <span class="item-name">Garnelenrollen</span>
                         <span class="item-thai-name">po pia gung</span>
                         <span class="item-dots"></span>
                     </div>
@@ -350,7 +356,7 @@
 
                 <div class="menu-item">
                     <div class="item-header">
-                        <span class="item-name">V3 Tempura Huhn</span>
+                        <span class="item-number">V3</span> <span class="item-name">Tempura Huhn</span>
                         <span class="item-thai-name">gai tempura</span>
                         <span class="item-dots"></span>
                     </div>
@@ -363,7 +369,7 @@
 
                 <div class="menu-item">
                     <div class="item-header">
-                        <span class="item-name">V4 Hühner Saté Spieße</span>
+                        <span class="item-number">V4</span> <span class="item-name">Hühner Saté Spieße</span>
                         <span class="item-thai-name">gai saté</span>
                         <span class="item-dots"></span>
                     </div>
@@ -376,7 +382,7 @@
 
                 <div class="menu-item full-width">
                     <div class="item-header">
-                        <span class="item-name">V5 Papayasalat</span>
+                        <span class="item-number">V5</span> <span class="item-name">Papayasalat</span>
                         <span class="item-thai-name">som tam thai</span>
                         <span class="item-dots"></span>
                     </div>
@@ -394,7 +400,7 @@
 
                 <div class="menu-item">
                     <div class="item-header">
-                        <span class="item-name">M1 Tom Yam</span><span class="item-dots"></span>
+                        <span class="item-number">M1</span> <span class="item-name">Tom Yam</span><span class="item-dots"></span>
                     </div>
                     <p class="item-description">Scharf-saure Suppe mit Tomaten, Champignons, Zitronengras, Galgant, Kaffirlimettenblättern.</p>
                     <div class="price-allergen-row">
@@ -407,7 +413,7 @@
 
                 <div class="menu-item">
                     <div class="item-header">
-                        <span class="item-name">M2 Kokossuppe</span>
+                        <span class="item-number">M2</span> <span class="item-name">Kokossuppe</span>
                         <span class="item-thai-name">tom kha</span><span class="item-dots"></span>
                     </div>
                     <p class="item-description">Kokosmilchsuppe mit Tomaten, Champignons, Zitronengras, Galgant, Kaffirlimettenblättern.</p>
@@ -421,7 +427,7 @@
 
                 <div class="menu-item">
                     <div class="item-header">
-                        <span class="item-name">M3 Grünes Curry 🌶️</span>
+                        <span class="item-number">M3</span> <span class="item-name">Grünes Curry 🌶️</span>
                         <span class="item-thai-name">gaeng khiao wan</span><span class="item-dots"></span>
                     </div>
                     <p class="item-description">Würziges Kokoscurry mit Bambus, Zucchini, Fisolen, Spitzpaprika, Thai-Basilikum.</p>
@@ -435,7 +441,7 @@
                 
                 <div class="menu-item">
                     <div class="item-header">
-                        <span class="item-name">M4 Gelbes Curry</span>
+                        <span class="item-number">M4</span> <span class="item-name">Gelbes Curry</span>
                         <span class="item-thai-name">gaeng lüang</span><span class="item-dots"></span>
                     </div>
                     <p class="item-description">Mildes Kokoscurry mit Kartoffeln, Karotten.</p>
@@ -448,7 +454,7 @@
                 </div>
                 
                 <div class="menu-item full-width"> <div class="item-header">
-                        <span class="item-name">M5 Rotes Curry 🌶️</span>
+                        <span class="item-number">M5</span> <span class="item-name">Rotes Curry 🌶️</span>
                         <span class="item-thai-name">gaeng daeng</span><span class="item-dots"></span>
                     </div>
                      <p class="item-description">Kokoscurry mit Bambus, Zucchini, Fisolen, Spitzpaprika, Thai-Basilikum.</p>
@@ -472,7 +478,7 @@
 
                 <div class="menu-item">
                      <div class="item-header">
-                        <span class="item-name">M6 Roter Curry Wok 🌶️</span>
+                        <span class="item-number">M6</span> <span class="item-name">Roter Curry Wok 🌶️</span>
                         <span class="item-dots"></span>
                     </div>
                     <p class="item-description">Gebratenes Gemüse in roter Currypaste, Kokosmilch, Thai-Kräutern.</p>
@@ -486,7 +492,7 @@
 
                 <div class="menu-item">
                     <div class="item-header">
-                        <span class="item-name">M7 Süß-Sauer Wok</span>
+                        <span class="item-number">M7</span> <span class="item-name">Süß-Sauer Wok</span>
                         <span class="item-thai-name">pad priaw wan</span><span class="item-dots"></span>
                     </div>
                     <p class="item-description">Ananas, Gurken, Tomaten, Zwiebeln, Jungzwiebeln, Paprika in süß-sauer Sauce.</p>
@@ -500,7 +506,7 @@
                 
                 <div class="menu-item">
                     <div class="item-header">
-                        <span class="item-name">M8 Cashew Wok</span>
+                        <span class="item-number">M8</span> <span class="item-name">Cashew Wok</span>
                         <span class="item-thai-name">pad med mamuang</span><span class="item-dots"></span>
                     </div>
                     <p class="item-description">Cashewnüsse, Jungzwiebeln, Paprika in süß-milder Woksauce.</p>
@@ -514,7 +520,7 @@
 
                 <div class="menu-item">
                     <div class="item-header">
-                        <span class="item-name">M9 Gebratenes Basilikum 🌶️</span>
+                        <span class="item-number">M9</span> <span class="item-name">Gebratenes Basilikum 🌶️</span>
                         <span class="item-thai-name">pad kra prao</span>
                         <span class="item-dots"></span>
                     </div>
@@ -529,7 +535,7 @@
 
                 <div class="menu-item full-width">
                     <div class="item-header">
-                        <span class="item-name">M10 Pfefferwok 🌶️</span>
+                        <span class="item-number">M10</span> <span class="item-name">Pfefferwok 🌶️</span>
                         <span class="item-thai-name">pad phrik thai dam</span>
                         <span class="item-dots"></span>
                     </div>
@@ -548,7 +554,7 @@
 
                 <div class="menu-item">
                     <div class="item-header">
-                        <span class="item-name">M11 Pad Thai</span><span class="item-dots"></span>
+                        <span class="item-number">M11</span> <span class="item-name">Pad Thai</span><span class="item-dots"></span>
                     </div>
                     <p class="item-description">Reisbandnudeln mit Karotten, Sojasprossen, Jungzwiebeln, Erdnüssen, Ei in Pad-Thai-Sauce.</p>
                     <div class="price-allergen-row">
@@ -561,7 +567,7 @@
                 
                 <div class="menu-item">
                     <div class="item-header">
-                        <span class="item-name">M12 Gebratener Reis</span>
+                        <span class="item-number">M12</span> <span class="item-name">Gebratener Reis</span>
                         <span class="item-thai-name">khao pad</span><span class="item-dots"></span>
                     </div>
                     <p class="item-description">Gebratener Jasminreis mit Ei, Karotten, Erbsen, Zwiebeln.</p>
