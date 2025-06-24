@@ -7,13 +7,13 @@
     <link rel="icon" type="image/png" href="images/favicon.png">
     <style>
         :root {
-            --primary: #008080; /* Sattes Türkis (Teal) - Hauptfarbe */
-            --secondary: #006666; /* Dunkleres Türkis - Harmoniert mit der Hauptfarbe */
-            --accent: #FFD700; /* Gold - Starker, edler Akzent, typisch Thai */
-            --light: #F0FFFF; /* Himmelblau (Azure) - Sehr heller Hintergrund */
-            --dark: #2F4F4F; /* Dunkles Schiefergrau (Dark Slate Gray) - Für Text und Kontraste */
-            --text-light: #FFFFFF; /* Weiß - Für Text auf dunklen Hintergründen */
-            --shadow: rgba(0, 0, 0, 0.25); /* Etwas stärkerer Schatten für mehr Tiefe */
+            --primary: #008080;
+            --secondary: #006666;
+            --accent: #FFD700;
+            --light: #F0FFFF;
+            --dark: #2F4F4F;
+            --text-light: #FFFFFF;
+            --shadow: rgba(0, 0, 0, 0.25);
         }
 
         * {
@@ -22,13 +22,20 @@
             box-sizing: border-box;
         }
 
+        /* Barrierefreiheit: Fokus-Stile hinzugefügt */
+        a:focus,
+        button:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: var(--dark);
             background-color: #f8f8f8;
             background-image: url('images/background.png');
-            background-size: 100vw 100vh; /* Changed for 16:9 full display */
+            background-size: cover; /* Verbessertes Background-Handling */
             background-attachment: fixed;
             position: relative;
         }
@@ -40,7 +47,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(255, 255, 255, 0.7); /* Leicht erhöhte Transparenz */
+            background-color: rgba(255, 255, 255, 0.7);
             z-index: -1;
         }
 
@@ -48,6 +55,23 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 15px;
+        }
+
+        /* Barrierefreiheit: Logo als H1-Element */
+        h1.logo-container {
+            flex: 1;
+            height: 180px; /* Kleinere Höhe */
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin: 0;
+        }
+
+        .logo {
+            height: 170%; /* Relative Größe zum Container */
+            width: auto;
+            object-fit: contain;
+            max-height: 200px; /* Begrenzung, falls Container zu groß wird */
         }
 
         header {
@@ -67,24 +91,9 @@
             margin-bottom: 10px;
         }
 
-        .logo-container {
-            flex: 1;
-            height: 250px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-        }
-
-        .logo {
-            height: 170%;
-            width: auto;
-            object-fit: contain;
-            max-height: 250px;
-        }
-
         .motto-container {
             flex: 1;
-            height: 250px;
+            height: 180px; /* Kleinere Höhe */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -94,18 +103,18 @@
 
         .motto-text {
             color: var(--text-light);
-            font-size: 1.3rem;
-            font-weight: 400;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.4;
-            max-width: 400px;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4); /* Etwas stärkerer Textschatten */
+            font-size: 1.25rem; /* Angepasste Größe */
+            font-weight: 400; /* Normalgewicht für Eleganz */
+            font-family: 'Georgia', serif; /* Elegante Serifenschrift */
+            line-height: 1.6; /* Erhöhter Zeilenabstand */
+            max-width: 480px; /* Erweitert, um den neuen Text besser aufzunehmen */
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4); /* Angepasster Schatten */
             font-style: italic;
         }
 
         .slogan-container {
             flex: 1;
-            height: 250px;
+            height: 180px; /* Kleinere Höhe */
             display: flex;
             align-items: center;
             justify-content: flex-end;
@@ -126,7 +135,7 @@
             font-size: 0.95rem;
             color: var(--text-light);
             padding: 10px 0 5px;
-            border-top: 1px solid rgba(255, 255, 255, 0.4); /* Kontrastreicherer Border */
+            border-top: 1px solid rgba(255, 255, 255, 0.4);
         }
 
         .header-contact span {
@@ -159,7 +168,7 @@
             height: 50px;
             z-index: 1001;
             border-radius: 4px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* Stärkerer Schatten */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -173,7 +182,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Stärkerer Schatten */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
             border-top: 2px solid var(--accent);
             border-bottom: 2px solid var(--accent);
             transition: transform 0.3s ease;
@@ -185,11 +194,24 @@
             justify-content: center;
         }
 
+        /* Verbessertes Menü-Handling mit CSS-Klassen */
         nav ul {
             display: flex;
             list-style: none;
             flex-wrap: wrap;
             justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                display: none;
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
         }
 
         nav li {
@@ -275,7 +297,7 @@
 
         .menu-item:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Stärkerer Schatten beim Hover */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
             border-color: var(--accent);
         }
 
@@ -293,7 +315,7 @@
             top: 15px;
             left: 15px;
             font-size: 1.2rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Stärkerer Schatten */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             z-index: 2;
             border: 2px solid var(--accent);
             font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif;
@@ -308,11 +330,13 @@
             border-radius: 10px 10px 0 0;
         }
 
+        /* Performance: Lazy Loading für Bilder */
         .item-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
+            loading: lazy;
         }
 
         .menu-item:hover .item-image img {
@@ -444,7 +468,7 @@
             color: var(--accent);
             text-decoration: none;
             font-weight: bold;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.4); /* Stärkerer Textschatten */
+            text-shadow: 0 1px 2px rgba(0,0,0,0.4);
         }
 
         .contact-container {
@@ -457,7 +481,7 @@
             background: linear-gradient(135deg, #ffffff, var(--light));
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Etwas stärkerer Schatten */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             border: 2px solid var(--secondary);
         }
 
@@ -555,20 +579,22 @@
         .social-link svg {
             width: 24px;
             height: 24px;
+            fill: currentColor; /* Ensure icon color follows parent */
         }
 
         .map-container {
             height: 280px;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* Etwas stärkerer Schatten */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
             border: 2px solid var(--secondary);
         }
 
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
+        /* Responsive Verbesserung für Karte */
+        @media (max-width: 480px) {
+            .map-container {
+                height: 200px;
+            }
         }
 
         .allergen-legend {
@@ -576,7 +602,7 @@
             border-radius: 10px;
             padding: 15px;
             margin-top: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Etwas stärkerer Schatten */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             border: 2px solid var(--secondary);
         }
 
@@ -649,7 +675,7 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Stärkerer Schatten */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             z-index: 999;
             border: 2px solid var(--accent);
             font-weight: bold;
@@ -681,7 +707,7 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background-color: rgba(0, 0, 0, 0.85); /* Dunkler, leicht transparenter Hintergrund */
+            background-color: rgba(0, 0, 0, 0.85);
             color: #fff;
             padding: 15px 20px;
             display: flex;
@@ -719,7 +745,7 @@
         }
 
         .cookie-consent-banner button:hover {
-            background-color: #e6c200; /* Etwas dunkleres Gold */
+            background-color: #e6c200;
             transform: translateY(-1px);
         }
 
@@ -740,26 +766,16 @@
             .logo-container,
             .motto-container,
             .slogan-container {
-                height: 200px;
+                height: 150px; /* Weiter reduziert für Tablets */
                 justify-content: center;
             }
             
             .motto-text {
-                font-size: 1.2rem;
+                font-size: 1.15rem; /* Angepasste Größe für Tablets */
             }
         }
 
         @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-                display: none;
-            }
-            
-            nav ul.show {
-                display: flex;
-            }
-            
             section h2 {
                 font-size: 2rem;
                 margin-bottom: 15px;
@@ -780,11 +796,11 @@
             .logo-container,
             .motto-container,
             .slogan-container {
-                height: 160px;
+                height: 120px; /* Kleinere Höhe für mobile Ansicht */
             }
             
             .motto-text {
-                font-size: 1.1rem;
+                font-size: 1.05rem; /* Angepasste Größe für kleinere mobile Bildschirme */
                 line-height: 1.3;
             }
 
@@ -867,11 +883,12 @@
             .logo-container,
             .motto-container,
             .slogan-container {
-                height: 140px;
+                height: 100px; /* Kleinere Höhe für mobile Ansicht */
             }
             
             .motto-text {
-                font-size: 1.0rem;
+                font-size: 0.95rem; /* Weitere Anpassung für kleinere Bildschirme */
+                line-height: 1.25;
             }
 
             .back-to-top {
@@ -890,12 +907,12 @@
             .logo-container,
             .motto-container,
             .slogan-container {
-                height: 120px;
+                height: 80px; /* Minimale Höhe für kleinste Bildschirme */
             }
             
             .motto-text {
-                font-size: 0.95rem;
-                line-height: 1.25;
+                font-size: 0.85rem; /* Minimale Schriftgröße */
+                line-height: 1.2;
             }
             
             .item-image,
@@ -940,12 +957,12 @@
     <header>
         <div class="container">
             <div class="header-top">
-                <div class="logo-container">
-                    <img src="images/logo.png" alt="Siriwan Thai Street Food Logo" class="logo">
-                </div>
+                <h1 class="logo-container">
+                    <img src="images/logo.png" alt="Siriwan Thai Street Food" class="logo">
+                </h1>
                 
                 <div class="motto-container">
-                    <div class="motto-text">Wir kochen rein hausgemachte Spezialitäten mit frischen Zutaten nach traditionellen Rezepten aus verschiedenen Landesteilen Thailands.</div>
+                    <div class="motto-text">Wir kochen selbstgemachte Spezialitäten mit besten Zutaten nach traditionellen Rezepten aus verschiedenen Landesteilen Thailands.</div>
                 </div>
                 
                 <div class="slogan-container">
@@ -959,7 +976,7 @@
                 <span>📞 <a href="tel:0664123456">0664 123 456</a></span>
             </div>
         </div>
-        <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menü öffnen">☰</button>
     </header>
 
     <nav id="mainNav">
@@ -983,7 +1000,7 @@
                 <div class="menu-item">
                     <div class="item-number">V1</div>
                     <div class="item-image">
-                        <img src="images/V1_frühlingsrollen.png" alt="Frühlingsrollen">
+                        <img src="images/V1_frühlingsrollen.png" alt="Frühlingsrollen" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1003,7 +1020,7 @@
                 <div class="menu-item">
                     <div class="item-number">V2</div>
                     <div class="item-image">
-                        <img src="images/V2_popia-gung.png" alt="Garnelenrollen">
+                        <img src="images/V2_popia-gung.png" alt="Garnelenrollen" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1023,7 +1040,7 @@
                 <div class="menu-item">
                     <div class="item-number">V3</div>
                     <div class="item-image">
-                        <img src="images/V3_huhn-tempura.png" alt="Tempura Huhn">
+                        <img src="images/V3_huhn-tempura.png" alt="Tempura Huhn" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1043,7 +1060,7 @@
                 <div class="menu-item">
                     <div class="item-number">V4</div>
                     <div class="item-image">
-                        <img src="images/V4_gai-satay.png" alt="Hühnersaté-Spieße">
+                        <img src="images/V4_gai-satay.png" alt="Hühnersaté-Spieße" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1062,7 +1079,7 @@
                 <div class="menu-item">
                     <div class="item-number">V5</div>
                     <div class="item-image">
-                        <img src="images/V5_som-tam-thai.png" alt="Papayasalat">
+                        <img src="images/V5_som-tam-thai.png" alt="Papayasalat" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1088,7 +1105,7 @@
                 <div class="menu-item">
                     <div class="item-number">M1</div>
                     <div class="item-image">
-                        <img src="images/M1_tom-yam-gung.png" alt="Tom Yam">
+                        <img src="images/M1_tom-yam-gung.png" alt="Tom Yam" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1109,7 +1126,7 @@
                 <div class="menu-item">
                     <div class="item-number">M2</div>
                     <div class="item-image">
-                        <img src="images/M2_tom-kha-gai.png" alt="Kokossuppe">
+                        <img src="images/M2_tom-kha-gai.png" alt="Kokossuppe" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1130,7 +1147,7 @@
                 <div class="menu-item">
                     <div class="item-number">M3</div>
                     <div class="item-image">
-                        <img src="images/M3_gruenes-curry.png" alt="Grünes Curry">
+                        <img src="images/M3_gruenes-curry.png" alt="Grünes Curry" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1156,7 +1173,7 @@
                 <div class="menu-item">
                     <div class="item-number">M4</div>
                     <div class="item-image">
-                        <img src="images/M2_gelbes-Curry.png" alt="Gelbes Curry">
+                        <img src="images/M2_gelbes-curry.png" alt="Gelbes Curry" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1182,7 +1199,7 @@
                 <div class="menu-item">
                     <div class="item-number">M5</div>
                     <div class="item-image">
-                        <img src="images/M5_rotes-curry.png" alt="Rotes Curry">
+                        <img src="images/M5_rotes-curry.png" alt="Rotes Curry" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1213,7 +1230,7 @@
                 <div class="menu-item">
                     <div class="item-number">M6</div>
                     <div class="item-image">
-                        <img src="images/M4_pad-phrik-gaeng-daeng.png" alt="Roter Curry Wok">
+                        <img src="images/M4_pad-phrik-gaeng-daeng.png" alt="Roter Curry Wok" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1239,7 +1256,7 @@
                 <div class="menu-item">
                     <div class="item-number">M7</div>
                     <div class="item-image">
-                        <img src="images/M5_pad-priao-wan-gung.png" alt="Wok süßsauer">
+                        <img src="images/M5_pad-priao-wan-gung.png" alt="Wok süßsauer" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1263,7 +1280,7 @@
                 <div class="menu-item">
                     <div class="item-number">M8</div>
                     <div class="item-image">
-                        <img src="images/M6_pad-met-mamuang.png" alt="Cashew Wok">
+                        <img src="images/M6_pad-met-mamuang.png" alt="Cashew Wok" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1288,12 +1305,12 @@
                 <div class="menu-item">
                     <div class="item-number">M9</div>
                     <div class="item-image">
-                        <img src="images/M7_pad-graprao-gung.png" alt="Gebratenes Basilikum">
+                        <img src="images/M7_pad-graprao-gung.png" alt="Gebratenes Basilikum" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
                             <h3 class="item-name">Gebratenes Basilikum <span class="icon" style="color: red;">🌶</span></h3>
-                            <p class="item-thai-name">Pad Kra Prao</p>
+                            <p class="item-thai-name">pad kra prao</p>
                         </div>
                         <p class="item-description">Pikant gebratenes Thai-Basilikum mit Zwiebeln und Fisolen mit</p>
                         <table class="price-options">
@@ -1314,11 +1331,11 @@
                 <div class="menu-item">
                     <div class="item-number">M10</div>
                     <div class="item-image">
-                        <img src="images/M8_pad-phrik-thai-dam.png" alt="Schwarzer Pfefferwok">
+                        <img src="images/M8_pad-phrik-thai-dam.png" alt="Pfefferwok" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
-                            <h3 class="item-name">Schwarzer Pfefferwok</h3>
+                            <h3 class="item-name">Pfefferwok</h3>
                             <p class="item-thai-name">pad phrik thai dam</p>
                         </div>
                         <p class="item-description">Würzig-pfeffrig mit Jungzwiebeln, Zwiebeln, Paprika und Karotten mit</p>
@@ -1345,7 +1362,7 @@
                 <div class="menu-item">
                     <div class="item-number">M11</div>
                     <div class="item-image">
-                        <img src="images/M9_pad-thai-gung.png" alt="Pad Thai">
+                        <img src="images/M9_pad-thai-gung.png" alt="Pad Thai" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1372,7 +1389,7 @@
                 <div class="menu-item">
                     <div class="item-number">M12</div>
                     <div class="item-image">
-                        <img src="images/M12_khao-pad.png" alt="Gebratener Reis">
+                        <img src="images/M12_khao-pad.png" alt="Gebratener Reis" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1401,7 +1418,7 @@
             <div class="menu-items">
                 <div class="menu-item">
                     <div class="item-image">
-                        <img src="images/getraenke.png" alt="Getränke" style="object-fit: contain;">
+                        <img src="images/getraenke.png" alt="Getränke" style="object-fit: contain;" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1413,7 +1430,7 @@
                                 <td class="item-price">3,90 €</td>
                             </tr>
                             <tr>
-                                <td>Mineralwasser<br>still / prickelnd 0,33 l</td>
+                                <td>Mineralwasser<br><small>still / prickelnd</small></td>
                                 <td class="item-price">2,50 €</td>
                             </tr>
                             <tr>
@@ -1472,17 +1489,27 @@
                     
                     <div class="social-media">
                         <h3>Folgen Sie uns</h3>
-                        <a href="https://www.facebook.com/siriwan.thaistreetfood" target="_blank" rel="noopener noreferrer" class="social-link">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M9.198 21.5h4v-8.01h3.604l.396-3.98h-4V7.5a1.818 1.818 0 0 1 1.818-1.817h2.182V3h-3.6c-3.417 0-5.818 1.86-5.818 5.818v2.683H6.22v3.98h2.978v8.01Z"/></svg>
+                        <a href="https://www.facebook.com/siriwan.thaistreetfood" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                                <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/>
+                            </svg>
                         </a>
-                        <a href="https://www.instagram.com/siriwan.thaistreetfood" target="_blank" rel="noopener noreferrer" class="social-link">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c2.717 0 3.056.01 4.122.06c1.065.05 1.79.217 2.428.465c.66.254 1.216.598 1.772 1.153c.556.556.899 1.112 1.153 1.772c.248.637.415 1.363.465 2.428c.047 1.066.06 1.405.06 4.122s-.013 3.056-.06 4.122c-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772a4.902 4.902 0 0 1-1.772 1.153c-.637.248-1.363.415-2.428.465C8.944 21.987 8.595 22 5.82 22s-3.056-.013-4.122-.06c-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153A4.902 4.902 0 0 1 .525 18.55c-.248-.637-.415-1.363-.465-2.428C.013 15.056 0 14.717 0 12s.01-3.056.06-4.122c.05-1.066.217-1.79.465-2.428a4.883 4.883 0 0 1 1.153-1.772A4.897 4.897 0 0 1 3.45 2.525c.638-.248 1.362-.415 2.428-.465C6.944 2.013 7.283 2 10 2h4Zm0-2H10C7.25 0 6.9.012 5.82.06C4.74.108 3.983.28 3.307.547c-.686.27-1.3.63-1.868 1.2c-.568.568-.93 1.182-1.2 1.868c-.267.673-.44 1.43-.487 2.51C.01 8.9 0 9.25 0 12s.01 3.1.06 4.18c.048 1.08.22 1.837.487 2.51c.27.686.63 1.3 1.2 1.868c.568.568 1.182.93 1.868 1.2c.673.267 1.43.44 2.51.487c1.08.048 1.43.06 4.18.06h4c2.75 0 3.1-.012 4.18-.06c1.08-.048 1.837-.22 2.51-.487c.686-.27 1.3-.63 1.868-1.2c.568-.568.93-1.182 1.2-1.868c.267-.673.44-1.43.487-2.51c.05-1.08.06-1.43.06-4.18s-.01-3.1-.06-4.18c-.048-1.08-.22-1.837-.487-2.51c-.27-.686-.63-1.3-1.2-1.868c-.568-.568-1.182-.93-1.868-1.2c-.673-.267-1.43-.44-2.51-.487C15.1.01 14.75 0 12 0Zm0 5.8a4.2 4.2 0 1 0 0 8.4a4.2 4.2 0 0 0 0-8.4Zm0 6.4a2.2 2.2 0 1 1 0-4.4a2.2 2.2 0 0 1 0 4.4Zm6.406-8.445a1.44 1.44 0 1 0 0 2.88a1.44 1.44 0 0 0 0-2.88Z"/></svg>
+                        <a href="https://www.instagram.com/siriwan.thaistreetfood" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+                            </svg>
                         </a>
                     </div>
                 </div>
                 
                 <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2650.046187063853!2d14.887640615655761!3d48.0645607792182!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476dd9b6f1234567%3A0x123456789abcdef0!2sRauscherstra%C3%9Fe%204%2C%203363%20Neufurth!5e0!3m2!1sde!2sat!4v1678901234567!5m2!1sde!2sat" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2650.046187063853!2d14.887640615655761!3d48.0645607792182!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476dd9b6f1234567%3A0x123456789abcdef0!2sRauscherstra%C3%9Fe%204%2C%203363%20Neufurth!5e0!3m2!1sde!2sat!4v1678901234567!5m2!1sde!2sat" 
+                            width="100%" 
+                            height="100%"
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy"
+                            title="Standort von Siriwan Thai Street Food"></iframe>
                 </div>
             </div>
         </section>
@@ -1524,30 +1551,18 @@
             let lastScrollTop = 0;
             let isMenuOpen = false;
 
-            // Mobile Menü initial ausblenden
-            if (window.innerWidth <= 768) {
-                navMenu.style.display = 'none';
-            }
-
-            // Funktion zum Umschalten des Menüs
+            // Verbessertes Menü-Handling mit CSS-Klassen
             function toggleMenu() {
                 isMenuOpen = !isMenuOpen;
-                if (isMenuOpen) {
-                    navMenu.style.display = 'flex';
-                    mobileMenuToggle.textContent = '✕';
-                    mobileMenuToggle.classList.add('open');
-                } else {
-                    navMenu.style.display = 'none';
-                    mobileMenuToggle.textContent = '☰';
-                    mobileMenuToggle.classList.remove('open');
-                }
+                navMenu.classList.toggle('show');
+                mobileMenuToggle.textContent = isMenuOpen ? '✕' : '☰';
+                mobileMenuToggle.classList.toggle('open', isMenuOpen);
             }
 
-            // Menü schließen bei Klick auf Link
             function closeMenu() {
                 if (window.innerWidth <= 768) {
                     isMenuOpen = false;
-                    navMenu.style.display = 'none';
+                    navMenu.classList.remove('show');
                     mobileMenuToggle.textContent = '☰';
                     mobileMenuToggle.classList.remove('open');
                 }
@@ -1557,14 +1572,12 @@
             window.addEventListener('scroll', () => {
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
                 
-                // Back-to-top Button
                 if (scrollTop > 300) {
                     backToTopButton.classList.add('visible');
                 } else {
                     backToTopButton.classList.remove('visible');
                 }
                 
-                // Navbar auf Mobilgeräten ausblenden
                 if (window.innerWidth <= 768 && !isMenuOpen) {
                     if (scrollTop > lastScrollTop && scrollTop > 100) {
                         navbar.classList.add('nav-hidden');
@@ -1575,7 +1588,6 @@
                 }
             });
             
-            // Back-to-top Funktion
             backToTopButton.addEventListener('click', () => {
                 window.scrollTo({
                     top: 0,
@@ -1583,7 +1595,6 @@
                 });
             });
             
-            // Navigation Scroll
             document.querySelectorAll('nav a').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const targetId = this.getAttribute('href');
@@ -1604,20 +1615,18 @@
                 });
             });
             
-            // Mobile Menü Toggle
             mobileMenuToggle.addEventListener('click', toggleMenu);
             
-            // Menü schließen bei Klick außerhalb
             document.addEventListener('click', (e) => {
                 if (isMenuOpen && !navMenu.contains(e.target) && e.target !== mobileMenuToggle) {
                     closeMenu();
                 }
             });
 
-            // Cookie Consent Logic
+            // Cookie Consent
             const hasAcceptedCookies = localStorage.getItem('cookieConsentAccepted');
             if (hasAcceptedCookies === 'true') {
-                cookieConsentBanner.style.display = 'none'; // Hide if already accepted
+                cookieConsentBanner.style.display = 'none';
             }
 
             acceptCookiesButton.addEventListener('click', () => {
