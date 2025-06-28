@@ -3,8 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Siriwan Thai Street Food | Speisekarte</title>
-    <link rel="icon" type="image/png" href="images/favicon.png">
+    <title>Siriwan Thai Street Food | Speisekarte - Authentische Thailändische Küche in Neufurth</title>
+    <meta name="description" content="Entdecken Sie authentisches Thai Street Food bei Siriwan in Neufurth. Hausgemachte Spezialitäten, Currys, Wok-Gerichte und mehr nach traditionellen thailändischen Rezepten. Jetzt bestellen!">
+    <meta name="keywords" content="Siriwan Thai Street Food, Thai Essen Neufurth, Thailändisches Restaurant, Authentische Thai Küche, Street Food, Curry, Wok, Pad Thai, Frühlingsrollen, Neufurth, Speisekarte">
+    
+    <meta property="og:title" content="Siriwan Thai Street Food | Speisekarte">
+    <meta property="og:description" content="Wir kochen hausgemachte Spezialitäten mit originalen Zutaten nach traditionellen Rezepten aus verschiedenen Landesteilen Thailands.">
+    <meta property="og:image" content="https://www.siriwan.at/images/logo.png"> <meta property="og:url" content="https://www.siriwan.at/index.html"> <meta property="og:type" content="website">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Siriwan Thai Street Food | Speisekarte">
+    <meta name="twitter:description" content="Wir kochen hausgemachte Spezialitäten mit originalen Zutaten nach traditionellen Rezepten aus verschiedenen Landesteilen Thailands.">
+    <meta name="twitter:image" content="https://www.siriwan.at/images/logo.png"> <link rel="icon" type="image/png" href="images/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@700&family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -39,6 +49,9 @@
             background-size: cover;
             background-attachment: fixed;
             position: relative;
+            /* Für bessere Rendering-Leistung auf iOS Safari */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         body::before {
@@ -81,6 +94,11 @@
             padding: 15px 0 5px;
             box-shadow: 0 4px 15px var(--shadow); /* Weicherer Schatten */
             position: relative;
+            /* Safari Fix für Schatten */
+            -webkit-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+            backface-visibility: hidden;
+            filter: drop-shadow(0 4px 15px var(--shadow)); /* Ergänzung für Safari Schatten */
         }
 
         .header-top {
@@ -173,6 +191,7 @@
             box-shadow: 0 3px 8px rgba(0,0,0,0.4); /* Kräftigerer Schatten */
             cursor: pointer;
             transition: all 0.3s ease;
+            -webkit-tap-highlight-color: transparent; /* Entfernt den blauen Tap-Highlight auf iOS */
         }
 
         .mobile-menu-toggle.open {
@@ -189,6 +208,11 @@
             border-top: 2px solid var(--accent);
             border-bottom: 2px solid var(--accent);
             transition: transform 0.3s ease;
+            /* Safari Fix für Schatten bei sticky/fixed Elementen */
+            -webkit-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+            backface-visibility: hidden;
+            filter: drop-shadow(0 3px 12px rgba(0, 0, 0, 0.4)); /* Ergänzung für Safari Schatten */
         }
 
         .nav-container {
@@ -214,6 +238,12 @@
             
             nav ul.show {
                 display: flex;
+                position: absolute; /* Ändern von relativer Position zu absolut für besseres Verhalten */
+                top: 100%; /* Positioniert unter der Navbar */
+                left: 0;
+                width: 100%;
+                background-color: var(--primary); /* Hintergrund für das geöffnete Menü */
+                box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
             }
         }
 
@@ -232,6 +262,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             font-size: 1.05rem;
+            -webkit-tap-highlight-color: transparent; /* Entfernt den blauen Tap-Highlight auf iOS */
         }
 
         nav a:hover {
@@ -299,12 +330,18 @@
             height: 100%;
             position: relative;
             border: 1px solid var(--secondary);
+            /* Safari Fix für Schatten */
+            -webkit-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+            backface-visibility: hidden;
+            filter: drop-shadow(0 5px 15px var(--shadow)); /* Ergänzung für Safari Schatten */
         }
 
         .menu-item:hover {
             transform: translateY(-15px); /* Increased from -10px */
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); /* Strengthened shadow */
             border-color: var(--accent);
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3)); /* Safari Schatten */
         }
 
         .item-number {
@@ -574,6 +611,7 @@
             transition: transform 0.3s, background-color 0.3s;
             font-weight: bold;
             border: 1px solid var(--accent);
+            -webkit-tap-highlight-color: transparent; /* Entfernt den blauen Tap-Highlight auf iOS */
         }
 
         .social-link:hover {
@@ -619,6 +657,7 @@
             padding: 8px;
             outline: none;
             font-size: 1rem;
+            -webkit-tap-highlight-color: transparent; /* Entfernt den blauen Tap-Highlight auf iOS */
         }
 
         .allergen-legend p {
@@ -661,6 +700,7 @@
             margin: 0 12px; /* Mehr Abstand */
             font-weight: 500;
             transition: color 0.3s ease;
+            -webkit-tap-highlight-color: transparent; /* Entfernt den blauen Tap-Highlight auf iOS */
         }
 
         .footer-links a:hover {
@@ -688,6 +728,7 @@
             z-index: 999;
             border: 2px solid var(--accent);
             font-weight: bold;
+            -webkit-tap-highlight-color: transparent; /* Entfernt den blauen Tap-Highlight auf iOS */
         }
 
         .back-to-top.visible {
@@ -751,6 +792,7 @@
             font-size: 1rem;
             font-weight: bold;
             transition: background-color 0.3s ease, transform 0.2s ease;
+            -webkit-tap-highlight-color: transparent; /* Entfernt den blauen Tap-Highlight auf iOS */
         }
 
         .cookie-consent-banner button:hover {
@@ -835,14 +877,15 @@
             }
 
             nav {
-                position: fixed;
+                position: fixed; /* Geändert zu fixed für konsistentes Verhalten */
                 top: 0;
                 left: 0;
                 width: 100%;
                 transform: translateY(0);
                 transition: transform 0.3s ease;
-                padding: 15px 0;
+                padding: 0; /* Padding wird von <li><a> übernommen */
                 height: auto;
+                background-color: var(--primary); /* Sicherstellen, dass Hintergrund da ist */
             }
 
             nav.nav-hidden {
@@ -850,7 +893,7 @@
             }
 
             body {
-                padding-top: 60px;
+                padding-top: 60px; /* Platz für die fixe Navbar schaffen */
             }
             
             nav a {
@@ -858,6 +901,11 @@
                 font-size: 1.1rem;
                 text-align: center;
                 width: 100%;
+                border-bottom: 1px solid rgba(255,255,255,0.1); /* Trennlinien für Menüpunkte */
+            }
+
+            nav li:last-child a {
+                border-bottom: none; /* Letztes Element ohne Trennlinie */
             }
             
             .mobile-menu-toggle {
@@ -988,7 +1036,7 @@
         <div class="container">
             <div class="header-top">
                 <h1 class="logo-container">
-                    <img src="images/logo.png" alt="Siriwan Thai Street Food" class="logo">
+                    <img src="images/logo.png" alt="Siriwan Thai Street Food Logo" class="logo">
                 </h1>
                 
                 <div class="motto-container">
@@ -1003,10 +1051,10 @@
             <div class="header-contact">
                 <span>📍 Rauscherstraße 4, 3363 Neufurth</span>
                 <span>🕒 DI–SA: 11:00–18:30 Uhr | Feiertags geschlossen</span>
-                <span>📞 <a href="tel:0664123456">0664 123 456</a></span>
+                <span>📞 <a href="tel:0664123456" aria-label="Telefonnummer 0664 123 456">0664 123 456</a></span>
             </div>
         </div>
-        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menü öffnen">☰</button>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menü öffnen/schließen">☰</button>
     </header>
 
     <nav id="mainNav">
@@ -1030,7 +1078,7 @@
                 <div class="menu-item">
                     <div class="item-number">V1</div>
                     <div class="item-image">
-                        <img src="images/V1_frühlingsrollen.png" alt="Frühlingsrollen" loading="lazy">
+                        <img src="images/V1_frühlingsrollen.png" alt="3 knusprig frittierte Frühlingsrollen mit Glasnudeln und Karotten" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1050,7 +1098,7 @@
                 <div class="menu-item">
                     <div class="item-number">V2</div>
                     <div class="item-image">
-                        <img src="images/V2_popia-gung.png" alt="Garnelenrollen" loading="lazy">
+                        <img src="images/V2_popia-gung.png" alt="6 frittierte Garnelenrollen im Teigmantel" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1070,7 +1118,7 @@
                 <div class="menu-item">
                     <div class="item-number">V3</div>
                     <div class="item-image">
-                        <img src="images/V3_huhn-tempura.png" alt="Tempura Huhn" loading="lazy">
+                        <img src="images/V3_huhn-tempura.png" alt="5 Stücke Hühnerfilet im Tempura-Teigmantel" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1090,7 +1138,7 @@
                 <div class="menu-item">
                     <div class="item-number">V4</div>
                     <div class="item-image">
-                        <img src="images/V4_gai-satay.png" alt="Hühnersaté-Spieße" loading="lazy">
+                        <img src="images/V4_gai-satay.png" alt="3 zarte Hühnersaté-Spieße mit Erdnuss-Kokos-Currysauce" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1109,7 +1157,7 @@
                 <div class="menu-item">
                     <div class="item-number">V5</div>
                     <div class="item-image">
-                        <img src="images/V5_som-tam-thai.png" alt="Papayasalat" loading="lazy">
+                        <img src="images/V5_som-tam-thai.png" alt="Frischer grüner Papayasalat mit Karotten und Erdnüssen" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1135,7 +1183,7 @@
                 <div class="menu-item">
                     <div class="item-number">M1</div>
                     <div class="item-image">
-                        <img src="images/M1_tom-yam-gung.png" alt="Tom Yam" loading="lazy">
+                        <img src="images/M1_tom-yam-gung.png" alt="Scharf-saure Tom Yam Suppe" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1156,7 +1204,7 @@
                 <div class="menu-item">
                     <div class="item-number">M2</div>
                     <div class="item-image">
-                        <img src="images/M2_tom-kha-gai.png" alt="Kokossuppe" loading="lazy">
+                        <img src="images/M2_tom-kha-gai.png" alt="Aromatische Tom Kha Kokosmilchsuppe" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1177,7 +1225,7 @@
                 <div class="menu-item">
                     <div class="item-number">M3</div>
                     <div class="item-image">
-                        <img src="images/M2_gelbes-Curry.png" alt="Gelbes Curry" loading="lazy">
+                        <img src="images/M2_gelbes-Curry.png" alt="Mildes Gelbes Curry mit Kartoffeln und Karotten" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1203,7 +1251,7 @@
                 <div class="menu-item">
                     <div class="item-number">M4</div>
                     <div class="item-image">
-                        <img src="images/M3_gruenes-curry.png" alt="Grünes Curry" loading="lazy">
+                        <img src="images/M3_gruenes-curry.png" alt="Würziges Grünes Curry mit Bambus und Thai-Basilikum" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1229,7 +1277,7 @@
                 <div class="menu-item">
                     <div class="item-number">M5</div>
                     <div class="item-image">
-                        <img src="images/M5_rotes-curry.png" alt="Rotes Curry" loading="lazy">
+                        <img src="images/M5_rotes-curry.png" alt="Rotes Curry mit Kokosmilch und Thai-Basilikum" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1260,7 +1308,7 @@
                 <div class="menu-item">
                     <div class="item-number">M6</div>
                     <div class="item-image">
-                        <img src="images/M4_pad-phrik-gaeng-daeng.png" alt="Roter Curry Wok" loading="lazy">
+                        <img src="images/M4_pad-phrik-gaeng-daeng.png" alt="Roter Curry Wok mit gebratenem Gemüse und Kokosmilch" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1286,7 +1334,7 @@
                 <div class="menu-item">
                     <div class="item-number">M7</div>
                     <div class="item-image">
-                        <img src="images/M5_pad-priao-wan-gung.png" alt="Wok süßsauer" loading="lazy">
+                        <img src="images/M5_pad-priao-wan-gung.png" alt="Wok süßsauer mit Gurken, Tomaten, Zwiebeln und Paprika" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1310,7 +1358,7 @@
                 <div class="menu-item">
                     <div class="item-number">M8</div>
                     <div class="item-image">
-                        <img src="images/M6_pad-met-mamuang.png" alt="Cashew Wok" loading="lazy">
+                        <img src="images/M6_pad-met-mamuang.png" alt="Cashew Wok mit Cashewnüssen, Jungzwiebeln und Paprika" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1335,7 +1383,7 @@
                 <div class="menu-item">
                     <div class="item-number">M9</div>
                     <div class="item-image">
-                        <img src="images/M7_pad-graprao-gung.png" alt="Basilikum Wok" loading="lazy">
+                        <img src="images/M7_pad-graprao-gung.png" alt="Pikant gebratener Basilikum Wok mit Zwiebeln und Fisolen" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1361,7 +1409,7 @@
                 <div class="menu-item">
                     <div class="item-number">M10</div>
                     <div class="item-image">
-                        <img src="images/M8_pad-phrik-thai-dam.png" alt="Pfefferwok" loading="lazy">
+                        <img src="images/M8_pad-phrik-thai-dam.png" alt="Würzig-pfeffriger Pfefferwok mit Jungzwiebeln und Paprika" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1392,7 +1440,7 @@
                 <div class="menu-item">
                     <div class="item-number">M11</div>
                     <div class="item-image">
-                        <img src="images/M9_pad-thai-gung.png" alt="Pad Thai" loading="lazy">
+                        <img src="images/M9_pad-thai-gung.png" alt="Pad Thai Reisbandnudeln mit Sojasprossen und Erdnüssen" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1419,7 +1467,7 @@
                 <div class="menu-item">
                     <div class="item-number">M12</div>
                     <div class="item-image">
-                        <img src="images/M12_khao-pad.png" alt="Gebratener Reis" loading="lazy">
+                        <img src="images/M12_khao-pad.png" alt="Gebratener Jasminreis mit Ei, Karotten und Erbsen" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1448,7 +1496,7 @@
             <div class="menu-items">
                 <div class="menu-item">
                     <div class="item-image">
-                        <img src="images/getraenke.png" alt="Getränke" style="object-fit: contain;" loading="lazy">
+                        <img src="images/getraenke.png" alt="Auswahl an Getränken" style="object-fit: contain;" loading="lazy">
                     </div>
                     <div class="item-content">
                         <div class="item-header">
@@ -1483,7 +1531,7 @@
 
         <div class="order-notice">
             <p>Rufen Sie uns für Ihre Vorbestellung an.</p>
-            <a href="tel:0664123456" class="phone">0664 123 456</a>
+            <a href="tel:0664123456" class="phone" aria-label="Telefonnummer für Vorbestellungen: 0664 123 456">0664 123 456</a>
         </div>
 
         <section id="kontakt">
@@ -1493,9 +1541,9 @@
                     <div class="contact-details">
                         <h3>Adresse & Kontakt</h3>
                         <p><i>📍</i> Rauscherstraße 4, 3363 Neufurth</p>
-                        <p><i>📞</i> <a href="tel:0664123456">0664 123 456</a></p>
-                        <p><i>✉️</i> <a href="mailto:office@siriwan.at">office@siriwan.at</a></p>
-                        <p><i>🌐</i> <a href="http://www.siriwan.at">www.siriwan.at</a></p>
+                        <p><i>📞</i> <a href="tel:0664123456" aria-label="Telefonnummer: 0664 123 456">0664 123 456</a></p>
+                        <p><i>✉️</i> <a href="mailto:office@siriwan.at" aria-label="E-Mail Adresse: office@siriwan.at">office@siriwan.at</a></p>
+                        <p><i>🌐</i> <a href="http://www.siriwan.at" aria-label="Webseite: www.siriwan.at">www.siriwan.at</a></p>
                     </div>
                     
                     <div class="opening-hours">
@@ -1519,12 +1567,12 @@
                     
                     <div class="social-media">
                         <h3>Folgen Sie uns</h3>
-                        <a href="https://www.facebook.com/siriwan.thaistreetfood" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook">
+                        <a href="https://www.facebook.com/siriwan.thaistreetfood" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Folgen Sie uns auf Facebook">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                                 <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/>
                             </svg>
                         </a>
-                        <a href="https://www.instagram.com/siriwan.thaistreetfood" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+                        <a href="https://www.instagram.com/siriwan.thaistreetfood" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Folgen Sie uns auf Instagram">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                 <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
                             </svg>
@@ -1533,13 +1581,14 @@
                 </div>
                 
                 <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2650.046187063853!2d14.887640615655761!3d48.0645607792182!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476dd9b6f1234567%3A0x123456789abcdef0!2sRauscherstra%C3%9Fe%204%2C%203363%20Neufurth!5e0!3m2!1sde!2sat!4v1678901234567!5m2!1sde!2sat" 
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2650.052824056262!2d14.80587281566814!3d48.0678887792182!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4772b14e3e3b3b27%3A0xcb1e2e9c1b3f9b2!2sRauscherstra%C3%9Fe%204%2C%203363%20Neufurth!5e0!3m2!1sen!2sat!4v1678280000000!5m2!1sen!2sat" 
                             width="100%" 
                             height="100%"
                             style="border:0;" 
                             allowfullscreen="" 
                             loading="lazy"
-                            title="Standort von Siriwan Thai Street Food"></iframe>
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Standort von Siriwan Thai Street Food auf Google Maps"></iframe>
                 </div>
             </div>
         </section>
@@ -1587,6 +1636,8 @@
                 navMenu.classList.toggle('show');
                 mobileMenuToggle.textContent = isMenuOpen ? '✕' : '☰';
                 mobileMenuToggle.classList.toggle('open', isMenuOpen);
+                // Wenn das Menü geöffnet wird, fixiere den Body, um Scrollen zu verhindern
+                document.body.style.overflow = isMenuOpen ? 'hidden' : '';
             }
 
             function closeMenu() {
@@ -1595,6 +1646,7 @@
                     navMenu.classList.remove('show');
                     mobileMenuToggle.textContent = '☰';
                     mobileMenuToggle.classList.remove('open');
+                    document.body.style.overflow = ''; // Freigabe des Scrollens
                 }
             }
 
@@ -1608,6 +1660,7 @@
                     backToTopButton.classList.remove('visible');
                 }
                 
+                // Navbar verstecken/zeigen nur wenn Menü nicht offen ist
                 if (window.innerWidth <= 768 && !isMenuOpen) {
                     if (scrollTop > lastScrollTop && scrollTop > 100) {
                         navbar.classList.add('nav-hidden');
@@ -1643,17 +1696,34 @@
                         }
                     }
                     
+                    // Schließe das Menü nach dem Klick auf einen Link
                     closeMenu();
                 });
             });
             
             mobileMenuToggle.addEventListener('click', toggleMenu);
             
+            // Schließe Menü, wenn außerhalb geklickt/getippt wird
             document.addEventListener('click', (e) => {
                 if (isMenuOpen && !navMenu.contains(e.target) && e.target !== mobileMenuToggle) {
                     closeMenu();
                 }
             });
+
+            // Speziell für mobile Touch-Events
+            document.addEventListener('touchstart', (e) => {
+                if (isMenuOpen && !navMenu.contains(e.target) && e.target !== mobileMenuToggle) {
+                    closeMenu();
+                }
+            }, { passive: true }); // passive: true für bessere Scroll-Performance
+
+            // Schließe Menü, wenn Fenstergröße sich ändert (z.B. von mobil zu Desktop)
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768 && isMenuOpen) {
+                    closeMenu();
+                }
+            });
+
 
             // Cookie Consent
             const hasAcceptedCookies = localStorage.getItem('cookieConsentAccepted');
