@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integriertes Energie-Dashboard | PV & Heizkosten</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color-success: #2ecc71;
+            --accent-color-warning: #f1c40f;
+            --accent-color-danger: #e74c3c;
+            --background-gradient: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            --card-background: #ffffff;
+            --text-primary: #333;
+            --text-secondary: #7f8c8d;
+            --border-color: #ddd;
+            --shadow-light: rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--background-gradient);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 25px;
+            background: var(--card-background);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px var(--shadow-light);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--card-background);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 20px var(--shadow-light);
+        }
+
+        .settings-card { grid-column: span 12; }
+        @media (min-width: 1024px) { .settings-card { grid-column: span 4; } }
+
+        .pv-results-card { grid-column: span 12; }
+        @media (min-width: 1024px) { .pv-results-card { grid-column: span 8; } }
+        
+        .heating-results-card { grid-column: span 12; }
+
+
+        .card-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--secondary-color);
+            display: inline-block;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-label {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        input[type="number"], input[type="date"], select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background: #ecf0f1;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .btn.active {
+            background: var(--secondary-color);
+            color: white;
+            box-shadow: 0 4px 8px rgba(52, 152, 219, 0.4);
+        }
+        
+        .btn i {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+
+        .weather-selector {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+        
+        .weather-btn.active { transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); }
+        .weather-btn.sunny.active { background: #f1c40f; color: white; }
+        .weather-btn.bright.active { background: #3498db; color: white; }
+        .weather-btn.cloudy.active { background: #7f8c8d; color: white; }
+        .weather-btn.rainy.active { background: #3498db; color: white; }
+        .weather-btn.foggy.active { background: #95a5a6; color: white; }
+        .weather-btn.mixed.active { background: #9b59b6; color: white; }
+
+        .slider-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .slider-group input[type="range"] {
+            -webkit-appearance: none;
+            background: #ecf0f1;
+            height: 8px;
+            cursor: pointer;
+            flex-grow: 1;
+            border-radius: 4px;
+        }
+        .slider-group input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 22px;
+            width: 22px;
+            background: var(--accent-color-success);
+            border-radius: 50%;
+        }
+        .slider-group span {
+            font-weight: 700;
+            width: 55px;
+            text-align: center;
+            background-color: #ecf0f1;
+            padding: 0.25rem 0;
+            border-radius: 5px;
+        }
+
+        .results-area {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .total-yield-display {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        .total-yield-display .label { font-size: 1.3rem; margin-bottom: 15px; display: block; }
+        .total-yield-display .value { font-size: 3rem; font-weight: 700; }
+
+        .charts-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+        @media (min-width: 768px) { .charts-container { grid-template-columns: 1fr 1fr; } }
+        
+        .chart-wrapper {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .chart-wrapper h3 { text-align: center; margin-bottom: 15px; color: var(--primary-color); }
+
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .results-table th { background: var(--primary-color); color: white; padding: 15px; text-align: left; }
+        .results-table td { padding: 15px; border-bottom: 1px solid #eee; }
+        .results-table tr:last-child td { border-bottom: none; }
+        .results-table tr:nth-child(even) { background: #f8f9fa; }
+        
+        .summary-block {
+            background: #f8f9fa;
+            border-left: 5px solid var(--secondary-color);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .summary-block h3 { color: var(--primary-color); margin-top: 0; margin-bottom: 15px; }
+        .summary-block p { margin-bottom: 10px; }
+        .summary-block strong { color: var(--primary-color); }
+        .summary-block .savings { color: var(--accent-color-success); font-weight: bold; }
+        .summary-block .extra-cost { color: var(--accent-color-danger); font-weight: bold; }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Integriertes Energie-Dashboard</h1>
+            <p class="subtitle">Simulieren Sie den Ertrag Ihrer PV-Anlage und dessen direkte Auswirkung auf Ihre jährlichen Heizkosten in einem einzigen Tool.</p>
+        </header>
+
+        <div class="dashboard-grid">
+            <div class="card settings-card">
+                <h2 class="card-title">Globale Einstellungen</h2>
+                
+                <div class="input-group">
+                    <label class="input-label">1. PV-Anlagen-Variante wählen</label>
+                    <div class="btn-group">
+                        <button class="btn active" data-variant="A">
+                            <i class="fas fa-solar-panel"></i>
+                            Variante A
+                        </button>
+                        <button class="btn" data-variant="B">
+                            <i class="fa-solid fa-house-chimney-window"></i>
+                            Variante B
+                        </button>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">2. Datum für PV-Prognose</label>
+                    <input type="date" id="date-selector">
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">3. Wetter für PV-Prognose</label>
+                    <div class="weather-selector">
+                        <button class="btn weather-btn sunny active" data-weather="sunny"><i class="fas fa-sun"></i>Sonnig</button>
+                        <button class="btn weather-btn bright" data-weather="bright"><i class="fas fa-cloud-sun"></i>Heiter</button>
+                        <button class="btn weather-btn cloudy" data-weather="cloudy"><i class="fas fa-cloud"></i>Bewölkt</button>
+                        <button class="btn weather-btn rainy" data-weather="rainy"><i class="fas fa-cloud-rain"></i>Regen</button>
+                        <button class="btn weather-btn foggy" data-weather="foggy"><i class="fas fa-smog"></i>Nebel</button>
+                        <button class="btn weather-btn mixed" data-weather="mixed"><i class="fas fa-cloud-sun-rain"></i>Mix</button>
+                    </div>
+                </div>
+                
+                <h2 class="card-title" style="margin-top: 30px;">Heizungs-Einstellungen</h2>
+                
+                <div class="input-group">
+                    <label class="input-label">Anteil Klimaanlage an Heizleistung</label>
+                    <div class="slider-group">
+                        <span>0%</span>
+                        <input type="range" id="heating-slider" min="0" max="100" value="0">
+                        <span id="slider-value">0%</span>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label class="input-label">Jährlicher Bedarf (Pelletsäcke)</label>
+                    <input type="number" id="pellet-sacks" value="120">
+                </div>
+                
+                <div class="input-group">
+                    <label class="input-label">Preis pro Pelletsack (€)</label>
+                    <input type="number" id="pellet-price" value="5" step="0.01">
+                </div>
+                
+                <div class="input-group">
+                    <label class="input-label">Strom-Netzbezugspreis (€/kWh)</label>
+                    <input type="number" id="electricity-price" value="0.2525" step="0.0001">
+                </div>
+                
+                <div class="input-group">
+                    <label class="input-label">Effizienz Klimaanlage (COP)</label>
+                    <input type="number" id="cop" value="3.0" step="0.1">
+                </div>
+            </div>
+
+            <div class="pv-results-card">
+                <h2 class="card-title">PV-Tagesprognose</h2>
+                <div class="results-area">
+                    <div class="total-yield-display">
+                        <span class="label">Prognostizierter Gesamtertrag für den Tag</span>
+                        <div class="value" id="total-yield-value">0.0 kWh</div>
+                    </div>
+                    
+                    <div class="charts-container">
+                        <div class="chart-wrapper">
+                             <h3>Ertragsaufteilung</h3>
+                            <canvas id="yield-chart"></canvas>
+                        </div>
+                         <div class="chart-wrapper">
+                            <h3>Heizkosten-Verteilung</h3>
+                            <canvas id="cost-chart"></canvas>
+                        </div>
+                    </div>
+
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Anlagenkomponente</th>
+                                <th>Ausrichtung</th>
+                                <th>Leistung (kWp)</th>
+                                <th>Tagesertrag (kWh)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pv-results-table"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="heating-results-card card">
+                <h2 class="card-title">Analyse der jährlichen Heizkosten</h2>
+                <div id="heating-results-summary" class="summary-block">
+                    <!-- Heating results will be injected here -->
+                </div>
+                <h3 style="margin-top: 25px; color: var(--primary-color);">Monatsbilanz des Heiz-Stroms</h3>
+                <table class="results-table" style="margin-top: 15px;">
+                     <thead>
+                        <tr>
+                            <th>Monat</th>
+                            <th>PV-Überschuss* (kWh)</th>
+                            <th>Klima-Strombedarf (kWh)</th>
+                            <th>Kostenlos von PV (kWh)</th>
+                            <th>Kostenpflichtig (€)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="heating-monthly-table">
+                    </tbody>
+                </table>
+                 <p style="font-size: 0.8rem; color: #6B7280; margin-top: 1rem;">*Überschuss nach Deckung von Grundlast, EV-Ladung und Akku-Ladung.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- DATA ---
+        const pvComponents = {
+            A: [
+                { name: "Hausdach", orientation: "128°", kwp: 12.25, annualYield: 8859 },
+                { name: "Garage West", orientation: "293°", kwp: 5.64, annualYield: 5620 },
+                { name: "Garage Ost", orientation: "123°", kwp: 1.88, annualYield: 1708 },
+                { name: "Garagenwand", orientation: "213°", kwp: 1.88, annualYield: 1341 },
+                { name: "Balkon", orientation: "180°", kwp: 0.80, annualYield: 815 }
+            ],
+            B: [
+                { name: "Hausdach", orientation: "128°", kwp: 12.25, annualYield: 8859 },
+                { name: "Garage", orientation: "213°", kwp: 5.64, annualYield: 6130 },
+                { name: "Carport", orientation: "213°", kwp: 0.94, annualYield: 912 },
+                { name: "Garagenwand", orientation: "213°", kwp: 1.88, annualYield: 1341 },
+                { name: "Balkon", orientation: "180°", kwp: 0.80, annualYield: 815 }
+            ]
+        };
+
+        const monthlyYieldFactors = { // Relative monthly yield factors
+             A: [499, 999, 1660, 2275, 2423, 2752, 2509, 2483, 1562, 1132, 509, 437],
+             B: [546, 1046, 1676, 2227, 2307, 2622, 2373, 2407, 1563, 1192, 551, 491]
+        };
+        
+        const baseLoadEVData = [ // For heating calculation
+            { month: 'Jan', base: 741, ev: 283 }, { month: 'Feb', base: 691, ev: 283 },
+            { month: 'Mär', base: 642, ev: 283 }, { month: 'Apr', base: 593, ev: 283 },
+            { month: 'Mai', base: 593, ev: 283 }, { month: 'Jun', base: 642, ev: 283 },
+            { month: 'Jul', base: 691, ev: 283 }, { month: 'Aug', base: 691, ev: 283 },
+            { month: 'Sep', base: 642, ev: 283 }, { month: 'Okt', base: 642, ev: 283 },
+            { month: 'Nov', base: 691, ev: 283 }, { month: 'Dez', base: 741, ev: 283 }
+        ];
+
+        const weatherFactors = { sunny: 1.2, bright: 1.0, cloudy: 0.6, rainy: 0.4, foggy: 0.3, mixed: 0.8 };
+        const heatingDemandProfile = [0.17, 0.12, 0.08, 0.05, 0, 0, 0, 0, 0, 0.08, 0.16, 0.34];
+        const energyPerKgPellet = 5;
+        const batteryCapacity = 15;
+        const pelletKgPerBag = 15;
+
+        // --- DOM ELEMENTS ---
+        const variantButtons = document.querySelectorAll('[data-variant]');
+        const weatherButtons = document.querySelectorAll('[data-weather]');
+        const dateSelector = document.getElementById('date-selector');
+        const heatingSlider = document.getElementById('heating-slider');
+        const allInputs = document.querySelectorAll('input, select');
+
+        // --- STATE ---
+        let currentVariant = 'A';
+        let currentWeather = 'sunny';
+        let yieldChart = null;
+        let costChart = null;
+
+        // --- INITIALIZATION ---
+        const today = new Date();
+        dateSelector.value = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+        
+        initializeCharts();
+        addEventListeners();
+        runAllCalculations();
+
+        // --- FUNCTIONS ---
+        function addEventListeners() {
+            variantButtons.forEach(btn => btn.addEventListener('click', () => {
+                variantButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentVariant = btn.dataset.variant;
+                runAllCalculations();
+            }));
+
+            weatherButtons.forEach(btn => btn.addEventListener('click', () => {
+                weatherButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentWeather = btn.dataset.weather;
+                runAllCalculations();
+            }));
+
+            allInputs.forEach(input => input.addEventListener('input', runAllCalculations));
+        }
+        
+        function runAllCalculations() {
+            // Update slider text
+            document.getElementById('slider-value').textContent = `${document.getElementById('heating-slider').value}%`;
+            
+            // 1. Calculate PV daily yield
+            const dailyResults = calculateDailyPVYield();
+            displayDailyPVResults(dailyResults);
+
+            // 2. Calculate annual heating costs using the monthly PV data
+            const monthlyPVYields = monthlyYieldFactors[currentVariant];
+            const heatingResults = calculateAnnualHeatingCost(monthlyPVYields);
+            displayHeatingResults(heatingResults);
+        }
+
+        function calculateDailyPVYield() {
+            const selectedDate = new Date(dateSelector.value);
+            const month = selectedDate.getMonth();
+            const daysInMonth = new Date(selectedDate.getFullYear(), month + 1, 0).getDate();
+            
+            const monthlyTotalYield = monthlyYieldFactors[currentVariant][month];
+            const dailyAverageYield = monthlyTotalYield / daysInMonth;
+            
+            const annualTotalForVariant = pvComponents[currentVariant].reduce((sum, comp) => sum + comp.annualYield, 0);
+
+            const results = pvComponents[currentVariant].map(component => {
+                const componentShare = component.annualYield / annualTotalForVariant;
+                const baseYield = dailyAverageYield * componentShare;
+                const finalYield = baseYield * weatherFactors[currentWeather];
+                return { ...component, yield: finalYield };
+            });
+            return results;
+        }
+        
+        function calculateAnnualHeatingCost(monthlyPVYields) {
+            const sliderValue = parseFloat(heatingSlider.value);
+            const electricityPrice = parseFloat(document.getElementById('electricity-price').value);
+            const cop = parseFloat(document.getElementById('cop').value);
+            const basePelletSacks = parseFloat(document.getElementById('pellet-sacks').value);
+            const pelletPricePerBag = parseFloat(document.getElementById('pellet-price').value);
+
+            const totalAnnualEnergyDemand = basePelletSacks * pelletKgPerBag * energyPerKgPellet;
+            const totalPelletCostOriginal = basePelletSacks * pelletPricePerBag;
+            
+            let totalPelletCosts = 0;
+            let totalElectricityCosts = 0;
+            let totalFreeElectricityUsed = 0;
+            let monthlyResults = [];
+
+            monthlyPVYields.forEach((pvYield, index) => {
+                const monthlyHeatingDemand = totalAnnualEnergyDemand * heatingDemandProfile[index];
+                const pelletsEnergy = monthlyHeatingDemand * (1 - sliderValue / 100);
+                const pelletsNeededSacks = (pelletsEnergy / energyPerKgPellet) / pelletKgPerBag;
+                totalPelletCosts += pelletsNeededSacks * pelletPricePerBag;
+
+                const electricityNeededForHeating = (monthlyHeatingDemand * (sliderValue / 100)) / cop;
+                
+                const baseAndEVLoad = baseLoadEVData[index].base + baseLoadEVData[index].ev;
+                const pvSurplusAfterBaseAndEV = Math.max(0, pvYield - baseAndEVLoad);
+                const pvSurplusAfterBattery = Math.max(0, pvSurplusAfterBaseAndEV - batteryCapacity);
+
+                const freeElectricityUsed = Math.min(electricityNeededForHeating, pvSurplusAfterBattery);
+                const paidElectricityUsed = Math.max(0, electricityNeededForHeating - freeElectricityUsed);
+                
+                totalFreeElectricityUsed += freeElectricityUsed;
+                const monthlyElectricityCost = paidElectricityUsed * electricityPrice;
+                totalElectricityCosts += monthlyElectricityCost;
+
+                monthlyResults.push({
+                    month: baseLoadEVData[index].month,
+                    pv_surplus_after_battery: pvSurplusAfterBattery.toFixed(0),
+                    klima_kwh: electricityNeededForHeating.toFixed(0),
+                    free_kwh: freeElectricityUsed.toFixed(0),
+                    paid_kwh: paidElectricityUsed.toFixed(0),
+                    cost: monthlyElectricityCost.toFixed(2)
+                });
+            });
+
+            const totalAnnualCosts = totalPelletCosts + totalElectricityCosts;
+            const savings = totalPelletCostOriginal - totalAnnualCosts;
+
+            return {
+                totalPelletCosts,
+                totalElectricityCosts,
+                totalAnnualCosts,
+                savings,
+                totalPelletCostOriginal,
+                monthlyResults,
+                totalFreeElectricityUsed
+            };
+        }
+
+        function displayDailyPVResults(results) {
+            const totalYield = results.reduce((sum, r) => sum + r.yield, 0);
+            document.getElementById('total-yield-value').textContent = `${totalYield.toFixed(1)} kWh`;
+
+            const tableBody = document.getElementById('pv-results-table');
+            tableBody.innerHTML = '';
+            results.forEach(comp => {
+                tableBody.innerHTML += `
+                    <tr>
+                        <td>${comp.name}</td>
+                        <td>${comp.orientation}</td>
+                        <td>${comp.kwp.toFixed(2)} kWp</td>
+                        <td><strong>${comp.yield.toFixed(1)} kWh</strong></td>
+                    </tr>`;
+            });
+            updateYieldChart(results);
+        }
+        
+        function displayHeatingResults(results) {
+            const summaryDiv = document.getElementById('heating-results-summary');
+            summaryDiv.innerHTML = `
+                <h3>Jährliches Finanz-Fazit</h3>
+                <p>Kosten für Pellets: <strong>${results.totalPelletCosts.toFixed(2)} €</strong></p>
+                <p>Kosten für Heiz-Strom: <strong>${results.totalElectricityCosts.toFixed(2)} €</strong></p>
+                <p>Kostenlos geheizt mit PV-Strom: <strong>${results.totalFreeElectricityUsed.toFixed(0)} kWh</strong></p>
+                <hr style="margin: 15px 0; border: 1px solid #eee;">
+                <p>Ihre jährlichen Gesamtkosten betragen: <strong>${results.totalAnnualCosts.toFixed(2)} €</strong></p>
+                <p>Im Vergleich zu 100% Pellets (${results.totalPelletCostOriginal.toFixed(2)} €), 
+                    ${results.savings >= 0 ? 
+                        `<span class="savings">sparen Sie ${results.savings.toFixed(2)} € pro Jahr.</span>` :
+                        `<span class="extra-cost">haben Sie Mehrkosten von ${Math.abs(results.savings).toFixed(2)} € pro Jahr.</span>`
+                    }
+                </p>
+            `;
+            
+            const monthlyTableBody = document.getElementById('heating-monthly-table');
+            monthlyTableBody.innerHTML = '';
+            results.monthlyResults.forEach(res => {
+                monthlyTableBody.innerHTML += `
+                    <tr>
+                        <td>${res.month}</td>
+                        <td>${res.pv_surplus_after_battery}</td>
+                        <td>${res.klima_kwh}</td>
+                        <td>${res.free_kwh}</td>
+                        <td>${res.cost} €</td>
+                    </tr>
+                `;
+            });
+            updateCostChart(results.totalPelletCosts, results.totalElectricityCosts);
+        }
+
+        function initializeCharts() {
+            const yieldCtx = document.getElementById('yield-chart').getContext('2d');
+            yieldChart = new Chart(yieldCtx, {
+                type: 'bar',
+                options: { responsive: true, plugins: { legend: { display: false } } }
+            });
+            
+            const costCtx = document.getElementById('cost-chart').getContext('2d');
+            costChart = new Chart(costCtx, {
+                type: 'pie',
+                options: { responsive: true, plugins: { legend: { position: 'top' } } }
+            });
+        }
+
+        function updateYieldChart(results) {
+            yieldChart.data = {
+                labels: results.map(r => r.name),
+                datasets: [{
+                    label: 'Tagesertrag (kWh)',
+                    data: results.map(r => r.yield.toFixed(1)),
+                    backgroundColor: ['#3498db', '#2ecc71', '#9b59b6', '#e74c3c', '#f1c40f']
+                }]
+            };
+            yieldChart.update();
+        }
+
+        function updateCostChart(pelletCost, electricityCost) {
+            costChart.data = {
+                labels: ['Pelletkosten', 'Stromkosten'],
+                datasets: [{
+                    data: [pelletCost, electricityCost],
+                    backgroundColor: ['#8B4513', '#2c3e50']
+                }]
+            };
+            costChart.update();
+        }
+    });
+    </script>
+</body>
+</html>
