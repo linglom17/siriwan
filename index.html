@@ -6,16 +6,57 @@
     <title>Siriwan Thai Street Food | Speisekarte - Authentische Thailändische Küche in Neufurth</title>
     <meta name="description" content="Entdecken Sie authentisches Thai Street Food bei Siriwan in Neufurth. Hausgemachte Spezialitäten, Currys, Wok-Gerichte und mehr nach traditionellen thailändischen Rezepten. Jetzt bestellen!">
     <meta name="keywords" content="Siriwan Thai Street Food, Thai Essen Neufurth, Thailändisches Restaurant, Authentische Thai Küche, Street Food, Curry, Wok, Pad Thai, Frühlingsrollen, Neufurth, Speisekarte">
-   
+    <meta name="robots" content="index, follow">
+    <meta name="geo.region" content="AT-3">
+    <meta name="geo.placename" content="Amstetten">
+    
     <meta property="og:title" content="Siriwan Thai Street Food | Speisekarte">
     <meta property="og:description" content="Wir kochen hausgemachte Spezialitäten mit originalen Zutaten nach traditionellen Rezepten aus verschiedenen Landesteilen Thailands.">
-    <meta property="og:image" content="https://www.siriwan.at/images/logo.png"> <meta property="og:url" content="https://www.siriwan.at/index.html"> <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.siriwan.at/images/logo.png"> 
+    <meta property="og:url" content="https://www.siriwan.at/index.html"> 
+    <meta property="og:type" content="website">
    
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Siriwan Thai Street Food | Speisekarte">
     <meta name="twitter:description" content="Wir kochen hausgemachte Spezialitäten mit originalen Zutaten nach traditionellen Rezepten aus verschiedenen Landesteilen Thailands.">
-    <meta name="twitter:image" content="https://www.siriwan.at/images/logo.png"> <link rel="icon" type="image/png" href="images/favicon.png">
+    <meta name="twitter:image" content="https://www.siriwan.at/images/logo.png"> 
+    
+    <link rel="icon" type="image/png" href="images/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Siriwan Thai Street Food",
+      "image": "https://www.siriwan.at/images/logo.png",
+      "url": "https://www.siriwan.at",
+      "telephone": "+43664123456",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Ybbsstraße 39",
+        "addressLocality": "Amstetten",
+        "postalCode": "3300",
+        "addressCountry": "AT"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 48.1234, 
+        "longitude": 14.8765
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "11:00",
+          "closes": "18:30"
+        }
+      ],
+      "servesCuisine": "Thai",
+      "priceRange": "€€"
+    }
+    </script>
+
     <style>
         :root {
             --primary: #005F5F; /* Dunkleres, edleres Türkisgrün */
@@ -284,9 +325,10 @@
        
         .menu-items {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); /* Breite leicht erhöht für bessere Darstellung */
             gap: 30px;
-            margin-top: 20px; /* Increased spacing */
+            margin-top: 20px; 
+            justify-content: center; /* ZENTRIERUNG DER BOXEN */
         }
         .menu-item {
             border-radius: 10px;
@@ -328,6 +370,12 @@
             z-index: 2;
             border: 2px solid var(--accent);
             font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif;
+        }
+        /* NEU: Stil für den XL Button, damit er frischer wirkt */
+        .item-number.xl-button {
+            background: linear-gradient(135deg, #43a047, #2e7d32); /* Frisches, sattes Grün */
+            border: 2px solid var(--accent); /* Goldener Rand zur Veredelung */
+            color: #fff;
         }
         .item-image {
             height: 200px;
@@ -396,6 +444,7 @@
             font-size: 1.3rem;
             margin-top: 8px;
             font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif;
+            white-space: nowrap;
         }
         .item-allergens {
             display: flex;
@@ -425,7 +474,9 @@
             border-collapse: collapse;
         }
         .price-options td {
-            padding: 4px 0;
+            padding: 3px 0; /* Reduziertes Padding für kompaktere Darstellung */
+            vertical-align: top; /* Text oben bündig halten */
+            font-size: 0.95rem; /* Leicht kleinere Schrift für besseren Sitz in der Box */
         }
         .price-options tr:first-child td {
             padding-top: 0;
@@ -433,6 +484,14 @@
         .price-options tr:last-child td {
             padding-bottom: 0;
         }
+        /* PREIS-FIX: Damit die Tabelle den Preis rechts hält und nicht umbricht */
+        .price-options td.item-price {
+             text-align: right;
+             white-space: nowrap;
+             width: 1%; /* Trick: Spalte so klein wie der Inhalt */
+             padding-left: 15px; /* WICHTIG: Abstand zwischen Text und Preis */
+        }
+
         .order-notice {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: var(--text-light);
@@ -664,7 +723,10 @@
             color: var(--secondary);
             font-style: italic;
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 1.05rem; /* Gut lesbar unter der Überschrift */
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
         /* Cookie Consent Banner Styles */
         .cookie-consent-banner {
@@ -951,7 +1013,7 @@
                 <li><a href="#suppen-curry">Suppen & Curry</a></li>
                 <li><a href="#wokgerichte">Wok</a></li>
                 <li><a href="#nudeln-reis">Nudeln & Reis</a></li>
-                <li><a href="#getraenke">Getränke</a></li>
+                <li><a href="#getraenke">Getränke & Extras</a></li>
                 <li><a href="speisekarte.html">Druckversion</a></li>
                 <li><a href="#kontakt">Kontakt</a></li>
             </ul>
@@ -980,27 +1042,9 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="menu-item">
                     <div class="item-number">V2</div>
-                    <div class="item-image">
-                        <img src="images/V2_popia-gung.png" alt="6 frittierte Garnelenrollen im Teigmantel" loading="lazy">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Garnelenrollen</h3>
-                            <p class="item-thai-name">po pia gung</p>
-                        </div>
-                        <p class="item-description">6 Stk. frittierte Garnelen im Teigmantel, serviert mit Chili-Dip.</p>
-                        <p class="item-price">5,90 €</p>
-                        <div class="item-allergens">
-                            <span class="allergen">A</span>
-                            <span class="allergen">B</span>
-                            <span class="allergen">C</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div class="item-number">V3</div>
                     <div class="item-image">
                         <img src="images/V3_huhn-tempura.png" alt="5 Stücke Hühnerfilet im Tempura-Teigmantel" loading="lazy">
                     </div>
@@ -1019,7 +1063,7 @@
                     </div>
                 </div>
                 <div class="menu-item">
-                    <div class="item-number">V4</div>
+                    <div class="item-number">V3</div>
                     <div class="item-image">
                         <img src="images/V4_gai-satay.png" alt="3 zarte Hühnersaté-Spieße mit Erdnuss-Kokos-Currysauce" loading="lazy">
                     </div>
@@ -1037,7 +1081,7 @@
                     </div>
                 </div>
                 <div class="menu-item">
-                    <div class="item-number">V5</div>
+                    <div class="item-number">V4</div>
                     <div class="item-image">
                         <img src="images/V5_som-tam-thai.png" alt="Frischer grüner Papayasalat mit Karotten und Erdnüssen" loading="lazy">
                     </div>
@@ -1058,7 +1102,7 @@
         </section>
         <section id="suppen-curry">
             <h2>Suppen & Curry</h2>
-            <p class="rice-notice">Alle Hauptgerichte (Suppen, Curry & Wok) werden inkl. einer Portion Jasminreis serviert. <span style="font-weight: bold; color: var(--primary);">Extra: Eier € 2, Reis / Rind / Garnelen € 2,50, Ente € 3</span></p>
+            <p class="rice-notice">Alle Hauptgerichte (Suppen, Curry & Wok) werden inkl. einer Portion Jasminreis serviert.</p>
            
             <div class="menu-items">
                 <div class="menu-item">
@@ -1072,8 +1116,9 @@
                         </div>
                         <p class="item-description">Scharf-saure Suppe mit Tomaten, Champignons, Zitronengras, Galgant, Kaffirlimettenblättern, Fischsauce & Limettensaft mit</p>
                         <table class="price-options">
-                            <tr><td>Garnelen</td><td class="item-price">12,90 €</td></tr>
                             <tr><td>Huhn</td><td class="item-price">10,90 €</td></tr>
+                            <tr><td>Garnelen</td><td class="item-price">12,90 €</td></tr>
+                            <tr><td>Gemischt (Huhn & Garnelen)</td><td class="item-price">13,90 €</td></tr>
                         </table>
                         <div class="item-allergens">
                             <span class="allergen">B</span>
@@ -1093,8 +1138,9 @@
                         </div>
                         <p class="item-description">Aromatische Kokosmilchsuppe mit Tomaten, Champignons, Zitronengras, Galgant, Kaffirlimettenblättern, Fischsauce & Limettensaft mit</p>
                         <table class="price-options">
-                            <tr><td>Garnelen</td><td class="item-price">12,90 €</td></tr>
                             <tr><td>Huhn</td><td class="item-price">10,90 €</td></tr>
+                            <tr><td>Garnelen</td><td class="item-price">12,90 €</td></tr>
+                            <tr><td>Gemischt (Huhn & Garnelen)</td><td class="item-price">13,90 €</td></tr>
                         </table>
                         <div class="item-allergens">
                             <span class="allergen">D</span>
@@ -1113,7 +1159,7 @@
                         </div>
                         <p class="item-description">Mildes Kokoscurry mit Kartoffeln & Karotten mit</p>
                         <table class="price-options">
-                            <tr><td>Tofu</td><td class="item-price">10,50 €</td></tr>
+                            <tr><td>Gemüse / Tofu</td><td class="item-price">10,50 €</td></tr>
                             <tr><td>Huhn</td><td class="item-price">11,90 €</td></tr>
                             <tr><td>Rind</td><td class="item-price">12,90 €</td></tr>
                             <tr><td>Garnelen</td><td class="item-price">12,90 €</td></tr>
@@ -1138,7 +1184,7 @@
                         </div>
                         <p class="item-description">Kokoscurry mit Bambus, Zucchini, Fisolen, Spitzpaprika & Thai-Basilikum mit</p>
                         <table class="price-options">
-                            <tr><td>Tofu</td><td class="item-price">10,50 €</td></tr>
+                            <tr><td>Gemüse / Tofu</td><td class="item-price">10,50 €</td></tr>
                             <tr><td>Huhn</td><td class="item-price">11,90 €</td></tr>
                             <tr><td>Rind</td><td class="item-price">12,90 €</td></tr>
                             <tr><td>Garnelen</td><td class="item-price">12,90 €</td></tr>
@@ -1335,7 +1381,7 @@
             </div>
         </section>
         <section id="getraenke">
-            <h2>Getränke</h2>
+            <h2>Getränke & Extras</h2>
             <div class="menu-items">
                 <div class="menu-item">
                     <div class="item-image">
@@ -1347,28 +1393,57 @@
                         </div>
                         <table class="price-options">
                             <tr>
-                                <td>Singha Bier 0,33 l</td>
+                                <td>Singha Bier 0,33 l</td>
                                 <td class="item-price">3,90 €</td>
                             </tr>
                             <tr>
-                                <td>Chang Bier 0.33 l</td>
+                                <td>Chang Bier 0.33 l</td>
                                 <td class="item-price">3,90 €</td>
                             </tr>
                             <tr>
-                                <td>Mineralwasser<br><small>still / prickelnd</small></td>
+                                <td>Mineralwasser*<br><small>still / prickelnd</small></td>
                                 <td class="item-price">2,50 €</td>
                             </tr>
                             <tr>
-                                <td>Coca-Cola 0,33 l</td>
+                                <td>Coca-Cola* 0,33 l</td>
                                 <td class="item-price">2,90 €</td>
                             </tr>
                             <tr>
-                                <td>Aloe Vera Drink 0,33 l</td>
+                                <td>Aloe Vera Drink*<br>0,33 l</td>
                                 <td class="item-price">3,80 €</td>
                             </tr>
                             <tr>
-                                <td>Kokosnusssaft 0,33 l</td>
+                                <td>Kokosnusssaft*<br>0,33 l</td>
                                 <td class="item-price">3,80 €</td>
+                            </tr>
+                        </table>
+                        <p style="margin-top: 15px; font-size: 0.85rem; color: var(--secondary); font-style: italic;">* inkl. € 0,25 Pfand</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-number xl-button">XL</div> <div class="item-image">
+                        <img src="images/extras.png" alt="Extras und Beilagen" loading="lazy">
+                    </div>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h3 class="item-name">Extras</h3>
+                        </div>
+                        <p class="item-description">Alle Hauptgerichte (Suppen, Curry & Wok) werden inkl. einer Portion Jasminreis serviert.</p>
+                        <table class="price-options">
+                            <tr>
+                                <td>Eier</td>
+                                <td class="item-price">2,00 €</td>
+                            </tr>
+                            <tr>
+                                <td>Reis / Rind /<br>Garnelen</td> <td class="item-price">2,50 €</td>
+                            </tr>
+                            <tr>
+                                <td>Ente</td>
+                                <td class="item-price">3,00 €</td>
+                            </tr>
+                            <tr>
+                                <td>Extraportionen</td>
+                                <td class="item-price">3,90 €</td>
                             </tr>
                         </table>
                     </div>
@@ -1419,14 +1494,14 @@
                         </a>
                         <a href="https://www.instagram.com/siriwan.thaistreetfood" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Folgen Sie uns auf Instagram">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+                                <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
                             </svg>
                         </a>
                     </div>
                 </div>
                
                 <div class="map-container">
-                    <iframe src="https://www.google.com/maps?q=Ybbsstra%C3%9Fe%2039,%203300%20Amstetten&amp;output=embed"
+                    <iframe src="https://www.google.com/maps?q=Ybbsstra%C3%9Fe%2039,%203300%20Amstetten&output=embed"
                             width="100%"
                             height="100%"
                             style="border:0;"
@@ -1572,4 +1647,3 @@
     </script>
 </body>
 </html>
-```
