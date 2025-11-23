@@ -20,17 +20,13 @@
             --accent: #FFC107; 
             --accent-glow: #ffe082;
             --light: #f4f7f6;
-            --dark: #050505; /* Tiefes Schwarz für maximalen Kontrast */
+            --dark: #050505; 
             --text-light: #FFFFFF;
             
-            /* --- ULTRA DEEP GLASS SETTINGS --- */
-            /* Transparenz halbiert auf 0.20 (20% Deckkraft) */
+            /* --- ULTRA DEEP GLASS SETTINGS (20% Opacity) --- */
             --glass-bg: rgba(255, 255, 255, 0.20); 
-            /* Rahmen etwas subtiler angepasst */
             --glass-border: rgba(255, 255, 255, 0.4);
-            /* Blur stark erhöht für Lesbarkeit trotz Transparenz */
             --blur: blur(30px);
-            /* Schatten für Tiefenwirkung */
             --glass-shadow: 0 8px 32px 0 rgba(0, 15, 15, 0.1);
         }
 
@@ -48,7 +44,6 @@
         body {
             font-family: 'Roboto', sans-serif;
             line-height: 1.65;
-            /* SCHRIFTGRÖSSE ERHÖHT (Globaler Multiplikator) */
             font-size: 1.08rem; 
             color: var(--dark);
             background-color: var(--light);
@@ -60,7 +55,6 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Overlay reduziert für strahlenderen Hintergrund */
         body::before {
             content: '';
             position: fixed;
@@ -68,7 +62,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(240, 244, 243, 0.3); /* Noch transparenter */
+            background: rgba(240, 244, 243, 0.3);
             z-index: -1;
             pointer-events: none;
         }
@@ -79,7 +73,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 5px; /* Etwas dicker */
+            height: 5px;
             background: transparent;
             z-index: 9999;
         }
@@ -93,13 +87,12 @@
         }
 
         .container {
-            max-width: 1250px; /* Etwas breiter für größere Schrift */
+            max-width: 1250px;
             margin: 0 auto;
             padding: 0 20px;
             transition: max-width 0.3s ease;
         }
 
-        /* --- WIDE SCREEN OPTIMIERUNG --- */
         @media (min-width: 1600px) {
             .container {
                 max-width: 96% !important;
@@ -128,7 +121,7 @@
         }
 
         .logo {
-            max-height: 170px; /* Größer */
+            max-height: 170px;
             width: auto;
             filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
             margin-bottom: 15px;
@@ -141,7 +134,7 @@
 
         .new-slogan {
             font-family: 'Dancing Script', cursive;
-            font-size: 3.5rem; /* Größer */
+            font-size: 3.5rem;
             color: var(--accent);
             text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
             margin: 5px 0 20px 0;
@@ -157,7 +150,7 @@
 
         .motto-text {
             font-family: 'Playfair Display', serif;
-            font-size: 1.25rem; /* Größer */
+            font-size: 1.25rem;
             max-width: 700px;
             margin: 0 auto 25px;
             opacity: 0.95;
@@ -171,7 +164,7 @@
             justify-content: center;
             gap: 25px;
             flex-wrap: wrap;
-            font-size: 1.05rem; /* Größer */
+            font-size: 1.05rem;
             background: rgba(255,255,255,0.1);
             padding: 12px 30px;
             border-radius: 50px;
@@ -219,11 +212,11 @@
 
         nav a {
             display: block;
-            padding: 14px 24px; /* Größer */
+            padding: 14px 24px;
             text-decoration: none;
             color: var(--primary);
             font-weight: 700;
-            font-size: 1rem; /* Größer */
+            font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 0.8px;
             border-radius: 30px;
@@ -255,33 +248,42 @@
         }
         .mobile-menu-toggle:hover { transform: scale(1.1); }
 
-        /* --- SECTIONS --- */
+        /* --- SECTIONS & HEADINGS (ELEGANT & CONTRAST) --- */
         section { padding: 80px 0; }
 
         section h2 {
             text-align: center;
             font-family: 'Playfair Display', serif;
-            font-size: 3.4rem; /* Größer */
+            font-size: 3.5rem;
             color: var(--primary);
             margin-bottom: 50px;
             position: relative;
-            text-shadow: 0 2px 15px rgba(255,255,255,0.9);
+            /* High Contrast Glow statt fetter Outline */
+            text-shadow: 
+                0 0 15px rgba(255,255,255, 0.9),
+                0 0 30px rgba(255,255,255, 0.7),
+                2px 2px 4px rgba(0,0,0,0.2);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
         }
 
-        section h2::after {
+        /* Dekorative Linien links und rechts statt Unterstrich */
+        section h2::before, section h2::after {
             content: '';
-            display: block;
-            width: 100px;
-            height: 5px;
-            background: var(--accent);
-            margin: 15px auto 0;
-            border-radius: 3px;
+            height: 3px;
+            width: 60px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            border-radius: 2px;
+            opacity: 0.8;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
+        section h2::before { background: linear-gradient(to left, var(--primary), var(--accent)); }
 
-        /* --- GLAS-EFFEKT GENERISCH (Updated 20% Opacity) --- */
+        /* --- GLAS-EFFEKT GENERISCH --- */
         .menu-item,
-        /* rice-notice hat eigenes Styling */
         .order-notice,
         .contact-container,
         .allergen-legend details p {
@@ -295,7 +297,7 @@
         /* --- MENU GRID --- */
         .menu-items {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Breitere Karten */
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 35px;
         }
 
@@ -315,56 +317,69 @@
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
+        /* Box Hover Effekt */
         .menu-item:hover {
             transform: translateY(-8px);
             box-shadow: 0 25px 60px rgba(0,0,0,0.15);
             border-color: rgba(255, 193, 7, 0.7);
         }
 
+        /* --- INTERAKTIVE BUTTONS --- */
         .item-number {
             position: absolute;
             top: 20px;
             left: 20px;
-            background: var(--accent);
-            color: var(--dark);
+            /* Farbe: Seite (Teal), aber glassy */
+            background: rgba(0, 77, 77, 0.9); 
+            backdrop-filter: blur(5px);
+            color: #fff;
             font-weight: 800;
-            width: 50px; /* Größer */
-            height: 50px; /* Größer */
+            min-width: 55px;
+            height: 55px;
+            padding: 0 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            /* Form: Soft Square wie die Boxen */
+            border-radius: 15px; 
+            border: 2px solid var(--accent);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             z-index: 2;
-            font-size: 1.1rem; /* Größer */
-            border: 2px solid white;
-        }
-
-        .item-number.xl-button {
-            background: linear-gradient(135deg, #43a047, #2e7d32);
-            color: white;
-            position: relative;
-            overflow: hidden;
+            font-size: 1.2rem;
+            font-family: 'Playfair Display', serif;
+            /* Transition für den Effekt */
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
-        .item-number.xl-button::after {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 50%; height: 100%;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
-            transform: skewX(-25deg);
-            animation: shimmer 3s infinite;
+        /* EFFEKT: Wenn man über die BOX fährt, bewegt sich der BUTTON */
+        .menu-item:hover .item-number {
+            transform: scale(1.15) rotate(5deg);
+            background: var(--primary);
+            box-shadow: 0 0 20px rgba(255, 193, 7, 0.6);
+            border-color: #fff;
         }
 
-        @keyframes shimmer {
-            0% { left: -100%; }
-            20% { left: 200%; }
-            100% { left: 200%; }
+        /* --- XL BUTTON (SPECIAL) --- */
+        .item-number.xl-button {
+            /* Gleiche Form wie die anderen */
+            border-radius: 15px;
+            /* Umgekehrte Farben: Goldener Hintergrund */
+            background: linear-gradient(135deg, var(--accent), #FFD54F);
+            color: var(--primary);
+            border: 2px solid #fff;
+            /* Pulsierender Effekt */
+            animation: goldenPulse 2s infinite;
+        }
+
+        /* Pulsierender Glow Effekt für XL */
+        @keyframes goldenPulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 193, 7, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0); }
         }
 
         .item-image {
-            height: 240px; /* Höher */
+            height: 240px;
             overflow: hidden;
             border-bottom: 1px solid rgba(255,255,255,0.5);
         }
@@ -388,7 +403,7 @@
         }
 
         .item-name {
-            font-size: 1.55rem; /* Größer */
+            font-size: 1.55rem;
             color: var(--primary);
             font-weight: 700;
             line-height: 1.2;
@@ -397,13 +412,13 @@
         .item-thai-name {
             font-family: 'Dancing Script', cursive;
             color: #222;
-            font-size: 1.3rem; /* Größer */
+            font-size: 1.3rem;
             margin-top: 5px;
         }
 
         .item-description {
-            font-size: 1.05rem; /* Größer */
-            color: #000; /* Schwarz für Lesbarkeit auf 0.2 Opacity */
+            font-size: 1.05rem;
+            color: #000;
             margin-bottom: 20px;
             flex-grow: 1;
             font-weight: 400;
@@ -413,7 +428,7 @@
             font-family: 'Roboto', sans-serif;
             font-weight: 900;
             color: var(--primary);
-            font-size: 1.6rem; /* Größer */
+            font-size: 1.6rem;
             text-align: right;
             display: block;
             margin-top: auto;
@@ -427,7 +442,7 @@
         }
 
         .allergen {
-            font-size: 0.8rem; /* Größer */
+            font-size: 0.8rem;
             background: rgba(255,255,255,0.95);
             border: 1px solid #ccc;
             color: #333;
@@ -445,7 +460,7 @@
         .price-options td {
             padding: 6px 0;
             border-bottom: 1px solid rgba(0,0,0,0.08);
-            font-size: 1.05rem; /* Größer */
+            font-size: 1.05rem;
             font-weight: 500;
             color: #000;
         }
@@ -454,26 +469,26 @@
             font-weight: 800;
             color: var(--primary);
             white-space: nowrap;
-            font-size: 1.15rem; /* Preis größer */
+            font-size: 1.15rem;
         }
 
         .icon { font-style: normal; }
 
-        /* --- REDESIGNED RICE NOTICE --- */
+        /* --- RICE NOTICE --- */
         .rice-notice {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 15px;
-            background: rgba(255, 255, 255, 0.4); /* Etwas heller als die Karten */
+            background: rgba(255, 255, 255, 0.4);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             padding: 15px 30px;
             border-radius: 60px;
             margin: 0 auto 50px;
             max-width: 850px;
-            border: 2px solid var(--accent); /* Goldener Rand */
-            box-shadow: 0 5px 20px rgba(255, 193, 7, 0.2); /* Goldener Glow */
+            border: 2px solid var(--accent);
+            box-shadow: 0 5px 20px rgba(255, 193, 7, 0.2);
             transition: transform 0.3s;
         }
         
@@ -510,7 +525,7 @@
         }
         .order-notice p { font-size: 1.6rem; font-weight: 500; }
         .order-notice .phone {
-            font-size: 3rem; /* Riesig */
+            font-size: 3rem;
             font-weight: 800;
             color: var(--primary);
             text-decoration: none;
@@ -611,7 +626,7 @@
 
         @media (max-width: 768px) {
             .new-slogan { font-size: 2.5rem; }
-            section h2 { font-size: 2.5rem; }
+            section h2 { font-size: 2.8rem; }
             header { padding-bottom: 20px; clip-path: none; }
             
             nav {
