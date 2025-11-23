@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siriwan Thai Street Food | Speisekarte - Authentische Thailändische Küche</title>
+    <meta name="description" content="Entdecken Sie authentisches Thai Street Food bei Siriwan in Neufurth.">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Playfair+Display:wght@700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* --- FARBPALETTE --- */
+            --primary: #004d4d;
+            --primary-gradient: linear-gradient(135deg, #005F5F, #003333);
+            --secondary: #003838;
+            --accent: #FFC107; 
+            --accent-glow: #ffe082;
+            --light: #f4f7f6;
+            --dark: #050505; /* Tiefes Schwarz für maximalen Kontrast */
+            --text-light: #FFFFFF;
+            
+            /* --- ULTRA DEEP GLASS SETTINGS --- */
+            /* Transparenz halbiert auf 0.20 (20% Deckkraft) */
+            --glass-bg: rgba(255, 255, 255, 0.20); 
+            /* Rahmen etwas subtiler angepasst */
+            --glass-border: rgba(255, 255, 255, 0.4);
+            /* Blur stark erhöht für Lesbarkeit trotz Transparenz */
+            --blur: blur(30px);
+            /* Schatten für Tiefenwirkung */
+            --glass-shadow: 0 8px 32px 0 rgba(0, 15, 15, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 110px;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.65;
+            /* SCHRIFTGRÖSSE ERHÖHT (Globaler Multiplikator) */
+            font-size: 1.08rem; 
+            color: var(--dark);
+            background-color: var(--light);
+            background-image: url('images/background.png'); 
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            position: relative;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Overlay reduziert für strahlenderen Hintergrund */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(240, 244, 243, 0.3); /* Noch transparenter */
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px; /* Etwas dicker */
+            background: transparent;
+            z-index: 9999;
+        }
+
+        .scroll-progress-bar {
+            height: 100%;
+            background: var(--accent);
+            width: 0%;
+            box-shadow: 0 0 15px var(--accent);
+            transition: width 0.1s ease-out;
+        }
+
+        .container {
+            max-width: 1250px; /* Etwas breiter für größere Schrift */
+            margin: 0 auto;
+            padding: 0 20px;
+            transition: max-width 0.3s ease;
+        }
+
+        /* --- WIDE SCREEN OPTIMIERUNG --- */
+        @media (min-width: 1600px) {
+            .container {
+                max-width: 96% !important;
+            }
+            .menu-items {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important; 
+            }
+        }
+
+        /* --- HEADER --- */
+        header {
+            background: var(--primary-gradient);
+            color: var(--text-light);
+            padding: 40px 0 70px 0;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 88%, 50% 100%, 0 88%);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            z-index: 10;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .logo {
+            max-height: 170px; /* Größer */
+            width: auto;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+            margin-bottom: 15px;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .logo:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .new-slogan {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem; /* Größer */
+            color: var(--accent);
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+            margin: 5px 0 20px 0;
+            transform: rotate(-3deg);
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(-3deg); }
+            50% { transform: translateY(-8px) rotate(-3deg); }
+        }
+
+        .motto-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem; /* Größer */
+            max-width: 700px;
+            margin: 0 auto 25px;
+            opacity: 0.95;
+            font-style: italic;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            line-height: 1.6;
+        }
+
+        .header-contact {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            font-size: 1.05rem; /* Größer */
+            background: rgba(255,255,255,0.1);
+            padding: 12px 30px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .header-contact a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .header-contact a:hover { color: #fff; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: sticky;
+            top: 20px;
+            z-index: 1000;
+            margin-top: -35px;
+            padding: 0 15px;
+        }
+
+        .nav-inner {
+            border-radius: 50px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.65); 
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            list-style: none;
+            gap: 8px;
+        }
+
+        nav a {
+            display: block;
+            padding: 14px 24px; /* Größer */
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1rem; /* Größer */
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: var(--primary);
+            color: var(--text-light);
+            box-shadow: 0 4px 15px rgba(0, 77, 77, 0.4);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: var(--accent);
+            color: var(--dark);
+            border: none;
+            border-radius: 50%;
+            width: 55px;
+            height: 55px;
+            font-size: 1.7rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            cursor: pointer;
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            z-index: 1100;
+            transition: transform 0.3s;
+        }
+        .mobile-menu-toggle:hover { transform: scale(1.1); }
+
+        /* --- SECTIONS --- */
+        section { padding: 80px 0; }
+
+        section h2 {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 3.4rem; /* Größer */
+            color: var(--primary);
+            margin-bottom: 50px;
+            position: relative;
+            text-shadow: 0 2px 15px rgba(255,255,255,0.9);
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 5px;
+            background: var(--accent);
+            margin: 15px auto 0;
+            border-radius: 3px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* --- GLAS-EFFEKT GENERISCH (Updated 20% Opacity) --- */
+        .menu-item,
+        /* rice-notice hat eigenes Styling */
+        .order-notice,
+        .contact-container,
+        .allergen-legend details p {
+            background: var(--glass-bg);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+        }
+
+        /* --- MENU GRID --- */
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Breitere Karten */
+            gap: 35px;
+        }
+
+        .reveal-item {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .reveal-item.visible { opacity: 1; transform: translateY(0); }
+
+        .menu-item {
+            border-radius: 18px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+            border-color: rgba(255, 193, 7, 0.7);
+        }
+
+        .item-number {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--accent);
+            color: var(--dark);
+            font-weight: 800;
+            width: 50px; /* Größer */
+            height: 50px; /* Größer */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            z-index: 2;
+            font-size: 1.1rem; /* Größer */
+            border: 2px solid white;
+        }
+
+        .item-number.xl-button {
+            background: linear-gradient(135deg, #43a047, #2e7d32);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .item-number.xl-button::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            20% { left: 200%; }
+            100% { left: 200%; }
+        }
+
+        .item-image {
+            height: 240px; /* Höher */
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+        }
+        .item-image img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .menu-item:hover .item-image img { transform: scale(1.1); }
+
+        .item-content {
+            padding: 28px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .item-header {
+            margin-bottom: 15px;
+            border-bottom: 1px dashed rgba(0, 77, 77, 0.2);
+            padding-bottom: 12px;
+        }
+
+        .item-name {
+            font-size: 1.55rem; /* Größer */
+            color: var(--primary);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .item-thai-name {
+            font-family: 'Dancing Script', cursive;
+            color: #222;
+            font-size: 1.3rem; /* Größer */
+            margin-top: 5px;
+        }
+
+        .item-description {
+            font-size: 1.05rem; /* Größer */
+            color: #000; /* Schwarz für Lesbarkeit auf 0.2 Opacity */
+            margin-bottom: 20px;
+            flex-grow: 1;
+            font-weight: 400;
+        }
+
+        .price-tag {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 900;
+            color: var(--primary);
+            font-size: 1.6rem; /* Größer */
+            text-align: right;
+            display: block;
+            margin-top: auto;
+        }
+
+        .item-allergens {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 18px;
+        }
+
+        .allergen {
+            font-size: 0.8rem; /* Größer */
+            background: rgba(255,255,255,0.95);
+            border: 1px solid #ccc;
+            color: #333;
+            padding: 3px 9px;
+            border-radius: 5px;
+            font-weight: 700;
+        }
+
+        .price-options {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 8px;
+            margin-top: 12px;
+        }
+        .price-options td {
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            font-size: 1.05rem; /* Größer */
+            font-weight: 500;
+            color: #000;
+        }
+        .price-options td:last-child {
+            text-align: right;
+            font-weight: 800;
+            color: var(--primary);
+            white-space: nowrap;
+            font-size: 1.15rem; /* Preis größer */
+        }
+
+        .icon { font-style: normal; }
+
+        /* --- REDESIGNED RICE NOTICE --- */
+        .rice-notice {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.4); /* Etwas heller als die Karten */
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 15px 30px;
+            border-radius: 60px;
+            margin: 0 auto 50px;
+            max-width: 850px;
+            border: 2px solid var(--accent); /* Goldener Rand */
+            box-shadow: 0 5px 20px rgba(255, 193, 7, 0.2); /* Goldener Glow */
+            transition: transform 0.3s;
+        }
+        
+        .rice-notice:hover {
+            transform: scale(1.02);
+        }
+
+        .rice-icon {
+            font-size: 1.8rem;
+            background: var(--accent);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .rice-text {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.15rem;
+            letter-spacing: 0.3px;
+        }
+
+        /* --- ORDER NOTICE --- */
+        .order-notice {
+            text-align: center;
+            padding: 50px 30px;
+            border-radius: 25px;
+            margin: 70px auto;
+            max-width: 900px;
+        }
+        .order-notice p { font-size: 1.6rem; font-weight: 500; }
+        .order-notice .phone {
+            font-size: 3rem; /* Riesig */
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 15px;
+            transition: transform 0.3s;
+            text-shadow: 1px 1px 0px rgba(255,255,255,1);
+        }
+        .order-notice .phone:hover { transform: scale(1.05); color: var(--accent); }
+
+        /* --- CONTACT --- */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0; 
+            border-radius: 25px;
+            overflow: hidden;
+        }
+
+        .contact-info { padding: 50px; }
+        .contact-info h3 {
+            color: var(--primary);
+            font-size: 1.7rem;
+            margin-bottom: 25px;
+            border-bottom: 4px solid var(--accent);
+            padding-bottom: 8px;
+            display: inline-block;
+        }
+        .contact-details p { margin-bottom: 18px; display: flex; align-items: center; font-size: 1.2rem; }
+        .contact-details i { width: 40px; color: var(--primary); font-size: 1.4rem; }
+        
+        .map-container { min-height: 500px; position: relative; }
+        .map-container iframe { width: 100%; height: 100%; border: none; }
+
+        .social-media { display: flex; gap: 20px; }
+        .social-link {
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            background: #fff;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            transition: all 0.3s;
+        }
+        .social-link:hover { background: var(--primary); color: var(--accent); transform: translateY(-4px); }
+        .social-link svg { width: 28px; height: 28px; }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--dark);
+            color: #bbb;
+            padding: 70px 0 40px;
+            text-align: center;
+            margin-top: 90px;
+            border-top: 8px solid var(--accent);
+        }
+        .footer-links a { color: #fff; margin: 0 20px; text-decoration: none; transition: 0.3s; font-size: 1.1rem; }
+        .footer-links a:hover { color: var(--accent); }
+
+        /* --- EXTRAS --- */
+        .back-to-top {
+            position: fixed; bottom: 40px; right: 40px;
+            background: var(--primary); color: white;
+            width: 55px; height: 55px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; opacity: 0; visibility: hidden;
+            transition: all 0.3s; z-index: 999;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            border: 2px solid var(--accent);
+            font-size: 1.4rem;
+        }
+        .back-to-top.visible { opacity: 1; visibility: visible; }
+        .back-to-top:hover { background: var(--secondary); transform: translateY(-5px); }
+
+        .cookie-consent-banner {
+            position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 550px;
+            background: rgba(20, 20, 20, 0.95); color: white;
+            padding: 25px; border-radius: 20px;
+            display: flex; flex-direction: column; align-items: center; gap: 20px;
+            z-index: 10000; backdrop-filter: blur(15px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.7); text-align: center;
+            border: 1px solid #555;
+        }
+        .cookie-consent-banner p { font-size: 1rem; line-height: 1.5; }
+        .cookie-consent-banner button {
+            background: var(--accent); color: var(--dark); border: none;
+            padding: 12px 40px; border-radius: 30px; font-weight: 800; font-size: 1.1rem;
+            cursor: pointer; transition: transform 0.2s;
+        }
+        .cookie-consent-banner button:hover { transform: scale(1.05); }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 992px) {
+            .contact-container { grid-template-columns: 1fr; }
+            .map-container { height: 400px; }
+        }
+
+        @media (max-width: 768px) {
+            .new-slogan { font-size: 2.5rem; }
+            section h2 { font-size: 2.5rem; }
+            header { padding-bottom: 20px; clip-path: none; }
+            
+            nav {
+                position: fixed; top: 0; left: 0; width: 100%; margin: 0; padding: 0; height: 0;
+                background: rgba(0, 77, 77, 0.98); backdrop-filter: blur(15px);
+                overflow: hidden; transition: height 0.4s ease;
+                display: flex; align-items: center; justify-content: center;
+            }
+            nav.open { height: 100vh; }
+            .nav-inner {
+                background: transparent; border: none; box-shadow: none;
+                flex-direction: column; height: auto;
+            }
+            nav ul { flex-direction: column; gap: 30px; }
+            nav a { color: white; font-size: 1.6rem; padding: 10px; }
+            .mobile-menu-toggle { display: flex; align-items: center; justify-content: center; }
+            .header-content { padding-top: 50px; }
+            
+            .rice-notice {
+                flex-direction: column;
+                padding: 15px;
+                border-radius: 30px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar" id="progressBar"></div>
+    </div>
+
+    <header>
+        <div class="container header-content">
+            <h1 class="logo-container">
+                <img src="images/logo.png" alt="Siriwan Thai Street Food Logo" class="logo">
+            </h1>
+            
+            <div class="new-slogan">One Bite in Bangkok</div>
+            
+            <div class="motto-text">Wir kochen hausgemachte Spezialitäten mit originalen Zutaten nach traditionellen Rezepten aus verschiedenen Landesteilen Thailands.</div>
+            
+            <div class="header-contact">
+                <span>📍 Ybbsstraße 39, 3300 Amstetten</span>
+                <span>🕒 MO–FR: 11:00–18:30</span>
+                <span>📞 <a href="tel:0664123456">0664 123 456</a></span>
+            </div>
+        </div>
+        
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menü">☰</button>
+    </header>
+
+    <nav id="mainNav">
+        <div class="nav-inner">
+            <ul id="navMenu">
+                <li><a href="#vorspeisen" class="nav-link">Vorspeisen</a></li>
+                <li><a href="#suppen-curry" class="nav-link">Suppen & Curry</a></li>
+                <li><a href="#wokgerichte" class="nav-link">Wok</a></li>
+                <li><a href="#nudeln-reis" class="nav-link">Nudeln & Reis</a></li>
+                <li><a href="#getraenke" class="nav-link">Getränke</a></li>
+                <li><a href="#kontakt" class="nav-link">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        
+        <section id="vorspeisen">
+            <h2>Vorspeisen</h2>
+            <div class="menu-items">
+                <div class="menu-item reveal-item">
+                    <div class="item-number">V1</div>
+                    <div class="item-image">
+                        <img src="images/V1_frühlingsrollen.png" alt="Frühlingsrollen" loading="lazy">
+                    </div>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h3 class="item-name">Frühlingsrollen</h3>
+                            <p class="item-thai-name">po pia</p>
+                        </div>
+                        <p class="item-description">3 Stk. knusprig frittierte Teigröllchen, gefüllt mit Glasnudeln, Karotten, wahlweise mit Schweinsfaschiertem oder Gemüse. Dazu süß-saure Dip-Sauce.</p>
+                        <span class="price-tag">5,50 €</span>
+                        <div class="item-allergens">
+                            <span class="allergen">A</span><span class="allergen">C</span><span class="allergen">F</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item reveal-item">
+                    <div class="item-number">V2</div>
+                    <div class="item-image">
+                        <img src="images/V3_huhn-tempura.png" alt="Tempura Huhn" loading="lazy">
+                    </div>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h3 class="item-name">Tempura Huhn</h3>
+                            <p class="item-thai-name">gai tempura</p>
+                        </div>
+                        <p class="item-description">5 Stk. Hühnerfilet im Tempura-Teigmantel mit süß-saurer Sauce.</p>
+                        <span class="price-tag">5,90 €</span>
+                        <div class="item-allergens">
+                            <span class="allergen">A</span><span class="allergen">C</span><span class="allergen">F</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item reveal-item">
+                    <div class="item-number">V3</div>
+                    <div class="item-image">
+                        <img src="images/V4_gai-satay.png" alt="Saté Spieße" loading="lazy">
+                    </div>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h3 class="item-name">Hühner Saté Spieße</h3>
+                            <p class="item-thai-name">gai saté</p>
+                        </div>
+                        <p class="item-description">3 Stk. zarte Hühnerspieße mit cremiger Erdnuss-Kokos-Currysauce.</p>
+                        <span class="price-tag">7,90 €</span>
+                        <div class="item-allergens">
+                            <span class="allergen">E</span><span class="allergen">F</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item reveal-item">
+                    <div class="item-number">V4</div>
+                    <div class="item-image">
+                        <img src="images/V5_som-tam-thai.png" alt="Papayasalat" loading="lazy">
+                    </div>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h3 class="item-name">Papayasalat</h3>
+                            <p class="item-thai-name">som tam thai</p>
+                        </div>
+                        <p class="item-description">Frischer grüner Papayasalat mit Fischsauce, Karotten, Fisolen, Tomaten, Limette, Erdnüssen & Tamarindenpaste; auf Wunsch mit Chili.</p>
+                        <span class="price-tag">8,90 €</span>
+                        <div class="item-allergens">
+                            <span class="allergen">D</span><span class="allergen">E</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="suppen-curry">
+            <h2>Suppen & Curry</h2>
+            <div class="rice-notice">
+                <div class="rice-icon">ℹ️</div>
+                <span class="rice-text">Alle Hauptgerichte (Suppen, Curry & Wok) werden inkl. einer Portion Jasminreis serviert.</span>
+            </div>
+           
+            <div class="menu-items">
+                <div class="menu-item reveal-item">
+                    <div class="item-number">M1</div>
+                    <div class="item-image">
+                        <img src="images/M1_tom-yam-gung.png" alt="Tom Yam" loading="lazy">
+                    </div>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h3 class="item-name">Tom Yam</h3>
+                        </div>
+                        <p class="item-description">Scharf-saure Suppe mit Tomaten, Champignons, Zitronengras, Galgant, Kaffirlimettenblättern, Fischsauce & Limettensaft.</p>
+                        <table class="price-options">
+                            <tr><td>Huhn</td><td>10,90 €</td></tr>
+                            <tr><td>Garnelen</td><td>12,90 €</td></tr>
+                            <tr><td>Gemischt (Huhn & Garnelen)</td><td>13,90 €</td></tr>
+                        </table>
+                        <div class="item-allergens">
+                            <span class="allergen">B</span><span class="allergen">D</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item reveal-item">
+                    <div class="item-number">M2</div>
+                    <div class="item-image">
+                        <img src="images/M2_tom-kha-gai.png" alt="Tom Kha" loading="lazy">
+                    </div>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h3 class="item-name">Kokossuppe</h3>
+                            <p class="item-thai-name">tom kha</p>
+                        </div>
+                        <p class="item-description">Aromatische Kokosmilchsuppe mit Tomaten, Champignons, Zitronengras, Galgant, Kaffirlimettenblättern, Fischsauce & Limettensaft.</p>
+                        <table class="price-options">
+                            <tr><td>Huhn</td><td>10,90 €</td></tr>
+                            <tr><td>Garnelen</td><td>12,90 €</td></tr>
+                            <tr><td>Gemischt (Huhn & Garnelen)</td><td>13,90 €</td></tr>
+                        </table>
+                        <div class="item-allergens">
+                            <span class="allergen">D</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item reveal-item">
+                    <div class="item-number">M3</div>
+                    <div class="item-image">
+                        <img src="images/M2_gelbes-Curry.png" alt="Gelbes Curry" loading="lazy">
+                    </div>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h3 class="item-name">Gelbes Curry</h3>
+                            <p class="item-thai-name">gaeng lüang</p>
+                        </div>
+                        <p class="item-description">Mildes Kokoscurry mit Kartoffeln & Karotten.</p>
+                        <table class="price-options">
+                            <tr><td>Gemüse / Tofu</td><td>10,50 €</td></tr>
+                            <tr><td>Huhn</td><td>11,90 €</td></tr>
+                            <tr><td>Rind</td><td>12,90 €</td></tr>
+                            <tr><td>Garnelen</td><td>12,90 €</td></tr>
+                        </table>
+                        <div class="item-allergens">
+                            <span class="allergen">A</span><span class="allergen">B</span><span class="allergen">D</span><span class="allergen">F</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item reveal-item">
+                    <div class="item-number">M4</div>
+                    <div class="item-image">
+                        <img src="images/M5_rotes-curry.png" alt="Rotes Curry" loading="lazy">
+                    </div>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h3 class="item-name">Rotes Curry <span class="icon" style="color: #ff4d4d;">🌶</span></h3>
+                            <p class="item-thai-name">gaeng daeng</p>
+                        </div>
+                        <p class="item-description">Kokoscurry mit Bambus, Zucchini, Fisolen, Spitzpaprika & Thai-Basilikum.</p>
+                        <table class="price-options">
+                            <tr><td>Gemüse / Tofu</td><td>10,50 €</td></tr>
+                            <tr><td>Huhn</td><td>11,90 €</td></tr>
+                            <tr><td>Rind</td><td>12,90 €</td></tr>
+                            <tr><td>Garnelen</td><td>12,90 €</td></tr>
+                            <tr><td>Ente</td><td>13,90 €</td></tr>
+                        </table>
+                        <div class="item-allergens">
+                            <span class="allergen">A</span><span class="allergen">B</span><span class="allergen">D</span><span class="allergen">F</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="wokgerichte">
+            <h2>Wok</h2>
+            <div class="menu-items">
+                <div class="menu-item reveal-item">
+                    <div class="item-number">M5</div>
+                    <div class="item-image">
+                        <img src="images/M4_pad-phrik-gaeng-daeng.png" alt="Roter Curry Wok" loading="lazy">
+                    </div>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h3 class="item-name">Roter Curry Wok <span class="icon" style="color: #ff4d4d;">🌶</span></h3>
+                            <p class="item-thai-name">pad phrik gaeng daeng</p>
+                        </div>
+                        <p class="item-description">Gebratenes Gemüse in roter Currypaste, Kokosmilch & Thai-Kräutern und Bambus, Fisolen & Spitzpaprika.</p>
+                        <table class="price-options">
+                            <tr><td>Tofu</td><td>10,50 €</td></tr>
+                            <tr><td>Huhn</td><td>11,90 €</td></tr>
+                            <tr><td>Rind</td><td>12,50 €</td></tr>
+                            <tr><td>Garnelen</td><td>12,50 €</td></tr>
+                            <tr><td>Ente</td><td>13,90 €</td></tr>
+                        </table>
+                        <div class="item-allergens">
+                            <span class="allergen">A</span><span class="allergen">B</span><span class="allergen">D</span><span class="allergen">F</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item reveal-item">
+                    <div class="item-number">M6</div>
+                    <div class="item-image">
+                        <img src="images/M5_pad-priao-wan-gung.png" alt="Wok süßsauer" loading="lazy">
+                    </div>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h3 class="item-name">Wok süßsauer</h3>
+                            <p class="item-thai-name">pad priao wan</p>
+                        </div>
+                        <p class="item-description">Gurken, Zwiebeln, Jungzwiebeln & Paprika in süßsaurer Sauce.</p>
+                        <table class="price-options">
+                            <tr><td>Huhn</td><td>11,90 €</td></tr>
+                            <tr><td>Garnelen</td><td>12,90 €</td></tr>
+                        </table>
+                        <div class="item-allergens">
+                            <span class="allergen">A</span><span class="allergen">F</span><span class="allergen">R</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item reveal-item">
+                    <div class="item-number">M7</div>
+                    <div class="item-image">
+                        <img src="images/M6_pad-met-mamuang.png" alt="Cashew Wok" loading="lazy">
+                    </div>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h3 class="item-name">Cashew Wok</h3>
+                            <p class="item-thai-name">pad med mamuang</p>
+                        </div>
+                        <p class="item-description">Cashewnüsse, Jungzwiebeln & Paprika in süß-milder Woksauce.</p>
+                        <table class="price-options">
+                            <tr><td>Huhn</td><td>11,90 €</td></tr>
+                            <tr><td>Garnelen</td><td>12,90 €</td></tr>
+                        </table>
+                        <div class="item-allergens">
+                            <span class="allergen">A</span><span class="allergen">F</span><span class="allergen">H</span><span class="allergen">R</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item reveal-item">
+                    <div class="item-number">M8</div>
+                    <div class="item-image">
+                        <img src="images/M7_pad-graprao-gung.png" alt="Basilikum Wok" loading="lazy">
+                    </div>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h3 class="item-name">Basilikum Wok <span class="icon" style="color: #ff4d4d;">🌶</span></h3>
+                            <p class="item-thai-name">pad kra prao</p>
+                        </div>
+                        <p class="item-description">Pikant gebratenes Thai Basilikum, Zwiebeln & Spitzpaprika.</p>
+                        <table class="price-options">
+                            <tr><td>Huhn</td><td>11,90 €</td></tr>
+                            <tr><td>Rind</td><td>12,90 €</td></tr>
+                            <tr><td>Garnelen</td><td>12,90 €</td></tr>
+                        </table>
+                        <div class="item-allergens">
+                            <span class="allergen">A</span><span class="allergen">D</span><span class="allergen">F</span><span class="allergen">R</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item reveal-item">
+                    <div class="item-number">M9</div>
+                    <div class="item-image">
+                        <img src="images/M8_pad-phrik-thai-dam.png" alt="Pfefferwok" loading="lazy">
+                    </div>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h3 class="item-name">Pfefferwok</h3>
+                            <p class="item-thai-name">pad phrik thai dam</p>
+                        </div>
+                        <p class="item-description">Würzig-pfeffrig mit Jungzwiebeln, Zwiebeln, Paprika & Karotten.</p>
+                        <table class="price-options">
+                            <tr><td>Huhn</td><td>11,90 €</td></tr>
+                            <tr><td>Rind</td><td>12,90 €</td></tr>
+                            <tr><td>Garnelen</td><td>12,90 €</td></tr>
+                            <tr><td>Ente</td><td>13,90 €</td></tr>
+                        </table>
+                        <div class="item-allergens">
+                            <span class="allergen">A</span><span class="allergen">D</span><span class="allergen">F</span><span class="allergen">R</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="nudeln-reis">
+            <h2>Nudeln & Reis</h2>
+            <div class="menu-items">
+                <div class="menu-item reveal-item">
+                    <div class="item-number">M10</div>
+                    <div class="item-image">
+                        <img src="images/M9_pad-thai-gung.png" alt="Pad Thai" loading="lazy">
+                    </div>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h3 class="item-name">Pad Thai</h3>
+                        </div>
+                        <p class="item-description">Reisbandnudeln mit Karotten, Sojasprossen, Jungzwiebeln, Erdnüssen & Ei in hauseigener Pad-Thai-Sauce, ohne Reis.</p>
+                        <table class="price-options">
+                            <tr><td>Tofu</td><td>10,50 €</td></tr>
+                            <tr><td>Huhn</td><td>11,90 €</td></tr>
+                            <tr><td>Garnelen</td><td>12,50 €</td></tr>
+                        </table>
+                        <div class="item-allergens">
+                            <span class="allergen">A</span><span class="allergen">B</span><span class="allergen">C</span><span class="allergen">D</span><span class="allergen">E</span><span class="allergen">F</span><span class="allergen">R</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item reveal-item">
+                    <div class="item-number">M11</div>
+                    <div class="item-image">
+                        <img src="images/M12_khao-pad.png" alt="Khao Pad" loading="lazy">
+                    </div>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h3 class="item-name">Gebratener Reis</h3>
+                            <p class="item-thai-name">khao pad</p>
+                        </div>
+                        <p class="item-description">Gebratener Jasminreis mit Ei, Karotten, Erbsen & Zwiebeln.</p>
+                        <table class="price-options">
+                            <tr><td>Gemüse</td><td>9,50 €</td></tr>
+                            <tr><td>Huhn</td><td>11,90 €</td></tr>
+                            <tr><td>Garnelen</td><td>12,50 €</td></tr>
+                        </table>
+                        <div class="item-allergens">
+                            <span class="allergen">A</span><span class="allergen">C</span><span class="allergen">D</span><span class="allergen">F</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="getraenke">
+            <h2>Getränke & Extras</h2>
+            <div class="menu-items">
+                <div class="menu-item reveal-item">
+                    <div class="item-image" style="background: rgba(255,255,255,0.7);">
+                        <img src="images/getraenke.png" alt="Getränke" style="object-fit: contain;">
+                    </div>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h3 class="item-name">Getränke</h3>
+                        </div>
+                        <table class="price-options">
+                            <tr><td>Singha Bier 0,33 l</td><td>3,90 €</td></tr>
+                            <tr><td>Chang Bier 0.33 l</td><td>3,90 €</td></tr>
+                            <tr><td>Mineralwasser (still/prickelnd)*</td><td>2,50 €</td></tr>
+                            <tr><td>Coca-Cola* 0,33 l</td><td>2,90 €</td></tr>
+                            <tr><td>Aloe Vera Drink* 0,33 l</td><td>3,80 €</td></tr>
+                            <tr><td>Kokosnusssaft* 0,33 l</td><td>3,80 €</td></tr>
+                        </table>
+                        <p style="margin-top: 15px; font-size: 0.9rem; color: #333; font-style: italic;">* inkl. € 0,25 Pfand</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item reveal-item">
+                    <div class="item-number xl-button">XL</div> 
+                    <div class="item-image">
+                        <img src="images/extras.png" alt="Extras" loading="lazy">
+                    </div>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h3 class="item-name">Extras</h3>
+                        </div>
+                        <p class="item-description">Beilagen und Extraportionen.</p>
+                        <table class="price-options">
+                            <tr><td>Eier</td><td>2,00 €</td></tr>
+                            <tr><td>Reis / Rind / Garnelen</td><td>2,50 €</td></tr>
+                            <tr><td>Ente</td><td>3,00 €</td></tr>
+                            <tr><td>Extraportionen</td><td>3,90 €</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="order-notice">
+            <p>Hungrig? Rufen Sie uns für Ihre Vorbestellung an.</p>
+            <a href="tel:0664123456" class="phone">0664 123 456</a>
+        </div>
+
+        <section id="kontakt">
+            <h2>Kontakt & Standort</h2>
+            <div class="contact-container reveal-item">
+                <div class="contact-info">
+                    <div class="contact-details">
+                        <h3>Adresse & Kontakt</h3>
+                        <p><i>📍</i> Ybbsstraße 39, 3300 Amstetten</p>
+                        <p><i>📞</i> <a href="tel:0664123456" style="color:var(--dark); text-decoration:none;">0664 123 456</a></p>
+                        <p><i>✉️</i> <a href="mailto:office@siriwan.at" style="color:var(--dark); text-decoration:none;">office@siriwan.at</a></p>
+                        <p><i>🌐</i> <a href="http://www.siriwan.at" style="color:var(--dark); text-decoration:none;">www.siriwan.at</a></p>
+                    </div>
+                   
+                    <div class="opening-hours" style="margin-top: 30px;">
+                        <h3>Öffnungszeiten</h3>
+                        <p>MO–FR: 11:00–18:30 Uhr</p>
+                        <p style="color: var(--secondary);">Feiertags geschlossen</p>
+                    </div>
+                   
+                    <div class="payment-info" style="margin-top: 30px;">
+                        <h3>Bezahlmöglichkeiten</h3>
+                        <div class="item-allergens">
+                            <span class="allergen">Bar</span>
+                            <span class="allergen">Bankomatkarte</span>
+                            <span class="allergen">EC-Karte</span>
+                            <span class="allergen">Kontaktlos</span>
+                            <span class="allergen">Apple Pay</span>
+                            <span class="allergen">Google Pay</span>
+                        </div>
+                        <p style="margin-top: 10px; color: #d32f2f; font-weight: bold;">🚫 Kein Lieferservice</p>
+                    </div>
+                   
+                    <div class="social-media" style="margin-top: 30px;">
+                        <h3>Social Media</h3>
+                        <div style="display:flex; gap:10px;">
+                            <a href="https://www.facebook.com/siriwan.thaistreetfood" target="_blank" class="social-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                            </a>
+                            <a href="https://www.instagram.com/siriwan.thaistreetfood" target="_blank" class="social-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps?q=Ybbsstra%C3%9Fe%2039,%203300%20Amstetten&output=embed"
+                            width="100%"
+                            height="100%"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            title="Standort Siriwan"></iframe>
+                </div>
+            </div>
+            
+            <div class="allergen-legend" style="margin-top: 20px; text-align: center;">
+                <details style="cursor: pointer; display: inline-block;">
+                    <summary style="color: var(--primary); font-weight: bold; outline: none;">Allergenlegende anzeigen</summary>
+                    <p style="margin-top: 10px; font-size: 0.9rem; max-width: 600px; text-align: left; padding: 10px; border-radius: 10px;">
+                        A Glutenhaltiges Getreide · B Krebstiere · C Eier · D Fisch · E Erdnüsse · F Soja · G Milch/Laktose · H Schalenfrüchte · L Sellerie · M Senf · N Sesam · O Sulfite · P Lupinen · R Weichtiere<br><br>
+                        Viele Gerichte enthalten glutenhaltige Soja- oder Austernsauce. Gluten- & laktosefreie Zubereitung ist auf Anfrage möglich.
+                    </p>
+                </details>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <p class="copyright">© 2025 Siriwan Thai Street Food | Alle Rechte vorbehalten</p>
+            <p class="ust-hinweis" style="font-size: 0.9rem; opacity: 0.7;">Alle Preise inkl. gesetzlicher Umsatzsteuer</p>
+            <div class="footer-links" style="margin-top: 10px;">
+                <a href="impressum.html">Impressum</a>
+                <a href="datenschutz.html">Datenschutz</a>
+                <a href="agb.html">AGB</a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="back-to-top" id="backToTop">↑</div>
+
+    <div class="cookie-consent-banner" id="cookieConsentBanner">
+        <p>Wir verwenden auf dieser Webseite lediglich anonyme Daten zur Analyse der Seitenbesuche. Es werden keine personenbezogenen Daten gespeichert.</p>
+        <button id="acceptCookies">Einverstanden</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTopBtn = document.getElementById('backToTop');
+            const mobileBtn = document.getElementById('mobileMenuToggle');
+            const nav = document.getElementById('mainNav');
+            const cookieBanner = document.getElementById('cookieConsentBanner');
+            const progressBar = document.getElementById('progressBar');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section');
+            
+            // --- SCROLL PROGRESS & ACTIVE LINK ---
+            window.addEventListener('scroll', () => {
+                // 1. Progress Bar Logic
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                progressBar.style.width = scrolled + "%";
+
+                // 2. Active Link Logic
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (scrollY >= sectionTop - 150) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+
+                // 3. Back to Top visibility
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+
+            // --- REVEAL ANIMATION ---
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal-item').forEach(el => {
+                observer.observe(el);
+            });
+
+            // --- MOBILE MENU ---
+            mobileBtn.addEventListener('click', () => {
+                const isOpen = nav.classList.contains('open');
+                if (isOpen) {
+                    nav.classList.remove('open');
+                    mobileBtn.textContent = '☰';
+                    document.body.style.overflow = '';
+                } else {
+                    nav.classList.add('open');
+                    mobileBtn.textContent = '✕';
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (nav.classList.contains('open')) {
+                        nav.classList.remove('open');
+                        mobileBtn.textContent = '☰';
+                        document.body.style.overflow = '';
+                    }
+                });
+            });
+
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            if (localStorage.getItem('cookieConsentAccepted') === 'true') {
+                cookieBanner.style.display = 'none';
+            }
+            document.getElementById('acceptCookies').addEventListener('click', () => {
+                localStorage.setItem('cookieConsentAccepted', 'true');
+                cookieBanner.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
