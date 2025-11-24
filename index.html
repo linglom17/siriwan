@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Siriwan Thai Street Food | Speisekarte - Authentische Thailändische Küche</title>
-    <meta name="description" content="Entdecken Sie authentisches Thai Street Food bei Siriwan in Neufurth. Hausgemachte Spezialitäten, Curry, Wok & mehr.">
+    <meta name="description" content="Entdecken Sie authentisches Thai Street Food bei Siriwan in Amstetten. Hausgemachte Spezialitäten, Curry, Wok & mehr.">
     <meta name="robots" content="index, follow">
     
     <link rel="icon" type="image/png" href="images/favicon.png">
     
     <meta property="og:title" content="Siriwan Thai Street Food | Speisekarte">
-    <meta property="og:description" content="Authentische Thai-Küche in Amstetten/Neufurth. Entdecken Sie unsere Speisekarte.">
+    <meta property="og:description" content="Authentische Thai-Küche in Amstetten. Entdecken Sie unsere Speisekarte.">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="de_AT">
 
@@ -150,8 +150,9 @@
                 max-width: 96% !important;
             }
             .menu-items {
-                /* FIX: auto-fill statt auto-fit verhindert zu breite Boxen bei wenigen Elementen */
-                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)) !important; 
+                /* FIX: auto-fit + max-width sorgt für Zentrierung ohne Streckung auf großen Screens */
+                grid-template-columns: repeat(auto-fit, minmax(350px, 450px)) !important;
+                justify-content: center !important;
             }
         }
 
@@ -350,9 +351,10 @@
         /* --- MENU GRID --- */
         .menu-items {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            /* ZENTRIERUNG FIX: auto-fit + max-width 450px verhindert zu breite Boxen, justify-content zentriert */
+            grid-template-columns: repeat(auto-fit, minmax(350px, 450px)); 
             gap: 35px;
-            justify-content: center; /* ZENTRIERUNG AUF ALLEN MONITOREN */
+            justify-content: center; 
         }
 
         .reveal-item {
