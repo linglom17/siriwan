@@ -4,8 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Siriwan Thai Street Food | Speisekarte - Authentische Thailändische Küche</title>
-    <meta name="description" content="Entdecken Sie authentisches Thai Street Food bei Siriwan in Neufurth.">
+    <meta name="description" content="Entdecken Sie authentisches Thai Street Food bei Siriwan in Neufurth. Hausgemachte Spezialitäten, Curry, Wok & mehr.">
     <meta name="robots" content="index, follow">
+    
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    
+    <meta property="og:title" content="Siriwan Thai Street Food | Speisekarte">
+    <meta property="og:description" content="Authentische Thai-Küche in Amstetten/Neufurth. Entdecken Sie unsere Speisekarte.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="de_AT">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Siriwan Thai Street Food",
+      "image": "images/logo.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Ybbsstraße 39",
+        "addressLocality": "Amstetten",
+        "postalCode": "3300",
+        "addressCountry": "AT"
+      },
+      "telephone": "+43664123456",
+      "url": "http://www.siriwan.at",
+      "servesCuisine": "Thai",
+      "priceRange": "€€",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "11:00",
+          "closes": "18:30"
+        }
+      ]
+    }
+    </script>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -109,7 +150,8 @@
                 max-width: 96% !important;
             }
             .menu-items {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important; 
+                /* FIX: auto-fill statt auto-fit verhindert zu breite Boxen bei wenigen Elementen */
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)) !important; 
             }
         }
 
@@ -310,6 +352,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 35px;
+            justify-content: center; /* ZENTRIERUNG AUF ALLEN MONITOREN */
         }
 
         .reveal-item {
@@ -767,7 +810,6 @@
         <section id="suppen-curry">
             <h2>Suppen & Curry</h2>
             <div class="rice-notice">
-                <div class="rice-icon">ℹ️</div>
                 <span class="rice-text">Alle Hauptgerichte (Suppen, Curry & Wok) werden inkl. einer Portion Jasminreis serviert.</span>
             </div>
            
@@ -1042,17 +1084,17 @@
                         <table class="price-options">
                             <tr><td>Singha Bier 0,33 l</td><td>3,90 €</td></tr>
                             <tr><td>Chang Bier 0.33 l</td><td>3,90 €</td></tr>
-                            <tr><td>Mineralwasser (still/prickelnd)*</td><td>2,50 €</td></tr>
-                            <tr><td>Coca-Cola* 0,33 l</td><td>2,90 €</td></tr>
-                            <tr><td>Aloe Vera Drink* 0,33 l</td><td>3,80 €</td></tr>
-                            <tr><td>Kokosnusssaft* 0,33 l</td><td>3,80 €</td></tr>
+                            <tr><td>Mineralwasser (still/prickelnd)*</td><td>2,75 €</td></tr>
+                            <tr><td>Coca-Cola* 0,33 l</td><td>3,15 €</td></tr>
+                            <tr><td>Aloe Vera Drink 0,33 l</td><td>3,80 €</td></tr>
+                            <tr><td>Kokosnusssaft 0,33 l</td><td>3,80 €</td></tr>
                         </table>
                         <p style="margin-top: 15px; font-size: 0.9rem; color: #333; font-style: italic;">* inkl. € 0,25 Pfand</p>
                     </div>
                 </div>
                 
                 <div class="menu-item reveal-item">
-                    <div class="item-number">XL</div> 
+                    <div class="item-number xl-button">XL</div> 
                     <div class="item-image">
                         <img src="images/extras.png" alt="Extras" loading="lazy">
                     </div>
@@ -1060,12 +1102,12 @@
                         <div class="item-header">
                             <h3 class="item-name">Extras</h3>
                         </div>
-                        <p class="item-description">Beilagen und Extraportionen.</p>
+                        <p class="item-description">Alle Hauptgerichte (Suppen, Curry & Wok) werden inkl. einer Portion Jasminreis serviert.</p>
                         <table class="price-options">
-                            <tr><td>Eier</td><td>2,00 €</td></tr>
-                            <tr><td>Reis / Rind / Garnelen</td><td>2,50 €</td></tr>
-                            <tr><td>Ente</td><td>3,00 €</td></tr>
-                            <tr><td>Extraportionen</td><td>3,90 €</td></tr>
+                            <tr><td>+ Ei</td><td>2,00 €</td></tr>
+                            <tr><td>+ Reis / Rind / Garnelen</td><td>2,50 €</td></tr>
+                            <tr><td>+ Ente</td><td>3,00 €</td></tr>
+                            <tr><td>Extraportion</td><td>3,90 €</td></tr>
                         </table>
                     </div>
                 </div>
