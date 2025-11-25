@@ -216,6 +216,7 @@
         .header-contact {
             display: flex;
             justify-content: center;
+            align-items: center;
             gap: 25px;
             flex-wrap: wrap;
             font-size: 1.05rem;
@@ -234,6 +235,22 @@
             transition: color 0.3s;
         }
         .header-contact a:hover { color: #fff; }
+        
+        .header-social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent) !important;
+            transition: transform 0.3s;
+        }
+        .header-social-link:hover {
+            transform: translateY(-2px);
+            color: #fff !important;
+        }
+        .header-social-link svg {
+            width: 24px;
+            height: 24px;
+        }
 
         /* --- NAVIGATION --- */
         nav {
@@ -705,12 +722,21 @@
             
             <div class="new-slogan">One Bite in Bangkok</div>
             
-            <div class="motto-text">Wir kochen hausgemachte Spezialitäten mit originalen Zutaten nach traditionellen Rezepten aus verschiedenen Landesteilen Thailands.</div>
+            <!-- GEÄNDERT: von "hausgemachte Spezialitäten" zu "thailändische Spezialitäten" -->
+            <div class="motto-text">Wir kochen thailändische Spezialitäten mit originalen Zutaten nach traditionellen Rezepten aus verschiedenen Landesteilen Thailands.</div>
             
             <div class="header-contact">
                 <span>📍 Ybbsstraße 39, 3300 Amstetten</span>
                 <span>🕒 MO–FR: 11:00–18:30</span>
                 <span>📞 <a href="tel:0664123456">0664 123 456</a></span>
+                
+                <!-- NEU: Social Media Links -->
+                <a href="https://www.facebook.com/siriwan.thaistreetfood" target="_blank" class="header-social-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/siriwan.thaistreetfood" target="_blank" class="header-social-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
             </div>
         </div>
         
@@ -743,7 +769,8 @@
                     <div class="item-content">
                         <div class="item-header">
                             <h3 class="item-name">Frühlingsrollen</h3>
-                            <p class="item-thai-name">po pia</p>
+                            <!-- GEÄNDERT: Thai-Schrift hinzugefügt -->
+                            <p class="item-thai-name">po pia &nbsp;ปอเปี๊ยะ</p>
                         </div>
                         <p class="item-description">3 Stk. knusprig frittierte Teigröllchen, gefüllt mit Glasnudeln, Karotten, wahlweise mit Schweinsfaschiertem oder Gemüse. Dazu süß-saure Dip-Sauce.</p>
                         <span class="price-tag">5,50 €</span>
@@ -761,7 +788,8 @@
                     <div class="item-content">
                         <div class="item-header">
                             <h3 class="item-name">Tempura Huhn</h3>
-                            <p class="item-thai-name">gai tempura</p>
+                            <!-- GEÄNDERT: Thai-Schrift hinzugefügt -->
+                            <p class="item-thai-name">gai tempura &nbsp;ไก่เทมปุระ</p>
                         </div>
                         <p class="item-description">5 Stk. Hühnerfilet im Tempura-Teigmantel mit süß-saurer Sauce.</p>
                         <span class="price-tag">5,90 €</span>
@@ -779,7 +807,8 @@
                     <div class="item-content">
                         <div class="item-header">
                             <h3 class="item-name">Hühner Saté Spieße</h3>
-                            <p class="item-thai-name">gai saté</p>
+                            <!-- GEÄNDERT: Thai-Schrift hinzugefügt -->
+                            <p class="item-thai-name">gai saté &nbsp;ไก่สะเต๊ะ</p>
                         </div>
                         <p class="item-description">3 Stk. zarte Hühnerspieße mit cremiger Erdnuss-Kokos-Currysauce.</p>
                         <span class="price-tag">7,90 €</span>
@@ -797,7 +826,8 @@
                     <div class="item-content">
                         <div class="item-header">
                             <h3 class="item-name">Papayasalat</h3>
-                            <p class="item-thai-name">som tam thai</p>
+                            <!-- GEÄNDERT: Thai-Schrift hinzugefügt -->
+                            <p class="item-thai-name">som tam thai &nbsp;ส้มตำไทย</p>
                         </div>
                         <p class="item-description">Frischer grüner Papayasalat mit Fischsauce, Karotten, Fisolen, Tomaten, Limette, Erdnüssen & Tamarindenpaste; auf Wunsch mit Chili.</p>
                         <span class="price-tag">8,90 €</span>
@@ -845,7 +875,8 @@
                     <div class="item-content">
                         <div class="item-header">
                             <h3 class="item-name">Kokossuppe</h3>
-                            <p class="item-thai-name">tom kha</p>
+                            <!-- GEÄNDERT: Thai-Schrift hinzugefügt -->
+                            <p class="item-thai-name">tom kha &nbsp;ต้มข่า</p>
                         </div>
                         <p class="item-description">Aromatische Kokosmilchsuppe mit Tomaten, Champignons, Zitronengras, Galgant, Kaffirlimettenblättern, Fischsauce & Limettensaft.</p>
                         <table class="price-options">
@@ -867,7 +898,8 @@
                     <div class="item-content">
                         <div class="item-header">
                             <h3 class="item-name">Gelbes Curry</h3>
-                            <p class="item-thai-name">gaeng lüang</p>
+                            <!-- GEÄNDERT: Thai-Schrift hinzugefügt -->
+                            <p class="item-thai-name">gaeng lüang &nbsp;แกงเหลือง</p>
                         </div>
                         <p class="item-description">Mildes Kokoscurry mit Kartoffeln & Karotten.</p>
                         <table class="price-options">
@@ -890,7 +922,8 @@
                     <div class="item-content">
                         <div class="item-header">
                             <h3 class="item-name">Rotes Curry <span class="icon" style="color: #ff4d4d;">🌶</span></h3>
-                            <p class="item-thai-name">gaeng daeng</p>
+                            <!-- GEÄNDERT: Thai-Schrift hinzugefügt -->
+                            <p class="item-thai-name">gaeng daeng &nbsp;แกงแดง</p>
                         </div>
                         <p class="item-description">Kokoscurry mit Bambus, Zucchini, Fisolen, Spitzpaprika & Thai-Basilikum.</p>
                         <table class="price-options">
@@ -919,7 +952,8 @@
                     <div class="item-content">
                         <div class="item-header">
                             <h3 class="item-name">Roter Curry Wok <span class="icon" style="color: #ff4d4d;">🌶</span></h3>
-                            <p class="item-thai-name">pad phrik gaeng daeng</p>
+                            <!-- GEÄNDERT: Thai-Schrift hinzugefügt -->
+                            <p class="item-thai-name">pad phrik gaeng daeng &nbsp;ผัดพริกแกงแดง</p>
                         </div>
                         <p class="item-description">Gebratenes Gemüse in roter Currypaste, Kokosmilch & Thai-Kräutern und Bambus, Fisolen & Spitzpaprika.</p>
                         <table class="price-options">
@@ -943,7 +977,8 @@
                     <div class="item-content">
                         <div class="item-header">
                             <h3 class="item-name">Wok süßsauer</h3>
-                            <p class="item-thai-name">pad priao wan</p>
+                            <!-- GEÄNDERT: Thai-Schrift hinzugefügt -->
+                            <p class="item-thai-name">pad priao wan &nbsp;ผัดเปรี้ยวหวาน</p>
                         </div>
                         <p class="item-description">Gurken, Zwiebeln, Jungzwiebeln & Paprika in süßsaurer Sauce.</p>
                         <table class="price-options">
@@ -964,7 +999,8 @@
                     <div class="item-content">
                         <div class="item-header">
                             <h3 class="item-name">Cashew Wok</h3>
-                            <p class="item-thai-name">pad med mamuang</p>
+                            <!-- GEÄNDERT: Thai-Schrift hinzugefügt -->
+                            <p class="item-thai-name">pad med mamuang &nbsp;ผัดเม็ดมะม่วง</p>
                         </div>
                         <p class="item-description">Cashewnüsse, Jungzwiebeln & Paprika in süß-milder Woksauce.</p>
                         <table class="price-options">
@@ -985,7 +1021,8 @@
                     <div class="item-content">
                         <div class="item-header">
                             <h3 class="item-name">Basilikum Wok <span class="icon" style="color: #ff4d4d;">🌶</span></h3>
-                            <p class="item-thai-name">pad kra prao</p>
+                            <!-- GEÄNDERT: Thai-Schrift hinzugefügt -->
+                            <p class="item-thai-name">pad kra prao &nbsp;ผัดกะเพรา</p>
                         </div>
                         <p class="item-description">Pikant gebratenes Thai Basilikum, Zwiebeln & Spitzpaprika.</p>
                         <table class="price-options">
@@ -1007,7 +1044,8 @@
                     <div class="item-content">
                         <div class="item-header">
                             <h3 class="item-name">Pfefferwok</h3>
-                            <p class="item-thai-name">pad phrik thai dam</p>
+                            <!-- GEÄNDERT: Thai-Schrift hinzugefügt -->
+                            <p class="item-thai-name">pad phrik thai dam &nbsp;ผัดพริกไทยดำ</p>
                         </div>
                         <p class="item-description">Würzig-pfeffrig mit Jungzwiebeln, Zwiebeln, Paprika & Karotten.</p>
                         <table class="price-options">
@@ -1056,7 +1094,8 @@
                     <div class="item-content">
                         <div class="item-header">
                             <h3 class="item-name">Gebratener Reis</h3>
-                            <p class="item-thai-name">khao pad</p>
+                            <!-- GEÄNDERT: Thai-Schrift hinzugefügt -->
+                            <p class="item-thai-name">khao pad &nbsp;ข้าวผัด</p>
                         </div>
                         <p class="item-description">Gebratener Jasminreis mit Ei, Karotten, Erbsen & Zwiebeln.</p>
                         <table class="price-options">
@@ -1109,7 +1148,8 @@
                             <tr><td>+ Ei</td><td>2,00 €</td></tr>
                             <tr><td>+ Reis / Rind / Garnelen</td><td>2,50 €</td></tr>
                             <tr><td>+ Ente</td><td>3,00 €</td></tr>
-                            <tr><td>Extraportion</td><td>3,90 €</td></tr>
+                            <!-- GEÄNDERT: Preis auf 3,00 € -->
+                            <tr><td>Extraportion</td><td>3,00 €</td></tr>
                         </table>
                     </div>
                 </div>
