@@ -167,16 +167,31 @@
             text-align: center;
         }
 
+        /* OPTIMIERTES LOGO FÜR RESPONSIVE DARSTELLUNG */
         .logo {
+            max-width: 100%;
+            height: auto;
             max-height: 170px;
             width: auto;
             filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
             margin-bottom: 15px;
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            object-fit: contain;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .logo:hover {
             transform: scale(1.05) rotate(2deg);
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 0 15px;
         }
 
         .new-slogan {
@@ -925,15 +940,63 @@
                 background-attachment: scroll;
             }
 
-            .new-slogan { font-size: 2.2rem; }
-            section h2 { font-size: 2.4rem; }
-            section h2::before, section h2::after { width: 30px; }
+            /* LOGO OPTIMIERUNG FÜR MOBILE */
+            .logo {
+                max-height: 120px !important;
+                max-width: 85% !important;
+                width: auto !important;
+                height: auto !important;
+            }
+
+            .logo-container {
+                padding: 0 10px;
+                margin-bottom: 10px;
+            }
+
+            .new-slogan { 
+                font-size: 2.2rem; 
+                padding: 0 15px;
+                word-wrap: break-word;
+                line-height: 1.2;
+            }
+            
+            section h2 { 
+                font-size: 2.4rem; 
+                padding: 0 15px;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            section h2::before, section h2::after { 
+                width: 30px; 
+                display: none; /* Auf sehr kleinen Screens komplett ausblenden */
+            }
             
             header { 
-                padding-bottom: 30px; 
+                padding: 30px 0 40px 0 !important; 
                 clip-path: none; 
                 border-bottom-right-radius: 30px; 
                 border-bottom-left-radius: 30px; 
+            }
+            
+            .header-content {
+                padding-top: 20px !important;
+            }
+            
+            .motto-text {
+                font-size: 1.1rem;
+                padding: 0 20px;
+                margin-bottom: 20px;
+            }
+            
+            .header-contact {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 20px;
+                border-radius: 25px;
+                width: 90%;
+                margin: 0 auto;
+                font-size: 0.95rem;
             }
             
             /* Mobiles Menü optimiert */
@@ -945,7 +1008,7 @@
                 margin: 0; 
                 padding: 0; 
                 height: 0;
-                background: rgba(0, 77, 77, 0.95); /* Transparenter */
+                background: rgba(0, 77, 77, 0.98); /* Weniger transparent für bessere Lesbarkeit */
                 backdrop-filter: blur(20px);
                 overflow: hidden; 
                 transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -964,6 +1027,7 @@
                 flex-direction: column; 
                 height: auto; 
                 padding: 0;
+                width: 100%;
             }
             
             nav ul { 
@@ -971,33 +1035,41 @@
                 gap: 25px; 
                 width: 100%; 
                 text-align: center; 
+                padding: 0 20px;
             }
             
             nav a { 
                 color: white; 
-                font-size: 1.5rem; 
-                padding: 10px; 
-                display: inline-block; 
-                background: rgba(255,255,255,0.1);
+                font-size: 1.3rem; 
+                padding: 15px 20px; 
+                display: block; 
+                background: rgba(255,255,255,0.15);
                 backdrop-filter: blur(10px);
                 border-radius: 15px;
-                margin: 0 20px;
+                margin: 0 10px;
+                width: auto;
             }
             
-            .mobile-menu-toggle { display: flex; }
-            .header-content { padding-top: 40px; }
+            .mobile-menu-toggle { 
+                display: flex; 
+                top: 15px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+            }
             
             /* Content-Optimierung */
             .menu-items {
                 grid-template-columns: 1fr;
-                padding: 0 5px;
+                padding: 0 10px;
                 gap: 25px;
             }
 
             .menu-item {
-                background: rgba(255, 255, 255, 0.7); /* Etwas undurchsichtiger für bessere Lesbarkeit auf Mobile */
+                background: rgba(255, 255, 255, 0.85); /* Etwas undurchsichtiger für bessere Lesbarkeit auf Mobile */
                 border: 1px solid rgba(255,255,255, 0.8);
                 backdrop-filter: blur(15px);
+                margin: 0 5px;
             }
             
             .menu-item::after {
@@ -1012,24 +1084,40 @@
                 padding: 20px;
                 border-radius: 25px;
                 text-align: center;
-                width: 100%;
-                background: rgba(255, 255, 255, 0.6); /* Undurchsichtiger auf Mobile */
+                width: 90%;
+                margin: 0 auto 40px;
+                background: rgba(255, 255, 255, 0.7); /* Undurchsichtiger auf Mobile */
+                font-size: 0.95rem;
             }
 
-            .order-notice .phone { font-size: 2.2rem; }
-            .contact-info { padding: 30px 20px; }
+            .order-notice {
+                padding: 30px 20px;
+                margin: 50px auto;
+            }
+            
+            .order-notice .phone { 
+                font-size: 2.2rem; 
+                padding: 10px 20px;
+                word-break: break-all;
+            }
+            
+            .contact-info { 
+                padding: 30px 20px; 
+            }
             
             .footer-links { 
                 flex-direction: column; 
                 gap: 15px; 
+                padding: 0 20px;
             }
             
             /* Cookie Banner mobil optimiert */
             .cookie-consent-banner { 
                 width: 95%; 
-                padding: 20px; 
+                padding: 20px 15px; 
                 bottom: 15px; 
                 backdrop-filter: blur(10px);
+                font-size: 0.9rem;
             }
             
             /* Anpassung für Glaseffekt auf Mobile */
@@ -1044,11 +1132,39 @@
 
         /* Für sehr kleine Geräte (z.B. iPhone SE) */
         @media (max-width: 370px) {
-            .new-slogan { font-size: 1.8rem; }
-            section h2 { font-size: 2rem; }
-            .item-name { font-size: 1.3rem; }
-            .price-tag { font-size: 1.4rem; }
-            .order-notice .phone { font-size: 1.8rem; }
+            .logo {
+                max-height: 100px !important;
+                max-width: 80% !important;
+            }
+            
+            .new-slogan { 
+                font-size: 1.8rem; 
+                padding: 0 10px;
+            }
+            
+            section h2 { 
+                font-size: 2rem; 
+                padding: 0 10px;
+            }
+            
+            .item-name { 
+                font-size: 1.3rem; 
+            }
+            
+            .price-tag { 
+                font-size: 1.4rem; 
+            }
+            
+            .order-notice .phone { 
+                font-size: 1.8rem; 
+                padding: 8px 15px;
+            }
+            
+            .header-contact {
+                width: 95%;
+                padding: 12px 15px;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -1060,9 +1176,9 @@
 
     <header>
         <div class="container header-content">
-            <h1 class="logo-container">
-                <img src="images/logo.png" alt="Siriwan Thai Street Food Logo" class="logo" width="250" height="170">
-            </h1>
+            <div class="logo-container">
+                <img src="images/logo.png" alt="Siriwan Thai Street Food Logo" class="logo">
+            </div>
             
             <div class="new-slogan">One Bite in Bangkok</div>
             
