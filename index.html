@@ -273,7 +273,8 @@
 
         .nav-inner {
             border-radius: 50px;
-            max-width: 1100px;
+            /* Optimierung: Breiter machen für mehr Platz */
+            max-width: 1250px; 
             margin: 0 auto;
             padding: 8px;
             background: rgba(255, 255, 255, 0.75);
@@ -293,13 +294,14 @@
 
         nav a {
             display: block;
-            padding: 14px 24px;
+            /* Optimierung: Padding und Schriftgröße leicht reduziert */
+            padding: 14px 16px; 
             text-decoration: none;
             color: var(--primary);
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 0.95rem;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
+            letter-spacing: 0.5px;
             border-radius: 30px;
             transition: all 0.3s ease;
         }
@@ -1210,6 +1212,7 @@
                 <li><a href="#nudeln-reis" class="nav-link">Nudeln & Reis</a></li>
                 <li><a href="#getraenke" class="nav-link">Getränke</a></li>
                 <li><a href="#kontakt" class="nav-link">Kontakt</a></li>
+                <li><a href="druckversion.html" class="nav-link">Druckversion</a></li>
             </ul>
         </div>
     </nav>
