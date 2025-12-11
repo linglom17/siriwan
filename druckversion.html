@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Siriwan Speisekarte A4 Druck</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Playfair+Display:wght@700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Playfair+Display:wght@700&family=Dancing+Script:wght@700&display=swap" rel-stylesheet>
     
     <style>
         /* --- GRUNDEINSTELLUNGEN --- */
@@ -18,8 +18,8 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #555555; /* Dunkler Hintergrund am Bildschirm für Kontrast */
-            font-family: 'Roboto', Arial, sans-serif; /* Fallback Arial wichtig! */
+            background-color: #555555;
+            font-family: 'Roboto', Arial, sans-serif;
             -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
         }
@@ -27,12 +27,12 @@
         /* --- DAS A4 BLATT (Container) --- */
         .a4-page {
             width: 210mm;
-            min-height: 297mm; /* min-height statt height verhindert Abschneiden */
+            min-height: 297mm;
             background: white;
-            margin: 20px auto; /* Zentriert auf dem Bildschirm */
+            margin: 20px auto;
             padding: 15mm;
             box-sizing: border-box;
-            box-shadow: 0 0 15px rgba(0,0,0,0.5); /* Schatten für "Blatt"-Effekt am Screen */
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
             position: relative;
             overflow: visible;
         }
@@ -44,16 +44,34 @@
             margin-bottom: 20px;
             display: flex;
             justify-content: space-between;
-            align-items: center; /* Vertikale Zentrierung von Logo und Kontakt */
+            align-items: center;
         }
 
         /* Neues CSS für das Bild-Logo */
         .logo-img {
-            height: 90px; /* Angemessene Höhe für den Header auf A4 */
-            width: auto;  /* Seitenverhältnis beibehalten */
+            height: 90px;
+            width: auto;
             object-fit: contain;
             display: block;
         }
+
+        /* NEU: Social Media Header (Text beibehalten) */
+        .social-links {
+            text-align: center;
+            font-size: 10pt;
+            line-height: 1.5;
+            flex-grow: 1;
+            padding: 0 15px;
+            color: var(--text-light); /* Leichter Text */
+        }
+        /* Styling für ausgeschriebene URLs */
+        .social-links span.url-text {
+            font-weight: bold;
+            color: var(--primary); 
+            display: block;
+            margin-top: 3px;
+        }
+        /* ENDE NEU: Social Media Header */
 
         .contact-info {
             text-align: right;
@@ -72,7 +90,7 @@
         }
 
         /* --- ÜBERSCHRIFTEN --- */
-        h1 { display: none; } /* SEO only */
+        h1 { display: none; }
 
         h2 {
             background-color: var(--primary);
@@ -116,8 +134,8 @@
         /* --- GERICHTE LAYOUT (2 Spalten) --- */
         .grid-container {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* 2 Spalten */
-            column-gap: 25px; /* Abstand zwischen Spalten */
+            grid-template-columns: 1fr 1fr;
+            column-gap: 25px;
             row-gap: 15px;
         }
 
@@ -125,7 +143,7 @@
             margin-bottom: 5px;
             border-bottom: 1px dotted #ddd;
             padding-bottom: 5px;
-            page-break-inside: avoid; /* Verhindert Zerreissen beim Druck */
+            page-break-inside: avoid;
         }
 
         .item-top {
@@ -194,9 +212,66 @@
             margin-left: 3px;
         }
 
+        /* NEU: QR Code Styling (Gesamtbox) */
+        .qr-container {
+            text-align: center;
+            padding: 20px 15px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            page-break-inside: avoid;
+            background-color: #f7f7f7;
+            border: 1px dashed var(--accent);
+            border-radius: 5px;
+        }
+        .qr-container h3 {
+            color: var(--primary);
+            border: none;
+            margin-bottom: 10px;
+            font-size: 14pt;
+        }
+        .qr-container img {
+            width: 120px;
+            height: 120px;
+            border: 4px solid var(--accent);
+            border-radius: 5px;
+            padding: 5px;
+            background-color: white;
+            display: block;
+            margin: 0 auto 15px auto; /* Abstand nach unten */
+        }
+        .qr-container p {
+            font-size: 10pt;
+            color: var(--text-light);
+            line-height: 1.4;
+        }
+
+        /* NEU: Social Media Leiste innerhalb der QR-Box */
+        .social-bar {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #ddd;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            font-size: 11pt;
+            color: var(--primary);
+        }
+        .social-item {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+        }
+        .social-item .icon {
+            font-size: 16pt;
+            color: var(--accent);
+            margin-right: 5px;
+            line-height: 1;
+        }
+        /* ENDE NEU: QR Code Styling */
+
         /* --- FOOTER BEREICH AUF SEITE 2 --- */
         .footer {
-            margin-top: auto; /* Nach unten schieben */
+            margin-top: auto;
             padding-top: 15px;
             border-top: 2px solid var(--primary);
             display: flex;
@@ -205,9 +280,14 @@
             color: #444;
         }
         
+        /* Die Social-Media-Spalte wurde hier entfernt, sodass es nur noch 3 Spalten gibt, 
+           da die Infos nun in der QR-Box sind. */
         .footer-col {
-            width: 32%;
+            width: 33%; 
         }
+        .footer-col.contact-col { width: 33%; }
+        .footer-col.payment-col { width: 33%; }
+        .footer-col.allergens-col { width: 34%; }
         
         .footer-col strong {
             color: var(--primary);
@@ -219,21 +299,20 @@
         /* --- DRUCK ANWEISUNGEN --- */
         @media print {
             body {
-                background-color: white; /* Kein Grau beim Drucken */
+                background-color: white;
             }
             .a4-page {
                 width: 100%;
                 height: auto;
                 min-height: auto;
                 margin: 0;
-                padding: 10mm; /* Etwas weniger Rand beim Drucken */
+                padding: 10mm;
                 box-shadow: none;
-                page-break-after: always; /* Zwingt neue Seite nach jedem Blatt */
+                page-break-after: always;
             }
             .a4-page:last-child {
                 page-break-after: auto;
             }
-            /* Verstecke URL/Datum Header vom Browser */
             @page {
                 margin: 0;
                 size: A4 portrait;
@@ -250,6 +329,11 @@
                 <img src="images/logo.png" alt="Siriwan Logo" class="logo-img">
             </div>
             
+            <div class="social-links">
+                Folge uns auf:<br>
+                <span class="url-text">Facebook: siriwan.thaistreetfood</span>
+                <span class="url-text">Instagram: siriwan.thaistreetfood</span>
+            </div>
             <div class="contact-info">
                 <strong>0660 496 3392</strong><br>
                 Ybbsstraße 39, 3300 Amstetten<br>
@@ -436,7 +520,21 @@
                 <div class="allergens">A, C, D, F</div>
             </div>
         </div>
-
+        
+        <div class="qr-container">
+            <h3>Digitale Speisekarte & Social</h3>
+            <img src="images/qr-code-siriwan.png" alt="QR Code für www.siriwan.at">
+            <p style="margin-bottom: 0;">www.siriwan.at</p>
+            
+            <div class="social-bar">
+                <div class="social-item">
+                    <span class="icon">📘</span> Facebook: siriwan.thaistreetfood
+                </div>
+                <div class="social-item">
+                    <span class="icon">📷</span> Instagram: siriwan.thaistreetfood
+                </div>
+            </div>
+        </div>
         <div class="grid-container" style="margin-top: 20px;">
             <div>
                 <h3>Getränke</h3>
@@ -464,22 +562,22 @@
         </div>
 
         <div class="footer">
-            <div class="footer-col">
+            <div class="footer-col contact-col">
                 <strong>Siriwan Thai Street Food</strong>
                 Ybbsstraße 39, 3300 Amstetten<br>
                 Tel: 0660 496 3392<br>
                 Web: www.siriwan.at<br>
                 <div style="margin-top: 5px; font-weight: bold; color: #a00;">🚫 Kein Lieferservice</div>
             </div>
-
-            <div class="footer-col">
+            
+            <div class="footer-col payment-col">
                 <strong>Zahlung</strong>
                 Bar, Bankomatkarte, EC-Karte,<br>
                 Apple Pay, Google Pay.<br><br>
                 <div style="font-size: 7pt; color: #999;">© 2025 Siriwan</div>
             </div>
 
-            <div class="footer-col" style="width: 38%;">
+            <div class="footer-col allergens-col">
                 <strong>Allergene</strong>
                 <div style="font-size: 7pt; color: #666; text-align: justify; line-height: 1.1;">
                     A Gluten, B Krebstiere, C Eier, D Fisch, E Erdnüsse, F Soja, G Milch, H Schalenfrüchte, L Sellerie, M Senf, N Sesam, O Sulfite, P Lupinen, R Weichtiere.<br>
