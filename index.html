@@ -11,7 +11,8 @@
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="geo.region" content="AT-3">
     <meta name="geo.placename" content="Amstetten">
-    <meta name="geo.position" content="48.1234;14.8765"> <meta name="ICBM" content="48.1234, 14.8765">
+    <meta name="geo.position" content="48.1266;14.8719">
+    <meta name="ICBM" content="48.1266, 14.8719">
 
     <link rel="icon" type="image/png" href="images/favicon.png">
     
@@ -20,6 +21,15 @@
     <meta property="og:type" content="restaurant.menu">
     <meta property="og:url" content="http://www.siriwan.at">
     <meta property="og:image" content="http://www.siriwan.at/images/og-image.jpg"> <meta property="og:locale" content="de_AT">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0F04834115"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-0F04834115');
+    </script>
 
     <script type="application/ld+json">
     {
@@ -153,7 +163,7 @@
         header {
             background: var(--primary-gradient);
             color: var(--text-light);
-            padding: 40px 0 70px 0; /* Original: größere Abstände */
+            padding: 40px 0 50px 0; /* COMPACT: Reduced bottom padding */
             position: relative;
             clip-path: polygon(0 0, 100% 0, 100% 88%, 50% 100%, 0 88%);
             box-shadow: 0 10px 40px rgba(0,0,0,0.3);
@@ -331,14 +341,14 @@
         .mobile-menu-toggle:hover { transform: scale(1.1); }
 
         /* --- SECTIONS & HEADINGS --- */
-        section { padding: 80px 0; } /* Original: größere Abstände */
+        section { padding: 40px 0; } /* COMPACT: Reduced vertical padding */
 
         section h2 {
             text-align: center;
             font-family: 'Playfair Display', serif;
             font-size: 3.5rem;
             color: var(--primary);
-            margin-bottom: 50px; /* Original: größere Abstände */
+            margin-bottom: 25px; /* COMPACT: Reduced margin */
             position: relative;
             text-shadow: 
                 0 0 15px rgba(255,255,255, 0.9),
@@ -422,7 +432,7 @@
         .menu-items {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 450px)); 
-            gap: 35px; /* Original: größere Abstände */
+            gap: 35px; 
             justify-content: center; 
         }
 
@@ -1274,7 +1284,7 @@
                             <tr><td>Gemüse / Tofu</td><td>10,90 €</td></tr>
                             <tr><td>Huhn</td><td>11,90 €</td></tr>
                             <tr><td>Rind / Garnelen</td><td>13,90 €</td></tr>
-                            <tr><td>Ente</td><td>14,90 €</td></tr>
+                            <tr><td>Ente</td><td>15,90 €</td></tr>
                         </table>
                         <div class="item-allergens">
                             <span class="allergen">A</span><span class="allergen">B</span><span class="allergen">D</span><span class="allergen">F</span>
@@ -1302,7 +1312,7 @@
                             <tr><td>Tofu</td><td>10,90 €</td></tr>
                             <tr><td>Huhn</td><td>11,90 €</td></tr>
                             <tr><td>Rind / Garnelen</td><td>13,90 €</td></tr>
-                            <tr><td>Ente</td><td>14,90 €</td></tr>
+                            <tr><td>Ente</td><td>15,90 €</td></tr>
                         </table>
                         <div class="item-allergens">
                             <span class="allergen">A</span><span class="allergen">B</span><span class="allergen">D</span><span class="allergen">F</span>
@@ -1360,12 +1370,13 @@
                     <div class="item-content">
                         <div class="item-header">
                             <h3 class="item-name">Basilikum Wok <span class="icon" style="color: #ff4d4d;">🌶</span></h3>
-                            <p class="item-thai-name">pad kra prao  ผัดกะเพรา</p>
+                            <p class="item-thai-name">pad ka prao  ผัดกะเพรา</p>
                         </div>
                         <p class="item-description">Pikant gebratenes Thai Basilikum, Zwiebeln & Spitzpaprika.</p>
                         <table class="price-options">
                             <tr><td>Huhn</td><td>11,90 €</td></tr>
                             <tr><td>Rind / Garnelen</td><td>13,90 €</td></tr>
+                            <tr><td>Ente</td><td>15,90 €</td></tr>
                         </table>
                         <div class="item-allergens">
                             <span class="allergen">A</span><span class="allergen">D</span><span class="allergen">F</span><span class="allergen">R</span>
@@ -1387,7 +1398,7 @@
                         <table class="price-options">
                             <tr><td>Huhn</td><td>11,90 €</td></tr>
                             <tr><td>Rind / Garnelen</td><td>13,90 €</td></tr>
-                            <tr><td>Ente</td><td>14,90 €</td></tr>
+                            <tr><td>Ente</td><td>15,90 €</td></tr>
                         </table>
                         <div class="item-allergens">
                             <span class="allergen">A</span><span class="allergen">D</span><span class="allergen">F</span><span class="allergen">R</span>
@@ -1460,8 +1471,8 @@
                             <p class="item-thai-name">khrueang duem เครื่องดื่ม</p>
                         </div>
                         <table class="price-options">
-                            <tr><td>Singha Bier 0,33 l</td><td>3,80 €</td></tr>
-                            <tr><td>Chang Bier 0.33 l</td><td>3,80 €</td></tr>
+                            <tr><td>Singha Bier 0,33 l</td><td>3,90 €</td></tr>
+                            <tr><td>Chang Bier 0.33 l</td><td>3,90 €</td></tr>
                             <tr><td>Mineralwasser (still/prickelnd)*</td><td>2,75 €</td></tr>
                             <tr><td>Coca-Cola* 0,33 l</td><td>3,15 €</td></tr>
                             <tr><td>Aloe Vera Drink 0,33 l</td><td>3,80 €</td></tr>
@@ -1484,910 +1495,9 @@
                         <p class="item-description">Alle Hauptgerichte (Suppen, Curry & Wok) werden inkl. einer Portion Jasminreis serviert.</p>
                         <table class="price-options">
                             <tr><td>+ Ei</td><td>2,00 €</td></tr>
-                            <tr><td>+ Reis / Rind / Garnelen / Ente</td><td>3,00 €</td></tr>
-                            <tr><td>Extraportion</td><td>3,50 €</td></tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="order-notice">
-            <p>Hungrig? Rufen Sie uns für Ihre Vorbestellung an.</p>
-            <a href="tel:06604963392" class="phone" aria-label="Anrufen">0660 496 3392</a>
-        </div>
-
-        <section id="kontakt">
-            <h2>Kontakt & Standort</h2>
-            <div class="contact-container reveal-item">
-                <div class="contact-info">
-                    <div class="contact-details">
-                        <h3>Adresse & Kontakt</h3>
-                        <p><i>📍</i> Ybbsstraße 39, 3300 Amstetten</p>
-                        <p><i>📞</i> <a href="tel:06604963392" style="color:var(--dark); text-decoration:none;">0660 496 3392</a></p>
-                        <p><i>✉️</i> <a href="mailto:office@siriwan.at" style="color:var(--dark); text-decoration:none;">office@siriwan.at</a></p>
-                        <p><i>🌐</i> <a href="http://www.siriwan.at" style="color:var(--dark); text-decoration:none;">www.siriwan.at</a></p>
-                    </div>
-                   
-                    <div class="opening-hours" style="margin-top: 30px;">
-                        <h3>Öffnungszeiten</h3>
-                        <p>MO–FR: 11:00–18:30 Uhr</p>
-                        <p style="color: var(--secondary);">Feiertags geschlossen</p>
-                    </div>
-                   
-                    <div class="payment-info" style="margin-top: 30px;">
-                        <h3>Bezahlmöglichkeiten</h3>
-                        <div class="item-allergens">
-                            <span class="allergen">Bar</span>
-                            <span class="allergen">Bankomatkarte</span>
-                            <span class="allergen">EC-Karte</span>
-                            <span class="allergen">Kontaktlos</span>
-                            <span class="allergen">Apple Pay</span>
-                            <span class="allergen">Google Pay</span>
-                        </div>
-                        <p style="margin-top: 10px; color: #d32f2f; font-weight: bold;">🚫 Kein Lieferservice</p>
-                    </div>
-                   
-                    <div class="social-media" style="margin-top: 30px;">
-                        <h3>Social Media</h3>
-                        <div style="display:flex; gap:10px;">
-                            <a href="https://www.facebook.com/siriwan.thaistreetfood" target="_blank" class="social-link" aria-label="Facebook">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
-                            </a>
-                            <a href="https://www.instagram.com/siriwan.thaistreetfood" target="_blank" class="social-link" aria-label="Instagram">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                </a>
-            </div>
-        </div>
-        
-        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menü öffnen">☰</button>
-    </header>
-
-    <nav id="mainNav">
-        <div class="nav-inner">
-            <ul id="navMenu">
-                <li><a href="#vorspeisen" class="nav-link">Vorspeisen</a></li>
-                <li><a href="#suppen-curry" class="nav-link">Suppen & Curry</a></li>
-                <li><a href="#wokgerichte" class="nav-link">Wok</a></li>
-                <li><a href="#nudeln-reis" class="nav-link">Nudeln & Reis</a></li>
-                <li><a href="#getraenke" class="nav-link">Getränke</a></li>
-                <li><a href="#kontakt" class="nav-link">Kontakt</a></li>
-                <li><a href="druckversion.html" class="nav-link">Druckversion</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <main class="container">
-        
-        <section id="vorspeisen">
-            <h2>Vorspeisen</h2>
-            <div class="menu-items">
-                <div class="menu-item reveal-item">
-                    <div class="item-number">V1</div>
-                    <div class="item-image">
-                        <img src="images/V1_frühlingsrollen.png" alt="Knusprige Frühlingsrollen mit Dip" loading="lazy">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Frühlingsrollen</h3>
-                            <p class="item-thai-name">po pia  ปอเปี๊ยะ</p>
-                        </div>
-                        <p class="item-description">Knusprig frittierte Teigröllchen, gefüllt mit Glasnudeln, Karotten, wahlweise mit Schweinsfaschiertem oder Gemüse. Dazu süß-saure Dip-Sauce.</p>
-                        <span class="price-tag">5,50 €</span>
-                        <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">C</span><span class="allergen">F</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item reveal-item">
-                    <div class="item-number">V2</div>
-                    <div class="item-image">
-                        <img src="images/V3_huhn-tempura.png" alt="Huhn im Tempura Mantel" loading="lazy">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Tempura Huhn</h3>
-                            <p class="item-thai-name">gai tempura  ไก่เทมปุระ</p>
-                        </div>
-                        <p class="item-description">Hühnerfilet im Tempura-Teigmantel mit süß-saurer Sauce.</p>
-                        <span class="price-tag">6,50 €</span>
-                        <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">C</span><span class="allergen">F</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item reveal-item">
-                    <div class="item-number">V3</div>
-                    <div class="item-image">
-                        <img src="images/V4_gai-satay.png" alt="Hühner Saté Spieße mit Erdnusssauce" loading="lazy">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Hühner Saté Spieße</h3>
-                            <p class="item-thai-name">gai saté  ไก่สะเต๊ะ</p>
-                        </div>
-                        <p class="item-description">Zarte Hühnerspieße mit cremiger Erdnuss-Kokos-Currysauce.</p>
-                        <span class="price-tag">8,50 €</span>
-                        <div class="item-allergens">
-                            <span class="allergen">E</span><span class="allergen">F</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item reveal-item">
-                    <div class="item-number">V4</div>
-                    <div class="item-image">
-                        <img src="images/V5_som-tam-thai.png" alt="Som Tam Thai Papayasalat" loading="lazy">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Papayasalat</h3>
-                            <p class="item-thai-name">som tam thai  ส้มตำไทย</p>
-                        </div>
-                        <p class="item-description">Frischer grüner Papayasalat mit Fischsauce, Karotten, Fisolen, Tomaten, Limette, Erdnüssen & Tamarindenpaste; auf Wunsch mit Chili.</p>
-                        <span class="price-tag">8,90 €</span>
-                        <div class="item-allergens">
-                            <span class="allergen">D</span><span class="allergen">E</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="suppen-curry">
-            <h2>Suppen & Curry</h2>
-            <div class="rice-notice">
-                <span class="rice-icon"><i style="font-style:normal;">🍚</i></span>
-                <span class="rice-text">Alle Hauptgerichte (Suppen, Curry & Wok) werden inkl. einer Portion Jasminreis serviert.</span>
-            </div>
-           
-            <div class="menu-items">
-                <div class="menu-item reveal-item">
-                    <div class="item-number">M1</div>
-                    <div class="item-image">
-                        <img src="images/M1_tom-yam.png" alt="Tom Yam Suppe" loading="lazy">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Tom Yam <span class="icon" style="color: #ff4d4d;">🌶</span></h3>
-                            <p class="item-thai-name">ต้มยำ</p>
-                        </div>
-                        <p class="item-description">Scharf-saure Suppe mit Tomaten, Champignons, Zitronengras, Galgant, Kaffirlimettenblättern, Fischsauce & Limettensaft.</p>
-                        <table class="price-options">
-                            <tr><td>Huhn</td><td>11,90 €</td></tr>
-                            <tr><td>Garnelen</td><td>12,90 €</td></tr>
-                            <tr><td>Gemischt (Huhn & Garnelen)</td><td>13,90 €</td></tr>
-                        </table>
-                        <div class="item-allergens">
-                            <span class="allergen">B</span><span class="allergen">D</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item reveal-item">
-                    <div class="item-number">M2</div>
-                    <div class="item-image">
-                        <img src="images/M2_kokossuppe.png" alt="Tom Kha Gai Kokossuppe" loading="lazy">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Kokossuppe</h3>
-                            <p class="item-thai-name">tom kha  ต้มข่า</p>
-                        </div>
-                        <p class="item-description">Aromatische Kokosmilchsuppe mit Tomaten, Champignons, Zitronengras, Galgant, Kaffirlimettenblättern, Fischsauce & Limettensaft.</p>
-                        <table class="price-options">
-                            <tr><td>Huhn</td><td>11,90 €</td></tr>
-                            <tr><td>Garnelen</td><td>12,90 €</td></tr>
-                            <tr><td>Gemischt (Huhn & Garnelen)</td><td>13,90 €</td></tr>
-                        </table>
-                        <div class="item-allergens">
-                            <span class="allergen">D</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item reveal-item">
-                    <div class="item-number">M3</div>
-                    <div class="item-image">
-                        <img src="images/M3_gelbes-curry.png" alt="Gelbes Curry Thai Style" loading="lazy">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Gelbes Curry</h3>
-                            <p class="item-thai-name">gaeng lüang  แกงเหลือง</p>
-                        </div>
-                        <p class="item-description">Mildes Kokoscurry mit Kartoffeln & Karotten.</p>
-                        <table class="price-options">
-                            <tr><td>Gemüse / Tofu</td><td>10,90 €</td></tr>
-                            <tr><td>Huhn</td><td>11,90 €</td></tr>
-                            <tr><td>Rind / Garnelen</td><td>13,90 €</td></tr>
-                        </table>
-                        <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">B</span><span class="allergen">D</span><span class="allergen">F</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item reveal-item">
-                    <div class="item-number">M4</div>
-                    <div class="item-image">
-                        <img src="images/M4_rotes-curry.png" alt="Rotes Thai Curry" loading="lazy">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Rotes Curry <span class="icon" style="color: #ff4d4d;">🌶</span></h3>
-                            <p class="item-thai-name">gaeng daeng  แกงแดง</p>
-                        </div>
-                        <p class="item-description">Kokoscurry mit Bambus, Zucchini, Fisolen, Spitzpaprika & Thai-Basilikum.</p>
-                        <table class="price-options">
-                            <tr><td>Gemüse / Tofu</td><td>10,90 €</td></tr>
-                            <tr><td>Huhn</td><td>11,90 €</td></tr>
-                            <tr><td>Rind / Garnelen</td><td>13,90 €</td></tr>
-                            <tr><td>Ente</td><td>14,90 €</td></tr>
-                        </table>
-                        <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">B</span><span class="allergen">D</span><span class="allergen">F</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="wokgerichte">
-            <h2>Wok</h2>
-            <div class="menu-items">
-                <div class="menu-item reveal-item">
-                    <div class="item-number">M5</div>
-                    <div class="item-image">
-                        <img src="images/M5_roter-curry-wok.png" alt="Wok mit rotem Curry" loading="lazy">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Roter Curry Wok <span class="icon" style="color: #ff4d4d;">🌶</span></h3>
-                            <p class="item-thai-name">pad phrik gaeng daeng  ผัดพริกแกงแดง</p>
-                        </div>
-                        <p class="item-description">Gebratenes Gemüse in roter Currypaste, Kokosmilch & Thai-Kräutern und Bambus, Fisolen & Spitzpaprika.</p>
-                        <table class="price-options">
-                            <tr><td>Tofu</td><td>10,90 €</td></tr>
-                            <tr><td>Huhn</td><td>11,90 €</td></tr>
-                            <tr><td>Rind / Garnelen</td><td>13,90 €</td></tr>
-                            <tr><td>Ente</td><td>14,90 €</td></tr>
-                        </table>
-                        <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">B</span><span class="allergen">D</span><span class="allergen">F</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item reveal-item">
-                    <div class="item-number">M6</div>
-                    <div class="item-image">
-                        <img src="images/M6_wok-suess-sauer.png" alt="Süß-Sauer Wok" loading="lazy">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Wok süßsauer</h3>
-                            <p class="item-thai-name">pad priao wan  ผัดเปรี้ยวหวาน</p>
-                        </div>
-                        <p class="item-description">Gurken, Zwiebeln, Jungzwiebeln & Paprika in süßsaurer Sauce.</p>
-                        <table class="price-options">
-                            <tr><td>Huhn</td><td>11,90 €</td></tr>
-                            <tr><td>Garnelen</td><td>13,90 €</td></tr>
-                        </table>
-                        <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">F</span><span class="allergen">R</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item reveal-item">
-                    <div class="item-number">M7</div>
-                    <div class="item-image">
-                        <img src="images/M7_cashew-wok.png" alt="Cashew Wok Huhn" loading="lazy">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Cashew Wok</h3>
-                            <p class="item-thai-name">pad med mamuang  ผัดเม็ดมะม่วง</p>
-                        </div>
-                        <p class="item-description">Cashewnüsse, Jungzwiebeln & Paprika in süß-milder Woksauce.</p>
-                        <table class="price-options">
-                            <tr><td>Huhn</td><td>11,90 €</td></tr>
-                            <tr><td>Garnelen</td><td>13,90 €</td></tr>
-                        </table>
-                        <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">F</span><span class="allergen">H</span><span class="allergen">R</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item reveal-item">
-                    <div class="item-number">M8</div>
-                    <div class="item-image">
-                        <img src="images/M8_basilikum-wok.png" alt="Pad Kra Prao Basilikum Wok" loading="lazy">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Basilikum Wok <span class="icon" style="color: #ff4d4d;">🌶</span></h3>
-                            <p class="item-thai-name">pad kra prao  ผัดกะเพรา</p>
-                        </div>
-                        <p class="item-description">Pikant gebratenes Thai Basilikum, Zwiebeln & Spitzpaprika.</p>
-                        <table class="price-options">
-                            <tr><td>Huhn</td><td>11,90 €</td></tr>
-                            <tr><td>Rind / Garnelen</td><td>13,90 €</td></tr>
-                        </table>
-                        <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">D</span><span class="allergen">F</span><span class="allergen">R</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item reveal-item">
-                    <div class="item-number">M9</div>
-                    <div class="item-image">
-                        <img src="images/M9_pfefferwok.png" alt="Schwarzer Pfeffer Wok" loading="lazy">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Pfefferwok</h3>
-                            <p class="item-thai-name">pad phrik thai dam  ผัดพริกไทยดำ</p>
-                        </div>
-                        <p class="item-description">Würzig-pfeffrig mit Jungzwiebeln, Zwiebeln, Paprika & Karotten.</p>
-                        <table class="price-options">
-                            <tr><td>Huhn</td><td>11,90 €</td></tr>
-                            <tr><td>Rind / Garnelen</td><td>13,90 €</td></tr>
-                            <tr><td>Ente</td><td>14,90 €</td></tr>
-                        </table>
-                        <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">D</span><span class="allergen">F</span><span class="allergen">R</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="nudeln-reis">
-            <h2>Nudeln & Reis</h2>
-            <div class="menu-items">
-                <div class="menu-item reveal-item">
-                    <div class="item-number">M10</div>
-                    <div class="item-image">
-                        <img src="images/M10_pad-thai.png" alt="Pad Thai Nudeln" loading="lazy">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Pad Thai</h3>
-                             <p class="item-thai-name">pad thai  ผัดไทย</p>
-                        </div>
-                        <p class="item-description">Reisbandnudeln mit Karotten, Sojasprossen, Jungzwiebeln, Erdnüssen & Ei in hauseigener Pad-Thai-Sauce, ohne Reis.</p>
-                        <table class="price-options">
-                            <tr><td>Tofu</td><td>10,90 €</td></tr>
-                            <tr><td>Huhn</td><td>11,90 €</td></tr>
-                            <tr><td>Garnelen</td><td>12,50 €</td></tr>
-                        </table>
-                        <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">B</span><span class="allergen">C</span><span class="allergen">D</span><span class="allergen">E</span><span class="allergen">F</span><span class="allergen">R</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item reveal-item">
-                    <div class="item-number">M11</div>
-                    <div class="item-image">
-                        <img src="images/M11_gebratener-reis.png" alt="Khao Pad Gebratener Reis" loading="lazy">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Gebratener Reis</h3>
-                            <p class="item-thai-name">khao pad  ข้าวผัด</p>
-                        </div>
-                        <p class="item-description">Gebratener Jasminreis mit Ei, Karotten, Erbsen & Zwiebeln.</p>
-                        <table class="price-options">
-                            <tr><td>Gemüse</td><td>9,90 €</td></tr>
-                            <tr><td>Huhn</td><td>11,90 €</td></tr>
-                            <tr><td>Garnelen</td><td>12,50 €</td></tr>
-                        </table>
-                        <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">C</span><span class="allergen">D</span><span class="allergen">F</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="getraenke">
-            <h2>Getränke & Extras</h2>
-            <div class="menu-items">
-                <div class="menu-item reveal-item">
-                    <div class="item-number" style="font-size: 1.5rem;">🍹</div>
-                    <div class="item-image">
-                        <img src="images/getraenke.png" alt="Getränkeauswahl" style="object-fit: contain;">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Getränke</h3>
-                            <p class="item-thai-name">khrueang duem เครื่องดื่ม</p>
-                        </div>
-                        <table class="price-options">
-                            <tr><td>Singha Bier 0,33 l</td><td>3,80 €</td></tr>
-                            <tr><td>Chang Bier 0.33 l</td><td>3,80 €</td></tr>
-                            <tr><td>Mineralwasser (still/prickelnd)*</td><td>2,75 €</td></tr>
-                            <tr><td>Coca-Cola* 0,33 l</td><td>3,15 €</td></tr>
-                            <tr><td>Aloe Vera Drink 0,33 l</td><td>3,80 €</td></tr>
-                            <tr><td>Kokosnusssaft 0,33 l</td><td>3,80 €</td></tr>
-                        </table>
-                        <p style="margin-top: 15px; font-size: 0.9rem; color: #333; font-style: italic;">* inkl. € 0,25 Pfand</p>
-                    </div>
-                </div>
-                
-                <div class="menu-item reveal-item">
-                    <div class="item-number xl-button">XL</div> 
-                    <div class="item-image">
-                        <img src="images/extras.png" alt="Extras und Beilagen" loading="lazy">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Extras</h3>
-                            <p class="item-thai-name">phiset พิเศษ</p>
-                        </div>
-                        <p class="item-description">Alle Hauptgerichte (Suppen, Curry & Wok) werden inkl. einer Portion Jasminreis serviert.</p>
-                        <table class="price-options">
-                            <tr><td>+ Ei</td><td>2,00 €</td></tr>
-                            <tr><td>+ Reis / Rind / Garnelen / Ente</td><td>3,00 €</td></tr>
-                            <tr><td>Extraportion</td><td>3,50 €</td></tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="order-notice">
-            <p>Hungrig? Rufen Sie uns für Ihre Vorbestellung an.</p>
-            <a href="tel:06604963392" class="phone" aria-label="Anrufen">0660 496 3392</a>
-        </div>
-
-        <section id="kontakt">
-            <h2>Kontakt & Standort</h2>
-            <div class="contact-container reveal-item">
-                <div class="contact-info">
-                    <div class="contact-details">
-                        <h3>Adresse & Kontakt</h3>
-                        <p><i>📍</i> Ybbsstraße 39, 3300 Amstetten</p>
-                        <p><i>📞</i> <a href="tel:06604963392" style="color:var(--dark); text-decoration:none;">0660 496 3392</a></p>
-                        <p><i>✉️</i> <a href="mailto:office@siriwan.at" style="color:var(--dark); text-decoration:none;">office@siriwan.at</a></p>
-                        <p><i>🌐</i> <a href="http://www.siriwan.at" style="color:var(--dark); text-decoration:none;">www.siriwan.at</a></p>
-                    </div>
-                   
-                    <div class="opening-hours" style="margin-top: 30px;">
-                        <h3>Öffnungszeiten</h3>
-                        <p>MO–FR: 11:00–18:30 Uhr</p>
-                        <p style="color: var(--secondary);">Feiertags geschlossen</p>
-                    </div>
-                   
-                    <div class="payment-info" style="margin-top: 30px;">
-                        <h3>Bezahlmöglichkeiten</h3>
-                        <div class="item-allergens">
-                            <span class="allergen">Bar</span>
-                            <span class="allergen">Bankomatkarte</span>
-                            <span class="allergen">EC-Karte</span>
-                            <span class="allergen">Kontaktlos</span>
-                            <span class="allergen">Apple Pay</span>
-                            <span class="allergen">Google Pay</span>
-                        </div>
-                        <p style="margin-top: 10px; color: #d32f2f; font-weight: bold;">🚫 Kein Lieferservice</p>
-                    </div>
-                   
-                    <div class="social-media" style="margin-top: 30px;">
-                        <h3>Social Media</h3>
-                        <div style="display:flex; gap:10px;">
-                            <a href="https://www.facebook.com/siriwan.thaistreetfood" target="_blank" class="social-link" aria-label="Facebook">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
-                            </a>
-                            <a href="https://www.instagram.com/siriwan.thaistreetfood" target="_blank" class="social-link" aria-label="Instagram">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                </a>
-            </div>
-        </div>
-        
-        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menü öffnen">☰</button>
-    </header>
-
-    <nav id="mainNav">
-        <div class="nav-inner">
-            <ul id="navMenu">
-                <li><a href="#vorspeisen" class="nav-link">Vorspeisen</a></li>
-                <li><a href="#suppen-curry" class="nav-link">Suppen & Curry</a></li>
-                <li><a href="#wokgerichte" class="nav-link">Wok</a></li>
-                <li><a href="#nudeln-reis" class="nav-link">Nudeln & Reis</a></li>
-                <li><a href="#getraenke" class="nav-link">Getränke</a></li>
-                <li><a href="#kontakt" class="nav-link">Kontakt</a></li>
-                <li><a href="druckversion.html" class="nav-link">Druckversion</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <main class="container">
-        
-        <section id="vorspeisen">
-            <h2>Vorspeisen</h2>
-            <div class="menu-items">
-                <div class="menu-item reveal-item">
-                    <div class="item-number">V1</div>
-                    <div class="item-image">
-                        <img src="images/V1_frühlingsrollen.png" alt="Knusprige Frühlingsrollen mit Dip" loading="lazy">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Frühlingsrollen</h3>
-                            <p class="item-thai-name">po pia  ปอเปี๊ยะ</p>
-                        </div>
-                        <p class="item-description">Knusprig frittierte Teigröllchen, gefüllt mit Glasnudeln, Karotten, wahlweise mit Schweinsfaschiertem oder Gemüse. Dazu süß-saure Dip-Sauce.</p>
-                        <span class="price-tag">5,50 €</span>
-                        <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">C</span><span class="allergen">F</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item reveal-item">
-                    <div class="item-number">V2</div>
-                    <div class="item-image">
-                        <img src="images/V3_huhn-tempura.png" alt="Huhn im Tempura Mantel" loading="lazy">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Tempura Huhn</h3>
-                            <p class="item-thai-name">gai tempura  ไก่เทมปุระ</p>
-                        </div>
-                        <p class="item-description">Hühnerfilet im Tempura-Teigmantel mit süß-saurer Sauce.</p>
-                        <span class="price-tag">6,50 €</span>
-                        <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">C</span><span class="allergen">F</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item reveal-item">
-                    <div class="item-number">V3</div>
-                    <div class="item-image">
-                        <img src="images/V4_gai-satay.png" alt="Hühner Saté Spieße mit Erdnusssauce" loading="lazy">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Hühner Saté Spieße</h3>
-                            <p class="item-thai-name">gai saté  ไก่สะเต๊ะ</p>
-                        </div>
-                        <p class="item-description">Zarte Hühnerspieße mit cremiger Erdnuss-Kokos-Currysauce.</p>
-                        <span class="price-tag">8,50 €</span>
-                        <div class="item-allergens">
-                            <span class="allergen">E</span><span class="allergen">F</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item reveal-item">
-                    <div class="item-number">V4</div>
-                    <div class="item-image">
-                        <img src="images/V5_som-tam-thai.png" alt="Som Tam Thai Papayasalat" loading="lazy">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Papayasalat</h3>
-                            <p class="item-thai-name">som tam thai  ส้มตำไทย</p>
-                        </div>
-                        <p class="item-description">Frischer grüner Papayasalat mit Fischsauce, Karotten, Fisolen, Tomaten, Limette, Erdnüssen & Tamarindenpaste; auf Wunsch mit Chili.</p>
-                        <span class="price-tag">8,90 €</span>
-                        <div class="item-allergens">
-                            <span class="allergen">D</span><span class="allergen">E</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="suppen-curry">
-            <h2>Suppen & Curry</h2>
-            <div class="rice-notice">
-                <span class="rice-icon"><i style="font-style:normal;">🍚</i></span>
-                <span class="rice-text">Alle Hauptgerichte (Suppen, Curry & Wok) werden inkl. einer Portion Jasminreis serviert.</span>
-            </div>
-           
-            <div class="menu-items">
-                <div class="menu-item reveal-item">
-                    <div class="item-number">M1</div>
-                    <div class="item-image">
-                        <img src="images/M1_tom-yam.png" alt="Tom Yam Suppe" loading="lazy">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Tom Yam <span class="icon" style="color: #ff4d4d;">🌶</span></h3>
-                            <p class="item-thai-name">ต้มยำ</p>
-                        </div>
-                        <p class="item-description">Scharf-saure Suppe mit Tomaten, Champignons, Zitronengras, Galgant, Kaffirlimettenblättern, Fischsauce & Limettensaft.</p>
-                        <table class="price-options">
-                            <tr><td>Huhn</td><td>11,90 €</td></tr>
-                            <tr><td>Garnelen</td><td>12,90 €</td></tr>
-                            <tr><td>Gemischt (Huhn & Garnelen)</td><td>13,90 €</td></tr>
-                        </table>
-                        <div class="item-allergens">
-                            <span class="allergen">B</span><span class="allergen">D</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item reveal-item">
-                    <div class="item-number">M2</div>
-                    <div class="item-image">
-                        <img src="images/M2_kokossuppe.png" alt="Tom Kha Gai Kokossuppe" loading="lazy">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Kokossuppe</h3>
-                            <p class="item-thai-name">tom kha  ต้มข่า</p>
-                        </div>
-                        <p class="item-description">Aromatische Kokosmilchsuppe mit Tomaten, Champignons, Zitronengras, Galgant, Kaffirlimettenblättern, Fischsauce & Limettensaft.</p>
-                        <table class="price-options">
-                            <tr><td>Huhn</td><td>11,90 €</td></tr>
-                            <tr><td>Garnelen</td><td>12,90 €</td></tr>
-                            <tr><td>Gemischt (Huhn & Garnelen)</td><td>13,90 €</td></tr>
-                        </table>
-                        <div class="item-allergens">
-                            <span class="allergen">D</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item reveal-item">
-                    <div class="item-number">M3</div>
-                    <div class="item-image">
-                        <img src="images/M3_gelbes-curry.png" alt="Gelbes Curry Thai Style" loading="lazy">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Gelbes Curry</h3>
-                            <p class="item-thai-name">gaeng lüang  แกงเหลือง</p>
-                        </div>
-                        <p class="item-description">Mildes Kokoscurry mit Kartoffeln & Karotten.</p>
-                        <table class="price-options">
-                            <tr><td>Gemüse / Tofu</td><td>10,90 €</td></tr>
-                            <tr><td>Huhn</td><td>11,90 €</td></tr>
-                            <tr><td>Rind / Garnelen</td><td>13,90 €</td></tr>
-                        </table>
-                        <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">B</span><span class="allergen">D</span><span class="allergen">F</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item reveal-item">
-                    <div class="item-number">M4</div>
-                    <div class="item-image">
-                        <img src="images/M4_rotes-curry.png" alt="Rotes Thai Curry" loading="lazy">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Rotes Curry <span class="icon" style="color: #ff4d4d;">🌶</span></h3>
-                            <p class="item-thai-name">gaeng daeng  แกงแดง</p>
-                        </div>
-                        <p class="item-description">Kokoscurry mit Bambus, Zucchini, Fisolen, Spitzpaprika & Thai-Basilikum.</p>
-                        <table class="price-options">
-                            <tr><td>Gemüse / Tofu</td><td>10,90 €</td></tr>
-                            <tr><td>Huhn</td><td>11,90 €</td></tr>
-                            <tr><td>Rind / Garnelen</td><td>13,90 €</td></tr>
-                            <tr><td>Ente</td><td>14,90 €</td></tr>
-                        </table>
-                        <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">B</span><span class="allergen">D</span><span class="allergen">F</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="wokgerichte">
-            <h2>Wok</h2>
-            <div class="menu-items">
-                <div class="menu-item reveal-item">
-                    <div class="item-number">M5</div>
-                    <div class="item-image">
-                        <img src="images/M5_roter-curry-wok.png" alt="Wok mit rotem Curry" loading="lazy">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Roter Curry Wok <span class="icon" style="color: #ff4d4d;">🌶</span></h3>
-                            <p class="item-thai-name">pad phrik gaeng daeng  ผัดพริกแกงแดง</p>
-                        </div>
-                        <p class="item-description">Gebratenes Gemüse in roter Currypaste, Kokosmilch & Thai-Kräutern und Bambus, Fisolen & Spitzpaprika.</p>
-                        <table class="price-options">
-                            <tr><td>Tofu</td><td>10,90 €</td></tr>
-                            <tr><td>Huhn</td><td>11,90 €</td></tr>
-                            <tr><td>Rind / Garnelen</td><td>13,90 €</td></tr>
-                            <tr><td>Ente</td><td>14,90 €</td></tr>
-                        </table>
-                        <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">B</span><span class="allergen">D</span><span class="allergen">F</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item reveal-item">
-                    <div class="item-number">M6</div>
-                    <div class="item-image">
-                        <img src="images/M6_wok-suess-sauer.png" alt="Süß-Sauer Wok" loading="lazy">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Wok süßsauer</h3>
-                            <p class="item-thai-name">pad priao wan  ผัดเปรี้ยวหวาน</p>
-                        </div>
-                        <p class="item-description">Gurken, Zwiebeln, Jungzwiebeln & Paprika in süßsaurer Sauce.</p>
-                        <table class="price-options">
-                            <tr><td>Huhn</td><td>11,90 €</td></tr>
-                            <tr><td>Garnelen</td><td>13,90 €</td></tr>
-                        </table>
-                        <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">F</span><span class="allergen">R</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item reveal-item">
-                    <div class="item-number">M7</div>
-                    <div class="item-image">
-                        <img src="images/M7_cashew-wok.png" alt="Cashew Wok Huhn" loading="lazy">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Cashew Wok</h3>
-                            <p class="item-thai-name">pad med mamuang  ผัดเม็ดมะม่วง</p>
-                        </div>
-                        <p class="item-description">Cashewnüsse, Jungzwiebeln & Paprika in süß-milder Woksauce.</p>
-                        <table class="price-options">
-                            <tr><td>Huhn</td><td>11,90 €</td></tr>
-                            <tr><td>Garnelen</td><td>13,90 €</td></tr>
-                        </table>
-                        <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">F</span><span class="allergen">H</span><span class="allergen">R</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item reveal-item">
-                    <div class="item-number">M8</div>
-                    <div class="item-image">
-                        <img src="images/M8_basilikum-wok.png" alt="Pad Kra Prao Basilikum Wok" loading="lazy">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Basilikum Wok <span class="icon" style="color: #ff4d4d;">🌶</span></h3>
-                            <p class="item-thai-name">pad kra prao  ผัดกะเพรา</p>
-                        </div>
-                        <p class="item-description">Pikant gebratenes Thai Basilikum, Zwiebeln & Spitzpaprika.</p>
-                        <table class="price-options">
-                            <tr><td>Huhn</td><td>11,90 €</td></tr>
-                            <tr><td>Rind / Garnelen</td><td>13,90 €</td></tr>
-                        </table>
-                        <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">D</span><span class="allergen">F</span><span class="allergen">R</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item reveal-item">
-                    <div class="item-number">M9</div>
-                    <div class="item-image">
-                        <img src="images/M9_pfefferwok.png" alt="Schwarzer Pfeffer Wok" loading="lazy">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Pfefferwok</h3>
-                            <p class="item-thai-name">pad phrik thai dam  ผัดพริกไทยดำ</p>
-                        </div>
-                        <p class="item-description">Würzig-pfeffrig mit Jungzwiebeln, Zwiebeln, Paprika & Karotten.</p>
-                        <table class="price-options">
-                            <tr><td>Huhn</td><td>11,90 €</td></tr>
-                            <tr><td>Rind / Garnelen</td><td>13,90 €</td></tr>
-                            <tr><td>Ente</td><td>14,90 €</td></tr>
-                        </table>
-                        <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">D</span><span class="allergen">F</span><span class="allergen">R</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="nudeln-reis">
-            <h2>Nudeln & Reis</h2>
-            <div class="menu-items">
-                <div class="menu-item reveal-item">
-                    <div class="item-number">M10</div>
-                    <div class="item-image">
-                        <img src="images/M10_pad-thai.png" alt="Pad Thai Nudeln" loading="lazy">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Pad Thai</h3>
-                             <p class="item-thai-name">pad thai  ผัดไทย</p>
-                        </div>
-                        <p class="item-description">Reisbandnudeln mit Karotten, Sojasprossen, Jungzwiebeln, Erdnüssen & Ei in hauseigener Pad-Thai-Sauce, ohne Reis.</p>
-                        <table class="price-options">
-                            <tr><td>Tofu</td><td>10,90 €</td></tr>
-                            <tr><td>Huhn</td><td>11,90 €</td></tr>
-                            <tr><td>Garnelen</td><td>12,50 €</td></tr>
-                        </table>
-                        <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">B</span><span class="allergen">C</span><span class="allergen">D</span><span class="allergen">E</span><span class="allergen">F</span><span class="allergen">R</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-item reveal-item">
-                    <div class="item-number">M11</div>
-                    <div class="item-image">
-                        <img src="images/M11_gebratener-reis.png" alt="Khao Pad Gebratener Reis" loading="lazy">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Gebratener Reis</h3>
-                            <p class="item-thai-name">khao pad  ข้าวผัด</p>
-                        </div>
-                        <p class="item-description">Gebratener Jasminreis mit Ei, Karotten, Erbsen & Zwiebeln.</p>
-                        <table class="price-options">
-                            <tr><td>Gemüse</td><td>9,90 €</td></tr>
-                            <tr><td>Huhn</td><td>11,90 €</td></tr>
-                            <tr><td>Garnelen</td><td>12,50 €</td></tr>
-                        </table>
-                        <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">C</span><span class="allergen">D</span><span class="allergen">F</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="getraenke">
-            <h2>Getränke & Extras</h2>
-            <div class="menu-items">
-                <div class="menu-item reveal-item">
-                    <div class="item-number" style="font-size: 1.5rem;">🍹</div>
-                    <div class="item-image">
-                        <img src="images/getraenke.png" alt="Getränkeauswahl" style="object-fit: contain;">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Getränke</h3>
-                            <p class="item-thai-name">khrueang duem เครื่องดื่ม</p>
-                        </div>
-                        <table class="price-options">
-                            <tr><td>Singha Bier 0,33 l</td><td>3,80 €</td></tr>
-                            <tr><td>Chang Bier 0.33 l</td><td>3,80 €</td></tr>
-                            <tr><td>Mineralwasser (still/prickelnd)*</td><td>2,75 €</td></tr>
-                            <tr><td>Coca-Cola* 0,33 l</td><td>3,15 €</td></tr>
-                            <tr><td>Aloe Vera Drink 0,33 l</td><td>3,80 €</td></tr>
-                            <tr><td>Kokosnusssaft 0,33 l</td><td>3,80 €</td></tr>
-                        </table>
-                        <p style="margin-top: 15px; font-size: 0.9rem; color: #333; font-style: italic;">* inkl. € 0,25 Pfand</p>
-                    </div>
-                </div>
-                
-                <div class="menu-item reveal-item">
-                    <div class="item-number xl-button">XL</div> 
-                    <div class="item-image">
-                        <img src="images/extras.png" alt="Extras und Beilagen" loading="lazy">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <h3 class="item-name">Extras</h3>
-                            <p class="item-thai-name">phiset พิเศษ</p>
-                        </div>
-                        <p class="item-description">Alle Hauptgerichte (Suppen, Curry & Wok) werden inkl. einer Portion Jasminreis serviert.</p>
-                        <table class="price-options">
-                            <tr><td>+ Ei</td><td>2,00 €</td></tr>
-                            <tr><td>+ Reis / Rind / Garnelen / Ente</td><td>3,00 €</td></tr>
-                            <tr><td>Extraportion</td><td>3,50 €</td></tr>
+                            <tr><td>+ Reis / Rind / Garnelen</td><td>3,00 €</td></tr>
+                            <tr><td>+ Ente</td><td>3,50 €</td></tr>
+                            <tr><td>Extraportion</td><td>4,00 €</td></tr>
                         </table>
                     </div>
                 </div>
@@ -2444,13 +1554,7 @@
                 </div>
                
                 <div class="map-container">
-                    <iframe src="https://www.google.com/maps?q=Ybbsstra%C3%9Fe%2039,%203300%20Amstetten&output=embed"
-                            width="100%"
-                            height="100%"
-                            style="border:0;"
-                            allowfullscreen=""
-                            loading="lazy"
-                            title="Standort Siriwan"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2657.308586858278!2d14.86942897693288!3d48.12657707124217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4773c61749140001%3A0x51376655887707!2sSiriwan%20Thai%20Street%20Food!5e0!3m2!1sde!2sat!4v1709561755178!5m2!1sde!2sat" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
             
