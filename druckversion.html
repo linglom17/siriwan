@@ -47,7 +47,6 @@
             align-items: center;
         }
 
-        /* Neues CSS für das Bild-Logo */
         .logo-img {
             height: 90px;
             width: auto;
@@ -55,23 +54,21 @@
             display: block;
         }
 
-        /* NEU: Social Media Header (Text beibehalten) */
         .social-links {
             text-align: center;
             font-size: 10pt;
             line-height: 1.5;
             flex-grow: 1;
             padding: 0 15px;
-            color: var(--text-light); /* Leichter Text */
+            color: var(--text-light);
         }
-        /* Styling für ausgeschriebene URLs */
+        
         .social-links span.url-text {
             font-weight: bold;
             color: var(--primary); 
             display: block;
             margin-top: 3px;
         }
-        /* ENDE NEU: Social Media Header */
 
         .contact-info {
             text-align: right;
@@ -212,7 +209,7 @@
             margin-left: 3px;
         }
 
-        /* NEU: QR Code Styling (Gesamtbox) */
+        /* --- QR Code Styling --- */
         .qr-container {
             text-align: center;
             padding: 20px 15px;
@@ -237,7 +234,7 @@
             padding: 5px;
             background-color: white;
             display: block;
-            margin: 0 auto 15px auto; /* Abstand nach unten */
+            margin: 0 auto 15px auto;
         }
         .qr-container p {
             font-size: 10pt;
@@ -245,7 +242,6 @@
             line-height: 1.4;
         }
 
-        /* NEU: Social Media Leiste innerhalb der QR-Box */
         .social-bar {
             margin-top: 15px;
             padding-top: 15px;
@@ -267,9 +263,8 @@
             margin-right: 5px;
             line-height: 1;
         }
-        /* ENDE NEU: QR Code Styling */
 
-        /* --- FOOTER BEREICH AUF SEITE 2 --- */
+        /* --- FOOTER --- */
         .footer {
             margin-top: auto;
             padding-top: 15px;
@@ -280,8 +275,6 @@
             color: #444;
         }
         
-        /* Die Social-Media-Spalte wurde hier entfernt, sodass es nur noch 3 Spalten gibt, 
-           da die Infos nun in der QR-Box sind. */
         .footer-col {
             width: 33%; 
         }
@@ -347,41 +340,41 @@
             <div class="item">
                 <div class="item-top"><span class="name">V1 Frühlingsrollen</span> <span class="price">5,50 €</span></div>
                 <div class="thai-name">po pia</div>
-                <div class="desc">3 Stk. knusprig frittierte Teigröllchen, Glasnudeln, Karotten. Wahlweise Schwein oder Gemüse. Inkl. Dip.</div>
+                <div class="desc">Knusprig frittierte Teigröllchen, gefüllt mit Glasnudeln, Karotten, wahlweise mit Schweinsfaschiertem oder Gemüse. Dazu süß-saure Dip-Sauce.</div>
                 <div class="allergens">A, C, F</div>
             </div>
             <div class="item">
-                <div class="item-top"><span class="name">V2 Tempura Huhn</span> <span class="price">5,90 €</span></div>
+                <div class="item-top"><span class="name">V2 Tempura Huhn</span> <span class="price">6,50 €</span></div>
                 <div class="thai-name">gai tempura</div>
-                <div class="desc">5 Stk. Hühnerfilet im Tempura-Teigmantel mit süß-saurer Sauce.</div>
+                <div class="desc">Hühnerfilet im Tempura-Teigmantel mit süß-saurer Sauce.</div>
                 <div class="allergens">A, C, F</div>
             </div>
             <div class="item">
-                <div class="item-top"><span class="name">V3 Hühner Saté</span> <span class="price">7,90 €</span></div>
+                <div class="item-top"><span class="name">V3 Hühner Saté Spieße</span> <span class="price">8,50 €</span></div>
                 <div class="thai-name">gai saté</div>
-                <div class="desc">3 Stk. zarte Hühnerspieße mit cremiger Erdnuss-Kokos-Currysauce.</div>
+                <div class="desc">Zarte Hühnerspieße mit cremiger Erdnuss-Kokos-Currysauce.</div>
                 <div class="allergens">E, F</div>
             </div>
             <div class="item">
                 <div class="item-top"><span class="name">V4 Papayasalat</span> <span class="price">8,90 €</span></div>
                 <div class="thai-name">som tam thai</div>
-                <div class="desc">Grüne Papaya, Fischsauce, Karotten, Fisolen, Tomaten, Limette, Erdnüsse. Auf Wunsch Chili.</div>
+                <div class="desc">Frischer grüner Papayasalat mit Fischsauce, Karotten, Fisolen, Tomaten, Limette, Erdnüssen & Tamarindenpaste; auf Wunsch mit Chili.</div>
                 <div class="allergens">D, E</div>
             </div>
         </div>
 
         <h2>Suppen & Curry <span class="thai">tom & gaeng</span></h2>
-        <div class="note">Alle Hauptgerichte inkl. einer Portion Jasminreis.</div>
+        <div class="note">Alle Hauptgerichte (Suppen, Curry & Wok) werden inkl. einer Portion Jasminreis serviert.</div>
         
         <div class="grid-container">
             <div class="item">
                 <div class="item-top"><span class="name">M1 Tom Yam <span class="chili"></span></span></div>
                 <div class="thai-name">tomyam</div>
-                <div class="desc">Scharf-saure Suppe, Zitronengras, Champignons.</div>
+                <div class="desc">Scharf-saure Suppe mit Tomaten, Champignons, Zitronengras, Galgant, Kaffirlimettenblättern, Fischsauce & Limettensaft.</div>
                 <table class="option-table">
-                    <tr><td>Huhn</td><td>10,90 €</td></tr>
+                    <tr><td>Huhn</td><td>11,90 €</td></tr>
                     <tr><td>Garnelen</td><td>12,90 €</td></tr>
-                    <tr><td>Gemischt</td><td>13,90 €</td></tr>
+                    <tr><td>Gemischt (Huhn & Garnelen)</td><td>13,90 €</td></tr>
                 </table>
                 <div class="allergens">B, D</div>
             </div>
@@ -389,11 +382,11 @@
             <div class="item">
                 <div class="item-top"><span class="name">M2 Kokossuppe</span></div>
                 <div class="thai-name">tom kha</div>
-                <div class="desc">Aromatische Kokosmilchsuppe, Galgant, Champignons.</div>
+                <div class="desc">Aromatische Kokosmilchsuppe mit Tomaten, Champignons, Zitronengras, Galgant, Kaffirlimettenblättern, Fischsauce & Limettensaft.</div>
                 <table class="option-table">
-                    <tr><td>Huhn</td><td>10,90 €</td></tr>
+                    <tr><td>Huhn</td><td>11,90 €</td></tr>
                     <tr><td>Garnelen</td><td>12,90 €</td></tr>
-                    <tr><td>Gemischt</td><td>13,90 €</td></tr>
+                    <tr><td>Gemischt (Huhn & Garnelen)</td><td>13,90 €</td></tr>
                 </table>
                 <div class="allergens">D</div>
             </div>
@@ -401,11 +394,11 @@
             <div class="item">
                 <div class="item-top"><span class="name">M3 Gelbes Curry</span></div>
                 <div class="thai-name">gaeng lüang</div>
-                <div class="desc">Mildes Kokoscurry, Kartoffeln, Karotten.</div>
+                <div class="desc">Mildes Kokoscurry mit Kartoffeln & Karotten.</div>
                 <table class="option-table">
-                    <tr><td>Gemüse / Tofu</td><td>10,50 €</td></tr>
+                    <tr><td>Gemüse / Tofu</td><td>10,90 €</td></tr>
                     <tr><td>Huhn</td><td>11,90 €</td></tr>
-                    <tr><td>Rind / Garnelen</td><td>12,90 €</td></tr>
+                    <tr><td>Rind / Garnelen</td><td>13,90 €</td></tr>
                 </table>
                 <div class="allergens">A, B, D, F</div>
             </div>
@@ -413,30 +406,30 @@
             <div class="item">
                 <div class="item-top"><span class="name">M4 Rotes Curry <span class="chili"></span></span></div>
                 <div class="thai-name">gaeng daeng</div>
-                <div class="desc">Bambus, Zucchini, Fisolen, Thai-Basilikum.</div>
+                <div class="desc">Kokoscurry mit Bambus, Zucchini, Fisolen, Spitzpaprika & Thai-Basilikum.</div>
                 <table class="option-table">
-                    <tr><td>Gemüse / Tofu</td><td>10,50 €</td></tr>
+                    <tr><td>Gemüse / Tofu</td><td>10,90 €</td></tr>
                     <tr><td>Huhn</td><td>11,90 €</td></tr>
-                    <tr><td>Rind / Garnelen</td><td>12,90 €</td></tr>
-                    <tr><td>Ente</td><td>13,90 €</td></tr>
+                    <tr><td>Rind / Garnelen</td><td>13,90 €</td></tr>
+                    <tr><td>Ente</td><td>15,90 €</td></tr>
                 </table>
                 <div class="allergens">A, B, D, F</div>
             </div>
         </div>
 
         <h2>Wok <span class="thai">pad</span></h2>
-        <div class="note">Alle Hauptgerichte inkl. einer Portion Jasminreis.</div>
+        <div class="note">Alle Hauptgerichte (Suppen, Curry & Wok) werden inkl. einer Portion Jasminreis serviert.</div>
         
         <div class="grid-container">
             <div class="item">
                 <div class="item-top"><span class="name">M5 Roter Curry Wok <span class="chili"></span></span></div>
                 <div class="thai-name">pad phrik gaeng daeng</div>
-                <div class="desc">Rote Currypaste, Kokosmilch, Thai-Kräuter, Bambus.</div>
+                <div class="desc">Gebratenes Gemüse in roter Currypaste, Kokosmilch & Thai-Kräutern und Bambus, Fisolen & Spitzpaprika.</div>
                 <table class="option-table">
-                    <tr><td>Tofu</td><td>10,50 €</td></tr>
+                    <tr><td>Tofu</td><td>10,90 €</td></tr>
                     <tr><td>Huhn</td><td>11,90 €</td></tr>
-                    <tr><td>Rind / Garnelen</td><td>12,50 €</td></tr>
-                    <tr><td>Ente</td><td>13,90 €</td></tr>
+                    <tr><td>Rind / Garnelen</td><td>13,90 €</td></tr>
+                    <tr><td>Ente</td><td>15,90 €</td></tr>
                 </table>
                 <div class="allergens">A, B, D, F</div>
             </div>
@@ -444,10 +437,10 @@
             <div class="item">
                 <div class="item-top"><span class="name">M6 Süßsauer Wok</span></div>
                 <div class="thai-name">pad priao wan</div>
-                <div class="desc">Gurken, Zwiebeln, Paprika, süßsaure Sauce.</div>
+                <div class="desc">Gurken, Zwiebeln, Jungzwiebeln & Paprika in süßsaurer Sauce.</div>
                 <table class="option-table">
                     <tr><td>Huhn</td><td>11,90 €</td></tr>
-                    <tr><td>Garnelen</td><td>12,90 €</td></tr>
+                    <tr><td>Garnelen</td><td>13,90 €</td></tr>
                 </table>
                 <div class="allergens">A, F, R</div>
             </div>
@@ -461,10 +454,10 @@
             <div class="item">
                 <div class="item-top"><span class="name">M7 Cashew Wok</span></div>
                 <div class="thai-name">pad med mamuang</div>
-                <div class="desc">Cashewnüsse, Jungzwiebeln, Paprika, süß-milde Sauce.</div>
+                <div class="desc">Cashewnüsse, Jungzwiebeln & Paprika in süß-milder Woksauce.</div>
                 <table class="option-table">
                     <tr><td>Huhn</td><td>11,90 €</td></tr>
-                    <tr><td>Garnelen</td><td>12,90 €</td></tr>
+                    <tr><td>Garnelen</td><td>13,90 €</td></tr>
                 </table>
                 <div class="allergens">A, F, H, R</div>
             </div>
@@ -472,10 +465,11 @@
             <div class="item">
                 <div class="item-top"><span class="name">M8 Basilikum Wok <span class="chili"></span></span></div>
                 <div class="thai-name">pad kra prao</div>
-                <div class="desc">Pikant, Thai Basilikum, Zwiebeln, Spitzpaprika.</div>
+                <div class="desc">Pikant gebratenes Thai Basilikum, Zwiebeln & Spitzpaprika.</div>
                 <table class="option-table">
                     <tr><td>Huhn</td><td>11,90 €</td></tr>
-                    <tr><td>Rind / Garnelen</td><td>12,90 €</td></tr>
+                    <tr><td>Rind / Garnelen</td><td>13,90 €</td></tr>
+                    <tr><td>Ente</td><td>15,90 €</td></tr>
                 </table>
                 <div class="allergens">A, D, F, R</div>
             </div>
@@ -483,11 +477,11 @@
             <div class="item">
                 <div class="item-top"><span class="name">M9 Pfefferwok</span></div>
                 <div class="thai-name">pad phrik thai dam</div>
-                <div class="desc">Würzig-pfeffrig, Jungzwiebeln, Zwiebeln, Paprika, Karotten.</div>
+                <div class="desc">Würzig-pfeffrig mit Jungzwiebeln, Zwiebeln, Paprika & Karotten.</div>
                 <table class="option-table">
                     <tr><td>Huhn</td><td>11,90 €</td></tr>
-                    <tr><td>Rind / Garnelen</td><td>12,90 €</td></tr>
-                    <tr><td>Ente</td><td>13,90 €</td></tr>
+                    <tr><td>Rind / Garnelen</td><td>13,90 €</td></tr>
+                    <tr><td>Ente</td><td>15,90 €</td></tr>
                 </table>
                 <div class="allergens">A, D, F, R</div>
             </div>
@@ -499,9 +493,9 @@
             <div class="item">
                 <div class="item-top"><span class="name">M10 Pad Thai</span></div>
                 <div class="thai-name">pad thai</div>
-                <div class="desc">Reisbandnudeln, Karotten, Sprossen, Erdnüsse, Ei, Haus-Sauce (ohne Reis).</div>
+                <div class="desc">Reisbandnudeln mit Karotten, Sojasprossen, Jungzwiebeln, Erdnüssen & Ei in hauseigener Pad-Thai-Sauce, ohne Reis.</div>
                 <table class="option-table">
-                    <tr><td>Tofu</td><td>10,50 €</td></tr>
+                    <tr><td>Tofu</td><td>10,90 €</td></tr>
                     <tr><td>Huhn</td><td>11,90 €</td></tr>
                     <tr><td>Garnelen</td><td>12,50 €</td></tr>
                 </table>
@@ -511,9 +505,9 @@
             <div class="item">
                 <div class="item-top"><span class="name">M11 Gebratener Reis</span></div>
                 <div class="thai-name">khao pad</div>
-                <div class="desc">Jasminreis gebraten mit Ei, Karotten, Erbsen, Zwiebeln.</div>
+                <div class="desc">Gebratener Reis mit Ei, Karotten, Erbsen & Zwiebeln.</div>
                 <table class="option-table">
-                    <tr><td>Gemüse</td><td>9,50 €</td></tr>
+                    <tr><td>Gemüse</td><td>9,90 €</td></tr>
                     <tr><td>Huhn</td><td>11,90 €</td></tr>
                     <tr><td>Garnelen</td><td>12,50 €</td></tr>
                 </table>
@@ -539,12 +533,12 @@
             <div>
                 <h3>Getränke</h3>
                 <table class="option-table" style="font-size: 10pt;">
-                    <tr><td>Singha Bier 0,33 l</td><td>2,90 €</td></tr>
-                    <tr><td>Chang Bier 0,33 l</td><td>2,90 €</td></tr>
+                    <tr><td>Singha Bier 0,33 l</td><td>3,90 €</td></tr>
+                    <tr><td>Chang Bier 0,33 l</td><td>3,90 €</td></tr>
                     <tr><td>Mineralwasser (still/prickelnd)*</td><td>2,75 €</td></tr>
                     <tr><td>Coca-Cola* 0,33 l</td><td>3,15 €</td></tr>
-                    <tr><td>Aloe Vera Drink 0,33 l</td><td>3,80 €</td></tr>
-                    <tr><td>Kokosnusssaft 0,33 l</td><td>3,80 €</td></tr>
+                    <tr><td>Aloe Vera Drink 0,33 l</td><td>2,90 €</td></tr>
+                    <tr><td>Kokosnusssaft 0,33 l</td><td>2,90 €</td></tr>
                 </table>
                 <div style="font-size: 8pt; margin-top: 5px; color:#666;">* inkl. 0,25 € Pfand</div>
             </div>
@@ -553,10 +547,10 @@
                 <h3>Extras</h3>
                 <div class="note">Zu Hauptgerichten (Suppen, Curry, Wok)</div>
                 <table class="option-table" style="font-size: 10pt;">
-                    <tr><td>Extra Ei</td><td>2,00 €</td></tr>
-                    <tr><td>Reis / Rind / Garnelen</td><td>2,50 €</td></tr>
-                    <tr><td>Ente</td><td>3,00 €</td></tr>
-                    <tr><td>Extraportion (groß)</td><td>3,00 €</td></tr>
+                    <tr><td>Ei</td><td>2,00 €</td></tr>
+                    <tr><td>Reis / Rind / Garnelen</td><td>3,00 €</td></tr>
+                    <tr><td>Ente</td><td>3,50 €</td></tr>
+                    <tr><td>Extraportion</td><td>4,00 €</td></tr>
                 </table>
             </div>
         </div>
