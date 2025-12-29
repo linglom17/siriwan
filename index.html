@@ -63,7 +63,9 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Playfair+Display:wght@700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="canonical" href="http://www.siriwan.at/index.html">
 
     <style>
         :root {
@@ -77,13 +79,12 @@
             --dark: #050505; 
             --text-light: #FFFFFF;
             
-            /* --- VERBESSERTER GLAS-EFFEKT (More Transparent) --- */
+            /* --- ORIGINAL GLAS-EFFEKT (Boxen) --- */
             --glass-bg: rgba(255, 255, 255, 0.18); 
             --glass-border: rgba(255, 255, 255, 0.35);
             --blur: blur(20px); 
             --glass-shadow: 0 8px 32px 0 rgba(0, 15, 15, 0.15);
             
-            /* Neue Variablen für verbesserten Effekt */
             --glass-gradient: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.05));
             --glass-border-gradient: linear-gradient(to right, rgba(255,255,255,0.2), rgba(255,193,7,0.1));
         }
@@ -101,7 +102,7 @@
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Inter', sans-serif;
             line-height: 1.65;
             font-size: 1.08rem; 
             color: var(--dark);
@@ -163,9 +164,10 @@
         header {
             background: var(--primary-gradient);
             color: var(--text-light);
-            padding: 40px 0 50px 0; /* COMPACT: Reduced bottom padding */
+            padding: 40px 0 50px 0;
             position: relative;
-            clip-path: polygon(0 0, 100% 0, 100% 88%, 50% 100%, 0 88%);
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.3);
             z-index: 10;
         }
@@ -183,7 +185,7 @@
             max-height: 170px;
             width: auto;
             filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             object-fit: contain;
             display: block;
@@ -221,8 +223,9 @@
         }
 
         .motto-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.25rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 300;
+            font-size: 1.2rem;
             max-width: 700px;
             margin: 0 auto 25px;
             opacity: 0.95;
@@ -239,18 +242,24 @@
             gap: 25px;
             flex-wrap: wrap;
             font-size: 1.05rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
             background: rgba(255,255,255,0.1);
             padding: 12px 30px;
             border-radius: 50px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.3);
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .header-contact:hover {
+            transform: scale(1.02);
         }
 
         .header-contact a {
             color: var(--accent);
             text-decoration: none;
-            font-weight: bold;
             transition: color 0.3s;
         }
         .header-contact a:hover { color: #fff; }
@@ -305,6 +314,7 @@
             padding: 14px 16px; 
             text-decoration: none;
             color: var(--primary);
+            font-family: 'Outfit', sans-serif;
             font-weight: 700;
             font-size: 0.95rem;
             text-transform: uppercase;
@@ -341,14 +351,14 @@
         .mobile-menu-toggle:hover { transform: scale(1.1); }
 
         /* --- SECTIONS & HEADINGS --- */
-        section { padding: 40px 0; } /* COMPACT: Reduced vertical padding */
+        section { padding: 30px 0; }
 
         section h2 {
             text-align: center;
             font-family: 'Playfair Display', serif;
             font-size: 3.5rem;
             color: var(--primary);
-            margin-bottom: 25px; /* COMPACT: Reduced margin */
+            margin-bottom: 20px;
             position: relative;
             text-shadow: 
                 0 0 15px rgba(255,255,255, 0.9),
@@ -359,6 +369,11 @@
             align-items: center;
             justify-content: center;
             gap: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        section h2:hover {
+            transform: scale(1.02);
         }
 
         section h2::before, section h2::after {
@@ -377,7 +392,7 @@
         .order-notice,
         .contact-container,
         .allergen-legend details p {
-            background: var(--glass-bg);
+            background: var(--glass-bg); 
             backdrop-filter: var(--blur);
             -webkit-backdrop-filter: var(--blur);
             border: 1px solid var(--glass-border);
@@ -431,8 +446,8 @@
         /* --- MENU GRID --- */
         .menu-items {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 450px)); 
-            gap: 35px; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 24px; 
             justify-content: center; 
         }
 
@@ -479,7 +494,6 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.25);
             z-index: 2;
             font-size: 1.2rem;
-            font-family: 'Playfair Display', serif;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
@@ -492,11 +506,12 @@
 
         /* --- IMAGE --- */
         .item-image {
-            height: 240px;
+            height: 200px;
             overflow: hidden;
             border-bottom: 1px solid rgba(255,255,255,0.4);
             background-color: rgba(255, 255, 255, 0.1);
             position: relative;
+            transition: filter 0.3s ease;
         }
         
         .item-image::before {
@@ -524,9 +539,13 @@
             filter: brightness(1) contrast(1.1);
         }
 
+        .menu-item:hover .item-image {
+            filter: drop-shadow(0 0 10px rgba(255, 193, 7, 0.3));
+        }
+
         /* --- CONTENT --- */
         .item-content {
-            padding: 28px;
+            padding: 22px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -538,10 +557,11 @@
         .item-header {
             margin-bottom: 15px;
             border-bottom: 1px dashed rgba(0, 77, 77, 0.15);
-            padding-bottom: 12px;
+            padding-bottom: 10px;
         }
 
         .item-name {
+            font-family: 'Outfit', sans-serif; /* Modern Headline */
             font-size: 1.55rem;
             color: var(--primary);
             font-weight: 700;
@@ -549,11 +569,13 @@
             text-shadow: 0 1px 2px rgba(255,255,255,0.8);
         }
 
+        /* --- THAI SCHRIFT (Updated Size & Color) --- */
         .item-thai-name {
             font-family: 'Dancing Script', cursive;
-            color: rgba(34, 34, 34, 0.9);
-            font-size: 1.3rem;
+            color: var(--primary); /* Gleiche Farbe wie Speisenname */
+            font-size: 1.3rem; /* Nuance größer */
             margin-top: 5px;
+            font-weight: 400; 
         }
 
         .item-description {
@@ -566,7 +588,7 @@
         }
 
         .price-tag {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Outfit', sans-serif;
             font-weight: 900;
             color: var(--primary);
             font-size: 1.6rem;
@@ -592,6 +614,35 @@
             border-radius: 5px;
             font-weight: 700;
             backdrop-filter: blur(5px);
+            transition: background 0.3s ease, transform 0.3s ease;
+            position: relative;
+            cursor: help;
+        }
+
+        .allergen:hover {
+            background: rgba(255, 193, 7, 0.2);
+            transform: scale(1.1);
+        }
+
+        .allergen:hover::after {
+            content: attr(title);
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .allergen:hover::after {
+            opacity: 1;
         }
 
         .price-options {
@@ -611,6 +662,7 @@
             text-align: right;
             font-weight: 800;
             color: var(--primary);
+            font-family: 'Outfit', sans-serif;
             white-space: nowrap;
             font-size: 1.15rem;
             padding-left: 10px;
@@ -619,31 +671,51 @@
 
         .icon { font-style: normal; }
 
-        /* --- STYLES FOR NEW ELEMENTS --- */
-        
-        /* Signature Dish Badge */
+        /* --- STYLE M10: PAD SILOM (High Contrast Gold Shimmer) --- */
+        .text-pad-silom {
+            background: linear-gradient(120deg, #b8860b 0%, #ffd700 50%, #b8860b 100%);
+            background-size: 200% auto;
+            color: #b8860b;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: silom-shimmer 4s ease-in-out infinite alternate;
+            font-weight: 900; /* Extra fett für mehr Präsenz */
+            /* WICHTIG: Drop-Shadow Filter für extremen Kontrast auf hellem Grund */
+            filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.8));
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+        }
+        @keyframes silom-shimmer {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* FANCY Signature Badge (M8) */
         .signature-badge {
             position: absolute;
             bottom: 15px;
             right: 15px;
-            background-color: var(--primary); 
-            color: #FFD700; 
-            padding: 8px 18px;
-            border-radius: 50px;
+            background: linear-gradient(135deg, #FFD700 0%, #FDB931 50%, #FFD700 100%);
+            color: #004d4d;
+            padding: 6px 16px;
+            border-radius: 20px 0 20px 0; 
+            font-family: 'Outfit', sans-serif;
             font-size: 0.8rem;
-            font-weight: 800;
+            font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             z-index: 5;
-            border: 2px solid #FFD700;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             pointer-events: none;
-            animation: badge-pulse 3s infinite ease-in-out;
+            transform: rotate(-3deg);
+            border: 1px solid rgba(255,255,255,0.5);
+            animation: badge-shine 3s infinite linear;
         }
-        @keyframes badge-pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4); }
-            50% { box-shadow: 0 0 10px 2px rgba(255, 215, 0, 0.2); transform: scale(1.02); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4); }
+        
+        @keyframes badge-shine {
+            0% { background-position: 0% 50%; box-shadow: 0 4px 15px rgba(253, 185, 49, 0.4); }
+            50% { background-position: 100% 50%; box-shadow: 0 4px 20px rgba(255, 215, 0, 0.6); transform: rotate(-3deg) scale(1.05); }
+            100% { background-position: 0% 50%; box-shadow: 0 4px 15px rgba(253, 185, 49, 0.4); }
         }
 
         /* --- RICE NOTICE --- */
@@ -695,11 +767,17 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.2);
             position: relative;
             z-index: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .rice-notice:hover .rice-icon {
+            transform: rotate(360deg);
         }
 
         .rice-text {
             color: var(--primary);
             font-weight: 700;
+            font-family: 'Outfit', sans-serif;
             font-size: 1.15rem;
             letter-spacing: 0.3px;
             position: relative;
@@ -707,59 +785,62 @@
             text-shadow: 0 1px 2px rgba(255,255,255,0.8);
         }
 
-        /* --- ORDER NOTICE --- */
+        /* --- ORDER NOTICE (REMOVED / LEGACY STYLE KEPT FOR SAFETY) --- */
         .order-notice {
-            text-align: center;
-            padding: 50px 30px;
-            border-radius: 25px;
-            margin: 70px auto;
-            max-width: 900px;
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: none; /* REMOVED AS REQUESTED */
+        }
+        
+        /* --- NEW CONTACT BUTTON STYLE --- */
+        .call-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--primary-gradient);
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            margin: 15px 0;
+            box-shadow: 0 4px 15px rgba(0, 77, 77, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 193, 7, 0.5);
             position: relative;
             overflow: hidden;
+            width: 100%;
+            text-align: center;
         }
-        
-        .order-notice::before {
+
+        .call-button::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
-            z-index: 0;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.5s;
+        }
+
+        .call-button:hover::before {
+            left: 100%;
+        }
+
+        .call-button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
+            border-color: var(--accent);
+            color: var(--accent);
         }
         
-        .order-notice p { 
-            font-size: 1.6rem; 
-            font-weight: 500; 
-            position: relative;
-            z-index: 1;
-            text-shadow: 0 1px 3px rgba(255,255,255,0.9);
-        }
-        
-        .order-notice .phone {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--primary);
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 15px;
-            transition: transform 0.3s;
-            text-shadow: 1px 1px 0px rgba(255,255,255,1);
-            position: relative;
-            z-index: 1;
-            padding: 5px 15px;
+        .social-box-container {
+            margin-top: auto;
+            text-align: center;
+            background: rgba(255,255,255,0.25);
+            padding: 15px;
             border-radius: 15px;
-            background: rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(5px);
-        }
-        
-        .order-notice .phone:hover { 
-            transform: scale(1.05); 
-            color: var(--accent); 
-            background: rgba(255, 255, 255, 0.4);
+            border: 1px dashed rgba(0,77,77,0.2);
         }
 
         /* --- CONTACT --- */
@@ -771,6 +852,11 @@
             overflow: hidden;
             background: rgba(255, 255, 255, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.25);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .contact-container:hover {
+            box-shadow: 0 0 20px rgba(255, 193, 7, 0.2);
         }
 
         .contact-info { 
@@ -781,6 +867,7 @@
         
         .contact-info h3 {
             color: var(--primary);
+            font-family: 'Outfit', sans-serif;
             font-size: 1.7rem;
             margin-bottom: 25px;
             border-bottom: 3px solid rgba(255, 193, 7, 0.7);
@@ -816,6 +903,11 @@
             height: 100%; 
             border: none; 
             filter: brightness(0.95) contrast(1.05);
+            transition: filter 0.3s ease;
+        }
+
+        .map-container:hover iframe {
+            filter: brightness(1) contrast(1.1);
         }
 
         .social-media { display: flex; gap: 20px; }
@@ -929,7 +1021,7 @@
             flex-direction: column; 
             align-items: center; 
             gap: 20px;
-            z-index: 10000; 
+            z-index: 20000; /* High z-index to ensure it is clickable */
             backdrop-filter: blur(15px);
             box-shadow: 0 15px 50px rgba(0,0,0,0.7); 
             text-align: center;
@@ -1084,6 +1176,12 @@
             .contact-info { 
                 padding: 30px 20px; 
             }
+        
+            /* --- COMPACT MENU CARDS (MOBILE) --- */
+            .menu-items { gap: 20px; }
+            .item-image { height: 180px; }
+            .item-content { padding: 18px; }
+            .item-header { margin-bottom: 10px; padding-bottom: 10px; }
         }
 
         @media (max-width: 370px) {
@@ -1121,7 +1219,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
                 </a>
                 <a href="https://www.instagram.com/siriwan.thaistreetfood" target="_blank" class="header-social-link" aria-label="Instagram">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.949-.073zM12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                 </a>
             </div>
         </div>
@@ -1156,12 +1254,12 @@
                     <div class="item-content">
                         <div class="item-header">
                             <h3 class="item-name">Frühlingsrollen</h3>
-                            <p class="item-thai-name">po pia  ปอเปี๊ยะ</p>
+                            <p class="item-thai-name">po pia  ปอเปี๊ยะ</p>
                         </div>
                         <p class="item-description">Knusprig frittierte Teigröllchen, gefüllt mit Glasnudeln, Karotten, wahlweise mit Schweinsfaschiertem oder Gemüse. Dazu süß-saure Dip-Sauce.</p>
                         <span class="price-tag">5,50 €</span>
                         <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">C</span><span class="allergen">F</span>
+                            <span class="allergen" title="Glutenhaltiges Getreide">A</span><span class="allergen" title="Eier">C</span><span class="allergen" title="Soja">F</span>
                         </div>
                     </div>
                 </div>
@@ -1174,12 +1272,12 @@
                     <div class="item-content">
                         <div class="item-header">
                             <h3 class="item-name">Tempura Huhn</h3>
-                            <p class="item-thai-name">gai tempura  ไก่เทมปุระ</p>
+                            <p class="item-thai-name">gai tempura  ไก่เทมปุระ</p>
                         </div>
                         <p class="item-description">Hühnerfilet im Tempura-Teigmantel mit süß-saurer Sauce.</p>
                         <span class="price-tag">6,50 €</span>
                         <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">C</span><span class="allergen">F</span>
+                            <span class="allergen" title="Glutenhaltiges Getreide">A</span><span class="allergen" title="Eier">C</span><span class="allergen" title="Soja">F</span>
                         </div>
                     </div>
                 </div>
@@ -1192,12 +1290,12 @@
                     <div class="item-content">
                         <div class="item-header">
                             <h3 class="item-name">Hühner Saté Spieße</h3>
-                            <p class="item-thai-name">gai saté  ไก่สะเต๊ะ</p>
+                            <p class="item-thai-name">gai saté  ไก่สะเต๊ะ</p>
                         </div>
                         <p class="item-description">Zarte Hühnerspieße mit cremiger Erdnuss-Kokos-Currysauce.</p>
                         <span class="price-tag">8,50 €</span>
                         <div class="item-allergens">
-                            <span class="allergen">E</span><span class="allergen">F</span>
+                            <span class="allergen" title="Erdnüsse">E</span><span class="allergen" title="Soja">F</span>
                         </div>
                     </div>
                 </div>
@@ -1210,12 +1308,12 @@
                     <div class="item-content">
                         <div class="item-header">
                             <h3 class="item-name">Papayasalat</h3>
-                            <p class="item-thai-name">som tam thai  ส้มตำไทย</p>
+                            <p class="item-thai-name">som tam thai  ส้มตำไทย</p>
                         </div>
                         <p class="item-description">Frischer grüner Papayasalat mit Fischsauce, Karotten, Fisolen, Tomaten, Limette, Erdnüssen & Tamarindenpaste; auf Wunsch mit Chili.</p>
                         <span class="price-tag">8,90 €</span>
                         <div class="item-allergens">
-                            <span class="allergen">D</span><span class="allergen">E</span>
+                            <span class="allergen" title="Fisch">D</span><span class="allergen" title="Erdnüsse">E</span>
                         </div>
                     </div>
                 </div>
@@ -1247,7 +1345,7 @@
                             <tr><td>Gemischt (Huhn & Garnelen)</td><td>13,90 €</td></tr>
                         </table>
                         <div class="item-allergens">
-                            <span class="allergen">B</span><span class="allergen">D</span>
+                            <span class="allergen" title="Krebstiere">B</span><span class="allergen" title="Fisch">D</span>
                         </div>
                     </div>
                 </div>
@@ -1260,7 +1358,7 @@
                     <div class="item-content">
                         <div class="item-header">
                             <h3 class="item-name">Kokossuppe</h3>
-                            <p class="item-thai-name">tom kha  ต้มข่า</p>
+                            <p class="item-thai-name">tom kha  ต้มข่า</p>
                         </div>
                         <p class="item-description">Aromatische Kokosmilchsuppe mit Tomaten, Champignons, Zitronengras, Galgant, Kaffirlimettenblättern, Fischsauce & Limettensaft.</p>
                         <table class="price-options">
@@ -1269,7 +1367,7 @@
                             <tr><td>Gemischt (Huhn & Garnelen)</td><td>13,90 €</td></tr>
                         </table>
                         <div class="item-allergens">
-                            <span class="allergen">D</span>
+                            <span class="allergen" title="Fisch">D</span>
                         </div>
                     </div>
                 </div>
@@ -1282,7 +1380,7 @@
                     <div class="item-content">
                         <div class="item-header">
                             <h3 class="item-name">Gelbes Curry</h3>
-                            <p class="item-thai-name">gaeng lüang  แกงเหลือง</p>
+                            <p class="item-thai-name">gaeng lüang  แกงเหลือง</p>
                         </div>
                         <p class="item-description">Mildes Kokoscurry mit Kartoffeln & Karotten.</p>
                         <table class="price-options">
@@ -1291,7 +1389,7 @@
                             <tr><td>Rind / Garnelen</td><td>13,90 €</td></tr>
                         </table>
                         <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">B</span><span class="allergen">D</span><span class="allergen">F</span>
+                            <span class="allergen" title="Glutenhaltiges Getreide">A</span><span class="allergen" title="Krebstiere">B</span><span class="allergen" title="Fisch">D</span><span class="allergen" title="Soja">F</span>
                         </div>
                     </div>
                 </div>
@@ -1304,7 +1402,7 @@
                     <div class="item-content">
                         <div class="item-header">
                             <h3 class="item-name">Rotes Curry <span class="icon" style="color: #ff4d4d;">🌶</span></h3>
-                            <p class="item-thai-name">gaeng daeng  แกงแดง</p>
+                            <p class="item-thai-name">gaeng daeng  แกงแดง</p>
                         </div>
                         <p class="item-description">Kokoscurry mit Bambus, Zucchini, Fisolen, Spitzpaprika & Thai-Basilikum.</p>
                         <table class="price-options">
@@ -1314,7 +1412,7 @@
                             <tr><td>Ente</td><td>15,90 €</td></tr>
                         </table>
                         <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">B</span><span class="allergen">D</span><span class="allergen">F</span>
+                            <span class="allergen" title="Glutenhaltiges Getreide">A</span><span class="allergen" title="Krebstiere">B</span><span class="allergen" title="Fisch">D</span><span class="allergen" title="Soja">F</span>
                         </div>
                     </div>
                 </div>
@@ -1332,7 +1430,7 @@
                     <div class="item-content">
                         <div class="item-header">
                             <h3 class="item-name">Roter Curry Wok <span class="icon" style="color: #ff4d4d;">🌶</span></h3>
-                            <p class="item-thai-name">pad phrik gaeng daeng  ผัดพริกแกงแดง</p>
+                            <p class="item-thai-name">pad phrik gaeng daeng  ผัดพริกแกงแดง</p>
                         </div>
                         <p class="item-description">Gebratenes Gemüse in roter Currypaste, Kokosmilch & Thai-Kräutern und Bambus, Fisolen & Spitzpaprika.</p>
                         <table class="price-options">
@@ -1342,7 +1440,7 @@
                             <tr><td>Ente</td><td>15,90 €</td></tr>
                         </table>
                         <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">B</span><span class="allergen">D</span><span class="allergen">F</span>
+                            <span class="allergen" title="Glutenhaltiges Getreide">A</span><span class="allergen" title="Krebstiere">B</span><span class="allergen" title="Fisch">D</span><span class="allergen" title="Soja">F</span>
                         </div>
                     </div>
                 </div>
@@ -1355,7 +1453,7 @@
                     <div class="item-content">
                         <div class="item-header">
                             <h3 class="item-name">Wok süßsauer</h3>
-                            <p class="item-thai-name">pad priao wan  ผัดเปรี้ยวหวาน</p>
+                            <p class="item-thai-name">pad priao wan  ผัดเปรี้ยวหวาน</p>
                         </div>
                         <p class="item-description">Gurken, Zwiebeln, Jungzwiebeln & Paprika in süßsaurer Sauce.</p>
                         <table class="price-options">
@@ -1363,7 +1461,7 @@
                             <tr><td>Garnelen</td><td>13,90 €</td></tr>
                         </table>
                         <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">F</span><span class="allergen">R</span>
+                            <span class="allergen" title="Glutenhaltiges Getreide">A</span><span class="allergen" title="Soja">F</span><span class="allergen" title="Weichtiere">R</span>
                         </div>
                     </div>
                 </div>
@@ -1376,7 +1474,7 @@
                     <div class="item-content">
                         <div class="item-header">
                             <h3 class="item-name">Cashew Wok</h3>
-                            <p class="item-thai-name">pad med mamuang  ผัดเม็ดมะม่วง</p>
+                            <p class="item-thai-name">pad med mamuang  ผัดเม็ดมะม่วง</p>
                         </div>
                         <p class="item-description">Cashewnüsse, Jungzwiebeln & Paprika in süß-milder Woksauce.</p>
                         <table class="price-options">
@@ -1384,7 +1482,7 @@
                             <tr><td>Garnelen</td><td>13,90 €</td></tr>
                         </table>
                         <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">F</span><span class="allergen">H</span><span class="allergen">R</span>
+                            <span class="allergen" title="Glutenhaltiges Getreide">A</span><span class="allergen" title="Soja">F</span><span class="allergen" title="Schalenfrüchte">H</span><span class="allergen" title="Weichtiere">R</span>
                         </div>
                     </div>
                 </div>
@@ -1398,7 +1496,7 @@
                     <div class="item-content">
                         <div class="item-header">
                             <h3 class="item-name">Basilikum Wok <span class="icon" style="color: #ff4d4d;">🌶</span></h3>
-                            <p class="item-thai-name">pad ka prao  ผัดกะเพรา</p>
+                            <p class="item-thai-name">pad ka prao  ผัดกะเพรา</p>
                         </div>
                         <p class="item-description">Pikant gebratenes Thai Basilikum, Zwiebeln & Spitzpaprika.</p>
                         <table class="price-options">
@@ -1407,11 +1505,11 @@
                             <tr><td>Ente</td><td>15,90 €</td></tr>
                         </table>
                         <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">D</span><span class="allergen">F</span><span class="allergen">R</span>
+                            <span class="allergen" title="Glutenhaltiges Getreide">A</span><span class="allergen" title="Fisch">D</span><span class="allergen" title="Soja">F</span><span class="allergen" title="Weichtiere">R</span>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="menu-item reveal-item">
                     <div class="item-number">M9</div>
                     <div class="item-image">
@@ -1420,7 +1518,7 @@
                     <div class="item-content">
                         <div class="item-header">
                             <h3 class="item-name">Pfefferwok</h3>
-                            <p class="item-thai-name">pad phrik thai dam  ผัดพริกไทยดำ</p>
+                            <p class="item-thai-name">pad phrik thai dam  ผัดพริกไทยดำ</p>
                         </div>
                         <p class="item-description">Würzig-pfeffrig mit Jungzwiebeln, Zwiebeln, Paprika & Karotten.</p>
                         <table class="price-options">
@@ -1429,11 +1527,12 @@
                             <tr><td>Ente</td><td>15,90 €</td></tr>
                         </table>
                         <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">D</span><span class="allergen">F</span><span class="allergen">R</span>
+                            <span class="allergen" title="Glutenhaltiges Getreide">A</span><span class="allergen" title="Fisch">D</span><span class="allergen" title="Soja">F</span><span class="allergen" title="Weichtiere">R</span>
                         </div>
                     </div>
                 </div>
             </div>
+        
         </section>
 
         <section id="nudeln-reis">
@@ -1446,18 +1545,18 @@
                     </div>
                     <div class="item-content">
                         <div class="item-header">
-                            <h3 class="item-name" style="color: #B8860B;">Silom Nudeln</h3>
-                            <p class="item-thai-name">pad mee sua silom  ผัดหมี่ซั่วสีลม</p>
+                            <h3 class="item-name text-pad-silom">Mi Sua Silom</h3>
+                            <p class="item-thai-name">pad mi sua silom  ผัดหมี่ซั่วสีลม</p>
                         </div>
-                        <p class="item-description">Goldene Weizenfäden gebraten mit Karotten, Brokkoli & Weißkohl, ohne Reis.</p>
+                        <p class="item-description">Mi Sua – Goldene Weizennudeln gebraten mit Karotten, Brokkoli & Weißkohl, ohne Reis.</p>
                         <table class="price-options">
-                            <tr><td>Tofu</td><td>11,50 €</td></tr>
+                            <tr><td>Tofu</td><td>10,50 €</td></tr>
                             <tr><td>Huhn</td><td>11,50 €</td></tr>
                             <tr><td>Garnelen</td><td>12,50 €</td></tr>
                             <tr><td>Ente</td><td>15,90 €</td></tr>
                         </table>
                         <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">C</span><span class="allergen">F</span><span class="allergen">R</span>
+                            <span class="allergen" title="Glutenhaltiges Getreide">A</span><span class="allergen" title="Eier">C</span><span class="allergen" title="Soja">F</span><span class="allergen" title="Weichtiere">R</span>
                         </div>
                     </div>
                 </div>
@@ -1470,7 +1569,7 @@
                     <div class="item-content">
                         <div class="item-header">
                             <h3 class="item-name">Pad Thai</h3>
-                             <p class="item-thai-name">pad thai  ผัดไทย</p>
+                             <p class="item-thai-name">pad thai  ผัดไทย</p>
                         </div>
                         <p class="item-description">Reisbandnudeln mit Karotten, Sojasprossen, Jungzwiebeln, Erdnüssen & Ei in hauseigener Pad-Thai-Sauce, ohne Reis.</p>
                         <table class="price-options">
@@ -1479,7 +1578,7 @@
                             <tr><td>Garnelen</td><td>12,50 €</td></tr>
                         </table>
                         <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">B</span><span class="allergen">C</span><span class="allergen">D</span><span class="allergen">E</span><span class="allergen">F</span><span class="allergen">R</span>
+                            <span class="allergen" title="Glutenhaltiges Getreide">A</span><span class="allergen" title="Krebstiere">B</span><span class="allergen" title="Eier">C</span><span class="allergen" title="Fisch">D</span><span class="allergen" title="Erdnüsse">E</span><span class="allergen" title="Soja">F</span><span class="allergen" title="Weichtiere">R</span>
                         </div>
                     </div>
                 </div>
@@ -1492,7 +1591,7 @@
                     <div class="item-content">
                         <div class="item-header">
                             <h3 class="item-name">Gebratener Reis</h3>
-                            <p class="item-thai-name">khao pad  ข้าวผัด</p>
+                            <p class="item-thai-name">khao pad  ข้าวผัด</p>
                         </div>
                         <p class="item-description">Gebratener Jasminreis mit Ei, Karotten, Erbsen & Zwiebeln.</p>
                         <table class="price-options">
@@ -1501,7 +1600,7 @@
                             <tr><td>Garnelen</td><td>12,50 €</td></tr>
                         </table>
                         <div class="item-allergens">
-                            <span class="allergen">A</span><span class="allergen">C</span><span class="allergen">D</span><span class="allergen">F</span>
+                            <span class="allergen" title="Glutenhaltiges Getreide">A</span><span class="allergen" title="Eier">C</span><span class="allergen" title="Fisch">D</span><span class="allergen" title="Soja">F</span>
                         </div>
                     </div>
                 </div>
@@ -1552,13 +1651,39 @@
                         </table>
                     </div>
                 </div>
+
+                <div class="menu-item reveal-item">
+                    <div class="item-number" style="font-size: 1.5rem;">📞</div>
+                    <div class="item-image">
+                        <img src="images/kontakt.png" alt="Kontakt und Bestellung" loading="lazy">
+                    </div>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <h3 class="item-name">Bestellung</h3>
+                            <p class="item-thai-name">sang ahan สั่งอาหาร</p>
+                        </div>
+                        <p class="item-description">Hungrig? Wir freuen uns auf deine Vorbestellung!</p>
+
+                        <a href="tel:06604963392" class="call-button">
+                            0660 496 3392
+                        </a>
+
+                        <div class="social-box-container">
+                            <p style="margin-bottom:8px; font-weight:600; font-size:0.9rem; font-family:'Outfit', sans-serif;">Folge uns:</p>
+                            <div style="display:flex; gap:15px; justify-content:center;">
+                                <a href="https://www.facebook.com/siriwan.thaistreetfood" target="_blank" class="social-link" aria-label="Facebook">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                                </a>
+                                <a href="https://www.instagram.com/siriwan.thaistreetfood" target="_blank" class="social-link" aria-label="Instagram">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.949-.073zM12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
-
-        <div class="order-notice">
-            <p>Hungrig? Rufen Sie uns für Ihre Vorbestellung an.</p>
-            <a href="tel:06604963392" class="phone" aria-label="Anrufen">0660 496 3392</a>
-        </div>
 
         <section id="kontakt">
             <h2>Kontakt & Standort</h2>
@@ -1598,7 +1723,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
                             </a>
                             <a href="https://www.instagram.com/siriwan.thaistreetfood" target="_blank" class="social-link" aria-label="Instagram">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.949-.073zM12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                             </a>
                         </div>
                     </div>
