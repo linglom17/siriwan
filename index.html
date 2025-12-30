@@ -785,62 +785,121 @@
             text-shadow: 0 1px 2px rgba(255,255,255,0.8);
         }
 
-        /* --- ORDER NOTICE (REMOVED / LEGACY STYLE KEPT FOR SAFETY) --- */
-        .order-notice {
-            display: none; /* REMOVED AS REQUESTED */
-        }
+        /* --- ORDER NOTICE (LEGACY - KEEP HIDDEN) --- */
+        .order-notice { display: none; }
         
-        /* --- NEW CONTACT BUTTON STYLE --- */
+        /* --- NEW BUTTON STYLE FOR CONTACT BOX --- */
         .call-button {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            background: var(--primary-gradient);
-            color: #fff;
-            text-decoration: none;
-            padding: 12px 20px;
-            border-radius: 50px;
+            gap: 12px;
+            width: 100%;
+            background: linear-gradient(135deg, #FFD700 0%, #ffa000 100%);
+            color: #004d4d;
             font-family: 'Outfit', sans-serif;
-            font-weight: 800;
-            font-size: 1.25rem;
-            margin: 15px 0;
-            box-shadow: 0 4px 15px rgba(0, 77, 77, 0.3);
+            font-size: 1.4rem;
+            font-weight: 900;
+            padding: 16px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            margin: 25px 0;
+            box-shadow: 0 0 20px rgba(255, 193, 7, 0.6);
+            border: 2px solid rgba(255,255,255,0.4);
             transition: all 0.3s ease;
-            border: 2px solid rgba(255, 193, 7, 0.5);
             position: relative;
             overflow: hidden;
-            width: 100%;
-            text-align: center;
+            animation: pulse-gold 2.5s infinite;
         }
-
+        
         .call-button::before {
             content: '';
             position: absolute;
             top: 0; left: -100%;
             width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
             transition: 0.5s;
         }
 
         .call-button:hover::before {
             left: 100%;
         }
-
+        
         .call-button:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
-            border-color: var(--accent);
-            color: var(--accent);
+            transform: scale(1.03) translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 160, 0, 0.8);
+            color: #002b2b;
+            background: linear-gradient(135deg, #FFD700 0%, #ffca28 100%);
+            text-shadow: 0 1px 0 rgba(255,255,255,0.4);
         }
         
-        .social-box-container {
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 193, 7, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0); }
+        }
+
+        /* --- FANCY SOCIAL MEDIA BOX --- */
+        .social-highlight-box {
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 20px;
+            padding: 15px;
             margin-top: auto;
             text-align: center;
-            background: rgba(255,255,255,0.25);
-            padding: 15px;
-            border-radius: 15px;
-            border: 1px dashed rgba(0,77,77,0.2);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .social-highlight-box:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .social-label {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+        }
+        
+        .social-icons-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .social-btn-big {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            color: var(--primary);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .social-btn-big:hover {
+            background: var(--primary);
+            color: var(--accent);
+            transform: scale(1.15) rotate(5deg);
+            border-color: var(--accent);
+            box-shadow: 0 8px 20px rgba(0, 77, 77, 0.3);
+        }
+        
+        .social-btn-big svg {
+            width: 28px;
+            height: 28px;
         }
 
         /* --- CONTACT --- */
@@ -1659,22 +1718,22 @@
                     </div>
                     <div class="item-content">
                         <div class="item-header">
-                            <h3 class="item-name">Bestellung</h3>
+                            <h3 class="item-name">Nach Jause telefonieren?</h3>
                             <p class="item-thai-name">sang ahan สั่งอาหาร</p>
                         </div>
-                        <p class="item-description">Hungrig? Wir freuen uns auf deine Vorbestellung!</p>
+                        <p class="item-description">Wir freuen uns auf deine Vorbestellung!</p>
 
                         <a href="tel:06604963392" class="call-button">
-                            0660 496 3392
+                            <span>📞</span> 0660 496 3392
                         </a>
 
-                        <div class="social-box-container">
-                            <p style="margin-bottom:8px; font-weight:600; font-size:0.9rem; font-family:'Outfit', sans-serif;">Folge uns:</p>
-                            <div style="display:flex; gap:15px; justify-content:center;">
-                                <a href="https://www.facebook.com/siriwan.thaistreetfood" target="_blank" class="social-link" aria-label="Facebook">
+                        <div class="social-highlight-box">
+                            <span class="social-label">Folge uns online</span>
+                            <div class="social-icons-row">
+                                <a href="https://www.facebook.com/siriwan.thaistreetfood" target="_blank" class="social-btn-big" aria-label="Facebook">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
                                 </a>
-                                <a href="https://www.instagram.com/siriwan.thaistreetfood" target="_blank" class="social-link" aria-label="Instagram">
+                                <a href="https://www.instagram.com/siriwan.thaistreetfood" target="_blank" class="social-btn-big" aria-label="Instagram">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.949-.073zM12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                                 </a>
                             </div>
