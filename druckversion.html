@@ -2,584 +2,607 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Siriwan Speisekarte A4 Druck</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Playfair+Display:wght@700&family=Dancing+Script:wght@700&display=swap" rel-stylesheet>
+    <title>Siriwan Speisekarte A4 Druckversion (2 Seiten)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     
     <style>
-        /* --- GRUNDEINSTELLUNGEN --- */
+        /* --- DRUCK CSS SETUP --- */
         :root {
-            --primary: #004d4d; /* Dunkles Türkis/Grün */
-            --accent: #b08d55;  /* Gold/Braun */
-            --text-main: #222222;
-            --text-light: #555555;
+            --primary: #022c2c;   /* Dunkles Petrol/Grün */
+            --accent: #b08d55;    /* Goldton matt für Druck */
+            --text: #222222;      /* Dunkelgrau für Text */
+            --grey: #555555;      /* Helleres Grau für Details */
+            --light-bg: #f7f7f7;  /* Sehr helles Grau für Boxen */
+        }
+
+        @page {
+            size: A4 portrait;
+            margin: 0;
         }
 
         body {
             margin: 0;
             padding: 0;
-            background-color: #555555;
-            font-family: 'Roboto', Arial, sans-serif;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text);
+            background: #e0e0e0; /* Nur Hintergrund Browser */
             -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
         }
 
-        /* --- DAS A4 BLATT (Container) --- */
-        .a4-page {
+        .page {
             width: 210mm;
-            min-height: 297mm;
+            height: 297mm;
             background: white;
-            margin: 20px auto;
-            padding: 15mm;
+            margin: 0 auto 10px auto;
+            padding: 12mm 15mm; 
             box-sizing: border-box;
-            box-shadow: 0 0 15px rgba(0,0,0,0.5);
-            position: relative;
-            overflow: visible;
-        }
-
-        /* --- HEADER --- */
-        .header {
-            border-bottom: 2px solid var(--primary);
-            padding-bottom: 15px;
-            margin-bottom: 20px;
+            overflow: hidden;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            position: relative;
         }
 
-        .logo-img {
-            height: 90px;
-            width: auto;
-            object-fit: contain;
-            display: block;
-        }
-
-        .social-links {
-            text-align: center;
-            font-size: 10pt;
-            line-height: 1.5;
-            flex-grow: 1;
-            padding: 0 15px;
-            color: var(--text-light);
-        }
-        
-        .social-links span.url-text {
-            font-weight: bold;
-            color: var(--primary); 
-            display: block;
-            margin-top: 3px;
-        }
-
-        .contact-info {
-            text-align: right;
-            font-size: 9pt;
-            color: var(--text-main);
-            line-height: 1.4;
+        /* --- TYPOGRAFIE --- */
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin: 0;
+            font-size: 28pt;
+            line-height: 0.9;
         }
         
         .slogan {
             font-family: 'Dancing Script', cursive;
-            color: var(--accent);
-            font-size: 16pt;
-            text-align: center;
-            margin-top: -10px;
-            margin-bottom: 20px;
+            font-size: 14pt;
+            color: var(--primary);
+            margin-top: 2px;
+            font-weight: 700;
         }
 
-        /* --- ÜBERSCHRIFTEN --- */
-        h1 { display: none; }
-
         h2 {
-            background-color: var(--primary);
-            color: white;
             font-family: 'Playfair Display', serif;
-            font-size: 14pt;
-            padding: 5px 10px;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            border-radius: 2px;
+            color: white;
+            background-color: var(--primary);
+            font-size: 13pt;
+            margin-top: 3mm;
+            margin-bottom: 2mm;
+            padding: 4px 10px;
+            border-radius: 4px;
             display: flex;
             justify-content: space-between;
             align-items: baseline;
+            line-height: 1.2;
         }
-        
-        h2 span.thai {
-            font-family: 'Roboto', sans-serif;
-            font-size: 9pt;
-            font-weight: normal;
-            opacity: 0.8;
+
+        h2 .thai {
+            font-family: 'Dancing Script', cursive;
+            font-weight: 400;
+            font-size: 12pt;
+            color: #ddd;
             text-transform: none;
+        }
+
+        h2 .sub-info {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            background: var(--accent);
+            color: black;
+            padding: 1px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+            font-style: italic;
+            vertical-align: middle;
+            margin-left: 10px;
         }
 
         h3 {
             color: var(--primary);
             font-family: 'Playfair Display', serif;
-            font-size: 12pt;
-            border-bottom: 1px solid var(--accent);
-            margin-top: 15px;
-            margin-bottom: 5px;
-            padding-bottom: 2px;
-        }
-
-        .note {
-            font-size: 8pt;
-            font-style: italic;
-            color: var(--text-light);
-            margin-bottom: 10px;
-        }
-
-        /* --- GERICHTE LAYOUT (2 Spalten) --- */
-        .grid-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            column-gap: 25px;
-            row-gap: 15px;
-        }
-
-        .item {
-            margin-bottom: 5px;
-            border-bottom: 1px dotted #ddd;
-            padding-bottom: 5px;
-            page-break-inside: avoid;
-        }
-
-        .item-top {
+            font-size: 14pt;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 3mm;
+            margin-top: 2mm;
+            text-transform: uppercase;
             display: flex;
             justify-content: space-between;
             align-items: baseline;
         }
+        h3 .thai-sub {
+            font-family: 'Dancing Script', cursive;
+            text-transform: none;
+            color: #888;
+            font-size: 12pt;
+            font-weight: 400;
+        }
 
-        .name {
-            font-weight: bold;
+        /* --- ITEMS --- */
+        .category-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5mm;
+            margin-bottom: 2mm;
+        }
+
+        .item {
+            border-bottom: 1px dotted #ccc;
+            padding-bottom: 1.8mm;
+            margin-bottom: 1.5mm;
+            page-break-inside: avoid;
+        }
+        .item:last-child { border-bottom: none; margin-bottom: 0; }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .item-title {
+            font-weight: 700;
+            font-size: 10.5pt;
             color: var(--primary);
-            font-size: 10pt;
             text-transform: uppercase;
         }
 
-        .price {
-            font-family: 'Playfair Display', serif;
-            font-weight: bold;
+        .code {
             color: var(--accent);
-            font-size: 11pt;
-            white-space: nowrap;
+            font-weight: 800;
+            display: inline-block;
+            width: 26px;
+            font-size: 10.5pt;
         }
 
         .thai-name {
-            font-size: 8pt;
-            color: #999;
-            margin-bottom: 2px;
+            font-family: 'Dancing Script', cursive;
+            color: var(--accent);
+            font-size: 10.5pt;
+            font-weight: 700;
+            margin-right: 5px;
         }
 
         .desc {
             font-size: 9pt;
-            color: #333;
-            line-height: 1.2;
+            color: var(--text);
+            line-height: 1.3;
+            margin-top: 0.8mm;
             text-align: justify;
         }
 
         .allergens {
-            font-size: 7pt;
-            color: #aaa;
+            font-size: 7.5pt;
+            color: var(--grey);
             text-align: right;
-            margin-top: 2px;
+            margin-top: 1px;
+        }
+        
+        .header-allergens {
+            font-size: 7.5pt;
+            color: var(--grey);
+            margin-left: auto;
+            padding-left: 5px;
         }
 
-        /* --- PREISTABELLEN (für Curry/Wok Optionen) --- */
-        .option-table {
-            width: 100%;
-            font-size: 9pt;
-            margin-top: 3px;
-            border-collapse: collapse;
-        }
-        .option-table td {
-            padding: 1px 0;
-            color: #333;
-        }
-        .option-table td:last-child {
-            text-align: right;
-            font-weight: bold;
-            color: var(--accent);
-            width: 50px;
-        }
-
-        /* --- ICONS --- */
-        .chili::after {
-            content: "🌶";
-            font-size: 9pt;
-            margin-left: 3px;
-        }
-
-        /* --- QR Code Styling --- */
-        .qr-container {
-            text-align: center;
-            padding: 20px 15px;
-            margin-top: 25px;
-            margin-bottom: 15px;
-            page-break-inside: avoid;
-            background-color: #f7f7f7;
-            border: 1px dashed var(--accent);
-            border-radius: 5px;
-        }
-        .qr-container h3 {
-            color: var(--primary);
-            border: none;
-            margin-bottom: 10px;
-            font-size: 14pt;
-        }
-        .qr-container img {
-            width: 120px;
-            height: 120px;
-            border: 4px solid var(--accent);
-            border-radius: 5px;
-            padding: 5px;
-            background-color: white;
-            display: block;
-            margin: 0 auto 15px auto;
-        }
-        .qr-container p {
-            font-size: 10pt;
-            color: var(--text-light);
-            line-height: 1.4;
-        }
-
-        .social-bar {
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px dashed #ddd;
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            font-size: 11pt;
+        .price-single {
+            font-weight: 700;
+            font-size: 11.5pt;
             color: var(--primary);
         }
-        .social-item {
+
+        /* --- PREIS TABELLE (PILLS) --- */
+        .price-grid {
+            margin-top: 1.5mm;
             display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            font-size: 8.5pt;
+        }
+        
+        .price-tag {
+            background: var(--light-bg);
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 2px 8px;
+            display: flex;
+            gap: 4px;
             align-items: center;
-            font-weight: bold;
         }
-        .social-item .icon {
-            font-size: 16pt;
-            color: var(--accent);
-            margin-right: 5px;
-            line-height: 1;
+        .price-tag span { font-weight: 700; color: var(--primary); }
+
+        /* --- LISTEN (Getränke/Extras) --- */
+        .simple-list-grid {
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 10mm;
         }
+
+        .simple-list-row {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dotted #ddd;
+            margin-bottom: 1.2mm;
+            padding-bottom: 0.5mm;
+            font-size: 9.5pt;
+            align-items: baseline;
+        }
+        .simple-list-row strong { color: var(--primary); font-size: 10.5pt; }
 
         /* --- FOOTER --- */
         .footer {
             margin-top: auto;
-            padding-top: 15px;
             border-top: 2px solid var(--primary);
+            padding-top: 3mm;
             display: flex;
             justify-content: space-between;
-            font-size: 8pt;
-            color: #444;
-        }
-        
-        .footer-col {
-            width: 33%; 
-        }
-        .footer-col.contact-col { width: 33%; }
-        .footer-col.payment-col { width: 33%; }
-        .footer-col.allergens-col { width: 34%; }
-        
-        .footer-col strong {
-            color: var(--primary);
-            display: block;
-            margin-bottom: 3px;
-            font-size: 9pt;
+            font-size: 8.5pt;
         }
 
-        /* --- DRUCK ANWEISUNGEN --- */
+        .footer-block { width: 32%; }
+        .footer-block h4 {
+            color: var(--accent);
+            font-family: 'Playfair Display', serif;
+            margin: 0 0 1.5mm 0;
+            font-size: 10.5pt;
+            text-transform: uppercase;
+        }
+        
+        .no-delivery {
+            display: inline-block;
+            background: #fff0f0;
+            color: #d00;
+            border: 1px solid #ffcccc;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 700;
+            font-size: 8pt;
+            margin-top: 4px;
+        }
+
+        .icon-text { display: flex; align-items: flex-start; gap: 6px; margin-bottom: 3px;}
+        .icon-text i { color: var(--accent); width: 14px; text-align: center; margin-top: 2px; }
+
+        /* --- SPEZIALS --- */
+        .signature {
+            border-left: 3px solid var(--accent);
+            background: linear-gradient(90deg, #fffcf0 0%, #fff 100%);
+            padding: 2mm;
+            border-radius: 0 4px 4px 0;
+            margin-left: -2mm; /* Pull out slightly */
+            width: calc(100% + 1mm);
+        }
+        .chili { color: #d00; font-size: 9pt; margin-left: 3px; }
+        .star { color: #d4af37; font-size: 9pt; }
+
+        .payment-icons { font-size: 12pt; color: var(--primary); margin-top: 3px; }
+        .payment-icons i { margin-right: 3px; }
+
+        .qr-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 5px;
+        }
+        .qr-img { width: 35px; height: 35px; }
+
         @media print {
-            body {
-                background-color: white;
-            }
-            .a4-page {
-                width: 100%;
-                height: auto;
-                min-height: auto;
-                margin: 0;
-                padding: 10mm;
-                box-shadow: none;
-                page-break-after: always;
-            }
-            .a4-page:last-child {
-                page-break-after: auto;
-            }
-            @page {
-                margin: 0;
-                size: A4 portrait;
-            }
+            body { background: white; }
+            .page { margin: 0; page-break-after: always; box-shadow: none; height: auto; min-height: 297mm; }
+            .page:last-child { page-break-after: auto; }
         }
     </style>
 </head>
 <body>
 
-    <div class="a4-page">
-        
-        <div class="header">
+    <div class="page">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid var(--primary); padding-bottom: 3mm; margin-bottom: 3mm;">
             <div>
-                <img src="images/logo.png" alt="Siriwan Logo" class="logo-img">
+                <h1>Siriwan</h1>
+                <div class="slogan">One Bite in Bangkok</div>
             </div>
-            
-            <div class="social-links">
-                Folge uns auf:<br>
-                <span class="url-text">Facebook: siriwan.thaistreetfood</span>
-                <span class="url-text">Instagram: siriwan.thaistreetfood</span>
-            </div>
-            <div class="contact-info">
-                <strong>0660 496 3392</strong><br>
-                Ybbsstraße 39, 3300 Amstetten<br>
-                MO–FR: 11:00–18:30 Uhr
+            <div style="text-align: right; font-size: 9.5pt; line-height: 1.4;">
+                <strong>Ybbsstraße 39, 3300 Amstetten</strong><br>
+                Vorbestellung: 0660 496 3392<br>
+                www.siriwan.at
             </div>
         </div>
-        <div class="slogan">One Bite in Bangkok</div>
 
-        <h2>Vorspeisen <span class="thai">khong wang</span></h2>
-        <div class="grid-container">
+        <div class="category-container">
+            <h2>Vorspeisen <span class="thai">khong wang</span></h2>
+            
             <div class="item">
-                <div class="item-top"><span class="name">V1 Frühlingsrollen</span> <span class="price">5,50 €</span></div>
-                <div class="thai-name">po pia</div>
-                <div class="desc">Knusprig frittierte Teigröllchen, gefüllt mit Glasnudeln, Karotten, wahlweise mit Schweinsfaschiertem oder Gemüse. Dazu süß-saure Dip-Sauce.</div>
+                <div class="item-header">
+                    <div><span class="code">V1</span> <span class="item-title">Frühlingsrollen</span></div>
+                    <span class="price-single">5,50 €</span>
+                </div>
+                <div class="desc"><span class="thai-name">po pia</span> Gefüllt mit Glasnudeln, Karotten, Schwein o. Gemüse. Inkl. Dip.</div>
                 <div class="allergens">A, C, F</div>
             </div>
+
             <div class="item">
-                <div class="item-top"><span class="name">V2 Tempura Huhn</span> <span class="price">6,50 €</span></div>
-                <div class="thai-name">gai tempura</div>
-                <div class="desc">Hühnerfilet im Tempura-Teigmantel mit süß-saurer Sauce.</div>
+                <div class="item-header">
+                    <div><span class="code">V2</span> <span class="item-title">Tempura Huhn</span></div>
+                    <span class="price-single">6,50 €</span>
+                </div>
+                <div class="desc"><span class="thai-name">gai tempura</span> Hühnerfilet im Tempura-Teigmantel mit süß-saurer Sauce.</div>
                 <div class="allergens">A, C, F</div>
             </div>
+
             <div class="item">
-                <div class="item-top"><span class="name">V3 Hühner Saté Spieße</span> <span class="price">8,50 €</span></div>
-                <div class="thai-name">gai saté</div>
-                <div class="desc">Zarte Hühnerspieße mit cremiger Erdnuss-Kokos-Currysauce.</div>
+                <div class="item-header">
+                    <div><span class="code">V3</span> <span class="item-title">Hühner Saté</span></div>
+                    <span class="price-single">8,50 €</span>
+                </div>
+                <div class="desc"><span class="thai-name">gai saté</span> Zarte Hühnerspieße mit Erdnuss-Kokos-Currysauce.</div>
                 <div class="allergens">E, F</div>
             </div>
+
             <div class="item">
-                <div class="item-top"><span class="name">V4 Papayasalat</span> <span class="price">8,90 €</span></div>
-                <div class="thai-name">som tam thai</div>
-                <div class="desc">Frischer grüner Papayasalat mit Fischsauce, Karotten, Fisolen, Tomaten, Limette, Erdnüssen & Tamarindenpaste; auf Wunsch mit Chili.</div>
+                <div class="item-header">
+                    <div><span class="code">V4</span> <span class="item-title">Papayasalat</span></div>
+                    <span class="price-single">8,90 €</span>
+                </div>
+                <div class="desc"><span class="thai-name">som tam thai</span> Grüne Papaya, Fischsauce, Karotten, Fisolen, Tomaten, Limette & Erdnüsse.</div>
                 <div class="allergens">D, E</div>
             </div>
         </div>
 
-        <h2>Suppen & Curry <span class="thai">tom & gaeng</span></h2>
-        <div class="note">Alle Hauptgerichte (Suppen, Curry & Wok) werden inkl. einer Portion Jasminreis serviert.</div>
-        
-        <div class="grid-container">
-            <div class="item">
-                <div class="item-top"><span class="name">M1 Tom Yam <span class="chili"></span></span></div>
-                <div class="thai-name">tomyam</div>
-                <div class="desc">Scharf-saure Suppe mit Tomaten, Champignons, Zitronengras, Galgant, Kaffirlimettenblättern, Fischsauce & Limettensaft.</div>
-                <table class="option-table">
-                    <tr><td>Huhn</td><td>11,90 €</td></tr>
-                    <tr><td>Garnelen</td><td>12,90 €</td></tr>
-                    <tr><td>Gemischt (Huhn & Garnelen)</td><td>13,90 €</td></tr>
-                </table>
-                <div class="allergens">B, D</div>
-            </div>
-
-            <div class="item">
-                <div class="item-top"><span class="name">M2 Kokossuppe</span></div>
-                <div class="thai-name">tom kha</div>
-                <div class="desc">Aromatische Kokosmilchsuppe mit Tomaten, Champignons, Zitronengras, Galgant, Kaffirlimettenblättern, Fischsauce & Limettensaft.</div>
-                <table class="option-table">
-                    <tr><td>Huhn</td><td>11,90 €</td></tr>
-                    <tr><td>Garnelen</td><td>12,90 €</td></tr>
-                    <tr><td>Gemischt (Huhn & Garnelen)</td><td>13,90 €</td></tr>
-                </table>
-                <div class="allergens">D</div>
-            </div>
-
-            <div class="item">
-                <div class="item-top"><span class="name">M3 Gelbes Curry</span></div>
-                <div class="thai-name">gaeng lüang</div>
-                <div class="desc">Mildes Kokoscurry mit Kartoffeln & Karotten.</div>
-                <table class="option-table">
-                    <tr><td>Gemüse / Tofu</td><td>10,90 €</td></tr>
-                    <tr><td>Huhn</td><td>11,90 €</td></tr>
-                    <tr><td>Rind / Garnelen</td><td>13,90 €</td></tr>
-                </table>
-                <div class="allergens">A, B, D, F</div>
-            </div>
-
-            <div class="item">
-                <div class="item-top"><span class="name">M4 Rotes Curry <span class="chili"></span></span></div>
-                <div class="thai-name">gaeng daeng</div>
-                <div class="desc">Kokoscurry mit Bambus, Zucchini, Fisolen, Spitzpaprika & Thai-Basilikum.</div>
-                <table class="option-table">
-                    <tr><td>Gemüse / Tofu</td><td>10,90 €</td></tr>
-                    <tr><td>Huhn</td><td>11,90 €</td></tr>
-                    <tr><td>Rind / Garnelen</td><td>13,90 €</td></tr>
-                    <tr><td>Ente</td><td>15,90 €</td></tr>
-                </table>
-                <div class="allergens">A, B, D, F</div>
-            </div>
-        </div>
-
-        <h2>Wok <span class="thai">pad</span></h2>
-        <div class="note">Alle Hauptgerichte (Suppen, Curry & Wok) werden inkl. einer Portion Jasminreis serviert.</div>
-        
-        <div class="grid-container">
-            <div class="item">
-                <div class="item-top"><span class="name">M5 Roter Curry Wok <span class="chili"></span></span></div>
-                <div class="thai-name">pad phrik gaeng daeng</div>
-                <div class="desc">Gebratenes Gemüse in roter Currypaste, Kokosmilch & Thai-Kräutern und Bambus, Fisolen & Spitzpaprika.</div>
-                <table class="option-table">
-                    <tr><td>Tofu</td><td>10,90 €</td></tr>
-                    <tr><td>Huhn</td><td>11,90 €</td></tr>
-                    <tr><td>Rind / Garnelen</td><td>13,90 €</td></tr>
-                    <tr><td>Ente</td><td>15,90 €</td></tr>
-                </table>
-                <div class="allergens">A, B, D, F</div>
-            </div>
+        <div class="category-container">
+            <h2>Suppen <span class="thai">tom</span> <span class="sub-info">inkl. Reis</span></h2>
             
             <div class="item">
-                <div class="item-top"><span class="name">M6 Süßsauer Wok</span></div>
-                <div class="thai-name">pad priao wan</div>
-                <div class="desc">Gurken, Zwiebeln, Jungzwiebeln & Paprika in süßsaurer Sauce.</div>
-                <table class="option-table">
-                    <tr><td>Huhn</td><td>11,90 €</td></tr>
-                    <tr><td>Garnelen</td><td>13,90 €</td></tr>
-                </table>
-                <div class="allergens">A, F, R</div>
-            </div>
-        </div>
-
-    </div> 
-    <div class="a4-page">
-        
-        <div style="height: 10px;"></div> <h2>Wok <span class="thai">Fortsetzung</span></h2>
-        <div class="grid-container">
-            <div class="item">
-                <div class="item-top"><span class="name">M7 Cashew Wok</span></div>
-                <div class="thai-name">pad med mamuang</div>
-                <div class="desc">Cashewnüsse, Jungzwiebeln & Paprika in süß-milder Woksauce.</div>
-                <table class="option-table">
-                    <tr><td>Huhn</td><td>11,90 €</td></tr>
-                    <tr><td>Garnelen</td><td>13,90 €</td></tr>
-                </table>
-                <div class="allergens">A, F, H, R</div>
-            </div>
-
-            <div class="item">
-                <div class="item-top"><span class="name">M8 Basilikum Wok <span class="chili"></span></span></div>
-                <div class="thai-name">pad kra prao</div>
-                <div class="desc">Pikant gebratenes Thai Basilikum, Zwiebeln & Spitzpaprika.</div>
-                <table class="option-table">
-                    <tr><td>Huhn</td><td>11,90 €</td></tr>
-                    <tr><td>Rind / Garnelen</td><td>13,90 €</td></tr>
-                    <tr><td>Ente</td><td>15,90 €</td></tr>
-                </table>
-                <div class="allergens">A, D, F, R</div>
-            </div>
-
-            <div class="item">
-                <div class="item-top"><span class="name">M9 Pfefferwok</span></div>
-                <div class="thai-name">pad phrik thai dam</div>
-                <div class="desc">Würzig-pfeffrig mit Jungzwiebeln, Zwiebeln, Paprika & Karotten.</div>
-                <table class="option-table">
-                    <tr><td>Huhn</td><td>11,90 €</td></tr>
-                    <tr><td>Rind / Garnelen</td><td>13,90 €</td></tr>
-                    <tr><td>Ente</td><td>15,90 €</td></tr>
-                </table>
-                <div class="allergens">A, D, F, R</div>
-            </div>
-            
-            <div class="item" style="border:none;"></div> </div>
-
-        <h2>Nudeln & Reis <span class="thai">pad thai & khao pad</span></h2>
-        <div class="grid-container">
-            <div class="item">
-                <div class="item-top"><span class="name">M10 Pad Thai</span></div>
-                <div class="thai-name">pad thai</div>
-                <div class="desc">Reisbandnudeln mit Karotten, Sojasprossen, Jungzwiebeln, Erdnüssen & Ei in hauseigener Pad-Thai-Sauce, ohne Reis.</div>
-                <table class="option-table">
-                    <tr><td>Tofu</td><td>10,90 €</td></tr>
-                    <tr><td>Huhn</td><td>11,90 €</td></tr>
-                    <tr><td>Garnelen</td><td>12,50 €</td></tr>
-                </table>
-                <div class="allergens">A, B, C, D, E, F, R</div>
-            </div>
-
-            <div class="item">
-                <div class="item-top"><span class="name">M11 Gebratener Reis</span></div>
-                <div class="thai-name">khao pad</div>
-                <div class="desc">Gebratener Reis mit Ei, Karotten, Erbsen & Zwiebeln.</div>
-                <table class="option-table">
-                    <tr><td>Gemüse</td><td>9,90 €</td></tr>
-                    <tr><td>Huhn</td><td>11,90 €</td></tr>
-                    <tr><td>Garnelen</td><td>12,50 €</td></tr>
-                </table>
-                <div class="allergens">A, C, D, F</div>
-            </div>
-        </div>
-        
-        <div class="qr-container">
-            <h3>Digitale Speisekarte & Social</h3>
-            <img src="images/qr-code-siriwan.png" alt="QR Code für www.siriwan.at">
-            <p style="margin-bottom: 0;">www.siriwan.at</p>
-            
-            <div class="social-bar">
-                <div class="social-item">
-                    <span class="icon">📘</span> Facebook: siriwan.thaistreetfood
+                <div class="item-header">
+                    <div><span class="code">M1</span> <span class="item-title">Tom Yam</span> <i class="fa-solid fa-pepper-hot chili"></i></div>
+                    <div class="header-allergens">B, D</div>
                 </div>
-                <div class="social-item">
-                    <span class="icon">📷</span> Instagram: siriwan.thaistreetfood
+                <div class="desc"><span class="thai-name">tomyam</span> Scharf-saure Suppe mit Tomaten, Champignons & Zitronengras.</div>
+                <div class="price-grid">
+                    <div class="price-tag">Huhn <span>11,90 €</span></div>
+                    <div class="price-tag">Garnelen <span>12,90 €</span></div>
+                    <div class="price-tag">Mix <span>13,90 €</span></div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div><span class="code">M2</span> <span class="item-title">Kokossuppe</span></div>
+                    <div class="header-allergens">D</div>
+                </div>
+                <div class="desc"><span class="thai-name">tom kha</span> Mild-säuerlich mit Tomaten, Champignons & Galgant.</div>
+                <div class="price-grid">
+                    <div class="price-tag">Huhn <span>11,90 €</span></div>
+                    <div class="price-tag">Garnelen <span>12,90 €</span></div>
+                    <div class="price-tag">Mix <span>13,90 €</span></div>
                 </div>
             </div>
         </div>
-        <div class="grid-container" style="margin-top: 20px;">
-            <div>
-                <h3>Getränke</h3>
-                <table class="option-table" style="font-size: 10pt;">
-                    <tr><td>Singha Bier 0,33 l</td><td>3,90 €</td></tr>
-                    <tr><td>Chang Bier 0,33 l</td><td>3,90 €</td></tr>
-                    <tr><td>Mineralwasser (still/prickelnd)*</td><td>2,75 €</td></tr>
-                    <tr><td>Coca-Cola* 0,33 l</td><td>3,15 €</td></tr>
-                    <tr><td>Aloe Vera Drink 0,33 l</td><td>2,90 €</td></tr>
-                    <tr><td>Kokosnusssaft 0,33 l</td><td>2,90 €</td></tr>
-                </table>
-                <div style="font-size: 8pt; margin-top: 5px; color:#666;">* inkl. 0,25 € Pfand</div>
+
+        <div class="category-container">
+            <h2>Curry <span class="thai">gaeng</span> <span class="sub-info">inkl. Reis</span></h2>
+            
+            <div class="item">
+                <div class="item-header">
+                    <div><span class="code">M3</span> <span class="item-title">Gelbes Curry</span></div>
+                    <div class="header-allergens">A, B, D, F</div>
+                </div>
+                <div class="desc"><span class="thai-name">gaeng lüang</span> Cremiges Kokoscurry mit Kartoffeln & Karotten.</div>
+                <div class="price-grid">
+                    <div class="price-tag">Gem./Tofu <span>11,90 €</span></div>
+                    <div class="price-tag">Huhn <span>12,90 €</span></div>
+                    <div class="price-tag">Rind/Garn <span>13,90 €</span></div>
+                </div>
             </div>
 
-            <div>
-                <h3>Extras</h3>
-                <div class="note">Zu Hauptgerichten (Suppen, Curry, Wok)</div>
-                <table class="option-table" style="font-size: 10pt;">
-                    <tr><td>Ei</td><td>2,00 €</td></tr>
-                    <tr><td>Reis / Rind / Garnelen</td><td>3,00 €</td></tr>
-                    <tr><td>Ente</td><td>3,50 €</td></tr>
-                    <tr><td>Extraportion</td><td>4,00 €</td></tr>
-                </table>
+            <div class="item">
+                <div class="item-header">
+                    <div><span class="code">M4</span> <span class="item-title">Rotes Curry</span> <i class="fa-solid fa-pepper-hot chili"></i></div>
+                    <div class="header-allergens">A, B, D, F</div>
+                </div>
+                <div class="desc"><span class="thai-name">gaeng daeng</span> Kokoscurry, Bambus, Zucchini, Fisolen, Paprika, Thai Basilikum.</div>
+                <div class="price-grid">
+                    <div class="price-tag">Gem./Tofu <span>11,90 €</span></div>
+                    <div class="price-tag">Huhn <span>12,90 €</span></div>
+                    <div class="price-tag">Rind/Garn <span>13,90 €</span></div>
+                    <div class="price-tag">Ente <span>15,90 €</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-container">
+            <h2>Wok <span class="thai">pad</span> <span class="sub-info">inkl. Reis</span></h2>
+            
+            <div class="item">
+                <div class="item-header">
+                    <div><span class="code">M5</span> <span class="item-title">Roter Curry Wok</span> <i class="fa-solid fa-pepper-hot chili"></i></div>
+                    <div class="header-allergens">A, B, D, F</div>
+                </div>
+                <div class="desc"><span class="thai-name">pad phrik gaeng</span> Rote Currypaste, Kokosmilch, Thai-Kräuter, Bambus, Fisolen.</div>
+                <div class="price-grid">
+                    <div class="price-tag">Tofu <span>10,90 €</span></div>
+                    <div class="price-tag">Huhn <span>11,90 €</span></div>
+                    <div class="price-tag">Rind/Garn <span>13,90 €</span></div>
+                    <div class="price-tag">Ente <span>15,90 €</span></div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="flex-grow:1; display:flex; align-items:flex-end; justify-content:center;">
+            <div style="border-top:1px solid #ccc; width:100%; text-align:center; padding-top:2mm; font-size:9pt; color:#999;">
+                <i class="fa-solid fa-arrow-right"></i> Bitte wenden für weitere Gerichte & Getränke
+            </div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div style="border-bottom: 2px solid var(--primary); margin-bottom: 4mm; padding-bottom: 2mm; display:flex; justify-content:space-between; align-items:baseline;">
+            <h1 style="font-size:16pt;">Siriwan <span style="font-size:12pt; font-family:'Montserrat', sans-serif; color:#777; font-weight:400; text-transform:none;">Fortsetzung Speisekarte</span></h1>
+            <div style="font-size:9pt; font-weight:600; color:#d00;"><i class="fa-solid fa-pepper-hot"></i> Schärfegrad auf Wunsch angeben.</div>
+        </div>
+
+        <div class="category-container">
+            <h2 style="margin-top:0;">Wok <span class="thai">pad</span> <span class="sub-info">inkl. Reis (Forts.)</span></h2>
+
+            <div class="item">
+                <div class="item-header">
+                    <div><span class="code">M6</span> <span class="item-title">Wok Süßsauer</span></div>
+                    <div class="header-allergens">A, F, R</div>
+                </div>
+                <div class="desc"><span class="thai-name">pad priao wan</span> Mit Gurken, Zwiebeln, Jungzwiebeln, Ananas & Paprika.</div>
+                <div class="price-grid">
+                    <div class="price-tag">Huhn <span>11,90 €</span></div>
+                    <div class="price-tag">Garnelen <span>13,90 €</span></div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div><span class="code">M7</span> <span class="item-title">Cashew Wok</span></div>
+                    <div class="header-allergens">A, F, H, R</div>
+                </div>
+                <div class="desc"><span class="thai-name">pad med mamuang</span> Geröstete Cashewnüsse, Jungzwiebel & Paprika in milder Sauce.</div>
+                <div class="price-grid">
+                    <div class="price-tag">Huhn <span>11,90 €</span></div>
+                    <div class="price-tag">Garnelen <span>13,90 €</span></div>
+                </div>
+            </div>
+
+            <div class="item signature">
+                <div class="item-header">
+                    <div><span class="code">M8</span> <span class="item-title">Basilikum Wok</span> <i class="fa-solid fa-star star"></i> <i class="fa-solid fa-pepper-hot chili"></i></div>
+                    <div class="header-allergens">A, D, F, R</div>
+                </div>
+                <div class="desc"><span class="thai-name">pad ka prao</span> Streetfood Klassiker. Pikant gebratenes Thai Basilikum, Zwiebel & Paprika.</div>
+                <div class="price-grid">
+                    <div class="price-tag">Huhn Fasch. <span>11,90 €</span></div>
+                    <div class="price-tag">Rind Fasch./Garn <span>13,90 €</span></div>
+                    <div class="price-tag">Ente <span>15,90 €</span></div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div><span class="code">M9</span> <span class="item-title">Pfefferwok</span></div>
+                    <div class="header-allergens">A, D, F, R</div>
+                </div>
+                <div class="desc"><span class="thai-name">pad phrik thai dam</span> Würzig-pfeffrig mit Jungzwiebeln, Paprika & Karotten.</div>
+                <div class="price-grid">
+                    <div class="price-tag">Huhn <span>11,90 €</span></div>
+                    <div class="price-tag">Rind/Garn <span>13,90 €</span></div>
+                    <div class="price-tag">Ente <span>15,90 €</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-container">
+            <h2>Nudeln & Reis <span class="thai">sen & khao</span></h2>
+            
+            <div class="item">
+                <div class="item-header">
+                    <div><span class="code">M10</span> <span class="item-title">Mi Sua Silom</span></div>
+                    <div class="header-allergens">A, C, F, R</div>
+                </div>
+                <div class="desc"><span class="thai-name">pad mi sua</span> Goldene Weizennudeln mit Karotten, Brokkoli & Weißkohl.</div>
+                <div class="price-grid">
+                    <div class="price-tag">Tofu <span>10,90 €</span></div>
+                    <div class="price-tag">Huhn <span>11,90 €</span></div>
+                    <div class="price-tag">Garnelen <span>12,90 €</span></div>
+                    <div class="price-tag">Ente <span>15,90 €</span></div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div><span class="code">M11</span> <span class="item-title">Pad Thai</span></div>
+                    <div class="header-allergens">A-F, R</div>
+                </div>
+                <div class="desc"><span class="thai-name">pad thai</span> Reisbandnudeln mit Karotten, Sojasprossen, Jungzwiebeln, Erdnüssen & Ei.</div>
+                <div class="price-grid">
+                    <div class="price-tag">Tofu <span>10,90 €</span></div>
+                    <div class="price-tag">Huhn <span>11,90 €</span></div>
+                    <div class="price-tag">Garnelen <span>12,90 €</span></div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div><span class="code">M12</span> <span class="item-title">Gebratener Reis</span></div>
+                    <div class="header-allergens">A, C, D, F</div>
+                </div>
+                <div class="desc"><span class="thai-name">khao pad</span> Mit Ei, Karotten, Erbsen & Zwiebeln.</div>
+                <div class="price-grid">
+                    <div class="price-tag">Gemüse <span>9,90 €</span></div>
+                    <div class="price-tag">Huhn <span>11,90 €</span></div>
+                    <div class="price-tag">Garnelen <span>12,90 €</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 5mm;">
+            <div class="simple-list-grid">
+                <div>
+                    <h3>Extras <span class="thai-sub">phiset</span></h3>
+                    <div class="simple-list-row"><span>Extraportion</span> <strong>3,90 €</strong></div>
+                    <div class="simple-list-row"><span>+ Ei</span> <strong>2,00 €</strong></div>
+                    <div class="simple-list-row"><span>+ Reis</span> <strong>3,00 €</strong></div>
+                    <div class="simple-list-row"><span>+ Rind / Garnelen</span> <strong>2,50 €</strong></div>
+                    <div class="simple-list-row"><span>+ Ente</span> <strong>3,00 €</strong></div>
+                    <div class="simple-list-row"><span>Chili Dip</span> <strong>0,50 €</strong></div>
+                </div>
+
+                <div>
+                    <h3>Getränke <span class="thai-sub">khrueang duem</span></h3>
+                    <div class="simple-list-row"><span>Singha Bier 0,33 l</span> <strong>3,90 €</strong></div>
+                    <div class="simple-list-row"><span>Chang Bier 0,32 l</span> <strong>3,90 €</strong></div>
+                    <div class="simple-list-row"><span>Mineralwasser (still/prickelnd)*</span> <strong>2,75 €</strong></div>
+                    <div class="simple-list-row"><span>Coca-Cola* 0,33 l</span> <strong>3,15 €</strong></div>
+                    <div class="simple-list-row"><span>Aloe Vera / Kokosnuss 0,5 l</span> <strong>2,90 €</strong></div>
+                    <div class="simple-list-row"><span>Kokosnusssaft 0,35 l</span> <strong>2,50 €</strong></div>
+                    <div style="font-size:7pt; color:#999; text-align:right; margin-top:2px;">* inkl. 0,25 € Pfand</div>
+                </div>
             </div>
         </div>
 
         <div class="footer">
-            <div class="footer-col contact-col">
-                <strong>Siriwan Thai Street Food</strong>
-                Ybbsstraße 39, 3300 Amstetten<br>
-                Tel: 0660 496 3392<br>
-                Web: www.siriwan.at<br>
-                <div style="margin-top: 5px; font-weight: bold; color: #a00;">🚫 Kein Lieferservice</div>
-            </div>
-            
-            <div class="footer-col payment-col">
-                <strong>Zahlung</strong>
-                Bar, Bankomatkarte, EC-Karte,<br>
-                Apple Pay, Google Pay.<br><br>
-                <div style="font-size: 7pt; color: #999;">© 2025 Siriwan</div>
+            <div class="footer-block">
+                <h4>Kontakt</h4>
+                <div class="icon-text"><i class="fa-solid fa-location-dot"></i> Ybbsstraße 39, Amstetten</div>
+                <div class="icon-text"><i class="fa-regular fa-clock"></i> MO–FR 11:00 – 18:30</div>
+                <div class="icon-text"><i class="fa-solid fa-phone"></i> <strong>0660 496 3392</strong></div>
+                <div class="no-delivery">KEIN LIEFERSERVICE</div>
             </div>
 
-            <div class="footer-col allergens-col">
-                <strong>Allergene</strong>
-                <div style="font-size: 7pt; color: #666; text-align: justify; line-height: 1.1;">
-                    A Gluten, B Krebstiere, C Eier, D Fisch, E Erdnüsse, F Soja, G Milch, H Schalenfrüchte, L Sellerie, M Senf, N Sesam, O Sulfite, P Lupinen, R Weichtiere.<br>
-                    <span style="font-style: italic;">Gluten- & laktosefreie Zubereitung auf Anfrage.</span>
+            <div class="footer-block">
+                <h4>Info</h4>
+                <div style="margin-bottom:4px;">Wir akzeptieren:</div>
+                <div class="payment-icons">
+                    <i class="fa-brands fa-cc-visa"></i>
+                    <i class="fa-brands fa-cc-mastercard"></i>
+                    <i class="fa-solid fa-credit-card"></i>
+                    <i class="fa-brands fa-apple-pay"></i>
+                    <i class="fa-brands fa-google-pay"></i>
+                </div>
+                <div style="display:flex; gap:10px; margin-top:5px; align-items:center;">
+                   <i class="fa-brands fa-facebook" style="color:var(--accent)"></i>
+                   <i class="fa-brands fa-instagram" style="color:var(--accent)"></i> 
+                   @siriwan.thaistreetfood
+                </div>
+                <div class="qr-section">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://www.siriwan.at&color=000000&bgcolor=FFFFFF&margin=0" class="qr-img" alt="QR">
+                    <strong>www.siriwan.at</strong>
+                </div>
+            </div>
+
+            <div class="footer-block">
+                <h4>Allergene</h4>
+                <div style="font-size:7.5pt; text-align:justify; line-height:1.2; color:#666;">
+                    A Gluten B Krebstiere C Eier D Fisch E Erdnüsse F Soja G Milch H Schalenfrüchte L Sellerie M Senf N Sesam O Sulfite P Lupinen R Weichtiere.<br><br>
+                    Irrtümer, Druckfehler und Änderungen vorbehalten.
                 </div>
             </div>
         </div>
 
     </div>
+
 </body>
 </html>
