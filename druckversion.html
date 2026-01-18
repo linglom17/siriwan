@@ -2,20 +2,25 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Siriwan Speisekarte A4 Druckversion (2 Seiten)</title>
+    <title>Siriwan Speisekarte Aushang (A4 Final)</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     
     <style>
-        /* --- DRUCK CSS SETUP --- */
+        /* --- DESIGN SYSTEM --- */
         :root {
-            --primary: #022c2c;   /* Dunkles Petrol/Grün */
-            --accent: #b08d55;    /* Goldton matt für Druck */
-            --text: #222222;      /* Dunkelgrau für Text */
-            --grey: #555555;      /* Helleres Grau für Details */
-            --light-bg: #f7f7f7;  /* Sehr helles Grau für Boxen */
+            --primary: #003333;   
+            --accent: #b08d55;    
+            --highlight: #e8f4f4; 
+            --text: #222222;      
+            --white: #ffffff;
+            
+            --font-main: 'Montserrat', sans-serif;
+            --font-serif: 'Playfair Display', serif;
+            --font-hand: 'Dancing Script', cursive;
         }
 
+        /* Exaktes A4 Setup für den Drucker */
         @page {
             size: A4 portrait;
             margin: 0;
@@ -24,284 +29,328 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Montserrat', sans-serif;
+            font-family: var(--font-main);
             color: var(--text);
-            background: #e0e0e0; /* Nur Hintergrund Browser */
+            background: #cccccc; 
             -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
+            width: 210mm;
         }
 
         .page {
             width: 210mm;
-            height: 297mm;
-            background: white;
-            margin: 0 auto 10px auto;
-            padding: 12mm 15mm; 
+            height: 296mm; /* Exakt A4 Höhe minus Sicherheitsabstand */
+            background: var(--white);
+            margin: 0 auto;
+            padding: 10mm 15mm;
             box-sizing: border-box;
-            overflow: hidden;
             display: flex;
             flex-direction: column;
             position: relative;
+            overflow: hidden;
         }
 
-        /* --- TYPOGRAFIE --- */
+        .page-break {
+            page-break-after: always;
+            break-after: page;
+        }
+
+        /* --- HEADER NEU (3-Spaltig) --- */
+        .header-section {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1.2fr; /* Links, Mitte, Rechts */
+            align-items: center;
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 2mm;
+            margin-bottom: 3mm;
+            height: 35mm; /* Feste Höhe für Stabilität */
+        }
+
+        .header-left {
+            text-align: left;
+        }
+
+        .header-center {
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-right {
+            text-align: right;
+        }
+
         h1 {
-            font-family: 'Playfair Display', serif;
-            color: var(--accent);
+            font-family: var(--font-serif);
+            color: var(--primary);
             text-transform: uppercase;
             margin: 0;
-            font-size: 28pt;
+            font-size: 28pt; /* Leicht angepasst */
             line-height: 0.9;
         }
         
-        .slogan {
-            font-family: 'Dancing Script', cursive;
-            font-size: 14pt;
-            color: var(--primary);
-            margin-top: 2px;
+        .sub-title {
+            font-family: var(--font-main);
+            font-size: 9.5pt;
             font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 3px;
+        }
+        
+        .slogan {
+            font-family: var(--font-hand);
+            font-size: 19pt; /* Größer für Mitte */
+            color: var(--primary);
+            font-weight: 700;
+            transform: rotate(-2deg); /* Leichter Style-Effekt */
+        }
+
+        .header-info {
+            font-size: 8.5pt;
+            line-height: 1.35;
+            color: var(--primary);
+        }
+
+        /* --- KATEGORIEN --- */
+        .category-container {
+            margin-bottom: 2mm;
         }
 
         h2 {
-            font-family: 'Playfair Display', serif;
-            color: white;
+            font-family: var(--font-serif);
+            color: var(--white);
             background-color: var(--primary);
             font-size: 13pt;
-            margin-top: 3mm;
-            margin-bottom: 2mm;
-            padding: 4px 10px;
+            margin: 0 0 2mm 0;
+            padding: 5px 10px;
             border-radius: 4px;
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
-            line-height: 1.2;
+            align-items: center;
         }
 
         h2 .thai {
-            font-family: 'Dancing Script', cursive;
+            font-family: var(--font-hand);
             font-weight: 400;
             font-size: 12pt;
-            color: #ddd;
+            color: #e0e0e0;
             text-transform: none;
+            margin-left: 10px;
         }
 
-        h2 .sub-info {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 8pt;
+        .rice-badge {
+            font-family: var(--font-main);
+            font-size: 8.5pt;
+            text-transform: uppercase;
             background: var(--accent);
-            color: black;
+            color: #000;
             padding: 1px 6px;
             border-radius: 3px;
-            font-weight: 600;
-            font-style: italic;
-            vertical-align: middle;
-            margin-left: 10px;
+            font-weight: 700;
+            margin-left: auto; 
+            margin-right: 10px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            white-space: nowrap;
         }
 
         h3 {
             color: var(--primary);
-            font-family: 'Playfair Display', serif;
-            font-size: 14pt;
+            font-family: var(--font-serif);
+            font-size: 15pt;
             border-bottom: 2px solid var(--accent);
             margin-bottom: 3mm;
-            margin-top: 2mm;
-            text-transform: uppercase;
+            margin-top: 0;
+            padding-bottom: 2px;
             display: flex;
             justify-content: space-between;
             align-items: baseline;
         }
         h3 .thai-sub {
-            font-family: 'Dancing Script', cursive;
-            text-transform: none;
+            font-family: var(--font-hand);
             color: #888;
-            font-size: 12pt;
-            font-weight: 400;
+            font-size: 13pt;
+            text-transform: none;
         }
 
         /* --- ITEMS --- */
-        .category-container {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5mm;
-            margin-bottom: 2mm;
-        }
-
         .item {
-            border-bottom: 1px dotted #ccc;
-            padding-bottom: 1.8mm;
+            padding-bottom: 1.5mm;
             margin-bottom: 1.5mm;
+            border-bottom: 1px dotted #ccc;
             page-break-inside: avoid;
         }
         .item:last-child { border-bottom: none; margin-bottom: 0; }
 
-        .item-header {
+        .item-top {
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
-        }
-
-        .item-title {
-            font-weight: 700;
-            font-size: 10.5pt;
-            color: var(--primary);
-            text-transform: uppercase;
+            margin-bottom: 1px;
         }
 
         .code {
-            color: var(--accent);
-            font-weight: 800;
             display: inline-block;
-            width: 26px;
-            font-size: 10.5pt;
-        }
-
-        .thai-name {
-            font-family: 'Dancing Script', cursive;
-            color: var(--accent);
-            font-size: 10.5pt;
+            background: var(--primary);
+            color: var(--white);
             font-weight: 700;
+            border-radius: 3px;
+            padding: 1px 5px;
+            font-size: 8.5pt;
             margin-right: 5px;
+            vertical-align: middle;
+            min-width: 18px;
+            text-align: center;
         }
 
-        .desc {
-            font-size: 9pt;
-            color: var(--text);
-            line-height: 1.3;
-            margin-top: 0.8mm;
-            text-align: justify;
-        }
-
-        .allergens {
-            font-size: 7.5pt;
-            color: var(--grey);
-            text-align: right;
-            margin-top: 1px;
-        }
-        
-        .header-allergens {
-            font-size: 7.5pt;
-            color: var(--grey);
-            margin-left: auto;
-            padding-left: 5px;
+        .item-title {
+            font-weight: 800;
+            font-size: 10.5pt;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
         }
 
         .price-single {
             font-weight: 700;
-            font-size: 11.5pt;
+            font-size: 12pt;
             color: var(--primary);
         }
 
-        /* --- PREIS TABELLE (PILLS) --- */
+        .desc {
+            font-size: 9.5pt;
+            color: var(--text);
+            line-height: 1.3;
+            margin-top: 2px;
+            text-align: justify;
+        }
+
+        .thai-name {
+            font-family: var(--font-hand);
+            color: var(--accent);
+            font-size: 11pt;
+            font-weight: 700;
+            margin-right: 4px;
+        }
+
+        .allergens, .header-allergens {
+            font-size: 7pt;
+            color: #666;
+            font-style: italic;
+        }
+        .allergens { text-align: right; margin-top: 1px; }
+        .header-allergens { margin-left: 8px; }
+
         .price-grid {
-            margin-top: 1.5mm;
+            margin-top: 3px;
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
-            font-size: 8.5pt;
+            gap: 5px;
         }
         
         .price-tag {
-            background: var(--light-bg);
-            border: 1px solid #ddd;
+            background: var(--highlight);
+            border: 1px solid #d0e0e0;
             border-radius: 10px;
-            padding: 2px 8px;
+            padding: 1px 8px;
+            font-size: 8.5pt;
+            color: var(--primary);
             display: flex;
-            gap: 4px;
             align-items: center;
+            gap: 4px;
         }
-        .price-tag span { font-weight: 700; color: var(--primary); }
+        .price-tag span {
+            font-weight: 700;
+            font-size: 9.5pt;
+            color: var(--primary);
+        }
 
-        /* --- LISTEN (Getränke/Extras) --- */
-        .simple-list-grid {
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
+        .signature {
+            border-left: 4px solid var(--accent);
+            background: linear-gradient(90deg, #fffcf5 0%, #ffffff 100%);
+            padding: 2.5mm;
+            margin: 1.5mm 0;
+            border-radius: 0 4px 4px 0;
+        }
+        .chili { color: #d00; font-size: 9pt; margin-left: 3px; }
+        .star { color: var(--accent); font-size: 9pt; margin-left: 2px; }
+
+        .columns-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 10mm;
+            margin-top: 5mm;
         }
 
-        .simple-list-row {
+        .list-row {
             display: flex;
             justify-content: space-between;
-            border-bottom: 1px dotted #ddd;
-            margin-bottom: 1.2mm;
-            padding-bottom: 0.5mm;
-            font-size: 9.5pt;
             align-items: baseline;
+            border-bottom: 1px dotted #ccc;
+            margin-bottom: 1.8mm;
+            padding-bottom: 0.5mm;
+            font-size: 10pt;
         }
-        .simple-list-row strong { color: var(--primary); font-size: 10.5pt; }
+        .list-row strong { color: var(--primary); }
 
-        /* --- FOOTER --- */
         .footer {
             margin-top: auto;
-            border-top: 2px solid var(--primary);
+            border-top: 3px solid var(--primary);
             padding-top: 3mm;
             display: flex;
             justify-content: space-between;
-            font-size: 8.5pt;
+            gap: 4mm;
         }
-
-        .footer-block { width: 32%; }
-        .footer-block h4 {
+        .footer-col { width: 33%; }
+        .footer h4 {
             color: var(--accent);
-            font-family: 'Playfair Display', serif;
+            font-family: var(--font-serif);
             margin: 0 0 1.5mm 0;
-            font-size: 10.5pt;
+            font-size: 10pt;
             text-transform: uppercase;
         }
-        
-        .no-delivery {
-            display: inline-block;
-            background: #fff0f0;
-            color: #d00;
-            border: 1px solid #ffcccc;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-weight: 700;
-            font-size: 8pt;
-            margin-top: 4px;
+        .icon-row {
+            display: flex; align-items: flex-start; gap: 6px; margin-bottom: 3px; font-size: 9pt;
         }
-
-        .icon-text { display: flex; align-items: flex-start; gap: 6px; margin-bottom: 3px;}
-        .icon-text i { color: var(--accent); width: 14px; text-align: center; margin-top: 2px; }
-
-        /* --- SPEZIALS --- */
-        .signature {
-            border-left: 3px solid var(--accent);
-            background: linear-gradient(90deg, #fffcf0 0%, #fff 100%);
-            padding: 2mm;
-            border-radius: 0 4px 4px 0;
-            margin-left: -2mm; /* Pull out slightly */
-            width: calc(100% + 1mm);
-        }
-        .chili { color: #d00; font-size: 9pt; margin-left: 3px; }
-        .star { color: #d4af37; font-size: 9pt; }
-
-        .payment-icons { font-size: 12pt; color: var(--primary); margin-top: 3px; }
+        .icon-row i { color: var(--accent); width: 14px; text-align: center; margin-top: 3px; }
+        .payment-icons { font-size: 13pt; color: var(--primary); margin: 3px 0; }
         .payment-icons i { margin-right: 3px; }
-
-        .qr-section {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 5px;
+        .qr-box {
+            display: flex; align-items: center; gap: 8px; margin-top: 6px;
+            background: #f9f9f9; padding: 4px; border-radius: 4px; border: 1px solid #eee;
         }
-        .qr-img { width: 35px; height: 35px; }
+        .qr-img { width: 32px; height: 32px; }
+        .allergen-text {
+            font-size: 7pt; color: #777; text-align: justify; line-height: 1.2;
+        }
 
         @media print {
-            body { background: white; }
-            .page { margin: 0; page-break-after: always; box-shadow: none; height: auto; min-height: 297mm; }
-            .page:last-child { page-break-after: auto; }
+            body { background: white; margin: 0; }
+            .page { 
+                margin: 0; 
+                box-shadow: none; 
+                border: none;
+                width: 210mm;
+                height: 296mm;
+                overflow: hidden; 
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="page">
-        <div style="display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid var(--primary); padding-bottom: 3mm; margin-bottom: 3mm;">
-            <div>
+    <div class="page page-break">
+        <div class="header-section">
+            <div class="header-left">
                 <h1>Siriwan</h1>
+                <div class="sub-title">Thai Street Food Takeaway</div>
+            </div>
+            <div class="header-center">
                 <div class="slogan">One Bite in Bangkok</div>
             </div>
-            <div style="text-align: right; font-size: 9.5pt; line-height: 1.4;">
+            <div class="header-right header-info">
                 <strong>Ybbsstraße 39, 3300 Amstetten</strong><br>
                 Vorbestellung: 0660 496 3392<br>
                 www.siriwan.at
@@ -309,10 +358,12 @@
         </div>
 
         <div class="category-container">
-            <h2>Vorspeisen <span class="thai">khong wang</span></h2>
+            <h2>
+                <span>Vorspeisen <span class="thai">khong wang</span></span>
+            </h2>
             
             <div class="item">
-                <div class="item-header">
+                <div class="item-top">
                     <div><span class="code">V1</span> <span class="item-title">Frühlingsrollen</span></div>
                     <span class="price-single">5,50 €</span>
                 </div>
@@ -321,7 +372,7 @@
             </div>
 
             <div class="item">
-                <div class="item-header">
+                <div class="item-top">
                     <div><span class="code">V2</span> <span class="item-title">Tempura Huhn</span></div>
                     <span class="price-single">6,50 €</span>
                 </div>
@@ -330,7 +381,7 @@
             </div>
 
             <div class="item">
-                <div class="item-header">
+                <div class="item-top">
                     <div><span class="code">V3</span> <span class="item-title">Hühner Saté</span></div>
                     <span class="price-single">8,50 €</span>
                 </div>
@@ -339,7 +390,7 @@
             </div>
 
             <div class="item">
-                <div class="item-header">
+                <div class="item-top">
                     <div><span class="code">V4</span> <span class="item-title">Papayasalat</span></div>
                     <span class="price-single">8,90 €</span>
                 </div>
@@ -349,10 +400,13 @@
         </div>
 
         <div class="category-container">
-            <h2>Suppen <span class="thai">tom</span> <span class="sub-info">inkl. Reis</span></h2>
+            <h2>
+                <span>Suppen <span class="thai">tom</span></span>
+                <span class="rice-badge">inkl. Reis</span>
+            </h2>
             
             <div class="item">
-                <div class="item-header">
+                <div class="item-top">
                     <div><span class="code">M1</span> <span class="item-title">Tom Yam</span> <i class="fa-solid fa-pepper-hot chili"></i></div>
                     <div class="header-allergens">B, D</div>
                 </div>
@@ -365,7 +419,7 @@
             </div>
 
             <div class="item">
-                <div class="item-header">
+                <div class="item-top">
                     <div><span class="code">M2</span> <span class="item-title">Kokossuppe</span></div>
                     <div class="header-allergens">D</div>
                 </div>
@@ -379,10 +433,13 @@
         </div>
 
         <div class="category-container">
-            <h2>Curry <span class="thai">gaeng</span> <span class="sub-info">inkl. Reis</span></h2>
+            <h2>
+                <span>Curry <span class="thai">gaeng</span></span>
+                <span class="rice-badge">inkl. Reis</span>
+            </h2>
             
             <div class="item">
-                <div class="item-header">
+                <div class="item-top">
                     <div><span class="code">M3</span> <span class="item-title">Gelbes Curry</span></div>
                     <div class="header-allergens">A, B, D, F</div>
                 </div>
@@ -395,7 +452,7 @@
             </div>
 
             <div class="item">
-                <div class="item-header">
+                <div class="item-top">
                     <div><span class="code">M4</span> <span class="item-title">Rotes Curry</span> <i class="fa-solid fa-pepper-hot chili"></i></div>
                     <div class="header-allergens">A, B, D, F</div>
                 </div>
@@ -410,10 +467,13 @@
         </div>
 
         <div class="category-container">
-            <h2>Wok <span class="thai">pad</span> <span class="sub-info">inkl. Reis</span></h2>
+            <h2>
+                <span>Wok <span class="thai">pad</span></span>
+                <span class="rice-badge">inkl. Reis</span>
+            </h2>
             
             <div class="item">
-                <div class="item-header">
+                <div class="item-top">
                     <div><span class="code">M5</span> <span class="item-title">Roter Curry Wok</span> <i class="fa-solid fa-pepper-hot chili"></i></div>
                     <div class="header-allergens">A, B, D, F</div>
                 </div>
@@ -428,23 +488,29 @@
         </div>
         
         <div style="flex-grow:1; display:flex; align-items:flex-end; justify-content:center;">
-            <div style="border-top:1px solid #ccc; width:100%; text-align:center; padding-top:2mm; font-size:9pt; color:#999;">
+             <div style="border-top:1px solid #ddd; width:100%; text-align:center; padding-top:2mm; font-size:9pt; color:#999; font-style:italic;">
                 <i class="fa-solid fa-arrow-right"></i> Bitte wenden für weitere Gerichte & Getränke
             </div>
         </div>
     </div>
 
     <div class="page">
-        <div style="border-bottom: 2px solid var(--primary); margin-bottom: 4mm; padding-bottom: 2mm; display:flex; justify-content:space-between; align-items:baseline;">
-            <h1 style="font-size:16pt;">Siriwan <span style="font-size:12pt; font-family:'Montserrat', sans-serif; color:#777; font-weight:400; text-transform:none;">Fortsetzung Speisekarte</span></h1>
-            <div style="font-size:9pt; font-weight:600; color:#d00;"><i class="fa-solid fa-pepper-hot"></i> Schärfegrad auf Wunsch angeben.</div>
+        <div style="border-bottom: 2px solid var(--primary); margin-bottom: 5mm; padding-bottom: 2mm; display:flex; justify-content:space-between; align-items:baseline;">
+            <div style="display:flex; flex-direction:column;">
+                <h1 style="font-size:18pt; margin-bottom:2px;">Siriwan</h1>
+                <span style="font-size:9pt; font-weight:700; color:#777; text-transform:uppercase;">Thai Street Food Takeaway (Forts.)</span>
+            </div>
+            <div style="font-size:10pt; font-weight:600; color:#d00;"><i class="fa-solid fa-pepper-hot"></i> Schärfegrad auf Wunsch angeben.</div>
         </div>
 
         <div class="category-container">
-            <h2 style="margin-top:0;">Wok <span class="thai">pad</span> <span class="sub-info">inkl. Reis (Forts.)</span></h2>
+            <h2 style="margin-top:0;">
+                <span>Wok <span class="thai">pad</span></span>
+                <span class="rice-badge">inkl. Reis (Forts.)</span>
+            </h2>
 
             <div class="item">
-                <div class="item-header">
+                <div class="item-top">
                     <div><span class="code">M6</span> <span class="item-title">Wok Süßsauer</span></div>
                     <div class="header-allergens">A, F, R</div>
                 </div>
@@ -456,7 +522,7 @@
             </div>
 
             <div class="item">
-                <div class="item-header">
+                <div class="item-top">
                     <div><span class="code">M7</span> <span class="item-title">Cashew Wok</span></div>
                     <div class="header-allergens">A, F, H, R</div>
                 </div>
@@ -468,7 +534,7 @@
             </div>
 
             <div class="item signature">
-                <div class="item-header">
+                <div class="item-top">
                     <div><span class="code">M8</span> <span class="item-title">Basilikum Wok</span> <i class="fa-solid fa-star star"></i> <i class="fa-solid fa-pepper-hot chili"></i></div>
                     <div class="header-allergens">A, D, F, R</div>
                 </div>
@@ -481,7 +547,7 @@
             </div>
 
             <div class="item">
-                <div class="item-header">
+                <div class="item-top">
                     <div><span class="code">M9</span> <span class="item-title">Pfefferwok</span></div>
                     <div class="header-allergens">A, D, F, R</div>
                 </div>
@@ -495,10 +561,12 @@
         </div>
 
         <div class="category-container">
-            <h2>Nudeln & Reis <span class="thai">sen & khao</span></h2>
+            <h2>
+                <span>Nudeln & Reis <span class="thai">sen & khao</span></span>
+            </h2>
             
             <div class="item">
-                <div class="item-header">
+                <div class="item-top">
                     <div><span class="code">M10</span> <span class="item-title">Mi Sua Silom</span></div>
                     <div class="header-allergens">A, C, F, R</div>
                 </div>
@@ -512,7 +580,7 @@
             </div>
 
             <div class="item">
-                <div class="item-header">
+                <div class="item-top">
                     <div><span class="code">M11</span> <span class="item-title">Pad Thai</span></div>
                     <div class="header-allergens">A-F, R</div>
                 </div>
@@ -525,7 +593,7 @@
             </div>
 
             <div class="item">
-                <div class="item-header">
+                <div class="item-top">
                     <div><span class="code">M12</span> <span class="item-title">Gebratener Reis</span></div>
                     <div class="header-allergens">A, C, D, F</div>
                 </div>
@@ -538,43 +606,40 @@
             </div>
         </div>
 
-        <div style="margin-top: 5mm;">
-            <div class="simple-list-grid">
-                <div>
-                    <h3>Extras <span class="thai-sub">phiset</span></h3>
-                    <div class="simple-list-row"><span>Extraportion</span> <strong>3,90 €</strong></div>
-                    <div class="simple-list-row"><span>+ Ei</span> <strong>2,00 €</strong></div>
-                    <div class="simple-list-row"><span>+ Reis</span> <strong>3,00 €</strong></div>
-                    <div class="simple-list-row"><span>+ Rind / Garnelen</span> <strong>2,50 €</strong></div>
-                    <div class="simple-list-row"><span>+ Ente</span> <strong>3,00 €</strong></div>
-                    <div class="simple-list-row"><span>Chili Dip</span> <strong>0,50 €</strong></div>
-                </div>
+        <div class="columns-grid">
+            <div>
+                <h3>Extras <span class="thai-sub">phiset</span></h3>
+                <div class="list-row"><span>Extraportion</span> <strong>3,50 €</strong></div>
+                <div class="list-row"><span>+ Ei</span> <strong>2,00 €</strong></div>
+                <div class="list-row"><span>+ Reis</span> <strong>3,00 €</strong></div>
+                <div class="list-row"><span>+ Rind / Garnelen</span> <strong>2,50 €</strong></div>
+                <div class="list-row"><span>+ Ente</span> <strong>3,00 €</strong></div>
+                <div class="list-row"><span>Chili Dip</span> <strong>0,50 €</strong></div>
+            </div>
 
-                <div>
-                    <h3>Getränke <span class="thai-sub">khrueang duem</span></h3>
-                    <div class="simple-list-row"><span>Singha Bier 0,33 l</span> <strong>3,90 €</strong></div>
-                    <div class="simple-list-row"><span>Chang Bier 0,32 l</span> <strong>3,90 €</strong></div>
-                    <div class="simple-list-row"><span>Mineralwasser (still/prickelnd)*</span> <strong>2,75 €</strong></div>
-                    <div class="simple-list-row"><span>Coca-Cola* 0,33 l</span> <strong>3,15 €</strong></div>
-                    <div class="simple-list-row"><span>Aloe Vera / Kokosnuss 0,5 l</span> <strong>2,90 €</strong></div>
-                    <div class="simple-list-row"><span>Kokosnusssaft 0,35 l</span> <strong>2,50 €</strong></div>
-                    <div style="font-size:7pt; color:#999; text-align:right; margin-top:2px;">* inkl. 0,25 € Pfand</div>
-                </div>
+            <div>
+                <h3>Getränke <span class="thai-sub">khrueang duem</span></h3>
+                <div class="list-row"><span>Singha Bier 0,33 l</span> <strong>3,90 €</strong></div>
+                <div class="list-row"><span>Chang Bier 0,32 l</span> <strong>3,90 €</strong></div>
+                <div class="list-row"><span>Mineralwasser (still/prickelnd)*</span> <strong>2,75 €</strong></div>
+                <div class="list-row"><span>Coca-Cola* 0,33 l</span> <strong>3,15 €</strong></div>
+                <div class="list-row"><span>Aloe Vera / Kokosnuss 0,5 l</span> <strong>2,90 €</strong></div>
+                <div class="list-row"><span>Kokosnusssaft 0,35 l</span> <strong>2,50 €</strong></div>
+                <div style="font-size:8pt; color:#999; text-align:right; margin-top:5px;">* inkl. 0,25 € Pfand</div>
             </div>
         </div>
 
         <div class="footer">
-            <div class="footer-block">
+            <div class="footer-col">
                 <h4>Kontakt</h4>
-                <div class="icon-text"><i class="fa-solid fa-location-dot"></i> Ybbsstraße 39, Amstetten</div>
-                <div class="icon-text"><i class="fa-regular fa-clock"></i> MO–FR 11:00 – 18:30</div>
-                <div class="icon-text"><i class="fa-solid fa-phone"></i> <strong>0660 496 3392</strong></div>
-                <div class="no-delivery">KEIN LIEFERSERVICE</div>
+                <div class="icon-row"><i class="fa-solid fa-location-dot"></i> Ybbsstraße 39, Amstetten</div>
+                <div class="icon-row"><i class="fa-regular fa-clock"></i> MO–FR 11:00 – 18:30</div>
+                <div class="icon-row"><i class="fa-solid fa-phone"></i> <strong>0660 496 3392</strong></div>
+                <div style="display:inline-block; border:1px solid #d00; color:#d00; background:#fff0f0; padding:2px 8px; border-radius:4px; font-weight:700; font-size:9pt; margin-top:5px;">KEIN LIEFERSERVICE</div>
             </div>
 
-            <div class="footer-block">
-                <h4>Info</h4>
-                <div style="margin-bottom:4px;">Wir akzeptieren:</div>
+            <div class="footer-col">
+                <h4>Zahlung & Social</h4>
                 <div class="payment-icons">
                     <i class="fa-brands fa-cc-visa"></i>
                     <i class="fa-brands fa-cc-mastercard"></i>
@@ -582,20 +647,20 @@
                     <i class="fa-brands fa-apple-pay"></i>
                     <i class="fa-brands fa-google-pay"></i>
                 </div>
-                <div style="display:flex; gap:10px; margin-top:5px; align-items:center;">
+                <div style="display:flex; gap:8px; margin-top:8px; align-items:center; font-size:10pt;">
                    <i class="fa-brands fa-facebook" style="color:var(--accent)"></i>
                    <i class="fa-brands fa-instagram" style="color:var(--accent)"></i> 
                    @siriwan.thaistreetfood
                 </div>
-                <div class="qr-section">
+                <div class="qr-box">
                     <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://www.siriwan.at&color=000000&bgcolor=FFFFFF&margin=0" class="qr-img" alt="QR">
-                    <strong>www.siriwan.at</strong>
+                    <strong style="color:var(--primary);">www.siriwan.at</strong>
                 </div>
             </div>
 
-            <div class="footer-block">
+            <div class="footer-col">
                 <h4>Allergene</h4>
-                <div style="font-size:7.5pt; text-align:justify; line-height:1.2; color:#666;">
+                <div class="allergen-text">
                     A Gluten B Krebstiere C Eier D Fisch E Erdnüsse F Soja G Milch H Schalenfrüchte L Sellerie M Senf N Sesam O Sulfite P Lupinen R Weichtiere.<br><br>
                     Irrtümer, Druckfehler und Änderungen vorbehalten.
                 </div>
