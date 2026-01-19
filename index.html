@@ -513,6 +513,11 @@
             position: relative;
             transition: filter 0.3s ease;
         }
+
+        /* --- SPEZIALANPASSUNG KONTAKT-BOX --- */
+        .item-image.image-extended {
+            height: 380px; /* Deutlich vergrößert, um den Platz zu nutzen */
+        }
         
         .item-image::before {
             content: '';
@@ -1227,6 +1232,11 @@
             }
             
             .item-image { height: 200px; }
+            /* Mobile adjustment for the large image */
+            .item-image.image-extended {
+                height: 280px;
+            }
+            
             .item-content { padding: 20px; }
             
             .rice-notice {
@@ -1749,7 +1759,7 @@
 
                 <div class="menu-item reveal-item">
                     <div class="item-number" style="font-size: 1.5rem;">📞</div>
-                    <div class="item-image">
+                    <div class="item-image image-extended">
                         <img src="images/kontakt.png" alt="Kontakt und Bestellung" loading="lazy">
                     </div>
                     <div class="item-content">
